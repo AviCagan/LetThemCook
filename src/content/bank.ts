@@ -22,9 +22,11 @@ const reactionById = new Map(REACTIONS.map((r) => [r.id, r]));
 const tagById = new Map(TAGS.map((t) => [t.id, t]));
 const itemsByReaction = new Map<string, QuestionItem[]>();
 for (const item of ITEMS) {
-  const list = itemsByReaction.get(item.reactionIds[0]) ?? [];
-  list.push(item);
-  itemsByReaction.set(item.reactionIds[0], list);
+  for (const rid of item.reactionIds) {
+    const list = itemsByReaction.get(rid) ?? [];
+    list.push(item);
+    itemsByReaction.set(rid, list);
+  }
 }
 
 export function getReagent(id: string): Reagent {

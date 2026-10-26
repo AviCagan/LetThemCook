@@ -172,8 +172,10 @@ ul.plain li { margin: 0.25em 0; }
 /* workbench */
 .bench { display: flex; flex-direction: column; gap: 10px; }
 .flask-area { background: var(--paper); border: 3px solid var(--outline); border-radius: var(--radius); box-shadow: inset 0 0 0 2px var(--frame-gap), inset 0 0 0 3px var(--outline); padding: 12px; }
-.flask-main { display: grid; grid-template-columns: minmax(150px, 1.1fr) minmax(120px, 1fr); gap: 10px; align-items: start; }
-.flask-area .molcard-paper { max-height: 190px; }
+.flask-main { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+.flask-side { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px; }
+.flask-side:empty { display: none; }
+.flask-area .molcard-paper { max-height: 170px; }
 .target-chip { background: var(--sky-light); color: var(--on-accent); border: 2px solid var(--outline); border-radius: var(--radius); padding: 6px 10px; margin-bottom: 8px; }
 .flask-msg { border: 2px solid var(--outline); border-radius: var(--radius); padding: 8px 10px; font-size: 0.92rem; }
 .flask-msg.is-ok { background: var(--mint); color: var(--on-accent); }
@@ -186,7 +188,9 @@ ul.plain li { margin: 0.25em 0; }
 .steplog-row.is-meta { color: var(--muted); }
 .step-num { font-weight: 800; width: 1.6em; }
 .shelf { background: var(--paper); border: 3px solid var(--outline); border-radius: var(--radius); box-shadow: inset 0 0 0 2px var(--frame-gap), inset 0 0 0 3px var(--outline); padding: 10px; }
-.shelf-board { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; padding: 8px 6px 4px; background: var(--wood); border: 2px solid var(--outline); border-radius: var(--radius); max-height: 260px; overflow-y: auto; }
+.shelf-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.shelf-search { flex: 1; min-height: 44px; padding: 6px 10px; border: 2px solid var(--outline); border-radius: var(--radius); background: var(--well); color: var(--ink); font: inherit; }
+.shelf-board { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; padding: 8px 6px 4px; background: var(--wood); border: 2px solid var(--outline); border-radius: var(--radius); max-height: 340px; overflow-y: auto; }
 .bottle { position: relative; display: flex; flex-direction: column; align-items: center; min-height: 96px; padding: 4px 2px 4px; border-radius: var(--radius); cursor: pointer; background: var(--bottle-bg); border: 2px solid transparent; touch-action: manipulation; user-select: none; }
 .bottle:active { border-color: var(--outline); }
 .bottle img { width: 48px; height: 48px; }

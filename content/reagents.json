@@ -1021,5 +1021,65 @@
       "does": "Carbon nucleophile: opens an epoxide at the less substituted carbon → magnesium alkoxide (then H₃O⁺).",
       "doesNot": "Destroyed by acidic O–H / S–H / N–H in the flask."
     }
+  },
+  {
+    "id": "H2SO4_H2O",
+    "label": "H₂SO₄, H₂O",
+    "name": "Dilute aqueous sulfuric acid (alkene hydration)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Hydrates a C=C the Markovnikov way: H to the less substituted carbon, OH to the more substituted one (via the carbocation). Also opens epoxides to trans diols.",
+      "doesNot": "No heat, so no dehydration; alcohols, ethers and carbonyls are untouched."
+    }
+  },
+  {
+    "id": "TsCl_pyr",
+    "label": "TsCl, pyr",
+    "name": "p-Toluenesulfonyl chloride with pyridine",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Alcohol → tosylate (ROTs). The C–O bond is kept (retention), and OTs is a halide-like leaving group for the next SN2/E2 step.",
+      "doesNot": "Makes nothing else: a tosylate is the setup for substitution, not its product."
+    }
+  },
+  {
+    "id": "Swern",
+    "label": "Swern",
+    "name": "Swern oxidation: DMSO, (COCl)₂, then Et₃N",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "1° alcohol → aldehyde (stops there); 2° alcohol → ketone. Chromium-free alternative to PCC.",
+      "doesNot": "No carboxylic acids; 3° alcohols untouched; C=C left alone."
+    }
+  },
+  {
+    "id": "PDC",
+    "label": "PDC",
+    "name": "Pyridinium dichromate (dry CH₂Cl₂)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Like PCC: 1° alcohol → aldehyde (stops there); 2° alcohol → ketone.",
+      "doesNot": "No acids; does not cleave C–C bonds."
+    }
+  },
+  {
+    "id": "Sharpless",
+    "label": "t-BuOOH, Ti(OiPr)₄, (+)-DET",
+    "name": "Sharpless asymmetric epoxidation (tert-butyl hydroperoxide, titanium(IV) isopropoxide, diethyl L-(+)-tartrate)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Epoxidises the C=C of an ALLYLIC alcohol only, giving one enantiomer (the tartrate picks the face).",
+      "doesNot": "Isolated alkenes (no OH on the next carbon) are untouched."
+    }
   }
 ]

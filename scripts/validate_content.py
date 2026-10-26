@@ -130,7 +130,11 @@ def validate_item(q: dict, engine: Engine, reactions: dict, reagents: dict, tags
             report.error(f"[ref] {label}: unknown reaction '{rid}'")
     primary = reactions.get(q["reactionIds"][0])
     if primary and primary["chapter"] != q["chapter"]:
-        report.error(f"[ref] {label}: chapter {q['chapter']} != reaction {primary['id']} chapter {primary['chapter']}")
+        chapters = {reactions[r]["chapter"] for r in q["reactionIds"] if r in reactions}
+        if "synthesis" in q.get("orderTypes", []) and q["chapter"] in chapters:
+            pass  # a multi-step order carries the highest chapter of its steps (for the chapter toggle)
+        else:
+            report.error(f"[ref] {label}: chapter {q['chapter']} != reaction {primary['id']} chapter {primary['chapter']}")
     if Chem.MolFromSmiles(q["start"]["smiles"]) is None:
         report.error(f"[smiles] {label}: start does not parse: {q['start']['smiles']}")
         return False
@@ -207,6 +211,8 @@ def validate_item(q: dict, engine: Engine, reactions: dict, reagents: dict, tags
             report.error(f"[trap] {tl}: equals the target once stereo is stripped (set stereoOnly if deliberate)")
         else:
             report.ok()
+    if "synthesis" in q.get("orderTypes", []) and len(q.get("route", [])) < 2:
+        report.error(f"[type] {label}: a synthesis order needs a route of >= 2 steps")
     if "predict_product" in q.get("orderTypes", []) and len(q.get("traps", [])) < 3:
         report.error(f"[type] {label}: predict_product needs >= 3 traps")
     for nt in q.get("nameTraps", []):

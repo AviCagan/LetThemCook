@@ -1,0 +1,355 @@
+[
+  {
+    "id": "q-R32-citronellol-001",
+    "reactionIds": [
+      "R32"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=CCCC(C)CCO",
+      "name": "3,7-dimethyloct-6-en-1-ol (citronellol)"
+    },
+    "target": {
+      "name": "3,7-dimethyloct-6-enal",
+      "stereo": "racemic",
+      "altNames": [
+        "citronellal"
+      ],
+      "smiles": "CC(C)=CCCC(C)CC=O",
+      "highlightAtoms": [
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Swern"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)=CCCC(C)CC(=O)O",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      }
+    ],
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. The C=C is untouched. (Carey 16.9 example, 83%.)"
+  },
+  {
+    "id": "q-R32-heptanol-001",
+    "reactionIds": [
+      "R32"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCCCCO",
+      "name": "heptan-1-ol"
+    },
+    "target": {
+      "name": "heptanal",
+      "stereo": "none",
+      "smiles": "CCCCCCC=O",
+      "highlightAtoms": [
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Swern"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCCCC(=O)O",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      }
+    ],
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+  },
+  {
+    "id": "q-R32-cyclopentanol-001",
+    "reactionIds": [
+      "R32"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCC1",
+      "name": "cyclopentanol"
+    },
+    "target": {
+      "name": "cyclopentanone",
+      "stereo": "none",
+      "smiles": "O=C1CCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Swern"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "H2CrO4"
+        }
+      ]
+    ],
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. A 2° alcohol gives the ketone with any of these oxidants."
+  },
+  {
+    "id": "q-R32-phenylpropanol-001",
+    "reactionIds": [
+      "R32"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCCCc1ccccc1",
+      "name": "3-phenylpropan-1-ol"
+    },
+    "target": {
+      "name": "3-phenylpropanal",
+      "stereo": "none",
+      "smiles": "O=CCCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Swern"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "O=C(O)CCc1ccccc1",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      }
+    ],
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+  },
+  {
+    "id": "q-R32-octanol2-001",
+    "reactionIds": [
+      "R32"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCCCC(C)O",
+      "name": "octan-2-ol"
+    },
+    "target": {
+      "name": "octan-2-one",
+      "stereo": "none",
+      "smiles": "CCCCCCC(C)=O",
+      "highlightAtoms": [
+        6,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Swern"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "H2CrO4"
+        }
+      ]
+    ],
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+  },
+  {
+    "id": "q-R32-isobutanol-001",
+    "reactionIds": [
+      "R32"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CO",
+      "name": "2-methylpropan-1-ol"
+    },
+    "target": {
+      "name": "2-methylpropanal",
+      "stereo": "none",
+      "smiles": "CC(C)C=O",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Swern"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)C(=O)O",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      }
+    ],
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+  },
+  {
+    "id": "q-R32-hexenol-001",
+    "reactionIds": [
+      "R32"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=CCCCCO",
+      "name": "hex-5-en-1-ol"
+    },
+    "target": {
+      "name": "hex-5-enal",
+      "stereo": "none",
+      "smiles": "C=CCCCC=O",
+      "highlightAtoms": [
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Swern"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "C=CCCCC(=O)O",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      },
+      {
+        "smiles": "CCCCCC=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "The C=C was hydrogenated first. Swern leaves alkenes alone, so hex-5-enal keeps its double bond."
+      }
+    ],
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. Alkenes survive."
+  }
+]

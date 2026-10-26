@@ -7,14 +7,15 @@ import type { Conditions, Reagent, TempPreset } from '../content/types';
 import { spriteDataUrl } from '../art/textures';
 import { sfx } from '../audio/sfx';
 import { save } from '../state';
+import { stereoLabelText } from '../engine/stereo';
 
 const TEMP_LABEL: Record<TempPreset, string> = { ice: 'ice 0–5 °C', rt: 'room temp', reflux: 'heat', c140: '140 °C', c180: '180 °C' };
 const SHELF_TABS: { id: string; label: string; filter: (r: Reagent) => boolean }[] = [
-  { id: 'bench', label: 'On the bench', filter: () => true },
-  { id: 'redox', label: 'Reduce / oxidise', filter: (r) => ['NaBH4', 'LiAlH4', 'H2_Pt', 'Zn_Hg_HCl', 'H2NNH2_KOH', 'PCC', 'H2CrO4', 'HIO4', 'OsO4', 'BH3_THF', 'H2O2_NaOH', 'mCPBA', 'H2O2', 'NaIO4', 'I2', 'NBS', 'O3', 'KMnO4'].includes(r.id) },
-  { id: 'acids', label: 'Acids & halogens', filter: (r) => ['HBr', 'HI', 'HCl', 'HCl_ZnCl2', 'SOCl2', 'PBr3', 'H2SO4_heat', 'HNO3_dil', 'HNO3_H2SO4', 'NaNO2_H2SO4', 'Br2_H2O', 'Br2_CHCl3'].includes(r.id) },
+  { id: 'all', label: 'All', filter: () => true },
+  { id: 'redox', label: 'Reduce / oxidise', filter: (r) => ['NaBH4', 'LiAlH4', 'H2_Pt', 'Zn_Hg_HCl', 'H2NNH2_KOH', 'PCC', 'H2CrO4', 'HIO4', 'OsO4', 'BH3_THF', 'H2O2_NaOH', 'mCPBA', 'H2O2', 'NaIO4', 'I2', 'NBS', 'O3', 'KMnO4', 'Swern', 'PDC', 'Sharpless'].includes(r.id) },
+  { id: 'acids', label: 'Acids & halogens', filter: (r) => ['HBr', 'HI', 'HCl', 'HCl_ZnCl2', 'SOCl2', 'PBr3', 'H2SO4_heat', 'HNO3_dil', 'HNO3_H2SO4', 'NaNO2_H2SO4', 'Br2_H2O', 'Br2_CHCl3', 'H2SO4_H2O'].includes(r.id) },
   { id: 'bases', label: 'Bases & metals', filter: (r) => ['NaOH', 'NaHCO3', 'K2CO3', 'NaH', 'Na', 'AlCl3', 'Mg_ether', 'CO2'].includes(r.id) },
-  { id: 'partners', label: 'Partners', filter: (r) => ['CH3I', 'EtBr', 'nPrBr', 'BnBr', 'AllylBr', 'iPrBr', 'tBuBr', 'HCHO', 'CH3CHO', 'PhCHO', 'acetone', 'cyclohexanone', 'ethylene_oxide', 'AcCl_pyr', 'BzCl_pyr', 'Ac2O', 'AcOH_H2SO4', 'MeOH_H2SO4', 'EtOH_H2SO4', 'AcCl_AlCl3'].includes(r.id) },
+  { id: 'partners', label: 'Partners', filter: (r) => ['CH3I', 'EtBr', 'nPrBr', 'BnBr', 'AllylBr', 'iPrBr', 'tBuBr', 'HCHO', 'CH3CHO', 'PhCHO', 'acetone', 'cyclohexanone', 'ethylene_oxide', 'AcCl_pyr', 'BzCl_pyr', 'Ac2O', 'AcOH_H2SO4', 'MeOH_H2SO4', 'EtOH_H2SO4', 'AcCl_AlCl3', 'TsCl_pyr'].includes(r.id) },
   { id: 'nucs', label: 'Nucleophiles', filter: (r) => ['NaOMe', 'NaOEt', 'NaCN', 'NaN3', 'NH3', 'NaSH', 'NaSMe', 'KF_crown', 'KCN_crown', 'KOAc_crown', 'MeMgBr', 'PhMgBr'].includes(r.id) },
   { id: 'workup', label: 'Workup', filter: (r) => r.kind === 'workup' || r.id === 'H3O_plus' },
 ];
@@ -27,13 +28,25 @@ function bottleIcon(r: Reagent): string {
   return ['ic_bottle_tall', 'ic_bottle_round', 'ic_bottle_flask'][h % 3];
 }
 
+/** "naoh", "h2so4 heat", "jones", "pcc": case-, subscript- and punctuation-insensitive match on label, name and aliases. */
+const SUB = '₀₁₂₃₄₅₆₇₈₉';
+function norm(t: string): string {
+  return t.toLowerCase().replace(/[₀-₉]/g, (c) => String(SUB.indexOf(c))).replace(/[^a-z0-9+\-]/g, '');
+}
+function matches(r: Reagent, q: string): boolean {
+  if (!q) return true;
+  const hay = [r.id, r.label, r.name, ...(r.aliases ?? []), r.card.does].map(norm);
+  return q.split(/\s+/).filter(Boolean).every((w) => hay.some((h) => h.includes(norm(w))));
+}
+
 function needsConditions(r: Reagent): boolean {
   const p = r.techniqueParams;
   return !!(p?.tempPresets?.length || p?.lightToggle || p?.equivOptions?.length || r.technique === 'pressure');
 }
 
 export function Workbench({ order }: { order: Order }) {
-  const [tab, setTab] = useState('bench');
+  const [tab, setTab] = useState('all');
+  const [query, setQuery] = useState('');
   const [pending, setPending] = useState<Reagent | null>(null);
   const [info, setInfo] = useState<Reagent | null>(null);
   const [notesOpen, setNotesOpen] = useState(false);
@@ -43,7 +56,7 @@ export function Workbench({ order }: { order: Order }) {
   const reached = flow.targetReached.value;
   const busy = flow.busy.value;
   const hint = flow.hintText.value;
-  const list = tab === 'bench' ? order.bench : REAGENTS.filter(SHELF_TABS.find((t) => t.id === tab)!.filter);
+  const list = REAGENTS.filter(SHELF_TABS.find((t) => t.id === tab)!.filter).filter((r) => matches(r, query));
   const frags = flask.split('.');
 
   const choose = (r: Reagent) => {
@@ -57,9 +70,9 @@ export function Workbench({ order }: { order: Order }) {
     <div class="bench">
       <div class="flask-area">
         <div class="flask-main">
-          <MoleculeCard smiles={frags.length > 1 ? flask : flask} label={reached ? '✓ Target in the flask' : 'In the flask'} size="md" highlight={reached ? order.target.highlightAtoms && frags.length === 1 ? order.target.highlightAtoms : undefined : undefined} />
+          <MoleculeCard smiles={flask} label={reached ? '✓ Target in the flask' : 'In the flask'} size="md" highlight={reached && frags.length === 1 ? order.target.highlightAtoms : undefined} />
+          <MoleculeCard smiles={order.target.smiles} highlight={order.target.highlightAtoms} label={`Wanted: ${order.target.name}`} sublabel={order.target.stereo !== 'none' ? stereoLabelText(order.target.stereo) : undefined} size="md" />
           <div class="flask-side">
-            <div class="target-chip">Wanted: <b>{order.target.name}</b></div>
             {last && (
               <div class={`flask-msg ${last.changed ? 'is-ok' : 'is-nope'}`}>
                 {last.changed ? last.rule!.label : (last.blocked[0] ?? last.traps[0]?.why ?? 'Nothing happened.')}
@@ -94,11 +107,16 @@ export function Workbench({ order }: { order: Order }) {
       </div>
 
       <div class="shelf">
+        <div class="shelf-head">
+          <input class="shelf-search" type="search" inputMode="search" autocomplete="off" placeholder="Find a bottle (NaBH4, PCC, heat, Jones…)" aria-label="Find a bottle" value={query} onInput={(e) => setQuery((e.target as HTMLInputElement).value)} />
+          <span class="muted small">{list.length}/{REAGENTS.length}</span>
+        </div>
         <div class="tabs small" role="tablist">
           {SHELF_TABS.map((t) => (
             <button key={t.id} role="tab" aria-selected={tab === t.id} class={`tab ${tab === t.id ? 'is-active' : ''}`} type="button" onClick={() => setTab(t.id)}>{t.label}</button>
           ))}
         </div>
+        {list.length === 0 && <div class="muted small">No bottle matches "{query}" on this shelf. Try another tab or a shorter word.</div>}
         <div class="shelf-board" role="list">
           {list.map((r) => (
             <div class="bottle" key={r.id} role="button" tabIndex={0} onClick={() => choose(r)}

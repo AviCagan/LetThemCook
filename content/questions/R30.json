@@ -1,0 +1,267 @@
+[
+  {
+    "id": "q-R30-bromobutane-001",
+    "reactionIds": [
+      "R30"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCBr",
+      "name": "1-bromobutane"
+    },
+    "target": {
+      "name": "butan-1-ol",
+      "stereo": "none",
+      "smiles": "CCCCO",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCOC",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Methoxide gives the methyl ether (Williamson). To get the alcohol the nucleophile has to be hydroxide."
+      },
+      {
+        "smiles": "CCCCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Hydrosulfide gives the thiol (SH), not the alcohol."
+      }
+    ],
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily."
+  },
+  {
+    "id": "q-R30-benzylchloride-001",
+    "reactionIds": [
+      "R30"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "ClCc1ccccc1",
+      "name": "(chloromethyl)benzene (benzyl chloride)"
+    },
+    "target": {
+      "name": "phenylmethanol",
+      "stereo": "none",
+      "altNames": [
+        "benzyl alcohol"
+      ],
+      "smiles": "OCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "COCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is benzyl methyl ether: methoxide was the nucleophile. Use hydroxide for the alcohol."
+      }
+    ],
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. Benzylic halides are excellent SN2 substrates."
+  },
+  {
+    "id": "q-R30-mesitylmethylchloride-001",
+    "reactionIds": [
+      "R30"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1cc(C)c(CCl)c(C)c1",
+      "name": "1-(chloromethyl)-2,4,6-trimethylbenzene (2,4,6-trimethylbenzyl chloride)"
+    },
+    "target": {
+      "name": "(2,4,6-trimethylphenyl)methanol",
+      "stereo": "none",
+      "altNames": [
+        "2,4,6-trimethylbenzyl alcohol"
+      ],
+      "smiles": "Cc1cc(C)c(CO)c(C)c1",
+      "highlightAtoms": [
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. (Carey Table 16.1 example: H₂O, Ca(OH)₂, heat, 78%.)"
+  },
+  {
+    "id": "q-R30-iodopropane-001",
+    "reactionIds": [
+      "R30"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCI",
+      "name": "1-iodopropane"
+    },
+    "target": {
+      "name": "propan-1-ol",
+      "stereo": "none",
+      "smiles": "CCCO",
+      "highlightAtoms": [
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCC#N",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cyanide gave the nitrile. The alcohol needs hydroxide as the nucleophile."
+      }
+    ],
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily."
+  },
+  {
+    "id": "q-R30-isobutylbromide-001",
+    "reactionIds": [
+      "R30"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CBr",
+      "name": "1-bromo-2-methylpropane"
+    },
+    "target": {
+      "name": "2-methylpropan-1-ol",
+      "stereo": "none",
+      "smiles": "CC(C)CO",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCOCC(C)C",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Ethoxide gave the ethyl ether (and, with a hindered 1° halide, some E2). Hydroxide gives the alcohol."
+      }
+    ],
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. A 1° halide, even a β-branched one, still substitutes."
+  },
+  {
+    "id": "q-R30-allylchloride-001",
+    "reactionIds": [
+      "R30"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=CCCl",
+      "name": "3-chloroprop-1-ene (allyl chloride)"
+    },
+    "target": {
+      "name": "prop-2-en-1-ol",
+      "stereo": "none",
+      "altNames": [
+        "allyl alcohol"
+      ],
+      "smiles": "C=CCO",
+      "highlightAtoms": [
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. Allylic halides are very reactive in SN2."
+  },
+  {
+    "id": "q-R30-bromomethylcyclohexane-001",
+    "reactionIds": [
+      "R30"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrCC1CCCCC1",
+      "name": "(bromomethyl)cyclohexane"
+    },
+    "target": {
+      "name": "cyclohexylmethanol",
+      "stereo": "none",
+      "smiles": "OCC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CSCC1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Methanethiolate gave the methyl sulfide, not the alcohol."
+      }
+    ],
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily."
+  }
+]

@@ -71,8 +71,11 @@ export class StageScene extends Phaser.Scene {
   tile(key: string, col: number, row: number, frame = 0): Phaser.GameObjects.Image {
     return this.sprite(key, col * TILE, row * TILE, frame, 0, 0).setDepth(row * TILE + TILE);
   }
+  /** Restart only when the stage geometry really changed (iOS fires resize on every toolbar show/hide). */
   onResize(): void {
-    this.scene.restart();
+    const n = stageRect();
+    const o = this.r;
+    if (n.zoom !== o.zoom || n.ox !== o.ox || n.oy !== o.oy || n.w !== o.w || n.h !== o.h || n.x !== o.x || n.y !== o.y) this.scene.restart();
   }
   create(): void {
     this.cameras.main.setViewport(this.r.x, this.r.y, this.r.w, this.r.h);

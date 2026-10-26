@@ -1113,5 +1113,107 @@
     "flask": "CC(O)CBr",
     "reagent": "NaH",
     "expect": "CC1CO1"
+  },
+  {
+    "id": "h2so4_h2o_hydrate_tetrasub",
+    "flask": "CC(C)=C(C)C",
+    "reagent": "H2SO4_H2O",
+    "expect": "CC(C)C(C)(C)O"
+  },
+  {
+    "id": "h2so4_h2o_hydrate_terminal",
+    "flask": "C=CCCCC",
+    "reagent": "H2SO4_H2O",
+    "expect": "CC(O)CCCC"
+  },
+  {
+    "id": "h2so4_h2o_epoxide",
+    "flask": "C1CCC2OC2C1",
+    "reagent": "H2SO4_H2O",
+    "expect": "OC1CCCCC1O"
+  },
+  {
+    "id": "naoh_hydrolyse_primary",
+    "flask": "CCCCBr",
+    "reagent": "NaOH",
+    "expect": "CCCCO"
+  },
+  {
+    "id": "naoh_tertiary_e2",
+    "flask": "CC(C)(C)Br",
+    "reagent": "NaOH",
+    "expect": "C=C(C)C"
+  },
+  {
+    "id": "tscl_cyclohexanol",
+    "flask": "OC1CCCCC1",
+    "reagent": "TsCl_pyr",
+    "expect": "Cc1ccc(S(=O)(=O)OC2CCCCC2)cc1"
+  },
+  {
+    "id": "nacn_on_tosylate",
+    "flask": "Cc1ccc(S(=O)(=O)OCCCCC)cc1",
+    "reagent": "NaCN",
+    "expect": "CCCCCC#N"
+  },
+  {
+    "id": "nan3_on_tosylate",
+    "flask": "Cc1ccc(S(=O)(=O)OCCCC)cc1",
+    "reagent": "NaN3",
+    "expect": "CCCCN=[N+]=[N-]"
+  },
+  {
+    "id": "naoet_on_tosylate",
+    "flask": "Cc1ccc(S(=O)(=O)OCCC(C)C)cc1",
+    "reagent": "NaOEt",
+    "expect": "CCOCCC(C)C"
+  },
+  {
+    "id": "swern_primary",
+    "flask": "OCCCCCCC",
+    "reagent": "Swern",
+    "expect": "O=CCCCCCC"
+  },
+  {
+    "id": "swern_tertiary_none",
+    "flask": "CC(C)(C)O",
+    "reagent": "Swern",
+    "expect": "CC(C)(C)O"
+  },
+  {
+    "id": "pdc_secondary",
+    "flask": "CC(C)O",
+    "reagent": "PDC",
+    "expect": "CC(C)=O"
+  },
+  {
+    "id": "sharpless_allylic",
+    "flask": "CCC/C=C/CO",
+    "reagent": "Sharpless",
+    "expect": "CCCC1OC1CO"
+  },
+  {
+    "id": "sharpless_isolated_none",
+    "flask": "CCCCC=C",
+    "reagent": "Sharpless",
+    "expect": "C=CCCCC"
+  },
+  {
+    "id": "meoh_h2so4_mtbe",
+    "flask": "CC(C)=C",
+    "reagent": "MeOH_H2SO4",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "COC(C)(C)C"
+  },
+  {
+    "id": "etoh_h2so4_etbe",
+    "flask": "CC(C)=C",
+    "reagent": "EtOH_H2SO4",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "CCOC(C)(C)C"
   }
 ]

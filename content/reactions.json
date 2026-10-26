@@ -1388,5 +1388,194 @@
     "typicalTags": [
       "reagent_label_unknown"
     ]
+  },
+  {
+    "id": "R29",
+    "name": "Acid-catalysed hydration of an alkene",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "H₂O, H₂SO₄ (dilute)",
+    "steps": [
+      {
+        "reagents": [
+          "H2SO4_H2O"
+        ]
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagents": [
+            "H3O_plus"
+          ]
+        }
+      ]
+    ],
+    "rules": {
+      "summary": "Markovnikov: OH on the more substituted carbon (carbocation). Carey Table 16.1. Compare hydroboration–oxidation (anti-Markovnikov)."
+    },
+    "stereoOutcome": "racemic_if_new_center",
+    "typicalTags": [
+      "markovnikov_flip"
+    ],
+    "decoys": [
+      "BH3_THF",
+      "H2O2_NaOH"
+    ]
+  },
+  {
+    "id": "R30",
+    "name": "Hydrolysis of an alkyl halide",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "HO⁻ (NaOH, H₂O)",
+    "steps": [
+      {
+        "reagents": [
+          "NaOH"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "SN2 on a CH₃/1° (incl. benzylic, allylic) halide → alcohol. 2°/3° halides eliminate (E2) instead. Carey Table 16.1."
+    },
+    "stereoOutcome": "inversion",
+    "typicalTags": [
+      "williamson_E2"
+    ],
+    "decoys": [
+      "NaOMe",
+      "NaSH"
+    ]
+  },
+  {
+    "id": "R31",
+    "name": "Tosylates (TsCl, pyridine) and their SN2 displacement",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "1. TsCl, pyridine; 2. Nu⁻ (CN⁻, N₃⁻, SH⁻, RO⁻ …)",
+    "steps": [
+      {
+        "reagents": [
+          "TsCl_pyr"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Alcohol → tosylate with retention (C–O kept); the tosylate then undergoes SN2 with inversion, like an alkyl halide. Carey Table 16.2 (Sections 5.15, 6.10)."
+    },
+    "stereoOutcome": "inversion",
+    "typicalTags": [
+      "epoxide_no_inversion",
+      "reagent_label_unknown"
+    ],
+    "decoys": [
+      "PBr3",
+      "SOCl2"
+    ]
+  },
+  {
+    "id": "R32",
+    "name": "Swern oxidation",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "DMSO, (COCl)₂; then Et₃N",
+    "steps": [
+      {
+        "reagents": [
+          "Swern"
+        ]
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagents": [
+            "PCC"
+          ]
+        }
+      ],
+      [
+        {
+          "reagents": [
+            "PDC"
+          ]
+        }
+      ]
+    ],
+    "rules": {
+      "summary": "1° alcohol → aldehyde (stops there); 2° → ketone. Same outcome as PCC/PDC, no chromium. Carey Table 16.5."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "over_oxidation"
+    ],
+    "decoys": [
+      "H2CrO4"
+    ]
+  },
+  {
+    "id": "E14",
+    "name": "Sharpless asymmetric epoxidation",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "t-BuOOH, Ti(OiPr)₄, diethyl tartrate",
+    "steps": [
+      {
+        "reagents": [
+          "Sharpless"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Allylic alcohols only; the C=C next to CH–OH becomes an epoxide as a single enantiomer (the tartrate chooses the face). Other alkenes untouched. Carey Table 17.2."
+    },
+    "stereoOutcome": "single_enantiomer",
+    "typicalTags": [
+      "missing_stereo"
+    ],
+    "decoys": [
+      "mCPBA"
+    ]
+  },
+  {
+    "id": "E15",
+    "name": "Alcohol + alkene, acid-catalysed (ether synthesis)",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "ROH, H⁺ (e.g. CH₃OH, H₂SO₄ cat.)",
+    "steps": [
+      {
+        "reagents": [
+          "MeOH_H2SO4"
+        ]
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagents": [
+            "EtOH_H2SO4"
+          ]
+        }
+      ]
+    ],
+    "rules": {
+      "summary": "Markovnikov addition of an alcohol across a C=C via the carbocation → ether (how MTBE is made). Carey Section 17.5."
+    },
+    "stereoOutcome": "racemic_if_new_center",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ],
+    "decoys": [
+      "H2SO4_H2O",
+      "NaOMe"
+    ]
   }
 ]

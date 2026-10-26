@@ -49,7 +49,19 @@
       }
     ],
     "explanation": "PCC oxidises the 1° alcohol to the aldehyde and stops.",
-    "tip": "PCC = aldehyde. Jones = acid."
+    "tip": "PCC = aldehyde. Jones = acid.",
+    "altRoutes": [
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "Swern"
+        }
+      ]
+    ]
   },
   {
     "id": "q-R22-hexenol-001",
@@ -104,7 +116,19 @@
       }
     ],
     "explanation": "The 1° alcohol becomes an aldehyde; the alkene keeps its E geometry.",
-    "tip": "PCC ignores alkenes."
+    "tip": "PCC ignores alkenes.",
+    "altRoutes": [
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "Swern"
+        }
+      ]
+    ]
   },
   {
     "id": "q-R22-benzylalcohol-001",
@@ -156,7 +180,19 @@
       }
     ],
     "explanation": "PCC oxidises the benzylic 1° alcohol to benzaldehyde and stops.",
-    "tip": "Aldehyde wanted? PCC, dry CH₂Cl₂."
+    "tip": "Aldehyde wanted? PCC, dry CH₂Cl₂.",
+    "altRoutes": [
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "Swern"
+        }
+      ]
+    ]
   },
   {
     "id": "q-R22-methylbutanol-001",
@@ -194,6 +230,16 @@
       [
         {
           "reagent": "H2CrO4"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "Swern"
         }
       ]
     ],
@@ -256,6 +302,16 @@
       [
         {
           "reagent": "H2CrO4"
+        }
+      ],
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "Swern"
         }
       ]
     ],
@@ -336,6 +392,18 @@
       }
     ],
     "explanation": "The 1° alcohol is oxidised to the aldehyde and stops.",
-    "tip": "Find the carbon with the OH; that is the only one that changes."
+    "tip": "Find the carbon with the OH; that is the only one that changes.",
+    "altRoutes": [
+      [
+        {
+          "reagent": "PDC"
+        }
+      ],
+      [
+        {
+          "reagent": "Swern"
+        }
+      ]
+    ]
   }
 ]

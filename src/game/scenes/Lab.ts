@@ -2,7 +2,7 @@
 // to the counter; the player stands behind it; the mentor drops in when a batch fails.
 import Phaser from 'phaser';
 import { effect } from '@preact/signals';
-import { StageScene, TILE, VW, VH, hudHeight } from '../stage';
+import { StageScene, TILE, VW, VH, stageRect } from '../stage';
 import { flow } from '../../flow';
 import { save } from '../../state';
 import { frameCount } from '../../art/textures';
@@ -28,20 +28,23 @@ const MENTOR_SPOT = { col: 6, row: 6 };
 const PLAYER_SPOT = { col: 5, row: 3 };
 const FLASK_SPOT = { x: 3 * TILE + 8, y: 4 * TILE + 6 };
 
+/** Depth = the feet line in room pixels, so whoever stands lower on screen is drawn in front. */
+const feetDepth = (row: number) => row * TILE + TILE + 0.5;
+
 class Walker {
   img: Phaser.GameObjects.Image;
   emote?: Phaser.GameObjects.Image;
   private timer?: Phaser.Time.TimerEvent;
   constructor(private scene: StageScene, public key: string, col: number, row: number, public dir: Dir = 'down') {
     this.img = scene.sprite(key, col * TILE + TILE / 2, row * TILE + TILE, DIR_BASE[dir]);
-    this.img.setDepth(row * TILE + TILE + 1);
+    this.img.setDepth(feetDepth(row));
   }
   face(dir: Dir): void {
     this.dir = dir;
     this.img.setFrame(String(DIR_BASE[dir]));
   }
   place(col: number, row: number): void {
-    this.img.setPosition(this.scene.vx(col * TILE + TILE / 2), this.scene.vy(row * TILE + TILE)).setDepth(row * TILE + TILE + 1);
+    this.img.setPosition(this.scene.vx(col * TILE + TILE / 2), this.scene.vy(row * TILE + TILE)).setDepth(feetDepth(row));
   }
   walkTo(col: number, row: number, reduced: boolean, onDone?: () => void): void {
     const tx = this.scene.vx(col * TILE + TILE / 2);
@@ -66,11 +69,11 @@ class Walker {
       y: ty,
       duration: Math.max(200, (dist / this.scene.r.zoom) * 14),
       ease: 'Linear',
-      onUpdate: () => this.img.setDepth((this.img.y - (this.scene.r.oy - this.scene.r.y)) / this.scene.r.zoom + 1),
+      onUpdate: () => this.img.setDepth((this.img.y - (this.scene.r.oy - this.scene.r.y)) / this.scene.r.zoom + 0.5),
       onComplete: () => {
         this.timer?.remove();
         this.img.setFrame(String(base));
-        this.img.setDepth(row * TILE + TILE + 1);
+        this.img.setDepth(feetDepth(row));
         onDone?.();
       },
     });
@@ -114,10 +117,18 @@ export class LabScene extends StageScene {
     super('lab');
   }
 
+  init(): void {
+    super.init();
+    // a restart (resize, HUD height change) must not remember the old phase: create() re-syncs with the flow
+    this.lastPhase = '';
+    this.lastStepCount = 0;
+  }
+
   update(time: number): void {
     if (time - this.hudCheck > 400) {
       this.hudCheck = time;
-      if (Math.abs(hudHeight() - this.r.y) > 2) this.scene.restart();
+      const n = stageRect();
+      if (n.y !== this.r.y || n.h !== this.r.h || n.zoom !== this.r.zoom) this.onResize();
     }
   }
 
@@ -127,6 +138,7 @@ export class LabScene extends StageScene {
     this.windows = [];
     ROOM.forEach((row, r) => row.forEach((key, c) => {
       const t = this.tile(key, c, r);
+      if (key.startsWith('t_floor') || key.startsWith('t_rug')) t.setDepth(0);
       if (key === 't_window') this.windows.push(t);
       if (key === 't_bench_hotplate') this.hotplate = t;
       if (key === 't_bench_computer') this.computer = t;
@@ -140,6 +152,7 @@ export class LabScene extends StageScene {
     this.customer.setVisible(false);
     this.mentor = new Walker(this, 'mentor', DOOR.col, DOOR.row, 'up');
     this.mentor.setVisible(false);
+    this.restoreFromFlow();
 
     if (!reduced()) {
       this.time.addEvent({ delay: 700, loop: true, callback: () => this.computer?.setFrame(this.computer.frame.name === '0' ? '1' : '0') });
@@ -169,6 +182,28 @@ export class LabScene extends StageScene {
         }
       }),
     );
+  }
+
+  /** After a (re)start, put everyone where the current phase says they are; 'arrive' replays the walk-in. */
+  private restoreFromFlow(): void {
+    const phase = flow.phase.value;
+    if (!this.customer || !this.mentor) return;
+    if (phase === 'request' || phase === 'bench' || phase === 'stereo' || phase === 'result' || phase === 'mentor') {
+      this.customer.key = flow.customerKey.value;
+      this.customer.img.setTexture(flow.customerKey.value, String(DIR_BASE.up));
+      this.customer.place(CUSTOMER_SPOT.col, CUSTOMER_SPOT.row);
+      this.customer.face('up');
+      this.customer.setVisible(true);
+      if (phase === 'mentor') {
+        this.mentor.place(MENTOR_SPOT.col, MENTOR_SPOT.row);
+        this.mentor.face('up');
+        this.mentor.setVisible(true);
+      }
+      const steps = flow.steps.value;
+      this.lastStepCount = steps.length;
+      if (steps.some((s) => s.kind === 'step')) this.liquid?.setVisible(true).setTint(phase === 'result' ? 0x9fe3b4 : phase === 'mentor' ? 0xa9a6ba : 0x8ecbff);
+      this.lastPhase = phase;
+    }
   }
 
   private handlePhase(phase: string, key: string, reduced: boolean): void {

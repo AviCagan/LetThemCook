@@ -1,0 +1,329 @@
+[
+  {
+    "id": "q-E15-mtbe-001",
+    "reactionIds": [
+      "E15"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=C",
+      "name": "2-methylpropene"
+    },
+    "target": {
+      "name": "2-methoxy-2-methylpropane",
+      "stereo": "none",
+      "altNames": [
+        "tert-butyl methyl ether",
+        "MTBE"
+      ],
+      "smiles": "COC(C)(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Water added instead of the alcohol: that is the Markovnikov alcohol, not the ether. Use the alcohol/acid bottle."
+      }
+    ],
+    "explanation": "Acid protonates the alkene to give the more stable carbocation; the alcohol (present in excess as the solvent) captures it and loses H⁺. The result is the Markovnikov ether: this is how MTBE is made (Carey 17.5).",
+    "tip": "Alkene + ROH + H⁺ → Markovnikov ether."
+  },
+  {
+    "id": "q-E15-methylcyclohexene-001",
+    "reactionIds": [
+      "E15"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1=CCCCC1",
+      "name": "1-methylcyclohexene"
+    },
+    "target": {
+      "name": "1-methoxy-1-methylcyclohexane",
+      "stereo": "none",
+      "smiles": "COC1(C)CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC1(O)CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Water added instead of the alcohol: that is the Markovnikov alcohol, not the ether. Use the alcohol/acid bottle."
+      }
+    ],
+    "explanation": "Acid protonates the alkene to give the more stable carbocation; the alcohol (present in excess as the solvent) captures it and loses H⁺. The result is the Markovnikov ether: this is how MTBE is made (Carey 17.5). The 3° carbocation forms on the carbon that carries the methyl, so methoxy ends up there."
+  },
+  {
+    "id": "q-E15-methylbutene-etoh-001",
+    "reactionIds": [
+      "E15"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC=C(C)C",
+      "name": "2-methylbut-2-ene"
+    },
+    "target": {
+      "name": "2-ethoxy-2-methylbutane",
+      "stereo": "none",
+      "smiles": "CCOC(C)(C)CC",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "EtOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is the alcohol (water added). The order wants the ethyl ether: ethanol with acid."
+      }
+    ],
+    "explanation": "Acid protonates the alkene to give the more stable carbocation; the alcohol (present in excess as the solvent) captures it and loses H⁺. The result is the Markovnikov ether: this is how MTBE is made (Carey 17.5)."
+  },
+  {
+    "id": "q-E15-tetramethylethylene-001",
+    "reactionIds": [
+      "E15"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=C(C)C",
+      "name": "2,3-dimethylbut-2-ene"
+    },
+    "target": {
+      "name": "2-methoxy-2,3-dimethylbutane",
+      "stereo": "none",
+      "smiles": "COC(C)(C)C(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)C(C)(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Water added instead of the alcohol: that is the Markovnikov alcohol, not the ether. Use the alcohol/acid bottle."
+      }
+    ],
+    "explanation": "Acid protonates the alkene to give the more stable carbocation; the alcohol (present in excess as the solvent) captures it and loses H⁺. The result is the Markovnikov ether: this is how MTBE is made (Carey 17.5)."
+  },
+  {
+    "id": "q-E15-cyclohexene-etoh-001",
+    "reactionIds": [
+      "E15"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1CCC=CC1",
+      "name": "cyclohexene"
+    },
+    "target": {
+      "name": "ethoxycyclohexane",
+      "stereo": "none",
+      "altNames": [
+        "cyclohexyl ethyl ether"
+      ],
+      "smiles": "CCOC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "EtOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "OC1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cyclohexanol: water added. For the ether the nucleophile has to be ethanol."
+      }
+    ],
+    "explanation": "Acid protonates the alkene to give the more stable carbocation; the alcohol (present in excess as the solvent) captures it and loses H⁺. The result is the Markovnikov ether: this is how MTBE is made (Carey 17.5)."
+  },
+  {
+    "id": "q-E15-styrene-001",
+    "reactionIds": [
+      "E15"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=Cc1ccccc1",
+      "name": "ethenylbenzene (styrene)"
+    },
+    "target": {
+      "name": "(1-methoxyethyl)benzene",
+      "stereo": "racemic",
+      "smiles": "COC(C)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Water added instead of the alcohol: that is the Markovnikov alcohol, not the ether. Use the alcohol/acid bottle."
+      }
+    ],
+    "explanation": "Acid protonates the alkene to give the more stable carbocation; the alcohol (present in excess as the solvent) captures it and loses H⁺. The result is the Markovnikov ether: this is how MTBE is made (Carey 17.5). The benzylic carbocation is attacked from both faces: racemic."
+  },
+  {
+    "id": "q-E15-etbe-001",
+    "reactionIds": [
+      "E15"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=C",
+      "name": "2-methylpropene"
+    },
+    "target": {
+      "name": "2-ethoxy-2-methylpropane",
+      "stereo": "none",
+      "altNames": [
+        "ethyl tert-butyl ether",
+        "ETBE"
+      ],
+      "smiles": "CCOC(C)(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "EtOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "tert-Butyl alcohol: water added instead of ethanol."
+      },
+      {
+        "smiles": "COC(C)(C)C",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is MTBE (methanol added). The order asks for the ETHYL ether."
+      }
+    ],
+    "explanation": "Acid protonates the alkene to give the more stable carbocation; the alcohol (present in excess as the solvent) captures it and loses H⁺. The result is the Markovnikov ether: this is how MTBE is made (Carey 17.5)."
+  }
+]

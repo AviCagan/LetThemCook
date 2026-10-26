@@ -35,6 +35,10 @@ export interface SchedulerOptions {
   only?: string[];
   /** weakness clinic: skip the 'new' and 'solid' buckets unless nothing else is left */
   weakOnly?: boolean;
+  /** 0..1: how often a shaky/solid reaction is served as a multi-step synthesis instead of a single step */
+  synthesisChance?: number;
+  /** extra per-item filter (e.g. drop multi-step orders that touch a switched-off chapter) */
+  itemFilter?: (q: QuestionItem) => boolean;
 }
 
 export function pickNext(
@@ -54,7 +58,7 @@ export function pickNext(
   if (retestIds.length) {
     const id = retestIds.sort((a, b) => session.retests[a].due - session.retests[b].due)[0];
     const reaction = pool.find((p) => p.id === id)!;
-    const item = itemsForReaction(id).find((q) => q.id === session.retests[id].itemId) ?? pickItem(reaction, session, opts);
+    const item = itemsForReaction(id).find((q) => q.id === session.retests[id].itemId) ?? pickItem(reaction, session, opts, rec(id).state);
     if (item) {
       const type = pickType(item, opts);
       if (type) return { reaction, item, type, bucket: 'retest', retest: true };
@@ -73,7 +77,7 @@ export function pickNext(
     // among the top few of a bucket, pick randomly so shifts are not identical day to day
     const top = b.list.slice(0, b.name === 'new' ? b.list.length : 3);
     for (const reaction of shuffleStable(top, opts.rng)) {
-      const item = pickItem(reaction, session, opts);
+      const item = pickItem(reaction, session, opts, rec(reaction.id).state);
       if (!item) continue;
       const type = pickType(item, opts);
       if (!type) continue;
@@ -98,7 +102,7 @@ export function pickNext(
   }
   // everything served this session: allow repeats of reactions (but not items) when the shift is long
   for (const reaction of shuffleStable(pool, opts.rng)) {
-    const item = pickItem(reaction, session, opts);
+    const item = pickItem(reaction, session, opts, rec(reaction.id).state);
     if (!item) continue;
     const type = pickType(item, opts);
     if (type) return { reaction, item, type, bucket: 'solid', retest: false };
@@ -106,12 +110,19 @@ export function pickNext(
   return undefined;
 }
 
-function pickItem(reaction: Reaction, session: SessionState, opts: SchedulerOptions): QuestionItem | undefined {
+function pickItem(reaction: Reaction, session: SessionState, opts: SchedulerOptions, state: MasteryRecord['state'] = 'new'): QuestionItem | undefined {
   const candidates = itemsForReaction(reaction.id).filter(
-    (q) => !session.servedItems.has(q.id) && (q.orderTypes ?? ['make_it']).some((t) => opts.allowedTypes.includes(t)),
+    (q) => !session.servedItems.has(q.id) && (q.orderTypes ?? ['make_it']).some((t) => opts.allowedTypes.includes(t)) && (opts.itemFilter?.(q) ?? true),
   );
   if (!candidates.length) return undefined;
-  return pick(opts.rng, candidates);
+  const isSyn = (q: QuestionItem) => (q.orderTypes ?? ['make_it']).includes('synthesis');
+  const singles = candidates.filter((q) => !isSyn(q));
+  const multis = candidates.filter(isSyn);
+  if (!singles.length) return pick(opts.rng, multis);
+  if (!multis.length) return pick(opts.rng, singles);
+  // multi-step orders once the reaction is past 'new' / 'missed' (singles first), then by chance
+  const wantMulti = (state === 'shaky' || state === 'solid') && opts.rng() < (opts.synthesisChance ?? 0);
+  return pick(opts.rng, wantMulti ? multis : singles);
 }
 
 function pickType(item: QuestionItem, opts: SchedulerOptions): OrderType | undefined {

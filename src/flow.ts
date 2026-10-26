@@ -2,8 +2,8 @@
 // (plus heat / light / equivalents) to the flask and the reaction engine returns the real product
 // each time, until the target is in the flask and handed over. Phaser and Preact observe the signals.
 import { signal, computed } from '@preact/signals';
-import type { Conditions, QuestionItem, Reaction, Reagent, StereoLabel } from './content/types';
-import { getReaction, getReagent, getTag, playableReactions, REAGENTS } from './content/bank';
+import type { Conditions, QuestionItem, Reaction, StereoLabel } from './content/types';
+import { getReaction, getReagent, getTag, playableReactions } from './content/bank';
 import { ReactionEngine, type Outcome } from './chem/engine';
 import { loadRDKit } from './chem/rdkit';
 import { scoreOrder, coinsFor } from './engine/scoring';
@@ -13,12 +13,12 @@ import { SEEDS } from './mastery/seeds';
 import { persistSave } from './save/store';
 import type { HistoryEntry, LabBookEntry, LabBookStep } from './save/types';
 import { save, screen, showToast } from './state';
-import { mulberry32, pick, randomSeed, shuffle, type Rng } from './util/rng';
+import { mulberry32, pick, randomSeed, type Rng } from './util/rng';
 import { CHARACTER_KEYS } from './art/characters';
 import { sfx } from './audio/sfx';
 import { stereoLabelText } from './engine/stereo';
 
-export type Mode = 'shift' | 'practice' | 'clinic';
+export type Mode = 'shift' | 'practice' | 'clinic' | 'synthesis';
 export type Phase = 'idle' | 'arrive' | 'request' | 'bench' | 'stereo' | 'result' | 'mentor' | 'dayend';
 
 export interface Order {
@@ -28,8 +28,6 @@ export interface Order {
   start: { smiles: string; name: string };
   target: { smiles: string; name: string; altNames?: string[]; stereo: StereoLabel; highlightAtoms?: number[] };
   stereoChoices?: StereoLabel[];
-  /** bottles laid out on the bench for this order (route + decoys + fillers), shuffled */
-  bench: Reagent[];
   par: number;
   retest?: boolean;
 }
@@ -162,7 +160,10 @@ class GameFlow {
     }
     const reactions = playableReactions(s.profile.chapters);
     const picked = pickNext(reactions, s.mastery.reactions, this.session, {
-      allowedTypes: ['make_it'],
+      // clinic drills single steps; a synthesis shift is multi-step only; shifts and practice mix them in
+      allowedTypes: this.mode.value === 'clinic' ? ['make_it'] : this.mode.value === 'synthesis' ? ['synthesis'] : ['make_it', 'synthesis'],
+      synthesisChance: this.mode.value === 'shift' ? 0.4 : this.mode.value === 'practice' ? 0.3 : 0,
+      itemFilter: (q) => s.profile.chapters[String(q.chapter)] !== false,
       now: Date.now(),
       rng: this.rng,
       only: this.practiceOnly,
@@ -182,7 +183,6 @@ class GameFlow {
       start: { smiles: item.start!.smiles, name: item.start!.name },
       target: { smiles: target.smiles!, name: target.name, altNames: target.altNames, stereo: target.stereo, highlightAtoms: target.highlightAtoms },
       stereoChoices: target.stereo === 'none' ? undefined : uniq([target.stereo, ...(target.stereoChoices ?? ['racemic', 'single_enantiomer', 'meso']), 'none' as StereoLabel]),
-      bench: this.buildBench(item, picked.reaction),
       par: 60 + 40 * (item.route?.length ?? 1),
       retest: picked.retest,
     };
@@ -202,25 +202,6 @@ class GameFlow {
     this.wasted = 0;
     this.encounteredTags = [];
     this.phase.value = 'arrive';
-  }
-
-  /** The bottles on the bench: every bottle the route needs, the reaction's decoys, and fillers. */
-  private buildBench(item: QuestionItem, reaction: Reaction): Reagent[] {
-    const needed = new Set<string>();
-    for (const s of item.route ?? []) needed.add(s.reagent);
-    for (const alt of item.altRoutes ?? []) alt.forEach((s) => needed.add(s.reagent));
-    needed.add('H2O');
-    needed.add('H3O_plus');
-    const extras: string[] = [];
-    for (const id of reaction.decoys ?? []) if (!needed.has(id)) extras.push(id);
-    for (const rid of item.reactionIds.slice(1)) for (const id of getReaction(rid).decoys ?? []) if (!needed.has(id) && !extras.includes(id)) extras.push(id);
-    const ids = [...needed, ...shuffle(this.rng, extras)];
-    const pool = REAGENTS.filter((r) => !ids.includes(r.id) && r.kind === 'reagent').map((r) => r.id);
-    for (const id of shuffle(this.rng, pool)) {
-      if (ids.length >= 10) break;
-      ids.push(id);
-    }
-    return shuffle(this.rng, ids).map(getReagent);
   }
 
   customerArrived(): void {

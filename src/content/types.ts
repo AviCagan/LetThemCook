@@ -5,7 +5,7 @@ export type ReagentKind = 'reagent' | 'workup' | 'decoy';
 export type Technique = 'pour' | 'temperature' | 'stir' | 'light' | 'workup' | 'pressure' | 'none';
 export type TempPreset = 'ice' | 'rt' | 'c140' | 'c180' | 'reflux';
 export type StereoLabel = 'none' | 'single_enantiomer' | 'racemic' | 'meso' | 'cis' | 'trans' | 'syn' | 'anti';
-export type OrderType = 'make_it' | 'predict_product';
+export type OrderType = 'make_it' | 'predict_product' | 'synthesis';
 export type Chapter = 16 | 17;
 
 export interface Reagent {
@@ -100,7 +100,7 @@ export interface QuestionItem {
   id: string;
   reactionIds: string[];
   chapter: Chapter;
-  difficulty: 1 | 2 | 3;
+  difficulty: 1 | 2 | 3 | 4;
   orderTypes?: OrderType[];
   start: Molecule;
   target: Target;

@@ -426,7 +426,9 @@
     {
       "id": "H3O_hydrate",
       "reagent": "H3O_plus",
-      "reactionIds": [],
+      "reactionIds": [
+        "R29"
+      ],
       "label": "Acid-catalysed hydration (Ch 6): Markovnikov, OH on the more substituted carbon.",
       "pipeline": [
         {
@@ -793,6 +795,44 @@
       ]
     },
     {
+      "id": "NaOH_hydrolyse_halide",
+      "reagent": "NaOH",
+      "reactionIds": [
+        "R30"
+      ],
+      "label": "Hydroxide displaced the halide (or tosylate) on the CH₃/1° carbon (SN2) → alcohol.",
+      "pipeline": [
+        {
+          "repeat": true,
+          "anyOf": [
+            "[CX4;H2,H3:1][Cl,Br,I]>>[C:1][OH]",
+            "[CX4;H2,H3:1][OX2]S(=O)(=O)c1ccc(C)cc1>>[C:1][OH]"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "NaOH_E2_sec_tert_halide",
+      "reagent": "NaOH",
+      "reactionIds": [
+        "R30"
+      ],
+      "label": "A 2°/3° halide with hydroxide eliminates (E2, Zaitsev alkene) instead of substituting.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4;H0,H1:1]([Cl,Br,I])[CX4H1:2]>>[C:1]=[C:2]",
+            "[CX4;H0,H1:1]([Cl,Br,I])[CX4H2:2]>>[C:1]=[C:2]",
+            "[CX4;H0,H1:1]([Cl,Br,I])[CH3:2]>>[C:1]=[C:2]",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CX4H1:2]>>[C:1]=[C:2]",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CX4H2:2]>>[C:1]=[C:2]",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CH3:2]>>[C:1]=[C:2]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
       "id": "NaHCO3_deprotonate",
       "reagent": "NaHCO3",
       "reactionIds": [
@@ -992,7 +1032,7 @@
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
           "repeat": true
         },
         {
@@ -1029,7 +1069,7 @@
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
           "repeat": true
         },
         {
@@ -1066,7 +1106,7 @@
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
           "repeat": true
         },
         {
@@ -1103,7 +1143,7 @@
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
           "repeat": true
         },
         {
@@ -1140,7 +1180,7 @@
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
           "repeat": true
         },
         {
@@ -1159,7 +1199,7 @@
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[O-:1].[CX4;H0,H1:2]([CX4;!H0:3])[Br]>>([OH+0:1].[C:2]=[C:3])",
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1].[CX4;H0,H1:2]([CX4;!H0:3])[Br]>>([OH+0:1].[C:2]=[C:3])",
           "repeat": false
         }
       ]
@@ -1174,7 +1214,7 @@
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[O-:1].[CX4;H0,H1:2]([CX4;!H0:3])[Br]>>([OH+0:1].[C:2]=[C:3])",
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1].[CX4;H0,H1:2]([CX4;!H0:3])[Br]>>([OH+0:1].[C:2]=[C:3])",
           "repeat": false
         }
       ]
@@ -1610,12 +1650,15 @@
       "reactionIds": [
         "R25"
       ],
-      "label": "HS⁻ displaced the halide (SN2) → thiol.",
+      "label": "HS⁻ displaced the halide (or tosylate) (SN2) → thiol.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;!H0:1][Cl,Br,I].[SH-:2]>>[C:1][SH+0:2]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;!H0:1][Cl,Br,I].[SH-:2]>>[C:1][SH+0:2]",
+            "[CX4;!H0:1][OX2]S(=O)(=O)c1ccc(C)cc1.[SH-:2]>>[C:1][SH+0:2]"
+          ]
         }
       ]
     },
@@ -1626,12 +1669,15 @@
         "R27",
         "E11"
       ],
-      "label": "The thiolate displaced the halide (SN2) → sulfide.",
+      "label": "The thiolate displaced the halide (or tosylate) (SN2) → sulfide.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;!H0:1][Cl,Br,I].[S-:2][C:3]>>[C:1][SH0+0:2][C:3]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;!H0:1][Cl,Br,I].[S-:2][C:3]>>[C:1][SH0+0:2][C:3]",
+            "[CX4;!H0:1][OX2]S(=O)(=O)c1ccc(C)cc1.[S-:2][C:3]>>[C:1][SH0+0:2][C:3]"
+          ]
         }
       ]
     },
@@ -1639,12 +1685,15 @@
       "id": "NaCN_nitrile",
       "reagent": "NaCN",
       "reactionIds": [],
-      "label": "Cyanide displaced the halide (SN2) → nitrile.",
+      "label": "Cyanide displaced the halide (or tosylate) (SN2) → nitrile.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;!H0:1][Cl,Br,I].[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;!H0:1][Cl,Br,I].[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]",
+            "[CX4;!H0:1][OX2]S(=O)(=O)c1ccc(C)cc1.[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]"
+          ]
         }
       ]
     },
@@ -1652,12 +1701,15 @@
       "id": "NaN3_azide",
       "reagent": "NaN3",
       "reactionIds": [],
-      "label": "Azide displaced the halide (SN2) → alkyl azide.",
+      "label": "Azide displaced the halide (or tosylate) (SN2) → alkyl azide.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;!H0:1][Cl,Br,I].[N-:2]=[N+:3]=[N-:4]>>[C:1][NH0+0:2]=[N+:3]=[N-:4]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;!H0:1][Cl,Br,I].[N-:2]=[N+:3]=[N-:4]>>[C:1][NH0+0:2]=[N+:3]=[N-:4]",
+            "[CX4;!H0:1][OX2]S(=O)(=O)c1ccc(C)cc1.[N-:2]=[N+:3]=[N-:4]>>[C:1][NH0+0:2]=[N+:3]=[N-:4]"
+          ]
         }
       ]
     },
@@ -1685,12 +1737,15 @@
       "reactionIds": [
         "E3"
       ],
-      "label": "The alkoxide displaced the halide on the CH₃/1° carbon (SN2) → ether.",
+      "label": "The alkoxide displaced the halide (or tosylate) on the CH₃/1° carbon (SN2) → ether.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;H2,H3:1][Cl,Br,I].[O-:2][C:3]>>[C:1][OH0+0:2][C:3]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;H2,H3:1][Cl,Br,I].[O-:2][C:3]>>[C:1][OH0+0:2][C:3]",
+            "[CX4;H2,H3:1][OX2]S(=O)(=O)c1ccc(C)cc1.[O-:2][C:3]>>[C:1][OH0+0:2][C:3]"
+          ]
         }
       ]
     },
@@ -1707,7 +1762,10 @@
           "anyOf": [
             "[CX4;H0,H1:1]([Br,Cl,I])[CX4H1:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
             "[CX4;H0,H1:1]([Br,Cl,I])[CX4H2:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
-            "[CX4;H0,H1:1]([Br,Cl,I])[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])"
+            "[CX4;H0,H1:1]([Br,Cl,I])[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CX4H1:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CX4H2:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])"
           ],
           "repeat": false
         }
@@ -1737,12 +1795,15 @@
       "reactionIds": [
         "E3"
       ],
-      "label": "The alkoxide displaced the halide on the CH₃/1° carbon (SN2) → ether.",
+      "label": "The alkoxide displaced the halide (or tosylate) on the CH₃/1° carbon (SN2) → ether.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;H2,H3:1][Cl,Br,I].[O-:2][C:3]>>[C:1][OH0+0:2][C:3]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;H2,H3:1][Cl,Br,I].[O-:2][C:3]>>[C:1][OH0+0:2][C:3]",
+            "[CX4;H2,H3:1][OX2]S(=O)(=O)c1ccc(C)cc1.[O-:2][C:3]>>[C:1][OH0+0:2][C:3]"
+          ]
         }
       ]
     },
@@ -1759,7 +1820,10 @@
           "anyOf": [
             "[CX4;H0,H1:1]([Br,Cl,I])[CX4H1:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
             "[CX4;H0,H1:1]([Br,Cl,I])[CX4H2:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
-            "[CX4;H0,H1:1]([Br,Cl,I])[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])"
+            "[CX4;H0,H1:1]([Br,Cl,I])[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CX4H1:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CX4H2:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([OX2]S(=O)(=O)c1ccc(C)cc1)[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])"
           ],
           "repeat": false
         }
@@ -1771,12 +1835,15 @@
       "reactionIds": [
         "E2"
       ],
-      "label": "18-crown-6 freed the fluoride: SN2 on the halide → alkyl fluoride.",
+      "label": "18-crown-6 freed the fluoride: SN2 on the halide (or tosylate) → alkyl fluoride.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;!H0:1][Cl,Br,I].[F-:2]>>[C:1][FH0+0:2]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;!H0:1][Cl,Br,I].[F-:2]>>[C:1][FH0+0:2]",
+            "[CX4;!H0:1][OX2]S(=O)(=O)c1ccc(C)cc1.[F-:2]>>[C:1][FH0+0:2]"
+          ]
         }
       ]
     },
@@ -1786,12 +1853,15 @@
       "reactionIds": [
         "E2"
       ],
-      "label": "18-crown-6 freed the cyanide: SN2 on the halide → nitrile.",
+      "label": "18-crown-6 freed the cyanide: SN2 on the halide (or tosylate) → nitrile.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;!H0:1][Cl,Br,I].[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;!H0:1][Cl,Br,I].[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]",
+            "[CX4;!H0:1][OX2]S(=O)(=O)c1ccc(C)cc1.[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]"
+          ]
         }
       ]
     },
@@ -1801,12 +1871,15 @@
       "reactionIds": [
         "E2"
       ],
-      "label": "18-crown-6 freed the acetate: SN2 on the halide → acetate ester.",
+      "label": "18-crown-6 freed the acetate: SN2 on the halide (or tosylate) → acetate ester.",
       "partner": "bottle",
       "pipeline": [
         {
-          "rxn": "[CX4;!H0:1][Cl,Br,I].[O-:2][C:3](=[O:4])[C:5]>>[C:1][OH0+0:2][C:3](=[O:4])[C:5]",
-          "repeat": true
+          "repeat": true,
+          "anyOf": [
+            "[CX4;!H0:1][Cl,Br,I].[O-:2][C:3](=[O:4])[C:5]>>[C:1][OH0+0:2][C:3](=[O:4])[C:5]",
+            "[CX4;!H0:1][OX2]S(=O)(=O)c1ccc(C)cc1.[O-:2][C:3](=[O:4])[C:5]>>[C:1][OH0+0:2][C:3](=[O:4])[C:5]"
+          ]
         }
       ]
     },
@@ -1819,6 +1892,135 @@
         {
           "rxn": "[C:1]=[C:2]>>([C:1]=O.[C:2]=O)",
           "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2SO4_H2O_epoxide",
+      "reagent": "H2SO4_H2O",
+      "reactionIds": [
+        "E10"
+      ],
+      "label": "Aqueous acid opened the epoxide: water attacked the protonated epoxide (anti) → trans-1,2-diol.",
+      "pipeline": [
+        {
+          "rxn": "[C:1]1[O:3][C:2]1>>[C:1]([OH])[C:2][OH:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2SO4_H2O_hydrate",
+      "reagent": "H2SO4_H2O",
+      "reactionIds": [
+        "R29"
+      ],
+      "label": "Acid-catalysed hydration: H⁺ made the more stable carbocation, water added there → Markovnikov alcohol.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX3H0:1]=[CX3:2]>>[C:1]([OH])[C:2]",
+            "[CX3H1:1]=[CX3H2:2]>>[C:1]([OH])[C:2]",
+            "[CX3H1:1]=[CX3H1:2]>>[C:1]([OH])[C:2]",
+            "[CX3H2:1]=[CX3H2:2]>>[C:1]([OH])[C:2]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "TsCl_tosylate",
+      "reagent": "TsCl_pyr",
+      "reactionIds": [
+        "R31"
+      ],
+      "label": "TsCl/pyridine turned the OH into a tosylate (C–O bond kept: retention). OTs now leaves like a halide.",
+      "pipeline": [
+        {
+          "rxn": "[CX4:1][OX2H1:2]>>[C:1][O:2]S(=O)(=O)c1ccc(C)cc1",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Swern_oxidise",
+      "reagent": "Swern",
+      "reactionIds": [
+        "R32"
+      ],
+      "label": "Swern oxidation oxidised the alcohol: 1° → aldehyde (and stopped), 2° → ketone.",
+      "pipeline": [
+        {
+          "rxn": "[CX4;H1,H2;!$(C(O)O):1][OX2H1:2]>>[C:1]=[O:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "PDC_oxidise",
+      "reagent": "PDC",
+      "reactionIds": [
+        "R22"
+      ],
+      "label": "PDC oxidised the alcohol: 1° → aldehyde (and stopped), 2° → ketone.",
+      "pipeline": [
+        {
+          "rxn": "[CX4;H1,H2;!$(C(O)O):1][OX2H1:2]>>[C:1]=[O:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Sharpless_epoxidise",
+      "reagent": "Sharpless",
+      "reactionIds": [
+        "E14"
+      ],
+      "label": "Sharpless: t-BuOOH delivered oxygen to the allylic C=C through the Ti–tartrate complex; one enantiomer of the epoxy alcohol.",
+      "pipeline": [
+        {
+          "rxn": "[CX3:1]=[CX3:2][CX4:3][OX2H1:4]>>[C:1]1[O][C:2]1[C:3][O:4]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "MeOH_H2SO4_alkene_addition",
+      "reagent": "MeOH_H2SO4",
+      "reactionIds": [
+        "E15"
+      ],
+      "label": "Acid protonated the C=C to the more stable carbocation; the alcohol captured it → Markovnikov ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX3H0:1]=[CX3:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]",
+            "[CX3H1:1]=[CX3H2:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]",
+            "[CX3H1:1]=[CX3H1:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]",
+            "[CX3H2:1]=[CX3H2:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "EtOH_H2SO4_alkene_addition",
+      "reagent": "EtOH_H2SO4",
+      "reactionIds": [
+        "E15"
+      ],
+      "label": "Acid protonated the C=C to the more stable carbocation; the alcohol captured it → Markovnikov ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX3H0:1]=[CX3:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]",
+            "[CX3H1:1]=[CX3H2:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]",
+            "[CX3H1:1]=[CX3H1:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]",
+            "[CX3H2:1]=[CX3H2:2].[OX2H1:3][CX4:4]>>[C:1]([O:3][C:4])[C:2]"
+          ],
+          "repeat": false
         }
       ]
     }
@@ -2488,7 +2690,7 @@
       "reagent": "MeOH_H2SO4",
       "pattern": "*",
       "tag": "reagent_label_unknown",
-      "why": "This needs a carboxylic acid (with heat) or an epoxide."
+      "why": "This needs a carboxylic acid (with heat), an epoxide, or an alkene to add to."
     },
     {
       "reagent": "EtOH_H2SO4",
@@ -2506,7 +2708,7 @@
       "reagent": "EtOH_H2SO4",
       "pattern": "*",
       "tag": "reagent_label_unknown",
-      "why": "This needs a carboxylic acid (with heat) or an epoxide."
+      "why": "This needs a carboxylic acid (with heat), an epoxide, or an alkene to add to."
     },
     {
       "reagent": "AcCl_AlCl3",
@@ -2699,6 +2901,66 @@
       "pattern": "*",
       "tag": "ozone_vs_osmium",
       "why": "Ozone needs a C=C to cleave."
+    },
+    {
+      "reagent": "Swern",
+      "pattern": "[CX4H0][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "A 3° alcohol has no H on the carbinol carbon, so Swern oxidation cannot oxidise it."
+    },
+    {
+      "reagent": "Swern",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Swern oxidation needs a 1° or 2° alcohol."
+    },
+    {
+      "reagent": "PDC",
+      "pattern": "[CX4H0][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "A 3° alcohol has no H on the carbinol carbon, so PDC cannot oxidise it."
+    },
+    {
+      "reagent": "PDC",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "PDC needs a 1° or 2° alcohol."
+    },
+    {
+      "reagent": "H2SO4_H2O",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "Dilute acid at room temperature does nothing to an alcohol (dehydration needs concentrated H₂SO₄ and heat)."
+    },
+    {
+      "reagent": "H2SO4_H2O",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "No C=C to hydrate and no epoxide to open."
+    },
+    {
+      "reagent": "TsCl_pyr",
+      "pattern": "[c][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "TsCl/pyridine is the alcohol → tosylate step (Carey Table 16.2). An aryl O–H is not what it is for here."
+    },
+    {
+      "reagent": "TsCl_pyr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "TsCl needs an alcohol O–H to turn into a tosylate."
+    },
+    {
+      "reagent": "Sharpless",
+      "pattern": "[C]=[C]",
+      "tag": "reagent_label_unknown",
+      "why": "Sharpless epoxidation needs an ALLYLIC alcohol (OH on the carbon next to the C=C). An isolated alkene is left alone; use a peroxy acid for that."
+    },
+    {
+      "reagent": "Sharpless",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Sharpless epoxidation needs an allylic alcohol."
     }
   ]
 }

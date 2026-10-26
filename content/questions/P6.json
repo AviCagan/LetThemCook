@@ -308,13 +308,11 @@
       "altNames": [
         "4-nitroanisole"
       ],
-      "smiles": "COc1ccc([N+](=O)OC)cc1",
+      "smiles": "COc1ccc([N+](=O)[O-])cc1",
       "highlightAtoms": [
         0,
         1,
-        2,
-        8,
-        9
+        2
       ]
     },
     "route": [

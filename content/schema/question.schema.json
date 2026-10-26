@@ -10,8 +10,8 @@
     "id": { "type": "string", "pattern": "^q-[A-Za-z0-9]+-[a-z0-9-]+-[0-9]{3}$" },
     "reactionIds": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "Toolkit reactions the intended route exercises (first = primary, for scheduling)." },
     "chapter": { "type": "integer", "enum": [16, 17] },
-    "difficulty": { "type": "integer", "minimum": 1, "maximum": 3 },
-    "orderTypes": { "type": "array", "items": { "type": "string", "enum": ["make_it", "predict_product"] }, "description": "Defaults to [make_it]. predict_product (quiz: pick the product) also needs >= 3 traps." },
+    "difficulty": { "type": "integer", "minimum": 1, "maximum": 4 },
+    "orderTypes": { "type": "array", "items": { "type": "string", "enum": ["make_it", "predict_product", "synthesis"] }, "description": "Defaults to [make_it]. synthesis = multi-step order built by scripts/gen_synthesis.py. predict_product (quiz: pick the product) also needs >= 3 traps." },
     "start": { "$ref": "#/definitions/molecule" },
     "target": {
       "type": "object",

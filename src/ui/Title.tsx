@@ -39,6 +39,9 @@ export function Title() {
         <button class="btn btn-big" type="button" onClick={() => { sfx.tap(); flow.startShift('clinic', { customers: 8 }); }}>
           Weakness clinic {due > 0 && <span class="chip chip-hot">{due} due</span>}
         </button>
+        <button class="btn btn-big" type="button" onClick={() => { sfx.tap(); flow.startShift('synthesis', { customers: 6 }); }}>
+          Synthesis shift <span class="small">(multi-step orders)</span>
+        </button>
         <button class="btn btn-big" type="button" onClick={() => { sfx.click(); screen.value = 'practice'; }}>Practice by reaction</button>
         <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'labbook'; }}>Lab book</button>
         <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'notebook'; }}>Mastery notebook</button>

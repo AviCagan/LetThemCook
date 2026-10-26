@@ -1,0 +1,326 @@
+[
+  {
+    "id": "q-R29-tetramethylethylene-001",
+    "reactionIds": [
+      "R29"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=C(C)C",
+      "name": "2,3-dimethylbut-2-ene"
+    },
+    "target": {
+      "name": "2,3-dimethylbutan-2-ol",
+      "stereo": "none",
+      "smiles": "CC(C)C(C)(C)O",
+      "highlightAtoms": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_H2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. (Carey Table 16.1 example, 90%.)",
+    "tip": "Dilute acid + water = hydration; concentrated acid + heat = the reverse (dehydration)."
+  },
+  {
+    "id": "q-R29-methylcyclohexene-001",
+    "reactionIds": [
+      "R29"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1=CCCCC1",
+      "name": "1-methylcyclohexene"
+    },
+    "target": {
+      "name": "1-methylcyclohexan-1-ol",
+      "stereo": "none",
+      "smiles": "CC1(O)CCCCC1",
+      "highlightAtoms": [
+        1,
+        2,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_H2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC1CCCCC1O",
+        "stereo": "none",
+        "tag": "markovnikov_flip",
+        "why": "That is the hydroboration product: OH on the less substituted carbon. Acid-catalysed hydration is Markovnikov: the OH ends up on the ring carbon that carries the methyl (3° carbocation)."
+      }
+    ],
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon."
+  },
+  {
+    "id": "q-R29-isobutylene-001",
+    "reactionIds": [
+      "R29"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=C",
+      "name": "2-methylpropene"
+    },
+    "target": {
+      "name": "2-methylpropan-2-ol",
+      "stereo": "none",
+      "altNames": [
+        "tert-butyl alcohol"
+      ],
+      "smiles": "CC(C)(C)O",
+      "highlightAtoms": [
+        1,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_H2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)CO",
+        "stereo": "none",
+        "tag": "markovnikov_flip",
+        "why": "OH on the CH₂ is the anti-Markovnikov (hydroboration) outcome. With acid the 3° carbocation forms and water adds to it."
+      }
+    ],
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon."
+  },
+  {
+    "id": "q-R29-hexene-001",
+    "reactionIds": [
+      "R29"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=CCCCC",
+      "name": "hex-1-ene"
+    },
+    "target": {
+      "name": "hexan-2-ol",
+      "stereo": "racemic",
+      "smiles": "CCCCC(C)O",
+      "highlightAtoms": [
+        0,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_H2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCCCO",
+        "stereo": "none",
+        "tag": "markovnikov_flip",
+        "why": "Hexan-1-ol is the hydroboration–oxidation product. Acid-catalysed hydration puts the OH on C2 (the 2° carbocation), and the new stereocentre forms as both enantiomers."
+      }
+    ],
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. The planar carbocation is attacked from either face, so the alcohol is racemic."
+  },
+  {
+    "id": "q-R29-cyclohexene-001",
+    "reactionIds": [
+      "R29"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1CCC=CC1",
+      "name": "cyclohexene"
+    },
+    "target": {
+      "name": "cyclohexanol",
+      "stereo": "none",
+      "smiles": "OC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_H2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H3O_plus"
+        }
+      ],
+      [
+        {
+          "reagent": "BH3_THF"
+        },
+        {
+          "reagent": "H2O2_NaOH"
+        }
+      ]
+    ],
+    "explanation": "Symmetric alkene: either carbon gets the OH, so hydration and hydroboration give the same cyclohexanol."
+  },
+  {
+    "id": "q-R29-styrene-001",
+    "reactionIds": [
+      "R29"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=Cc1ccccc1",
+      "name": "ethenylbenzene (styrene)"
+    },
+    "target": {
+      "name": "1-phenylethan-1-ol",
+      "stereo": "racemic",
+      "smiles": "CC(O)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_H2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "OCCc1ccccc1",
+        "stereo": "none",
+        "tag": "markovnikov_flip",
+        "why": "2-Phenylethanol is the hydroboration product. In acid the benzylic carbocation forms, so the OH goes on the benzylic carbon (racemic)."
+      }
+    ],
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. The benzylic cation is especially stable."
+  },
+  {
+    "id": "q-R29-methylbutene-001",
+    "reactionIds": [
+      "R29"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC=C(C)C",
+      "name": "2-methylbut-2-ene"
+    },
+    "target": {
+      "name": "2-methylbutan-2-ol",
+      "stereo": "none",
+      "smiles": "CCC(C)(C)O",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_H2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)C(C)O",
+        "stereo": "none",
+        "tag": "markovnikov_flip",
+        "why": "3-Methylbutan-2-ol is the anti-Markovnikov (hydroboration) alcohol. Acid gives the 3° carbocation, so the OH goes on C2."
+      }
+    ],
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon."
+  }
+]

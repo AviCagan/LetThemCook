@@ -1,0 +1,428 @@
+[
+  {
+    "id": "q-R31-cyclohexanol-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1",
+      "name": "cyclohexanol"
+    },
+    "target": {
+      "name": "cyclohexyl 4-methylbenzenesulfonate",
+      "stereo": "none",
+      "altNames": [
+        "cyclohexyl tosylate",
+        "cyclohexyl p-toluenesulfonate"
+      ],
+      "smiles": "Cc1ccc(S(=O)(=O)OC2CCCCC2)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        15,
+        16
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "BrC1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is bromocyclohexane: PBr₃ replaced the OH with Br. The order asks for the tosylate, which keeps the C–O bond."
+      }
+    ],
+    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2."
+  },
+  {
+    "id": "q-R31-butanol-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "butyl 4-methylbenzenesulfonate",
+      "stereo": "none",
+      "altNames": [
+        "butyl tosylate"
+      ],
+      "smiles": "CCCCOS(=O)(=O)c1ccc(C)cc1",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCCl",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride. TsCl/pyridine gives the tosylate (OTs), keeping the oxygen."
+      }
+    ],
+    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2."
+  },
+  {
+    "id": "q-R31-cycloheptanol-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCCC1",
+      "name": "cycloheptanol"
+    },
+    "target": {
+      "name": "cycloheptyl 4-methylbenzenesulfonate",
+      "stereo": "none",
+      "altNames": [
+        "cycloheptyl tosylate",
+        "cycloheptyl p-toluenesulfonate"
+      ],
+      "smiles": "Cc1ccc(S(=O)(=O)OC2CCCCCC2)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        16,
+        17
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      }
+    ],
+    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2. (Carey Table 16.2 example, 83%.)"
+  },
+  {
+    "id": "q-R31-pentanol-nitrile-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCCO",
+      "name": "pentan-1-ol"
+    },
+    "target": {
+      "name": "hexanenitrile",
+      "stereo": "none",
+      "smiles": "CCCCCC#N",
+      "highlightAtoms": [
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      },
+      {
+        "reagent": "NaCN"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PBr3"
+        },
+        {
+          "reagent": "NaCN"
+        }
+      ],
+      [
+        {
+          "reagent": "TsCl_pyr"
+        },
+        {
+          "reagent": "KCN_crown"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCCOS(=O)(=O)c1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "That is still the tosylate. Cyanide has to displace it (SN2) to give the nitrile."
+      }
+    ],
+    "explanation": "Two steps: TsCl makes the OH a leaving group (retention), then cyanide does SN2 on the tosylate → one extra carbon as a nitrile. PBr₃ then NaCN works the same way.",
+    "tip": "OH is a terrible leaving group. Tosylate or bromide first, then the nucleophile."
+  },
+  {
+    "id": "q-R31-s-butanol-tosylate-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C[C@H](O)CC",
+      "name": "(S)-butan-2-ol"
+    },
+    "target": {
+      "name": "(S)-butan-2-yl 4-methylbenzenesulfonate",
+      "stereo": "single_enantiomer",
+      "altNames": [
+        "(S)-sec-butyl tosylate"
+      ],
+      "stereoChoices": [
+        "single_enantiomer",
+        "racemic",
+        "none"
+      ],
+      "smiles": "C[C@H](OS(=O)(=O)c1ccc(C)cc1)CC",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC[C@H](C)Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives 2-bromobutane, and with inversion. The tosylate keeps both the oxygen and the configuration."
+      }
+    ],
+    "explanation": "Tosylation does not touch the stereocentre: the O–H bond breaks, not the C–O bond, so (S) stays (S).",
+    "tip": "Retention at the carbon: only the O–H is involved."
+  },
+  {
+    "id": "q-R31-s-butanol-azide-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C[C@H](O)CC",
+      "name": "(S)-butan-2-ol"
+    },
+    "target": {
+      "name": "(R)-2-azidobutane",
+      "stereo": "single_enantiomer",
+      "stereoChoices": [
+        "single_enantiomer",
+        "racemic",
+        "none"
+      ],
+      "smiles": "C[C@@H](N=[N+]=[N-])CC",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      },
+      {
+        "reagent": "NaN3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC[C@H](C)OS(=O)(=O)c1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "That is the tosylate, the intermediate. Azide still has to displace it."
+      }
+    ],
+    "explanation": "Step 1 (TsCl) keeps the configuration; step 2 (N₃⁻, SN2) inverts it. The priorities (N₃ > ethyl > methyl) rank the same way OH did, so (S) becomes (R).",
+    "tip": "Tosylate = retention; SN2 on it = inversion. Net inversion."
+  },
+  {
+    "id": "q-R31-isobutanol-thiol-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CO",
+      "name": "2-methylpropan-1-ol"
+    },
+    "target": {
+      "name": "2-methylpropane-1-thiol",
+      "stereo": "none",
+      "smiles": "CC(C)CS",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      },
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PBr3"
+        },
+        {
+          "reagent": "NaSH"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1ccc(S(=O)(=O)OCC(C)C)cc1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "Still the tosylate: hydrosulfide has to displace it to give the thiol."
+      }
+    ],
+    "explanation": "Activate the alcohol as its tosylate, then SH⁻ does SN2 → thiol (Carey 16.12: thiols from alkyl halides or tosylates)."
+  },
+  {
+    "id": "q-R31-isoamyl-ether-001",
+    "reactionIds": [
+      "R31"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CCO",
+      "name": "3-methylbutan-1-ol"
+    },
+    "target": {
+      "name": "1-ethoxy-3-methylbutane",
+      "stereo": "none",
+      "smiles": "CCOCCC(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "TsCl_pyr"
+      },
+      {
+        "reagent": "NaOEt"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PBr3"
+        },
+        {
+          "reagent": "NaOEt"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "EtBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1ccc(S(=O)(=O)OCCC(C)C)cc1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "That is the tosylate. Ethoxide must still displace it to make the ether."
+      }
+    ],
+    "explanation": "Williamson synthesis with a tosylate as the electrophile: ethoxide displaces OTs on the 1° carbon. (Or deprotonate the alcohol and alkylate it with ethyl bromide.)"
+  }
+]

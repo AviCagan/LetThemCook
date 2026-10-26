@@ -105,7 +105,8 @@
         "syn_meso_or_racemic",
         "anti",
         "inversion",
-        "retention"
+        "retention",
+        "single_enantiomer"
       ],
       "description": "What the stereo picker should expect by default when the reaction creates stereocenters."
     },

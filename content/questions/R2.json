@@ -491,5 +491,105 @@
     ],
     "explanation": "NaBH₄ reduces the aldehyde to the allylic 1° alcohol; the C=C keeps its E geometry.",
     "tip": "Conjugated or not, the C=C stays with NaBH₄ in this course."
+  },
+  {
+    "id": "q-R2-pentanedial-001",
+    "reactionIds": [
+      "R2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "O=CCCCC=O",
+      "name": "pentanedial"
+    },
+    "target": {
+      "name": "pentane-1,5-diol",
+      "stereo": "none",
+      "smiles": "OCCCCCO",
+      "highlightAtoms": [
+        0,
+        1,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H2O",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt"
+        }
+      ]
+    ],
+    "explanation": "Both aldehydes are reduced: NaBH₄ (or LiAlH₄, or H₂/catalyst) gives the 1,5-diol. Carey 16.5: diols by reduction of dicarbonyl compounds."
+  },
+  {
+    "id": "q-R2-methylpentanedial-001",
+    "reactionIds": [
+      "R2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "O=CCC(C)CC=O",
+      "name": "3-methylpentanedial"
+    },
+    "target": {
+      "name": "3-methylpentane-1,5-diol",
+      "stereo": "none",
+      "smiles": "CC(CCO)CCO",
+      "highlightAtoms": [
+        3,
+        4,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H2O",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt"
+        }
+      ]
+    ],
+    "explanation": "Two aldehydes, two reductions, one diol. Carey 16.5 runs this with H₂/Ni (100 atm, 125 °C, 81–83%); NaBH₄ and LiAlH₄ work as well. C3 carries two identical CH₂CH₂OH arms, so it is not a stereocentre."
   }
 ]

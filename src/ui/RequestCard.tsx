@@ -19,6 +19,7 @@ export function RequestCard({ order }: { order: Order }) {
         <div>
           <div class="speech-name">{name}</div>
           <div class="speech-text">
+            {order.item.orderTypes?.includes('synthesis') ? <span class="chip chip-tag small">multi-step</span> : null}{' '}
             Could you turn this into <b class="target-name">{order.target.name}</b>{stereoNote} for me?
             {order.target.altNames?.length ? <span class="muted small"> (also called {order.target.altNames.join(', ')})</span> : null}
           </div>
