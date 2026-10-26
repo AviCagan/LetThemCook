@@ -1,0 +1,317 @@
+[
+  {
+    "id": "q-P3-phenol-001",
+    "reactionIds": [
+      "P3"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1",
+      "name": "phenol"
+    },
+    "target": {
+      "name": "4-bromophenol",
+      "stereo": "none",
+      "smiles": "Oc1ccc(Br)cc1",
+      "highlightAtoms": [
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_CHCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Oc1c(Br)cc(Br)cc1Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold."
+      },
+      {
+        "smiles": "Oc1cccc(Br)c1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "The OH directs ortho/para, never meta."
+      }
+    ],
+    "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
+    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+  },
+  {
+    "id": "q-P3-pcresol-001",
+    "reactionIds": [
+      "P3"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccc(O)cc1",
+      "name": "4-methylphenol"
+    },
+    "target": {
+      "name": "2-bromo-4-methylphenol",
+      "stereo": "none",
+      "smiles": "Cc1ccc(O)c(Br)c1",
+      "highlightAtoms": [
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_CHCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1cc(Br)c(O)c(Br)c1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold."
+      },
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      }
+    ],
+    "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
+    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+  },
+  {
+    "id": "q-P3-mcresol-001",
+    "reactionIds": [
+      "P3"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1cccc(O)c1",
+      "name": "3-methylphenol"
+    },
+    "target": {
+      "name": "4-bromo-3-methylphenol",
+      "stereo": "none",
+      "smiles": "Cc1cc(O)ccc1Br",
+      "highlightAtoms": [
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_CHCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1c(Br)cc(Br)c(O)c1Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold."
+      },
+      {
+        "smiles": "Cc1cccc(O)c1Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "The OH directs ortho/para, never meta."
+      }
+    ],
+    "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
+    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+  },
+  {
+    "id": "q-P3-ocresol-001",
+    "reactionIds": [
+      "P3"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccccc1O",
+      "name": "2-methylphenol"
+    },
+    "target": {
+      "name": "4-bromo-2-methylphenol",
+      "stereo": "none",
+      "smiles": "Cc1cc(Br)ccc1O",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_CHCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1cc(Br)cc(Br)c1O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold."
+      },
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      }
+    ],
+    "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
+    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+  },
+  {
+    "id": "q-P3-nitrophenol-001",
+    "reactionIds": [
+      "P3"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+      "name": "4-nitrophenol"
+    },
+    "target": {
+      "name": "2-bromo-4-nitrophenol",
+      "stereo": "none",
+      "smiles": "O=[N+]([O-])c1ccc(O)c(Br)c1",
+      "highlightAtoms": [
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_CHCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=[N+]([O-])c1cc(Br)c(O)c(Br)c1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold."
+      },
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      }
+    ],
+    "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
+    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+  },
+  {
+    "id": "q-P3-tbutylphenol-001",
+    "reactionIds": [
+      "P3"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(C)c1ccc(O)cc1",
+      "name": "4-tert-butylphenol"
+    },
+    "target": {
+      "name": "2-bromo-4-tert-butylphenol",
+      "stereo": "none",
+      "smiles": "CC(C)(C)c1ccc(O)c(Br)c1",
+      "highlightAtoms": [
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_CHCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)(C)c1cc(Br)c(O)c(Br)c1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold."
+      },
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      }
+    ],
+    "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
+    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+  },
+  {
+    "id": "q-P3-ochlorophenol-001",
+    "reactionIds": [
+      "P3"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1Cl",
+      "name": "2-chlorophenol"
+    },
+    "target": {
+      "name": "4-bromo-2-chlorophenol",
+      "stereo": "none",
+      "smiles": "Oc1ccc(Br)cc1Cl",
+      "highlightAtoms": [
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_CHCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Oc1c(Cl)cc(Br)cc1Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold."
+      },
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      }
+    ],
+    "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
+    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+  }
+]

@@ -1,52 +1,46 @@
 [
   {
     "id": "q-R10-methylcyclohexene-001",
-    "reactionId": "R10",
+    "reactionIds": [
+      "R10"
+    ],
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC1=CCCCC1",
       "name": "1-methylcyclohexene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "BH3_THF"
-          ]
-        },
-        {
-          "reagents": [
-            "H2O2_NaOH"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@@H]1CCCC[C@H]1O",
+    "target": {
+      "name": "trans-2-methylcyclohexan-1-ol",
       "stereo": "racemic",
+      "altNames": [
+        "trans-2-methylcyclohexanol"
+      ],
       "stereoChoices": [
         "racemic",
         "single_enantiomer",
         "meso"
       ],
-      "names": {
-        "accepted": [
-          "trans-2-methylcyclohexan-1-ol",
-          "trans-2-methylcyclohexanol"
-        ]
-      },
+      "smiles": "CC1CCCCC1O",
       "highlightAtoms": [
         1,
         6,
         7
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "BH3_THF"
+      },
+      {
+        "reagent": "H2O2_NaOH"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC1(O)CCCCC1",
         "stereo": "none",
@@ -57,8 +51,8 @@
         "smiles": "C[C@@H]1CCCC[C@@H]1O",
         "stereo": "racemic",
         "tag": "syn_anti_mixup",
-        "stereoOnly": true,
-        "why": "H and OH add syn. The H lands on C1 on the same face as the OH on C2, which puts the CH₃ (already on C1) on the opposite face: OH and CH₃ are trans."
+        "why": "H and OH add syn. The H lands on C1 on the same face as the OH on C2, which puts the CH₃ (already on C1) on the opposite face: OH and CH₃ are trans.",
+        "stereoOnly": true
       },
       {
         "smiles": "C[C@H]1CCCCC1=O",
@@ -67,92 +61,47 @@
         "why": "H₂O₂/NaOH only swaps the C–B bond for C–OH; it does not oxidise the alcohol to a ketone."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        "tag": "markovnikov_flip",
-        "product": {
-          "smiles": "CC1(O)CCCCC1",
-          "stereo": "none"
-        },
-        "why": "Acid-catalysed hydration is Markovnikov: OH goes to the more substituted carbon. Anti-Markovnikov needs BH₃·THF then H₂O₂/NaOH."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "BH3_THF"
-            ]
-          }
-        ],
-        "tag": "missing_workup",
-        "why": "After BH₃ you have an alkylborane. The H₂O₂/NaOH step is what turns C–B into C–OH."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "OsO4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "OsO₄ puts TWO OH groups on the alkene. Hydroboration adds just one, anti-Markovnikov."
-      }
-    ],
     "explanation": "BH₃ adds B to the less hindered carbon (C2) and H to C1, syn. Oxidation replaces B with OH with retention, so the OH is trans to the methyl. Both enantiomers form: racemic trans-2-methylcyclohexanol.",
     "tip": "OH goes where the H was; syn addition puts it trans to the methyl."
   },
   {
     "id": "q-R10-hexene-001",
-    "reactionId": "R10",
+    "reactionIds": [
+      "R10"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=CCCCC",
       "name": "hex-1-ene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "BH3_THF"
-          ]
-        },
-        {
-          "reagents": [
-            "H2O2_NaOH"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OCCCCCC",
+    "target": {
+      "name": "hexan-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "hexan-1-ol",
-          "1-hexanol"
-        ]
-      },
+      "altNames": [
+        "1-hexanol"
+      ],
+      "smiles": "CCCCCCO",
       "highlightAtoms": [
         0,
-        1,
+        4,
         5,
         6
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "BH3_THF"
+      },
+      {
+        "reagent": "H2O2_NaOH"
+      }
+    ],
+    "traps": [
       {
         "smiles": "C[C@H](O)CCCC",
         "stereo": "racemic",
@@ -172,73 +121,31 @@
         "why": "Two OH groups is dihydroxylation (OsO₄). Hydroboration adds one OH."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        "tag": "markovnikov_flip",
-        "product": {
-          "smiles": "C[C@H](O)CCCC",
-          "stereo": "racemic"
-        },
-        "why": "Acid-catalysed hydration gives hexan-2-ol (Markovnikov). For hexan-1-ol you need hydroboration–oxidation."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "BH3_THF"
-            ]
-          }
-        ],
-        "tag": "missing_workup",
-        "why": "The alkylborane needs the H₂O₂/NaOH step to become the alcohol."
-      }
-    ],
     "explanation": "Boron adds to the terminal carbon, H to C2; H₂O₂/NaOH replaces B with OH. No stereocenter: hexan-1-ol.",
     "tip": "Terminal alkene plus hydroboration = 1° alcohol."
   },
   {
     "id": "q-R10-methylbutene-001",
-    "reactionId": "R10",
+    "reactionIds": [
+      "R10"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(C)=CC",
       "name": "2-methylbut-2-ene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "BH3_THF"
-          ]
-        },
-        {
-          "reagents": [
-            "H2O2_NaOH"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CC(C)[C@H](C)O",
+    "target": {
+      "name": "3-methylbutan-2-ol",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "3-methylbutan-2-ol",
-          "3-methyl-2-butanol"
-        ]
-      },
+      "altNames": [
+        "3-methyl-2-butanol"
+      ],
+      "smiles": "CC(C)C(C)O",
       "highlightAtoms": [
         1,
         3,
@@ -246,7 +153,15 @@
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "BH3_THF"
+      },
+      {
+        "reagent": "H2O2_NaOH"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC(C)(O)CC",
         "stereo": "none",
@@ -266,80 +181,46 @@
         "why": "H₂O₂/NaOH does not oxidise the alcohol further; it only replaces the C–B bond."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        "tag": "markovnikov_flip",
-        "product": {
-          "smiles": "CC(C)(O)CC",
-          "stereo": "none"
-        },
-        "why": "Acid hydration gives the 3° alcohol (Markovnikov). Anti-Markovnikov needs BH₃·THF then H₂O₂/NaOH."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "BH3_THF"
-            ]
-          }
-        ],
-        "tag": "missing_workup",
-        "why": "BH₃ alone leaves you with an alkylborane. Add H₂O₂/NaOH."
-      }
-    ],
     "explanation": "OH goes to the less substituted alkene carbon (C3, which had one H). C3 becomes a stereocenter from an achiral alkene: racemic.",
     "tip": "Less substituted carbon gets the OH, and a new stereocenter means racemic."
   },
   {
     "id": "q-R10-styrene-001",
-    "reactionId": "R10",
+    "reactionIds": [
+      "R10"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=Cc1ccccc1",
       "name": "styrene (ethenylbenzene)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "BH3_THF"
-          ]
-        },
-        {
-          "reagents": [
-            "H2O2_NaOH"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OCCc1ccccc1",
+    "target": {
+      "name": "2-phenylethan-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "2-phenylethan-1-ol",
-          "2-phenylethanol"
-        ]
-      },
+      "altNames": [
+        "2-phenylethanol"
+      ],
+      "smiles": "OCCc1ccccc1",
       "highlightAtoms": [
         0,
         1,
         2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "BH3_THF"
+      },
+      {
+        "reagent": "H2O2_NaOH"
+      }
+    ],
+    "traps": [
       {
         "smiles": "C[C@H](O)c1ccccc1",
         "stereo": "racemic",
@@ -359,68 +240,43 @@
         "why": "H₂O₂/NaOH does not oxidise the alcohol to an aldehyde."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        "tag": "markovnikov_flip",
-        "product": {
-          "smiles": "C[C@H](O)c1ccccc1",
-          "stereo": "racemic"
-        },
-        "why": "Acid hydration goes Markovnikov (benzylic cation). For the 1° alcohol use hydroboration–oxidation."
-      }
-    ],
     "explanation": "Boron adds to the terminal CH₂, so after oxidation the OH is on the terminal carbon: 2-phenylethanol.",
     "tip": "Styrene + BH₃/H₂O₂ = the 1° alcohol, no stereocenter."
   },
   {
     "id": "q-R10-methylenecyclohexane-001",
-    "reactionId": "R10",
+    "reactionIds": [
+      "R10"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=C1CCCCC1",
       "name": "methylenecyclohexane"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "BH3_THF"
-          ]
-        },
-        {
-          "reagents": [
-            "H2O2_NaOH"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OCC1CCCCC1",
+    "target": {
+      "name": "cyclohexylmethanol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "cyclohexylmethanol"
-        ]
-      },
+      "smiles": "OCC1CCCCC1",
       "highlightAtoms": [
         0,
         1,
         2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "BH3_THF"
+      },
+      {
+        "reagent": "H2O2_NaOH"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC1(O)CCCCC1",
         "stereo": "none",
@@ -440,70 +296,47 @@
         "why": "H₂O₂/NaOH does not oxidise the resulting alcohol."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        "tag": "markovnikov_flip",
-        "product": {
-          "smiles": "CC1(O)CCCCC1",
-          "stereo": "none"
-        },
-        "why": "Acid hydration gives 1-methylcyclohexanol. For the 1° alcohol use BH₃·THF then H₂O₂/NaOH."
-      }
-    ],
     "explanation": "OH ends up on the exocyclic carbon (less substituted). The ring carbon gets the H and is not a stereocenter.",
     "tip": "Exocyclic alkene → CH₂OH on the ring."
   },
   {
     "id": "q-R10-methylpentene-001",
-    "reactionId": "R10",
+    "reactionIds": [
+      "R10"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=C(C)CCC",
       "name": "2-methylpent-1-ene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "BH3_THF"
-          ]
-        },
-        {
-          "reagents": [
-            "H2O2_NaOH"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OC[C@H](C)CCC",
+    "target": {
+      "name": "2-methylpentan-1-ol",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "2-methylpentan-1-ol",
-          "2-methyl-1-pentanol"
-        ]
-      },
+      "altNames": [
+        "2-methyl-1-pentanol"
+      ],
+      "smiles": "CCCC(C)CO",
       "highlightAtoms": [
-        0,
         1,
-        2,
-        3
+        3,
+        5,
+        6
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "BH3_THF"
+      },
+      {
+        "reagent": "H2O2_NaOH"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC(C)(O)CCC",
         "stereo": "none",
@@ -523,85 +356,51 @@
         "why": "No further oxidation: H₂O₂/NaOH stops at the alcohol."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        "tag": "markovnikov_flip",
-        "product": {
-          "smiles": "CC(C)(O)CCC",
-          "stereo": "none"
-        },
-        "why": "Acid hydration gives the 3° alcohol. Use hydroboration–oxidation for the 1° alcohol."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "BH3_THF"
-            ]
-          }
-        ],
-        "tag": "missing_workup",
-        "why": "BH₃ alone gives the alkylborane; H₂O₂/NaOH makes the alcohol."
-      }
-    ],
     "explanation": "OH goes to C1 (the CH₂). C2 receives the H and becomes a stereocenter, so the product is racemic 2-methylpentan-1-ol.",
     "tip": "The carbon that gets the H can become the stereocenter: still say racemic."
   },
   {
     "id": "q-R10-methylcyclopentene-001",
-    "reactionId": "R10",
+    "reactionIds": [
+      "R10"
+    ],
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC1=CCCC1",
       "name": "1-methylcyclopentene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "BH3_THF"
-          ]
-        },
-        {
-          "reagents": [
-            "H2O2_NaOH"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@@H]1CCC[C@H]1O",
+    "target": {
+      "name": "trans-2-methylcyclopentan-1-ol",
       "stereo": "racemic",
+      "altNames": [
+        "trans-2-methylcyclopentanol"
+      ],
       "stereoChoices": [
         "racemic",
         "single_enantiomer",
         "meso"
       ],
-      "names": {
-        "accepted": [
-          "trans-2-methylcyclopentan-1-ol",
-          "trans-2-methylcyclopentanol"
-        ]
-      },
+      "smiles": "CC1CCCC1O",
       "highlightAtoms": [
         1,
         5,
         6
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "BH3_THF"
+      },
+      {
+        "reagent": "H2O2_NaOH"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC1(O)CCCC1",
         "stereo": "none",
@@ -612,42 +411,14 @@
         "smiles": "C[C@@H]1CCC[C@@H]1O",
         "stereo": "racemic",
         "tag": "syn_anti_mixup",
-        "stereoOnly": true,
-        "why": "Syn addition of H and OH: the H goes on C1 on the same face as the OH, pushing the methyl to the other face. OH and CH₃ are trans."
+        "why": "Syn addition of H and OH: the H goes on C1 on the same face as the OH, pushing the methyl to the other face. OH and CH₃ are trans.",
+        "stereoOnly": true
       },
       {
         "smiles": "C[C@H]1CCCC1=O",
         "stereo": "racemic",
         "tag": "reagent_label_unknown",
         "why": "H₂O₂/NaOH only converts C–B to C–OH; no ketone."
-      }
-    ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        "tag": "markovnikov_flip",
-        "product": {
-          "smiles": "CC1(O)CCCC1",
-          "stereo": "none"
-        },
-        "why": "Acid hydration is Markovnikov. Use BH₃·THF then H₂O₂/NaOH."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "OsO4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "OsO₄ adds two OH groups. Hydroboration adds one."
       }
     ],
     "explanation": "B goes to C2, H to C1, syn; oxidation keeps the geometry. The OH ends up trans to the methyl, and both enantiomers form.",

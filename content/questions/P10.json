@@ -1,0 +1,245 @@
+[
+  {
+    "id": "q-P10-hydroquinone-001",
+    "reactionIds": [
+      "P10"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc(O)cc1",
+      "name": "benzene-1,4-diol (hydroquinone)"
+    },
+    "target": {
+      "name": "cyclohexa-2,5-diene-1,4-dione",
+      "stereo": "none",
+      "altNames": [
+        "1,4-benzoquinone",
+        "p-benzoquinone"
+      ],
+      "smiles": "O=C1C=CC(=O)C=C1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "explanation": "The 1,4- (or 1,2-) dihydroxybenzene loses two hydrogens to chromic acid: the aromatic ring becomes a conjugated cyclic diketone, a quinone. The reaction is reversible with reducing agents.",
+    "tip": "Hydroquinone ⇌ quinone: oxidise with Na₂Cr₂O₇/H₂SO₄."
+  },
+  {
+    "id": "q-P10-catechol-001",
+    "reactionIds": [
+      "P10"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1O",
+      "name": "benzene-1,2-diol (catechol)"
+    },
+    "target": {
+      "name": "cyclohexa-3,5-diene-1,2-dione",
+      "stereo": "none",
+      "altNames": [
+        "1,2-benzoquinone",
+        "o-benzoquinone"
+      ],
+      "smiles": "O=C1C=CC=CC1=O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "explanation": "The 1,4- (or 1,2-) dihydroxybenzene loses two hydrogens to chromic acid: the aromatic ring becomes a conjugated cyclic diketone, a quinone. The reaction is reversible with reducing agents.",
+    "tip": "Hydroquinone ⇌ quinone: oxidise with Na₂Cr₂O₇/H₂SO₄."
+  },
+  {
+    "id": "q-P10-methylhydroquinone-001",
+    "reactionIds": [
+      "P10"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1cc(O)ccc1O",
+      "name": "2-methylbenzene-1,4-diol"
+    },
+    "target": {
+      "name": "2-methylcyclohexa-2,5-diene-1,4-dione",
+      "stereo": "none",
+      "altNames": [
+        "2-methyl-1,4-benzoquinone"
+      ],
+      "smiles": "CC1=CC(=O)C=CC1=O",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "explanation": "The 1,4- (or 1,2-) dihydroxybenzene loses two hydrogens to chromic acid: the aromatic ring becomes a conjugated cyclic diketone, a quinone. The reaction is reversible with reducing agents.",
+    "tip": "Hydroquinone ⇌ quinone: oxidise with Na₂Cr₂O₇/H₂SO₄."
+  },
+  {
+    "id": "q-P10-tbutylhydroquinone-001",
+    "reactionIds": [
+      "P10"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(C)c1cc(O)ccc1O",
+      "name": "2-tert-butylbenzene-1,4-diol"
+    },
+    "target": {
+      "name": "2-tert-butylcyclohexa-2,5-diene-1,4-dione",
+      "stereo": "none",
+      "altNames": [
+        "2-tert-butyl-1,4-benzoquinone"
+      ],
+      "smiles": "CC(C)(C)C1=CC(=O)C=CC1=O",
+      "highlightAtoms": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "explanation": "The 1,4- (or 1,2-) dihydroxybenzene loses two hydrogens to chromic acid: the aromatic ring becomes a conjugated cyclic diketone, a quinone. The reaction is reversible with reducing agents.",
+    "tip": "Hydroquinone ⇌ quinone: oxidise with Na₂Cr₂O₇/H₂SO₄."
+  },
+  {
+    "id": "q-P10-dimethylhydroquinone-001",
+    "reactionIds": [
+      "P10"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1c(C)c(O)ccc1O",
+      "name": "2,3-dimethylbenzene-1,4-diol"
+    },
+    "target": {
+      "name": "2,3-dimethylcyclohexa-2,5-diene-1,4-dione",
+      "stereo": "none",
+      "altNames": [
+        "2,3-dimethyl-1,4-benzoquinone"
+      ],
+      "smiles": "CC1=C(C)C(=O)C=CC1=O",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "explanation": "The 1,4- (or 1,2-) dihydroxybenzene loses two hydrogens to chromic acid: the aromatic ring becomes a conjugated cyclic diketone, a quinone. The reaction is reversible with reducing agents.",
+    "tip": "Hydroquinone ⇌ quinone: oxidise with Na₂Cr₂O₇/H₂SO₄."
+  },
+  {
+    "id": "q-P10-methylcatechol-001",
+    "reactionIds": [
+      "P10"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccc(O)c(O)c1",
+      "name": "4-methylbenzene-1,2-diol"
+    },
+    "target": {
+      "name": "4-methylcyclohexa-3,5-diene-1,2-dione",
+      "stereo": "none",
+      "altNames": [
+        "4-methyl-1,2-benzoquinone"
+      ],
+      "smiles": "CC1=CC(=O)C(=O)C=C1",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "explanation": "The 1,4- (or 1,2-) dihydroxybenzene loses two hydrogens to chromic acid: the aromatic ring becomes a conjugated cyclic diketone, a quinone. The reaction is reversible with reducing agents.",
+    "tip": "Hydroquinone ⇌ quinone: oxidise with Na₂Cr₂O₇/H₂SO₄."
+  }
+]

@@ -10,52 +10,23 @@
       {
         "reagents": [
           "H2_Pt"
-        ],
-        "conditions": {
-          "pressure": true
-        }
+        ]
       }
     ],
     "rules": {
-      "summary": "Reduces C=O (aldehyde/ketone) → alcohol AND C=C → C–C. Both go.",
-      "stereo": "A new stereocenter from an achiral substrate is formed as a racemate.",
-      "leavesAlone": [
-        "aromatic ring",
-        "ester",
-        "carboxylic acid"
+      "summary": "Reduces C=O (aldehyde/ketone) → alcohol AND C=C → C–C.",
+      "notes": [
+        "Esters, acids and benzene rings survive."
       ]
     },
     "stereoOutcome": "racemic_if_new_center",
-    "smartsMode": "pipeline",
-    "smarts": [
-      {
-        "rxn": "[C:1]=[C:2]>>[C:1][C:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      },
-      {
-        "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O:2]>>[C:1][O:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      }
+    "typicalTags": [
+      "stopped_halfway",
+      "reagent_label_unknown"
     ],
     "decoys": [
       "NaBH4",
-      "LiAlH4",
-      "PCC"
-    ],
-    "typicalTags": [
-      "stopped_halfway",
-      "reagent_label_unknown",
-      "missing_stereo"
-    ],
-    "minigames": [
-      "pressure",
-      "stir"
+      "LiAlH4"
     ]
   },
   {
@@ -69,46 +40,20 @@
       {
         "reagents": [
           "NaBH4"
-        ],
-        "conditions": {
-          "solvent": "MeOH"
-        }
+        ]
       }
     ],
     "rules": {
-      "summary": "Aldehyde → 1° alcohol, ketone → 2° alcohol. Leaves C=C, esters and COOH alone.",
-      "stereo": "A new stereocenter on an achiral substrate is formed as a racemate.",
-      "leavesAlone": [
-        "C=C",
-        "ester",
-        "carboxylic acid",
-        "aromatic ring"
-      ]
+      "summary": "Aldehyde → 1° alcohol, ketone → 2° alcohol. Leaves C=C, esters and COOH alone."
     },
     "stereoOutcome": "racemic_if_new_center",
-    "smartsMode": "pipeline",
-    "smarts": [
-      {
-        "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O:2]>>[C:1][O:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      }
+    "typicalTags": [
+      "over_reduction",
+      "missing_stereo"
     ],
     "decoys": [
       "LiAlH4",
-      "H2_Pt",
-      "PCC"
-    ],
-    "typicalTags": [
-      "over_reduction",
-      "missing_stereo",
-      "reagent_label_unknown"
-    ],
-    "minigames": [
-      "pour",
-      "stir"
+      "H2_Pt"
     ]
   },
   {
@@ -122,10 +67,7 @@
       {
         "reagents": [
           "LiAlH4"
-        ],
-        "conditions": {
-          "solvent": "ether"
-        }
+        ]
       },
       {
         "reagents": [
@@ -136,59 +78,20 @@
         }
       }
     ],
-    "altRoutes": [
-      [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H3O_plus"
-          ]
-        }
-      ]
-    ],
     "rules": {
-      "summary": "Aldehyde → 1° alcohol, ketone → 2° alcohol after the H₂O workup.",
-      "stereo": "A new stereocenter on an achiral substrate is formed as a racemate.",
-      "leavesAlone": [
-        "isolated C=C",
-        "aromatic ring"
-      ],
+      "summary": "Aldehyde/ketone → alkoxide, then H₂O → alcohol.",
       "notes": [
-        "The workup (H₂O or H₃O⁺) is a separate step; before it you only have the aluminium alkoxide."
+        "The workup is its own step."
       ]
     },
     "stereoOutcome": "racemic_if_new_center",
-    "smartsMode": "pipeline",
-    "smarts": [
-      {
-        "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O:2]>>[C:1][O:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      }
-    ],
-    "decoys": [
-      "H2_Pt",
-      "PCC",
-      "H2CrO4"
-    ],
     "typicalTags": [
       "missing_workup",
-      "wrong_reagent_order",
-      "reagent_label_unknown",
-      "missing_stereo"
+      "wrong_reagent_order"
     ],
-    "minigames": [
-      "pour",
-      "workup"
+    "decoys": [
+      "PCC",
+      "H2CrO4"
     ]
   },
   {
@@ -202,10 +105,7 @@
       {
         "reagents": [
           "LiAlH4"
-        ],
-        "conditions": {
-          "solvent": "ether"
-        }
+        ]
       },
       {
         "reagents": [
@@ -216,57 +116,20 @@
         }
       }
     ],
-    "altRoutes": [
-      [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H3O_plus"
-          ]
-        }
-      ]
-    ],
     "rules": {
       "summary": "RCOOH → RCH₂OH (1° alcohol). Does not stop at the aldehyde.",
-      "leavesAlone": [
-        "isolated C=C",
-        "aromatic ring"
-      ],
       "notes": [
-        "Only LiAlH₄ does this; NaBH₄ and H₂/Pt leave acids alone."
+        "Only LiAlH₄ does this."
       ]
     },
     "stereoOutcome": "none",
-    "smartsMode": "pipeline",
-    "smarts": [
-      {
-        "rxn": "[C:1](=[O:2])[OX2H1]>>[C:1][O:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      }
+    "typicalTags": [
+      "stopped_halfway",
+      "missing_workup"
     ],
     "decoys": [
       "NaBH4",
-      "H2_Pt",
-      "PCC"
-    ],
-    "typicalTags": [
-      "stopped_halfway",
-      "missing_workup",
-      "over_reduction"
-    ],
-    "minigames": [
-      "pour",
-      "workup"
+      "H2_Pt"
     ]
   },
   {
@@ -280,10 +143,7 @@
       {
         "reagents": [
           "LiAlH4"
-        ],
-        "conditions": {
-          "solvent": "ether"
-        }
+        ]
       },
       {
         "reagents": [
@@ -294,59 +154,155 @@
         }
       }
     ],
-    "altRoutes": [
-      [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H3O_plus"
-          ]
-        }
-      ]
-    ],
     "rules": {
-      "summary": "Ester → TWO alcohols: the acyl side becomes RCH₂OH (1°), the alkoxy side becomes its own alcohol R′OH.",
-      "leavesAlone": [
-        "C=C",
-        "aromatic ring"
-      ],
+      "summary": "Ester → TWO alcohols: acyl side → RCH₂OH, alkoxy side → R′OH.",
       "notes": [
-        "Two hydrides add to the acyl carbon; the alkoxide leaves after the first.",
-        "A cyclic ester (lactone) gives one diol because both alcohols are tethered."
+        "A lactone gives one diol."
       ]
     },
     "stereoOutcome": "none",
-    "smartsMode": "pipeline",
-    "smarts": [
-      {
-        "rxn": "[C:1](=[O:2])[O:3][#6;!$(C=O):4]>>([C:1][O:2].[O:3][#6:4])",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      }
-    ],
-    "decoys": [
-      "NaBH4",
-      "H2_Pt",
-      "PCC"
-    ],
     "typicalTags": [
       "ester_one_piece",
       "stopped_halfway",
-      "missing_workup",
-      "over_reduction"
+      "missing_workup"
     ],
-    "minigames": [
-      "pour",
-      "workup"
+    "decoys": [
+      "NaBH4",
+      "H2_Pt"
+    ]
+  },
+  {
+    "id": "R6",
+    "name": "Grignard + formaldehyde",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "1. Mg, ether; 2. HCHO; 3. H₃O⁺",
+    "steps": [
+      {
+        "reagents": [
+          "Mg_ether"
+        ]
+      },
+      {
+        "reagents": [
+          "HCHO"
+        ]
+      },
+      {
+        "reagents": [
+          "H3O_plus"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "R–X → R–MgBr; adds to HCHO → 1° alcohol with one extra carbon.",
+      "notes": [
+        "Any acidic H (OH, SH, NH) kills the Grignard.",
+        "H₃O⁺ workup is its own step."
+      ]
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "missing_workup",
+      "wrong_reagent_order"
+    ]
+  },
+  {
+    "id": "R7",
+    "name": "Grignard + aldehyde",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "1. Mg, ether; 2. RCHO; 3. H₃O⁺",
+    "steps": [
+      {
+        "reagents": [
+          "Mg_ether"
+        ]
+      },
+      {
+        "reagents": [
+          "CH3CHO"
+        ]
+      },
+      {
+        "reagents": [
+          "H3O_plus"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "R–MgBr adds to an aldehyde → 2° alcohol."
+    },
+    "stereoOutcome": "racemic_if_new_center",
+    "typicalTags": [
+      "missing_workup",
+      "missing_stereo"
+    ]
+  },
+  {
+    "id": "R8",
+    "name": "Grignard + ketone",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "1. Mg, ether; 2. R₂C=O; 3. H₃O⁺",
+    "steps": [
+      {
+        "reagents": [
+          "Mg_ether"
+        ]
+      },
+      {
+        "reagents": [
+          "acetone"
+        ]
+      },
+      {
+        "reagents": [
+          "H3O_plus"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "R–MgBr adds to a ketone → 3° alcohol."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "missing_workup"
+    ]
+  },
+  {
+    "id": "R9",
+    "name": "Grignard + ethylene oxide",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "1. Mg, ether; 2. ethylene oxide; 3. H₃O⁺",
+    "steps": [
+      {
+        "reagents": [
+          "Mg_ether"
+        ]
+      },
+      {
+        "reagents": [
+          "ethylene_oxide"
+        ]
+      },
+      {
+        "reagents": [
+          "H3O_plus"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "R–MgBr opens ethylene oxide → 1° alcohol with two extra carbons."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "missing_workup"
     ]
   },
   {
@@ -371,47 +327,18 @@
     "rules": {
       "summary": "Anti-Markovnikov hydration: OH on the less substituted carbon, H and OH syn. New stereocenters → racemic.",
       "regio": "OH goes to the carbon with more hydrogens.",
-      "stereo": "Syn addition. On a ring the OH ends up trans to the substituent that was on the other alkene carbon."
+      "stereo": "Syn addition: on a ring the OH is trans to the substituent that was on the other alkene carbon."
     },
     "stereoOutcome": "syn_racemic",
-    "smarts": [
-      {
-        "rxn": "[CX3H2:1]=[CX3:2]>>[OH][C:1][C:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "single"
-      },
-      {
-        "rxn": "[CX3H1:1]=[CX3H0:2]>>[OH][C:1][C:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "single"
-      },
-      {
-        "rxn": "[CX3H1:1]=[CX3H1:2]>>[OH][C:1][C:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "single"
-      }
-    ],
-    "decoys": [
-      "H3O_plus",
-      "OsO4",
-      "HBr"
-    ],
     "typicalTags": [
       "markovnikov_flip",
       "missing_stereo",
       "syn_anti_mixup",
-      "missing_workup",
-      "wrong_reagent_order"
+      "missing_workup"
     ],
-    "minigames": [
-      "pour",
-      "pour"
+    "decoys": [
+      "H3O_plus",
+      "OsO4"
     ]
   },
   {
@@ -429,33 +356,249 @@
       }
     ],
     "rules": {
-      "summary": "Syn diol. Symmetric cis-alkene → meso; trans → racemic; chiral cis diols → racemic. Not cleavage (that is O₃).",
-      "stereo": "Both OH groups add to the same face. cis-alkene → meso (if symmetric); trans-alkene → racemic pair."
+      "summary": "Syn diol. Symmetric cis-alkene → meso; trans → racemic; chiral cis diols → racemic. Not cleavage (that is O₃)."
     },
     "stereoOutcome": "syn_meso_or_racemic",
-    "smarts": [
-      {
-        "rxn": "[C:1]=[C:2]>>[C:1]([OH])[C:2][OH]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "single"
-      }
+    "typicalTags": [
+      "ozone_vs_osmium",
+      "meso_vs_racemic",
+      "missing_stereo"
     ],
     "decoys": [
       "O3",
       "KMnO4",
       "mCPBA"
+    ]
+  },
+  {
+    "id": "R12",
+    "name": "SOCl₂ chlorination",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "SOCl₂, pyridine",
+    "steps": [
+      {
+        "reagents": [
+          "SOCl2"
+        ]
+      }
     ],
+    "rules": {
+      "summary": "ROH → RCl."
+    },
+    "stereoOutcome": "none",
     "typicalTags": [
-      "ozone_vs_osmium",
-      "meso_vs_racemic",
-      "missing_stereo",
-      "syn_anti_mixup"
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "R13",
+    "name": "PBr₃ bromination",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "PBr₃",
+    "steps": [
+      {
+        "reagents": [
+          "PBr3"
+        ]
+      }
     ],
-    "minigames": [
-      "pour",
-      "stir"
+    "rules": {
+      "summary": "1°/2° ROH → RBr (SN2, no rearrangement).",
+      "notes": [
+        "3° alcohols: use HBr instead."
+      ]
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "R14",
+    "name": "HX on alcohols",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "HX",
+    "steps": [
+      {
+        "reagents": [
+          "HBr"
+        ],
+        "conditions": {
+          "temp": "rt",
+          "light": false
+        }
+      }
+    ],
+    "rules": {
+      "summary": "3° ROH reacts fast (SN1); 1° with HBr (SN2); HCl needs ZnCl₂ for 1°/2°."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown",
+      "wrong_temperature"
+    ],
+    "decoys": [
+      "NBS"
+    ]
+  },
+  {
+    "id": "R15",
+    "name": "Acid-catalysed dehydration",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "H₂SO₄ (or H₃PO₄), heat",
+    "steps": [
+      {
+        "reagents": [
+          "H2SO4_heat"
+        ],
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "rules": {
+      "summary": "E1 dehydration, Zaitsev major; 1° alcohols only at ~180 °C.",
+      "regio": "Zaitsev: the more substituted alkene."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "zaitsev_flip",
+      "wrong_temperature"
+    ],
+    "decoys": [
+      "H2CrO4",
+      "PCC"
+    ]
+  },
+  {
+    "id": "R16",
+    "name": "Symmetric ether from two 1° alcohols",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "H₂SO₄, 140 °C",
+    "steps": [
+      {
+        "reagents": [
+          "H2SO4_heat"
+        ],
+        "conditions": {
+          "temp": "c140"
+        }
+      }
+    ],
+    "rules": {
+      "summary": "Two 1° alcohols condense (SN2) to the symmetric ether at 140 °C; 180 °C gives the alkene instead."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "wrong_temperature"
+    ]
+  },
+  {
+    "id": "R17",
+    "name": "Cyclic ether from a 1,4- or 1,5-diol",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "H₂SO₄, heat",
+    "steps": [
+      {
+        "reagents": [
+          "H2SO4_heat"
+        ],
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "rules": {
+      "summary": "A 1,4-diol → THF ring; a 1,5-diol → THP ring (intramolecular SN2)."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "wrong_temperature"
+    ]
+  },
+  {
+    "id": "R18",
+    "name": "Ester from an acid chloride",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "RCOCl + R′OH, pyridine",
+    "steps": [
+      {
+        "reagents": [
+          "AcCl_pyr"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "The alcohol oxygen attacks the acid chloride → ester."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "acyl_wrong_site"
+    ]
+  },
+  {
+    "id": "R19",
+    "name": "Ester from an anhydride",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "(RCO)₂O + R′OH",
+    "steps": [
+      {
+        "reagents": [
+          "Ac2O"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "The alcohol oxygen attacks the anhydride → ester + carboxylic acid."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "acyl_wrong_site"
+    ]
+  },
+  {
+    "id": "R20",
+    "name": "Fischer esterification",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "RCOOH + R′OH, H₂SO₄ (cat.), heat",
+    "steps": [
+      {
+        "reagents": [
+          "AcOH_H2SO4"
+        ],
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "rules": {
+      "summary": "Reversible. The alcohol is the nucleophile: its O ends up in the ester; the water comes from the acid's OH.",
+      "notes": [
+        "Needs heat and an acid catalyst."
+      ]
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "wrong_temperature",
+      "acyl_wrong_site"
     ]
   },
   {
@@ -464,7 +607,7 @@
     "chapter": 16,
     "section": "alcohols",
     "phase": 1,
-    "reagentsText": "Na₂Cr₂O₇ / H₂SO₄ (H₂CrO₄, Jones)",
+    "reagentsText": "Na₂Cr₂O₇ / H₂SO₄ (H₂CrO₄)",
     "steps": [
       {
         "reagents": [
@@ -473,41 +616,15 @@
       }
     ],
     "rules": {
-      "summary": "1° alcohol → carboxylic acid; 2° alcohol → ketone; 3° alcohol → no reaction.",
-      "notes": [
-        "A carbinol carbon needs an H to be oxidised: 3° alcohols have none."
-      ]
+      "summary": "1° alcohol → carboxylic acid; 2° → ketone; 3° → no reaction."
     },
     "stereoOutcome": "none",
-    "smartsMode": "pipeline",
-    "smarts": [
-      {
-        "rxn": "[CX4H2;!$(C(O)O):1][OX2H1:2]>>[C:1](=O)[O:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      },
-      {
-        "rxn": "[CX4H1:1][OX2H1:2]>>[C:1]=[O:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      }
-    ],
-    "decoys": [
-      "PCC",
-      "NaBH4",
-      "H2SO4_heat"
-    ],
     "typicalTags": [
       "stopped_halfway",
       "reagent_label_unknown"
     ],
-    "minigames": [
-      "pour",
-      "stir"
+    "decoys": [
+      "PCC"
     ]
   },
   {
@@ -521,38 +638,18 @@
       {
         "reagents": [
           "PCC"
-        ],
-        "conditions": {
-          "solvent": "CH₂Cl₂"
-        }
+        ]
       }
     ],
     "rules": {
-      "summary": "1° alcohol → aldehyde (stops there); 2° alcohol → ketone. C=C untouched."
+      "summary": "1° alcohol → aldehyde (stops there); 2° → ketone. C=C untouched."
     },
     "stereoOutcome": "none",
-    "smartsMode": "pipeline",
-    "smarts": [
-      {
-        "rxn": "[CX4;H1,H2:1][OX2H1:2]>>[C:1]=[O:2]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "exhaustive"
-      }
+    "typicalTags": [
+      "over_oxidation"
     ],
     "decoys": [
-      "H2CrO4",
-      "NaBH4",
-      "H2SO4_heat"
-    ],
-    "typicalTags": [
-      "over_oxidation",
-      "reagent_label_unknown"
-    ],
-    "minigames": [
-      "pour",
-      "stir"
+      "H2CrO4"
     ]
   },
   {
@@ -570,36 +667,136 @@
       }
     ],
     "rules": {
-      "summary": "Vicinal diol → the C–C bond between the carbinol carbons is cleaved → aldehydes/ketones (correct -al vs -one by substitution).",
-      "notes": [
-        "A carbinol carbon with one carbon neighbour becomes an aldehyde; with two, a ketone.",
-        "A cyclic 1,2-diol opens to one dicarbonyl chain."
-      ]
+      "summary": "Vicinal diol → C–C cleaved → aldehydes/ketones (-al vs -one by substitution)."
     },
     "stereoOutcome": "none",
-    "smarts": [
-      {
-        "rxn": "[C:1]([OX2H1:3])[C:2]([OX2H1:4])>>([C:1]=[O:3].[C:2]=[O:4])",
-        "reactants": [
-          "start"
-        ],
-        "mode": "single"
-      }
-    ],
-    "decoys": [
-      "PCC",
-      "KMnO4",
-      "O3"
-    ],
     "typicalTags": [
       "diol_to_alcohols",
       "aldehyde_ketone_mixup",
-      "over_oxidation",
-      "reagent_label_unknown"
+      "over_oxidation"
     ],
-    "minigames": [
-      "pour",
-      "stir"
+    "decoys": [
+      "PCC",
+      "O3"
+    ]
+  },
+  {
+    "id": "R24",
+    "name": "Clemmensen / Wolff–Kishner",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "Zn(Hg), HCl  or  H₂NNH₂, KOH, heat",
+    "steps": [
+      {
+        "reagents": [
+          "Zn_Hg_HCl"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Aldehyde/ketone C=O → CH₂."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "R25",
+    "name": "Thiol from an alkyl halide",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "NaSH + RX (CH₃/1°/2°)",
+    "steps": [
+      {
+        "reagents": [
+          "NaSH"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "HS⁻ displaces the halide (SN2) → thiol. NaSH cannot displace OH: make the bromide first."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown",
+      "wrong_reagent_order"
+    ]
+  },
+  {
+    "id": "R26",
+    "name": "Disulfide from two thiols",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "I₂",
+    "steps": [
+      {
+        "reagents": [
+          "I2"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "2 RSH → RSSR (a disulfide, not a 'dithiol')."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "R27",
+    "name": "Sulfide from a thiolate",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "RS⁻ (thiol + NaOH/NaOEt) + R′X",
+    "steps": [
+      {
+        "reagents": [
+          "NaOH"
+        ]
+      },
+      {
+        "reagents": [
+          "CH3I"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Deprotonate the thiol, then SN2 on a CH₃/1° halide → sulfide."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "wrong_reagent_order"
+    ]
+  },
+  {
+    "id": "R28",
+    "name": "Allylic / benzylic bromination",
+    "chapter": 16,
+    "section": "alcohols",
+    "phase": 2,
+    "reagentsText": "NBS, light or peroxide (or heat)",
+    "steps": [
+      {
+        "reagents": [
+          "NBS"
+        ],
+        "conditions": {
+          "light": true
+        }
+      }
+    ],
+    "rules": {
+      "summary": "Radical bromination at the allylic or benzylic C–H."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "wrong_temperature"
     ]
   },
   {
@@ -608,7 +805,7 @@
     "chapter": 16,
     "section": "phenols",
     "phase": 1,
-    "reagentsText": "1. NaNO₂, H₂SO₄ (or HCl), 0–5 °C; 2. H₂O, heat",
+    "reagentsText": "1. NaNO₂, H₂SO₄, 0–5 °C; 2. H₂O, heat",
     "steps": [
       {
         "reagents": [
@@ -628,37 +825,286 @@
       }
     ],
     "rules": {
-      "summary": "Ar–NH₂ → Ar–OH on the SAME carbon via the diazonium salt. NaNO₂ is not nitration (HNO₃ is the decoy).",
+      "summary": "Ar–NH₂ → Ar–N₂⁺ (cold) → Ar–OH on the SAME carbon. NaNO₂ is not nitration.",
       "notes": [
-        "Step 1 must be cold (0–5 °C) or the diazonium salt decomposes.",
-        "Everything else on the ring stays where it is."
+        "Keep step 1 at 0–5 °C."
       ]
     },
     "stereoOutcome": "none",
-    "smarts": [
-      {
-        "rxn": "[c:1][NX3H2]>>[c:1][OH]",
-        "reactants": [
-          "start"
-        ],
-        "mode": "single"
-      }
-    ],
-    "decoys": [
-      "HNO3_H2SO4",
-      "NaOH",
-      "H3O_plus"
-    ],
     "typicalTags": [
       "nitrite_vs_nitric",
       "missing_workup",
       "wrong_temperature",
-      "substituent_replaced",
       "diazonium_site"
     ],
-    "minigames": [
-      "temperature",
-      "temperature"
+    "decoys": [
+      "HNO3_H2SO4",
+      "NaOH"
+    ]
+  },
+  {
+    "id": "P2",
+    "name": "Polybromination of a phenol",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "Br₂, H₂O",
+    "steps": [
+      {
+        "reagents": [
+          "Br2_H2O"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Brominates ALL open ortho/para positions. Nothing already on the ring leaves."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "substituent_replaced",
+      "para_when_blocked"
+    ]
+  },
+  {
+    "id": "P3",
+    "name": "Monobromination of a phenol",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "Br₂, CHCl₃ or CS₂, cold",
+    "steps": [
+      {
+        "reagents": [
+          "Br2_CHCl3"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "One Br, para to the OH (ortho if para is blocked)."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "para_when_blocked",
+      "substituent_replaced"
+    ]
+  },
+  {
+    "id": "P4",
+    "name": "Nitration of a phenol",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "dilute HNO₃",
+    "steps": [
+      {
+        "reagents": [
+          "HNO3_dil"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "One NO₂, ortho/para to the OH (para if open)."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "para_when_blocked",
+      "substituent_replaced"
+    ]
+  },
+  {
+    "id": "P5",
+    "name": "Phenol acidity",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "NaOH vs NaHCO₃",
+    "steps": [
+      {
+        "reagents": [
+          "NaOH"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "pKa ≈ 10: NaOH deprotonates a phenol, NaHCO₃ does not (unless strong o/p EWGs, e.g. picric acid)."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "P6",
+    "name": "Aryl alkyl ether (Williamson on a phenol)",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "ArOH + NaOH or K₂CO₃, then CH₃/1° RX",
+    "steps": [
+      {
+        "reagents": [
+          "NaOH"
+        ]
+      },
+      {
+        "reagents": [
+          "CH3I"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "The RING brings the oxygen: phenoxide + CH₃/1° halide → Ar–O–R."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "acyl_wrong_site",
+      "wrong_reagent_order",
+      "williamson_E2"
+    ]
+  },
+  {
+    "id": "P7",
+    "name": "O-acylation of a phenol",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "RCOCl or (RCO)₂O, no AlCl₃",
+    "steps": [
+      {
+        "reagents": [
+          "AcCl_pyr"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Without AlCl₃ the phenol OXYGEN is acylated → aryl ester."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "acyl_wrong_site"
+    ]
+  },
+  {
+    "id": "P8",
+    "name": "C-acylation / Fries",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "RCOCl + AlCl₃, or aryl ester + AlCl₃ (Fries)",
+    "steps": [
+      {
+        "reagents": [
+          "AcCl_AlCl3"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "The acyl group goes on the RING ortho/para to OH → hydroxyaryl ketone; the OH stays."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "acyl_wrong_site",
+      "acyl_group_identity",
+      "para_when_blocked"
+    ]
+  },
+  {
+    "id": "P9",
+    "name": "Kolbe–Schmitt",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "1. NaOH; 2. CO₂, 125 °C, ~100 atm; 3. H₃O⁺",
+    "steps": [
+      {
+        "reagents": [
+          "NaOH"
+        ]
+      },
+      {
+        "reagents": [
+          "CO2"
+        ],
+        "conditions": {
+          "pressure": true
+        }
+      },
+      {
+        "reagents": [
+          "H3O_plus"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Phenoxide + CO₂ under pressure → COOH ortho to the OH (salicylic acid)."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "acyl_group_identity",
+      "wrong_reagent_order",
+      "missing_workup"
+    ]
+  },
+  {
+    "id": "P10",
+    "name": "Quinone from a hydroquinone / catechol",
+    "chapter": 16,
+    "section": "phenols",
+    "phase": 2,
+    "reagentsText": "Na₂Cr₂O₇/H₂SO₄ (or Ag₂O)",
+    "steps": [
+      {
+        "reagents": [
+          "H2CrO4"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "1,4- or 1,2-dihydroxybenzene → quinone."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "E1",
+    "name": "Naming ethers and epoxides",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "Naming",
+    "steps": [],
+    "rules": {
+      "summary": "Functional class (groups alphabetical + 'ether') and substitutive (alkoxy + parent, with locants); oxirane / oxetane / oxolane (THF) / oxane; x-crown-y."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "naming_locant",
+      "naming_alpha_order",
+      "naming_alkoxide"
+    ]
+  },
+  {
+    "id": "E2",
+    "name": "'Naked' anion SN2 with 18-crown-6",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "KF or KCN or CH₃CO₂K + 18-crown-6, benzene/MeCN",
+    "steps": [
+      {
+        "reagents": [
+          "KCN_crown"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "The crown ether frees the anion: SN2 on the halide (product only)."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
     ]
   },
   {
@@ -671,49 +1117,32 @@
     "steps": [
       {
         "reagents": [
-          "#base_strong"
+          "NaH"
         ]
       },
       {
         "reagents": [
-          "#alkyl_halide_1"
+          "CH3I"
         ]
       }
     ],
     "rules": {
-      "summary": "Alkoxide + CH₃ or 1° halide → ether (SN2). The alkoxide can be anything; the halide must be CH₃ or 1° (benzyl and allyl are great).",
+      "summary": "Alkoxide + CH₃ or 1° halide → ether (SN2). The alkoxide can be anything; the halide must be CH₃ or 1°.",
       "notes": [
-        "Order matters: base first, then the halide.",
-        "A 2°/3° halide gives E2 instead (see E4)."
+        "Base first, then the halide.",
+        "2°/3° halides give E2 (E4)."
       ]
     },
     "stereoOutcome": "none",
-    "smarts": [
-      {
-        "rxn": "[OX2H1:1][#6:2].[CX4;!$(C(C)C):3][Cl,Br,I]>>[#6:2][O:1][C:3]",
-        "reactants": [
-          "start",
-          "step:2"
-        ],
-        "mode": "single"
-      }
+    "typicalTags": [
+      "williamson_E2",
+      "lewis_acid_as_base",
+      "wrong_reagent_order"
     ],
     "decoys": [
       "AlCl3",
       "tBuBr",
-      "iPrBr",
-      "NaOH"
-    ],
-    "typicalTags": [
-      "williamson_E2",
-      "lewis_acid_as_base",
-      "wrong_reagent_order",
-      "aryl_SN2",
-      "reagent_label_unknown"
-    ],
-    "minigames": [
-      "stir",
-      "pour"
+      "iPrBr"
     ]
   },
   {
@@ -726,7 +1155,7 @@
     "steps": [
       {
         "reagents": [
-          "#base_strong"
+          "NaH"
         ]
       },
       {
@@ -737,26 +1166,227 @@
     ],
     "rules": {
       "summary": "E2 → alkene (Zaitsev), not an ether.",
-      "regio": "Zaitsev: the more substituted alkene is major."
+      "regio": "Zaitsev."
     },
     "stereoOutcome": "none",
-    "smarts": [
-      {
-        "rxn": "[CX4:1]([Br,Cl,I])[CX4;!H0:2]>>[C:1]=[C:2]",
-        "reactants": [
-          "step:2"
-        ],
-        "mode": "single"
-      }
-    ],
-    "decoys": [],
     "typicalTags": [
       "williamson_E2",
       "zaitsev_flip"
+    ]
+  },
+  {
+    "id": "E5",
+    "name": "SNAr on an activated aryl halide",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "NaOR + aryl halide",
+    "steps": [
+      {
+        "reagents": [
+          "NaOMe"
+        ]
+      }
     ],
-    "minigames": [
-      "stir",
-      "pour"
+    "rules": {
+      "summary": "No reaction unless NO₂ is ortho/para to the halide; then the alkoxide replaces the halide (aryl ether). Meta NO₂ does not help."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "aryl_SN2",
+      "SNAr_meta"
+    ]
+  },
+  {
+    "id": "E6",
+    "name": "Ether cleavage with HX",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "Excess HBr or HI, heat",
+    "steps": [
+      {
+        "reagents": [
+          "HBr"
+        ],
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "rules": {
+      "summary": "Ether → two alkyl halides (HI > HBr > HCl). Alkyl aryl ethers → phenol + RX; the aryl–O bond never breaks."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "ether_cleavage_aryl",
+      "wrong_temperature"
+    ]
+  },
+  {
+    "id": "E7",
+    "name": "Epoxidation with a peroxy acid",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "mCPBA (or peroxyacetic acid)",
+    "steps": [
+      {
+        "reagents": [
+          "mCPBA"
+        ],
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "rules": {
+      "summary": "Alkene → epoxide, syn and stereospecific (cis alkene → cis epoxide)."
+    },
+    "stereoOutcome": "retention",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "E8",
+    "name": "Epoxide from a halohydrin",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "Vicinal halohydrin + NaOH",
+    "steps": [
+      {
+        "reagents": [
+          "NaOH"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Intramolecular Williamson: alkoxide displaces the halide on the next carbon → epoxide."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
+    ]
+  },
+  {
+    "id": "E9",
+    "name": "Epoxide opening by an anionic nucleophile",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "Epoxide + NaOCH₃/CH₃OH, NaCN, NaN₃, RS⁻, NH₃, LiAlH₄, RMgBr (then H₃O⁺)",
+    "steps": [
+      {
+        "reagents": [
+          "NaOMe"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Attack at the LESS substituted carbon, with inversion there.",
+      "regio": "Less substituted carbon."
+    },
+    "stereoOutcome": "inversion",
+    "typicalTags": [
+      "epoxide_wrong_carbon",
+      "epoxide_no_inversion",
+      "missing_workup"
+    ]
+  },
+  {
+    "id": "E10",
+    "name": "Epoxide opening under acid",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "Epoxide + H₃O⁺, ROH/H₂SO₄, or HX",
+    "steps": [
+      {
+        "reagents": [
+          "H3O_plus"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Attack at the MORE substituted carbon, with inversion there. Cycloalkene oxide + H₃O⁺ → trans-diol.",
+      "regio": "More substituted carbon."
+    },
+    "stereoOutcome": "inversion",
+    "typicalTags": [
+      "epoxide_wrong_carbon",
+      "epoxide_no_inversion"
+    ]
+  },
+  {
+    "id": "E11",
+    "name": "Sulfide from a thiolate",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "RS⁻ + RX",
+    "steps": [
+      {
+        "reagents": [
+          "NaSMe"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "Thiolate + CH₃/1° halide → sulfide (SN2)."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "wrong_reagent_order"
+    ]
+  },
+  {
+    "id": "E12",
+    "name": "Sulfoxide / sulfone",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "NaIO₄ (→ sulfoxide only); H₂O₂ or peroxy acid (1 equiv → sulfoxide, 2 equiv → sulfone)",
+    "steps": [
+      {
+        "reagents": [
+          "H2O2"
+        ],
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "rules": {
+      "summary": "Count the equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ stops at the sulfoxide."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "sulfoxide_vs_sulfone"
+    ]
+  },
+  {
+    "id": "E13",
+    "name": "Sulfonium salt",
+    "chapter": 17,
+    "section": "ethers",
+    "phase": 2,
+    "reagentsText": "R₂S + CH₃I (or another RX)",
+    "steps": [
+      {
+        "reagents": [
+          "CH3I"
+        ]
+      }
+    ],
+    "rules": {
+      "summary": "The sulfide's lone pair attacks the alkyl halide → R₃S⁺ X⁻."
+    },
+    "stereoOutcome": "none",
+    "typicalTags": [
+      "reagent_label_unknown"
     ]
   }
 ]

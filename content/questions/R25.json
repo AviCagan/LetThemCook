@@ -1,0 +1,238 @@
+[
+  {
+    "id": "q-R25-bromobutane-001",
+    "reactionIds": [
+      "R25"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCBr",
+      "name": "1-bromobutane"
+    },
+    "target": {
+      "name": "butane-1-thiol",
+      "stereo": "none",
+      "altNames": [
+        "1-butanethiol"
+      ],
+      "smiles": "CCCCS",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+  },
+  {
+    "id": "q-R25-bromoethane-001",
+    "reactionIds": [
+      "R25"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCBr",
+      "name": "bromoethane"
+    },
+    "target": {
+      "name": "ethanethiol",
+      "stereo": "none",
+      "smiles": "CCS",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+  },
+  {
+    "id": "q-R25-benzylbromide-001",
+    "reactionIds": [
+      "R25"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrCc1ccccc1",
+      "name": "(bromomethyl)benzene"
+    },
+    "target": {
+      "name": "phenylmethanethiol",
+      "stereo": "none",
+      "altNames": [
+        "benzyl mercaptan"
+      ],
+      "smiles": "SCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+  },
+  {
+    "id": "q-R25-isopropylbromide-001",
+    "reactionIds": [
+      "R25"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)Br",
+      "name": "2-bromopropane"
+    },
+    "target": {
+      "name": "propane-2-thiol",
+      "stereo": "none",
+      "altNames": [
+        "2-propanethiol"
+      ],
+      "smiles": "CC(C)S",
+      "highlightAtoms": [
+        1,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+  },
+  {
+    "id": "q-R25-isoamylbromide-001",
+    "reactionIds": [
+      "R25"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CCBr",
+      "name": "1-bromo-3-methylbutane"
+    },
+    "target": {
+      "name": "3-methylbutane-1-thiol",
+      "stereo": "none",
+      "altNames": [
+        "3-methyl-1-butanethiol"
+      ],
+      "smiles": "CC(C)CCS",
+      "highlightAtoms": [
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+  },
+  {
+    "id": "q-R25-butanol-2step-001",
+    "reactionIds": [
+      "R25",
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "butane-1-thiol",
+      "stereo": "none",
+      "altNames": [
+        "1-butanethiol"
+      ],
+      "smiles": "CCCCS",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      },
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+  },
+  {
+    "id": "q-R25-bromocyclohexane-001",
+    "reactionIds": [
+      "R25"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrC1CCCCC1",
+      "name": "bromocyclohexane"
+    },
+    "target": {
+      "name": "cyclohexanethiol",
+      "stereo": "none",
+      "smiles": "SC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSH"
+      }
+    ],
+    "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+  }
+]

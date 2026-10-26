@@ -1,40 +1,31 @@
 [
   {
     "id": "q-R11-cyclohexene-001",
-    "reactionId": "R11",
+    "reactionIds": [
+      "R11"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C1=CCCCC1",
       "name": "cyclohexene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "OsO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "O[C@H]1CCCC[C@H]1O",
+    "target": {
+      "name": "cis-cyclohexane-1,2-diol",
       "stereo": "meso",
+      "altNames": [
+        "cis-1,2-cyclohexanediol"
+      ],
       "stereoChoices": [
         "meso",
         "racemic",
         "single_enantiomer"
       ],
-      "names": {
-        "accepted": [
-          "cis-cyclohexane-1,2-diol",
-          "cis-1,2-cyclohexanediol"
-        ]
-      },
+      "smiles": "OC1CCCCC1O",
       "highlightAtoms": [
         0,
         1,
@@ -42,13 +33,18 @@
         7
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "OsO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "O[C@H]1CCCC[C@@H]1O",
         "stereo": "racemic",
         "tag": "syn_anti_mixup",
-        "stereoOnly": true,
-        "why": "OsO₄ delivers both oxygens from the same face (a cyclic osmate ester), so the two OH groups are cis. The trans diol comes from epoxide opening, not from OsO₄."
+        "why": "OsO₄ delivers both oxygens from the same face (a cyclic osmate ester), so the two OH groups are cis. The trans diol comes from epoxide opening, not from OsO₄.",
+        "stereoOnly": true
       },
       {
         "smiles": "O=CCCCCC=O",
@@ -63,91 +59,36 @@
         "why": "An epoxide comes from a peroxy acid (mCPBA). OsO₄ gives the diol directly."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "ozone_vs_osmium",
-        "product": {
-          "smiles": "O=CCCCCC=O",
-          "stereo": "none"
-        },
-        "why": "O₃ cleaves the ring into a dialdehyde. For the syn diol use OsO₄."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "mCPBA"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "C1CCC2OC2C1",
-          "stereo": "none"
-        },
-        "why": "mCPBA gives the epoxide. The cis diol in one step is OsO₄."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "KMnO4"
-            ],
-            "conditions": {
-              "temp": "reflux"
-            }
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "Hot permanganate cleaves the C=C. The toolkit's syn-diol reagent is OsO₄."
-      }
-    ],
     "explanation": "Syn addition of two OH groups to the ring gives the cis-1,2-diol. It has an internal mirror plane, so it is meso.",
     "tip": "cis-1,2-diol on a symmetric ring: meso, every time."
   },
   {
     "id": "q-R11-cisbutene-001",
-    "reactionId": "R11",
+    "reactionIds": [
+      "R11"
+    ],
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C/C=C\\C",
       "name": "(Z)-but-2-ene (cis-2-butene)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "OsO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@H](O)[C@H](O)C",
+    "target": {
+      "name": "meso-butane-2,3-diol",
       "stereo": "meso",
+      "altNames": [
+        "(2R,3S)-butane-2,3-diol"
+      ],
       "stereoChoices": [
         "meso",
         "racemic",
         "single_enantiomer"
       ],
-      "names": {
-        "accepted": [
-          "meso-butane-2,3-diol",
-          "(2R,3S)-butane-2,3-diol"
-        ]
-      },
+      "smiles": "CC(O)C(C)O",
       "highlightAtoms": [
         1,
         2,
@@ -156,13 +97,18 @@
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "OsO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "C[C@@H](O)[C@H](O)C",
         "stereo": "racemic",
         "tag": "meso_vs_racemic",
-        "stereoOnly": true,
-        "why": "Syn addition to the cis alkene gives the diastereomer with an internal mirror plane: meso. The (R,R)/(S,S) pair comes from the trans alkene."
+        "why": "Syn addition to the cis alkene gives the diastereomer with an internal mirror plane: meso. The (R,R)/(S,S) pair comes from the trans alkene.",
+        "stereoOnly": true
       },
       {
         "smiles": "CC=O.CC=O",
@@ -177,62 +123,36 @@
         "why": "One OH is hydration; OsO₄ adds two."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "ozone_vs_osmium",
-        "product": {
-          "smiles": "CC=O.CC=O",
-          "stereo": "none"
-        },
-        "why": "O₃ cleaves the alkene into two acetaldehydes. OsO₄ gives the diol."
-      }
-    ],
     "explanation": "Both OH groups add to the same face of the cis alkene. The product has a mirror plane: meso-2,3-butanediol.",
     "tip": "cis-alkene + syn addition = meso (for a symmetric alkene)."
   },
   {
     "id": "q-R11-transbutene-001",
-    "reactionId": "R11",
+    "reactionIds": [
+      "R11"
+    ],
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C/C=C/C",
       "name": "(E)-but-2-ene (trans-2-butene)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "OsO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@@H](O)[C@H](O)C",
+    "target": {
+      "name": "(2R,3R)/(2S,3S)-butane-2,3-diol",
       "stereo": "racemic",
+      "altNames": [
+        "rac-butane-2,3-diol"
+      ],
       "stereoChoices": [
         "racemic",
         "meso",
         "single_enantiomer"
       ],
-      "names": {
-        "accepted": [
-          "(2R,3R)/(2S,3S)-butane-2,3-diol",
-          "rac-butane-2,3-diol"
-        ]
-      },
+      "smiles": "CC(O)C(C)O",
       "highlightAtoms": [
         1,
         2,
@@ -241,13 +161,18 @@
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "OsO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "C[C@H](O)[C@H](O)C",
         "stereo": "meso",
         "tag": "meso_vs_racemic",
-        "stereoOnly": true,
-        "why": "Syn addition to the trans alkene gives the chiral (R,R)/(S,S) pair, formed in equal amounts: racemic. Meso comes from the cis alkene."
+        "why": "Syn addition to the trans alkene gives the chiral (R,R)/(S,S) pair, formed in equal amounts: racemic. Meso comes from the cis alkene.",
+        "stereoOnly": true
       },
       {
         "smiles": "CC=O.CC=O",
@@ -262,61 +187,33 @@
         "why": "OsO₄ stops at the diol; it does not oxidise the alcohols to ketones."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "ozone_vs_osmium",
-        "product": {
-          "smiles": "CC=O.CC=O",
-          "stereo": "none"
-        },
-        "why": "O₃ cleaves the C=C. Use OsO₄ for the diol."
-      }
-    ],
     "explanation": "Syn addition to the trans alkene gives the (2R,3R) and (2S,3S) diols in equal amounts: a racemic mixture, not meso.",
     "tip": "trans-alkene + syn addition = racemic pair."
   },
   {
     "id": "q-R11-methylcyclohexene-001",
-    "reactionId": "R11",
+    "reactionIds": [
+      "R11"
+    ],
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC1=CCCCC1",
       "name": "1-methylcyclohexene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "OsO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@]1(O)CCCC[C@H]1O",
+    "target": {
+      "name": "cis-1-methylcyclohexane-1,2-diol",
       "stereo": "racemic",
       "stereoChoices": [
         "racemic",
         "meso",
         "single_enantiomer"
       ],
-      "names": {
-        "accepted": [
-          "cis-1-methylcyclohexane-1,2-diol"
-        ]
-      },
+      "smiles": "CC1(O)CCCCC1O",
       "highlightAtoms": [
         1,
         2,
@@ -324,13 +221,18 @@
         8
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "OsO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "C[C@]1(O)CCCC[C@@H]1O",
         "stereo": "racemic",
         "tag": "syn_anti_mixup",
-        "stereoOnly": true,
-        "why": "OsO₄ adds both OH groups to the same face: they must be cis on the ring."
+        "why": "OsO₄ adds both OH groups to the same face: they must be cis on the ring.",
+        "stereoOnly": true
       },
       {
         "smiles": "CC(=O)CCCCC=O",
@@ -345,72 +247,28 @@
         "why": "One OH is acid-catalysed hydration. OsO₄ adds two."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "ozone_vs_osmium",
-        "product": {
-          "smiles": "CC(=O)CCCCC=O",
-          "stereo": "none"
-        },
-        "why": "O₃ cleaves the ring. OsO₄ gives the cis diol."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "BH3_THF"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O2_NaOH"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "Hydroboration adds one OH. Two OH groups, cis, is OsO₄."
-      }
-    ],
     "explanation": "The two OH groups add syn, so they are cis. The product has no mirror plane (the methyl breaks the symmetry), so it is chiral and forms as a racemate.",
     "tip": "cis diol, but no mirror plane: racemic, not meso."
   },
   {
     "id": "q-R11-styrene-001",
-    "reactionId": "R11",
+    "reactionIds": [
+      "R11"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=Cc1ccccc1",
       "name": "styrene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "OsO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OC[C@H](O)c1ccccc1",
+    "target": {
+      "name": "1-phenylethane-1,2-diol",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "1-phenylethane-1,2-diol"
-        ]
-      },
+      "smiles": "OCC(O)c1ccccc1",
       "highlightAtoms": [
         0,
         1,
@@ -418,7 +276,12 @@
         3
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "OsO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "O=Cc1ccccc1.C=O",
         "stereo": "none",
@@ -438,62 +301,36 @@
         "why": "One OH on the benzylic carbon is acid-catalysed hydration. OsO₄ adds two."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "ozone_vs_osmium",
-        "product": {
-          "smiles": "O=Cc1ccccc1.C=O",
-          "stereo": "none"
-        },
-        "why": "O₃ cleaves the alkene. OsO₄ gives the diol."
-      }
-    ],
     "explanation": "Two OH groups add syn; only the benzylic carbon becomes a stereocenter, so the diol is racemic.",
     "tip": "One new stereocenter: racemic. Two on a symmetric alkene: think meso."
   },
   {
     "id": "q-R11-transstilbene-001",
-    "reactionId": "R11",
+    "reactionIds": [
+      "R11"
+    ],
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "c1ccc(/C=C/c2ccccc2)cc1",
       "name": "(E)-stilbene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "OsO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "O[C@H](c1ccccc1)[C@H](O)c1ccccc1",
+    "target": {
+      "name": "rac-1,2-diphenylethane-1,2-diol",
       "stereo": "racemic",
+      "altNames": [
+        "(1R,2R)/(1S,2S)-1,2-diphenylethane-1,2-diol"
+      ],
       "stereoChoices": [
         "racemic",
         "meso",
         "single_enantiomer"
       ],
-      "names": {
-        "accepted": [
-          "rac-1,2-diphenylethane-1,2-diol",
-          "(1R,2R)/(1S,2S)-1,2-diphenylethane-1,2-diol"
-        ]
-      },
+      "smiles": "OC(c1ccccc1)C(O)c1ccccc1",
       "highlightAtoms": [
         0,
         1,
@@ -507,13 +344,18 @@
         15
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "OsO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "O[C@H](c1ccccc1)[C@@H](O)c1ccccc1",
         "stereo": "meso",
         "tag": "meso_vs_racemic",
-        "stereoOnly": true,
-        "why": "Syn addition to the E (trans) alkene gives the (R,R)/(S,S) pair, racemic. Meso hydrobenzoin comes from the Z alkene."
+        "why": "Syn addition to the E (trans) alkene gives the (R,R)/(S,S) pair, racemic. Meso hydrobenzoin comes from the Z alkene.",
+        "stereoOnly": true
       },
       {
         "smiles": "O=Cc1ccccc1.O=Cc1ccccc1",
@@ -528,62 +370,36 @@
         "why": "OsO₄ stops at the diol; it does not oxidise it on to the diketone."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "ozone_vs_osmium",
-        "product": {
-          "smiles": "O=Cc1ccccc1.O=Cc1ccccc1",
-          "stereo": "none"
-        },
-        "why": "O₃ cleaves the alkene. For the diol use OsO₄."
-      }
-    ],
     "explanation": "Syn dihydroxylation of the trans alkene gives the chiral (R,R)/(S,S) diol as a racemate.",
     "tip": "E-alkene → racemic diol; Z-alkene → meso diol."
   },
   {
     "id": "q-R11-cisstilbene-001",
-    "reactionId": "R11",
+    "reactionIds": [
+      "R11"
+    ],
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "c1ccc(/C=C\\c2ccccc2)cc1",
       "name": "(Z)-stilbene"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "OsO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "O[C@H](c1ccccc1)[C@@H](O)c1ccccc1",
+    "target": {
+      "name": "meso-1,2-diphenylethane-1,2-diol",
       "stereo": "meso",
+      "altNames": [
+        "meso-hydrobenzoin"
+      ],
       "stereoChoices": [
         "meso",
         "racemic",
         "single_enantiomer"
       ],
-      "names": {
-        "accepted": [
-          "meso-1,2-diphenylethane-1,2-diol",
-          "meso-hydrobenzoin"
-        ]
-      },
+      "smiles": "OC(c1ccccc1)C(O)c1ccccc1",
       "highlightAtoms": [
         0,
         1,
@@ -597,13 +413,18 @@
         15
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "OsO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "O[C@H](c1ccccc1)[C@H](O)c1ccccc1",
         "stereo": "racemic",
         "tag": "meso_vs_racemic",
-        "stereoOnly": true,
-        "why": "Syn addition to the Z (cis) alkene gives the diol with an internal mirror plane: meso. The racemic pair comes from the E alkene."
+        "why": "Syn addition to the Z (cis) alkene gives the diol with an internal mirror plane: meso. The racemic pair comes from the E alkene.",
+        "stereoOnly": true
       },
       {
         "smiles": "O=Cc1ccccc1.O=Cc1ccccc1",
@@ -616,19 +437,6 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "OsO₄ gives the diol and stops there."
-      }
-    ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "mCPBA"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "mCPBA gives the epoxide, not the diol."
       }
     ],
     "explanation": "Syn dihydroxylation of the cis alkene gives the meso diol.",

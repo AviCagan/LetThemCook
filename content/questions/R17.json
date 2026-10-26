@@ -1,0 +1,232 @@
+[
+  {
+    "id": "q-R17-butanediol-001",
+    "reactionIds": [
+      "R17"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCCCCO",
+      "name": "butane-1,4-diol"
+    },
+    "target": {
+      "name": "oxolane",
+      "stereo": "none",
+      "altNames": [
+        "tetrahydrofuran",
+        "THF"
+      ],
+      "smiles": "C1CCOC1",
+      "highlightAtoms": [
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+  },
+  {
+    "id": "q-R17-pentanediol-001",
+    "reactionIds": [
+      "R17"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCCCCCO",
+      "name": "pentane-1,5-diol"
+    },
+    "target": {
+      "name": "oxane",
+      "stereo": "none",
+      "altNames": [
+        "tetrahydropyran",
+        "THP"
+      ],
+      "smiles": "C1CCOCC1",
+      "highlightAtoms": [
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+  },
+  {
+    "id": "q-R17-pentane14diol-001",
+    "reactionIds": [
+      "R17"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(O)CCCO",
+      "name": "pentane-1,4-diol"
+    },
+    "target": {
+      "name": "2-methyloxolane",
+      "stereo": "racemic",
+      "altNames": [
+        "2-methyltetrahydrofuran"
+      ],
+      "smiles": "CC1CCCO1",
+      "highlightAtoms": [
+        1,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+  },
+  {
+    "id": "q-R17-hexane15diol-001",
+    "reactionIds": [
+      "R17"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(O)CCCCO",
+      "name": "hexane-1,5-diol"
+    },
+    "target": {
+      "name": "2-methyloxane",
+      "stereo": "racemic",
+      "altNames": [
+        "2-methyltetrahydropyran"
+      ],
+      "smiles": "CC1CCCCO1",
+      "highlightAtoms": [
+        1,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+  },
+  {
+    "id": "q-R17-methylbutanediol-001",
+    "reactionIds": [
+      "R17"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCC(C)CCO",
+      "name": "2-methylbutane-1,4-diol"
+    },
+    "target": {
+      "name": "3-methyloxolane",
+      "stereo": "racemic",
+      "altNames": [
+        "3-methyltetrahydrofuran"
+      ],
+      "smiles": "CC1CCOC1",
+      "highlightAtoms": [
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+  },
+  {
+    "id": "q-R17-dimethylbutanediol-001",
+    "reactionIds": [
+      "R17"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCC(C)(C)CCO",
+      "name": "2,2-dimethylbutane-1,4-diol"
+    },
+    "target": {
+      "name": "3,3-dimethyloxolane",
+      "stereo": "none",
+      "altNames": [
+        "3,3-dimethyltetrahydrofuran"
+      ],
+      "smiles": "CC1(C)CCOC1",
+      "highlightAtoms": [
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+  }
+]

@@ -108,14 +108,14 @@ export function pickNext(
 
 function pickItem(reaction: Reaction, session: SessionState, opts: SchedulerOptions): QuestionItem | undefined {
   const candidates = itemsForReaction(reaction.id).filter(
-    (q) => !session.servedItems.has(q.id) && q.orderTypes.some((t) => opts.allowedTypes.includes(t)),
+    (q) => !session.servedItems.has(q.id) && (q.orderTypes ?? ['make_it']).some((t) => opts.allowedTypes.includes(t)),
   );
   if (!candidates.length) return undefined;
   return pick(opts.rng, candidates);
 }
 
 function pickType(item: QuestionItem, opts: SchedulerOptions): OrderType | undefined {
-  const types = item.orderTypes.filter((t) => opts.allowedTypes.includes(t));
+  const types = (item.orderTypes ?? ['make_it']).filter((t) => opts.allowedTypes.includes(t));
   return types.length ? pick(opts.rng, types) : undefined;
 }
 

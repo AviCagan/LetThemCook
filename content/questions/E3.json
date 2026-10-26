@@ -1,106 +1,9 @@
 [
   {
-    "id": "q-E3-mtbe-flaw-001",
-    "reactionId": "E3",
-    "reactionIds": [
-      "E3",
-      "E4"
-    ],
-    "chapter": 17,
-    "difficulty": 2,
-    "orderTypes": [
-      "spot_flaw"
-    ],
-    "flaw": {
-      "target": {
-        "smiles": "COC(C)(C)C",
-        "name": "2-methoxy-2-methylpropane (tert-butyl methyl ether)"
-      },
-      "routes": [
-        {
-          "id": "A",
-          "start": {
-            "smiles": "CC(C)(C)O",
-            "name": "2-methylpropan-2-ol"
-          },
-          "steps": [
-            {
-              "reagents": [
-                "NaH"
-              ]
-            },
-            {
-              "reagents": [
-                "CH3I"
-              ]
-            }
-          ],
-          "works": true,
-          "reactionId": "E3",
-          "product": {
-            "smiles": "COC(C)(C)C",
-            "stereo": "none"
-          },
-          "why": "tert-Butoxide is hindered but that does not matter for the nucleophile; CH₃I has no β-hydrogens and is a perfect SN2 electrophile."
-        },
-        {
-          "id": "B",
-          "start": {
-            "smiles": "CO",
-            "name": "methanol"
-          },
-          "steps": [
-            {
-              "reagents": [
-                "NaH"
-              ]
-            },
-            {
-              "reagents": [
-                "tBuBr"
-              ]
-            }
-          ],
-          "works": false,
-          "reactionId": "E4",
-          "product": {
-            "smiles": "C=C(C)C",
-            "stereo": "none"
-          },
-          "tag": "williamson_E2",
-          "why": "Methoxide is a strong base and tert-butyl bromide is 3°: E2 wins and you get 2-methylpropene, not the ether. Put the bulky group on the alkoxide side and use CH₃I."
-        }
-      ],
-      "choices": [
-        {
-          "tag": "williamson_E2",
-          "label": "A 2°/3° halide with an alkoxide gives E2 (an alkene), not SN2"
-        },
-        {
-          "tag": "aryl_SN2",
-          "label": "SN2 can't happen on an aryl carbon"
-        },
-        {
-          "tag": "lewis_acid_as_base",
-          "label": "AlCl₃ is not a base, so no alkoxide forms"
-        },
-        {
-          "tag": "wrong_reagent_order",
-          "label": "The alkyl halide was added before the base"
-        }
-      ],
-      "answer": {
-        "route": "A",
-        "tag": "williamson_E2"
-      }
-    },
-    "explanation": "In a Williamson synthesis the alkoxide can be as hindered as you like, but the halide must be CH₃ or 1°. Route A pairs tert-butoxide with CH₃I (SN2 fine); route B pairs methoxide with a 3° bromide (E2).",
-    "tip": "Bulky alkoxide, tiny halide. Never the other way round.",
-    "source": "Carey 12e §17.6 (toolkit E3/E4)"
-  },
-  {
     "id": "q-E3-cyclohexanol-001",
-    "reactionId": "E3",
+    "reactionIds": [
+      "E3"
+    ],
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
@@ -111,57 +14,38 @@
       "smiles": "OC1CCCCC1",
       "name": "cyclohexanol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaH"
-          ]
-        },
-        {
-          "reagents": [
-            "CH3I"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "Na"
-            ]
-          },
-          {
-            "reagents": [
-              "CH3I"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "COC1CCCCC1",
+    "target": {
+      "name": "methoxycyclohexane",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "methoxycyclohexane",
-          "cyclohexyl methyl ether"
-        ],
-        "traps": [
-          {
-            "name": "cyclohexyl methoxide",
-            "tag": "naming_alkoxide",
-            "why": "'-oxide' names an anion. The ether is methoxycyclohexane or cyclohexyl methyl ether."
-          }
-        ]
-      },
+      "altNames": [
+        "cyclohexyl methyl ether"
+      ],
+      "smiles": "COC1CCCCC1",
       "highlightAtoms": [
         0,
         1,
         2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Na"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C1=CCCCC1",
         "stereo": "none",
@@ -187,58 +71,11 @@
         "why": "NaH is a base, not an oxidant: it removes the O–H proton and nothing else."
       }
     ],
-    "routeDistractors": [
+    "nameTraps": [
       {
-        "steps": [
-          {
-            "reagents": [
-              "AlCl3"
-            ]
-          },
-          {
-            "reagents": [
-              "CH3I"
-            ]
-          }
-        ],
-        "tag": "lewis_acid_as_base",
-        "why": "AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms and nothing attacks CH₃I. Use NaH (or Na)."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaH"
-            ]
-          },
-          {
-            "reagents": [
-              "tBuBr"
-            ]
-          }
-        ],
-        "tag": "williamson_E2",
-        "product": {
-          "smiles": "C=C(C)C",
-          "stereo": "none"
-        },
-        "why": "A 3° halide with an alkoxide does E2 (you would get 2-methylpropene), and it is the wrong carbon skeleton for this target anyway."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaOH"
-            ]
-          },
-          {
-            "reagents": [
-              "CH3I"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "NaOH only partially deprotonates an ordinary alcohol. The textbook Williamson uses NaH or Na to form the alkoxide completely."
+        "name": "cyclohexyl methoxide",
+        "tag": "naming_alkoxide",
+        "why": "'-oxide' names an anion. The ether is methoxycyclohexane or cyclohexyl methyl ether."
       }
     ],
     "explanation": "NaH deprotonates cyclohexanol to the alkoxide, which displaces iodide from CH₃I by SN2: methoxycyclohexane.",
@@ -246,7 +83,9 @@
   },
   {
     "id": "q-E3-tbutanol-benzyl-001",
-    "reactionId": "E3",
+    "reactionIds": [
+      "E3"
+    ],
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
@@ -257,44 +96,14 @@
       "smiles": "CC(C)(C)O",
       "name": "2-methylpropan-2-ol (tert-butanol)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaH"
-          ]
-        },
-        {
-          "reagents": [
-            "BnBr"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "Na"
-            ]
-          },
-          {
-            "reagents": [
-              "BnBr"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "CC(C)(C)OCc1ccccc1",
+    "target": {
+      "name": "benzyl tert-butyl ether",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "benzyl tert-butyl ether",
-          "tert-butyl benzyl ether",
-          "[(tert-butoxy)methyl]benzene"
-        ]
-      },
+      "altNames": [
+        "tert-butyl benzyl ether",
+        "[(tert-butoxy)methyl]benzene"
+      ],
+      "smiles": "CC(C)(C)OCc1ccccc1",
       "highlightAtoms": [
         1,
         4,
@@ -307,7 +116,25 @@
         11
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaH"
+      },
+      {
+        "reagent": "BnBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Na"
+        },
+        {
+          "reagent": "BnBr"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C=C(C)C",
         "stereo": "none",
@@ -327,46 +154,14 @@
         "why": "No C–C bond forms in a Williamson synthesis: the nucleophile is the oxygen."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "AlCl3"
-            ]
-          },
-          {
-            "reagents": [
-              "BnBr"
-            ]
-          }
-        ],
-        "tag": "lewis_acid_as_base",
-        "why": "AlCl₃ cannot deprotonate the alcohol. Use NaH to make tert-butoxide, then PhCH₂Br."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaOH"
-            ]
-          },
-          {
-            "reagents": [
-              "BnBr"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "NaOH is too weak to convert tert-butanol fully into its alkoxide; NaH or Na does."
-      }
-    ],
     "explanation": "tert-Butoxide (made with NaH) attacks benzyl bromide by SN2. The bulky group is on the oxygen side, where it does no harm.",
     "tip": "Hindered alkoxide + unhindered halide: the right way round."
   },
   {
     "id": "q-E3-benzylalcohol-ethyl-001",
-    "reactionId": "E3",
+    "reactionIds": [
+      "E3"
+    ],
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
@@ -377,44 +172,14 @@
       "smiles": "OCc1ccccc1",
       "name": "benzyl alcohol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaH"
-          ]
-        },
-        {
-          "reagents": [
-            "EtBr"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "Na"
-            ]
-          },
-          {
-            "reagents": [
-              "EtBr"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "CCOCc1ccccc1",
+    "target": {
+      "name": "benzyl ethyl ether",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "benzyl ethyl ether",
-          "[(ethoxy)methyl]benzene",
-          "(ethoxymethyl)benzene"
-        ]
-      },
+      "altNames": [
+        "[(ethoxy)methyl]benzene",
+        "(ethoxymethyl)benzene"
+      ],
+      "smiles": "CCOCc1ccccc1",
       "highlightAtoms": [
         0,
         1,
@@ -422,7 +187,25 @@
         3
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaH"
+      },
+      {
+        "reagent": "EtBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Na"
+        },
+        {
+          "reagent": "EtBr"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C=C",
         "stereo": "none",
@@ -442,50 +225,14 @@
         "why": "The alkoxide oxygen is the nucleophile; no C–C bond forms and the benzylic oxygen is kept."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "AlCl3"
-            ]
-          },
-          {
-            "reagents": [
-              "EtBr"
-            ]
-          }
-        ],
-        "tag": "lewis_acid_as_base",
-        "why": "AlCl₃ is not a base and cannot make the alkoxide. Use NaH."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaH"
-            ]
-          },
-          {
-            "reagents": [
-              "iPrBr"
-            ]
-          }
-        ],
-        "tag": "williamson_E2",
-        "product": {
-          "smiles": "C=CC",
-          "stereo": "none"
-        },
-        "why": "A 2° halide with the alkoxide gives E2 (propene), not an ether. Bromoethane is the 1° halide you need."
-      }
-    ],
     "explanation": "Benzyloxide (from NaH) displaces bromide from bromoethane: benzyl ethyl ether.",
     "tip": "1° halide: SN2 is safe."
   },
   {
     "id": "q-E3-isoamyl-allyl-001",
-    "reactionId": "E3",
+    "reactionIds": [
+      "E3"
+    ],
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
@@ -496,44 +243,14 @@
       "smiles": "CC(C)CCO",
       "name": "3-methylbutan-1-ol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaH"
-          ]
-        },
-        {
-          "reagents": [
-            "AllylBr"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "Na"
-            ]
-          },
-          {
-            "reagents": [
-              "AllylBr"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "C=CCOCCC(C)C",
+    "target": {
+      "name": "allyl isopentyl ether",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "allyl isopentyl ether",
-          "3-methyl-1-(prop-2-en-1-yloxy)butane",
-          "allyl 3-methylbutyl ether"
-        ]
-      },
+      "altNames": [
+        "3-methyl-1-(prop-2-en-1-yloxy)butane",
+        "allyl 3-methylbutyl ether"
+      ],
+      "smiles": "C=CCOCCC(C)C",
       "highlightAtoms": [
         0,
         1,
@@ -542,7 +259,25 @@
         4
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaH"
+      },
+      {
+        "reagent": "AllylBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Na"
+        },
+        {
+          "reagent": "AllylBr"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C=CC",
         "stereo": "none",
@@ -562,50 +297,14 @@
         "why": "NaH is a base, not an oxidant."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "AlCl3"
-            ]
-          },
-          {
-            "reagents": [
-              "AllylBr"
-            ]
-          }
-        ],
-        "tag": "lewis_acid_as_base",
-        "why": "AlCl₃ cannot deprotonate the alcohol. Use NaH."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaH"
-            ]
-          },
-          {
-            "reagents": [
-              "tBuBr"
-            ]
-          }
-        ],
-        "tag": "williamson_E2",
-        "product": {
-          "smiles": "C=C(C)C",
-          "stereo": "none"
-        },
-        "why": "A 3° halide gives E2 with an alkoxide."
-      }
-    ],
     "explanation": "The alkoxide attacks the allylic CH₂ of allyl bromide by SN2 to give the allyl ether.",
     "tip": "Allyl and benzyl halides are the best SN2 partners in the box."
   },
   {
     "id": "q-E3-isopropanol-ethyl-001",
-    "reactionId": "E3",
+    "reactionIds": [
+      "E3"
+    ],
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
@@ -616,51 +315,14 @@
       "smiles": "CC(C)O",
       "name": "propan-2-ol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaH"
-          ]
-        },
-        {
-          "reagents": [
-            "EtBr"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "Na"
-            ]
-          },
-          {
-            "reagents": [
-              "EtBr"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "CCOC(C)C",
+    "target": {
+      "name": "ethyl isopropyl ether",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "ethyl isopropyl ether",
-          "2-ethoxypropane",
-          "ethyl propan-2-yl ether"
-        ],
-        "traps": [
-          {
-            "name": "isopropyl ethyl ether",
-            "tag": "naming_alpha_order",
-            "why": "Functional-class names list the groups alphabetically: ethyl before isopropyl."
-          }
-        ]
-      },
+      "altNames": [
+        "2-ethoxypropane",
+        "ethyl propan-2-yl ether"
+      ],
+      "smiles": "CCOC(C)C",
       "highlightAtoms": [
         0,
         1,
@@ -668,7 +330,25 @@
         3
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaH"
+      },
+      {
+        "reagent": "EtBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Na"
+        },
+        {
+          "reagent": "EtBr"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C=CC",
         "stereo": "none",
@@ -688,42 +368,11 @@
         "why": "The alkoxide is an O-nucleophile; no C–C bond forms."
       }
     ],
-    "routeDistractors": [
+    "nameTraps": [
       {
-        "steps": [
-          {
-            "reagents": [
-              "NaH"
-            ]
-          },
-          {
-            "reagents": [
-              "iPrBr"
-            ]
-          }
-        ],
-        "tag": "williamson_E2",
-        "product": {
-          "smiles": "C=CC",
-          "stereo": "none"
-        },
-        "why": "Isopropoxide + 2-bromopropane gives E2 (propene). Keep the 2° group on the oxygen and use bromoethane."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "AlCl3"
-            ]
-          },
-          {
-            "reagents": [
-              "EtBr"
-            ]
-          }
-        ],
-        "tag": "lewis_acid_as_base",
-        "why": "AlCl₃ cannot make the alkoxide."
+        "name": "isopropyl ethyl ether",
+        "tag": "naming_alpha_order",
+        "why": "Functional-class names list the groups alphabetically: ethyl before isopropyl."
       }
     ],
     "explanation": "Put the 2° group on the alkoxide (isopropoxide) and use the 1° halide (bromoethane): SN2 gives ethyl isopropyl ether.",
@@ -731,7 +380,9 @@
   },
   {
     "id": "q-E3-phenylethanol-methyl-001",
-    "reactionId": "E3",
+    "reactionIds": [
+      "E3"
+    ],
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
@@ -742,51 +393,39 @@
       "smiles": "OCCc1ccccc1",
       "name": "2-phenylethanol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaH"
-          ]
-        },
-        {
-          "reagents": [
-            "CH3I"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "Na"
-            ]
-          },
-          {
-            "reagents": [
-              "CH3I"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "COCCc1ccccc1",
+    "target": {
+      "name": "(2-methoxyethyl)benzene",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "(2-methoxyethyl)benzene",
-          "methyl 2-phenylethyl ether",
-          "2-phenylethyl methyl ether"
-        ]
-      },
+      "altNames": [
+        "methyl 2-phenylethyl ether",
+        "2-phenylethyl methyl ether"
+      ],
+      "smiles": "COCCc1ccccc1",
       "highlightAtoms": [
         0,
         1,
         2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Na"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C=Cc1ccccc1",
         "stereo": "none",
@@ -804,40 +443,6 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen attacks CH₃I; the product keeps the oxygen as an ether."
-      }
-    ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "AlCl3"
-            ]
-          },
-          {
-            "reagents": [
-              "CH3I"
-            ]
-          }
-        ],
-        "tag": "lewis_acid_as_base",
-        "why": "AlCl₃ is a Lewis acid, not a base. Use NaH to make the alkoxide."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaOH"
-            ]
-          },
-          {
-            "reagents": [
-              "CH3I"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "NaOH does not fully deprotonate an alcohol; use NaH or Na."
       }
     ],
     "explanation": "NaH makes the alkoxide; CH₃I is methylated by SN2: the methyl ether.",

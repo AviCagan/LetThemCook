@@ -1,0 +1,341 @@
+[
+  {
+    "id": "q-P9-phenol-001",
+    "reactionIds": [
+      "P9"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1",
+      "name": "phenol"
+    },
+    "target": {
+      "name": "2-hydroxybenzoic acid",
+      "stereo": "none",
+      "altNames": [
+        "salicylic acid"
+      ],
+      "smiles": "O=C(O)c1ccccc1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CO2",
+        "conditions": {
+          "pressure": true
+        }
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=C([O-])c1ccccc1[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid."
+      },
+      {
+        "smiles": "OC(=O)c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Kolbe–Schmitt carboxylates ORTHO to the phenoxide oxygen (the sodium ion holds CO₂ next to it), not para."
+      }
+    ],
+    "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+  },
+  {
+    "id": "q-P9-pcresol-001",
+    "reactionIds": [
+      "P9"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccc(O)cc1",
+      "name": "4-methylphenol"
+    },
+    "target": {
+      "name": "2-hydroxy-5-methylbenzoic acid",
+      "stereo": "none",
+      "smiles": "Cc1ccc(O)c(C(=O)O)c1",
+      "highlightAtoms": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CO2",
+        "conditions": {
+          "pressure": true
+        }
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1ccc([O-])c(C(=O)[O-])c1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid."
+      },
+      {
+        "smiles": "CC(=O)c1cc(C)ccc1O",
+        "stereo": "none",
+        "tag": "acyl_group_identity",
+        "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      }
+    ],
+    "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+  },
+  {
+    "id": "q-P9-chlorophenol-001",
+    "reactionIds": [
+      "P9"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc(Cl)cc1",
+      "name": "4-chlorophenol"
+    },
+    "target": {
+      "name": "5-chloro-2-hydroxybenzoic acid",
+      "stereo": "none",
+      "smiles": "O=C(O)c1cc(Cl)ccc1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CO2",
+        "conditions": {
+          "pressure": true
+        }
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=C([O-])c1cc(Cl)ccc1[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid."
+      },
+      {
+        "smiles": "O=Cc1cc(Cl)ccc1O",
+        "stereo": "none",
+        "tag": "acyl_group_identity",
+        "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      }
+    ],
+    "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+  },
+  {
+    "id": "q-P9-bromophenol-001",
+    "reactionIds": [
+      "P9"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc(Br)cc1",
+      "name": "4-bromophenol"
+    },
+    "target": {
+      "name": "5-bromo-2-hydroxybenzoic acid",
+      "stereo": "none",
+      "smiles": "O=C(O)c1cc(Br)ccc1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CO2",
+        "conditions": {
+          "pressure": true
+        }
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=C([O-])c1cc(Br)ccc1[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid."
+      },
+      {
+        "smiles": "CC(=O)c1cc(Br)ccc1O",
+        "stereo": "none",
+        "tag": "acyl_group_identity",
+        "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      }
+    ],
+    "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+  },
+  {
+    "id": "q-P9-tbutylphenol-001",
+    "reactionIds": [
+      "P9"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(C)c1ccc(O)cc1",
+      "name": "4-tert-butylphenol"
+    },
+    "target": {
+      "name": "5-tert-butyl-2-hydroxybenzoic acid",
+      "stereo": "none",
+      "smiles": "CC(C)(C)c1ccc(O)c(C(=O)O)c1",
+      "highlightAtoms": [
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CO2",
+        "conditions": {
+          "pressure": true
+        }
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)(C)c1ccc([O-])c(C(=O)[O-])c1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid."
+      },
+      {
+        "smiles": "CC(=O)c1cc(C(C)(C)C)ccc1O",
+        "stereo": "none",
+        "tag": "acyl_group_identity",
+        "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      }
+    ],
+    "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+  },
+  {
+    "id": "q-P9-methoxyphenol-001",
+    "reactionIds": [
+      "P9"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "COc1ccc(O)cc1",
+      "name": "4-methoxyphenol"
+    },
+    "target": {
+      "name": "2-hydroxy-5-methoxybenzoic acid",
+      "stereo": "none",
+      "smiles": "COc1ccc(O)c(C(=O)O)c1",
+      "highlightAtoms": [
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CO2",
+        "conditions": {
+          "pressure": true
+        }
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "COc1ccc([O-])c(C(=O)[O-])c1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid."
+      },
+      {
+        "smiles": "COc1ccc(O)c(C=O)c1",
+        "stereo": "none",
+        "tag": "acyl_group_identity",
+        "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      }
+    ],
+    "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+  }
+]

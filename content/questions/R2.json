@@ -1,62 +1,42 @@
 [
   {
     "id": "q-R2-alkenylketone-001",
-    "reactionId": "R2",
+    "reactionIds": [
+      "R2"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
       "make_it",
-      "name_it"
+      "predict_product"
     ],
     "start": {
       "smiles": "C=CCCC(=O)c1ccccc1",
       "name": "1-phenylpent-4-en-1-one"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaBH4"
-          ],
-          "conditions": {
-            "solvent": "MeOH"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "C=CCC[C@H](O)c1ccccc1",
+    "target": {
+      "name": "1-phenylpent-4-en-1-ol",
       "stereo": "racemic",
+      "altNames": [
+        "1-phenyl-4-penten-1-ol"
+      ],
       "stereoChoices": [
         "racemic",
         "single_enantiomer",
         "meso"
       ],
-      "names": {
-        "accepted": [
-          "1-phenylpent-4-en-1-ol",
-          "1-phenyl-4-penten-1-ol"
-        ],
-        "traps": [
-          {
-            "name": "1-phenylpent-4-en-ol",
-            "tag": "naming_locant",
-            "why": "The -ol needs its locant: 1-phenylpent-4-en-1-ol."
-          },
-          {
-            "name": "5-phenylpent-1-en-5-ol",
-            "tag": "naming_locant",
-            "why": "Number from the end that gives the -ol the lowest locant: the OH is on C1, the alkene on C4."
-          }
-        ]
-      },
+      "smiles": "C=CCCC(O)c1ccccc1",
       "highlightAtoms": [
         4,
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CCCC[C@H](O)c1ccccc1",
         "stereo": "racemic",
@@ -82,32 +62,16 @@
         "why": "Removing the oxygen completely is Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner chemistry. A hydride adds H to the carbonyl carbon and leaves the oxygen behind as OH."
       }
     ],
-    "routeDistractors": [
+    "nameTraps": [
       {
-        "steps": [
-          {
-            "reagents": [
-              "H2_Pt"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "CCCC[C@H](O)c1ccccc1",
-          "stereo": "racemic"
-        },
-        "why": "H₂/Pt reduces the C=C too and gives the saturated alcohol. To touch only the ketone you need a hydride (NaBH₄)."
+        "name": "1-phenylpent-4-en-ol",
+        "tag": "naming_locant",
+        "why": "The -ol needs its locant: 1-phenylpent-4-en-1-ol."
       },
       {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "PCC is an oxidant (alcohol → aldehyde/ketone). You are going the other way: ketone → alcohol needs a hydride."
+        "name": "5-phenylpent-1-en-5-ol",
+        "tag": "naming_locant",
+        "why": "Number from the end that gives the -ol the lowest locant: the OH is on C1, the alkene on C4."
       }
     ],
     "explanation": "NaBH₄ reduces the ketone to a 2° alcohol and leaves the isolated C=C alone. The carbinol carbon is a new stereocenter made from an achiral ketone, so the product is racemic.",
@@ -116,55 +80,44 @@
   },
   {
     "id": "q-R2-acetoacetate-001",
-    "reactionId": "R2",
+    "reactionIds": [
+      "R2"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(=O)CC(=O)OCC",
       "name": "ethyl 3-oxobutanoate"
     },
-    "route": {
-      "steps": [
+    "target": {
+      "name": "ethyl 3-hydroxybutanoate",
+      "stereo": "racemic",
+      "smiles": "CCOC(=O)CC(C)O",
+      "highlightAtoms": [
+        6,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
         {
-          "reagents": [
-            "NaBH4"
-          ],
+          "reagent": "H2_Pt",
           "conditions": {
-            "solvent": "MeOH"
+            "pressure": true
           }
         }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
       ]
-    },
-    "answer": {
-      "smiles": "C[C@H](O)CC(=O)OCC",
-      "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "ethyl 3-hydroxybutanoate"
-        ]
-      },
-      "highlightAtoms": [
-        1,
-        2
-      ]
-    },
-    "productDistractors": [
+    ],
+    "traps": [
       {
         "smiles": "C[C@H](O)CCO",
         "stereo": "racemic",
@@ -184,107 +137,68 @@
         "why": "There is a reaction: the ketone is reduced. 'No reaction' would only be right if the molecule had no aldehyde or ketone."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "C[C@H](O)CCO",
-          "stereo": "racemic"
-        },
-        "why": "LiAlH₄ reduces the ester too and gives the diol. To stop at the hydroxy ester use the mild hydride, NaBH₄."
-      }
-    ],
     "explanation": "NaBH₄ reduces the ketone to a 2° alcohol and leaves the ester alone. C3 becomes a new stereocenter, so the product is racemic.",
     "tip": "Mild hydride: ketone yes, ester no."
   },
   {
     "id": "q-R2-benzaldehyde-001",
-    "reactionId": "R2",
+    "reactionIds": [
+      "R2"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "O=Cc1ccccc1",
       "name": "benzaldehyde"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaBH4"
-          ],
-          "conditions": {
-            "solvent": "MeOH"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "OCc1ccccc1",
+    "target": {
+      "name": "benzyl alcohol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "benzyl alcohol",
-          "phenylmethanol"
-        ]
-      },
+      "altNames": [
+        "phenylmethanol"
+      ],
+      "smiles": "OCc1ccccc1",
       "highlightAtoms": [
         0,
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H2O"
+        }
+      ],
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H3O_plus"
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "O=C(O)c1ccccc1",
         "stereo": "none",
@@ -304,77 +218,49 @@
         "why": "The aromatic ring is untouched by NaBH₄ (and by ordinary hydrogenation)."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "O=Cc1ccccc1",
-          "stereo": "none"
-        },
-        "why": "PCC is an oxidant and benzaldehyde is already oxidised relative to the target. Aldehyde → alcohol needs a hydride."
-      }
-    ],
     "explanation": "NaBH₄ reduces the aldehyde to a 1° alcohol. No stereocenter is created.",
     "tip": "Aldehyde to 1° alcohol: the simplest hydride job there is."
   },
   {
     "id": "q-R2-acetylbenzoicacid-001",
-    "reactionId": "R2",
+    "reactionIds": [
+      "R2"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(=O)c1ccc(C(=O)O)cc1",
       "name": "4-acetylbenzoic acid"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaBH4"
-          ],
-          "conditions": {
-            "solvent": "MeOH"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@H](O)c1ccc(C(=O)O)cc1",
+    "target": {
+      "name": "4-(1-hydroxyethyl)benzoic acid",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "4-(1-hydroxyethyl)benzoic acid"
-        ]
-      },
+      "smiles": "CC(O)c1ccc(C(=O)O)cc1",
       "highlightAtoms": [
         1,
         2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C[C@H](O)c1ccc(CO)cc1",
         "stereo": "racemic",
@@ -394,97 +280,60 @@
         "why": "Backwards: the acid is the group NaBH₄ never touches, and the ketone is the one it reduces."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "C[C@H](O)c1ccc(CO)cc1",
-          "stereo": "racemic"
-        },
-        "why": "LiAlH₄ reduces the carboxylic acid as well. To reduce only the ketone use NaBH₄."
-      }
-    ],
     "explanation": "The ketone is reduced to a racemic 2° alcohol; the carboxylic acid (deprotonated under the conditions, then re-protonated on workup) is untouched.",
     "tip": "COOH is safe with NaBH₄. Ketone is not."
   },
   {
     "id": "q-R2-hexenone-001",
-    "reactionId": "R2",
+    "reactionIds": [
+      "R2"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=CCCC(C)=O",
       "name": "hex-5-en-2-one"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaBH4"
-          ],
-          "conditions": {
-            "solvent": "MeOH"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "C=CCC[C@H](C)O",
+    "target": {
+      "name": "hex-5-en-2-ol",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "hex-5-en-2-ol",
-          "5-hexen-2-ol"
-        ]
-      },
+      "altNames": [
+        "5-hexen-2-ol"
+      ],
+      "smiles": "C=CCCC(C)O",
       "highlightAtoms": [
         4,
         6
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H2O"
+        }
+      ],
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "CCCC[C@H](C)O",
         "stereo": "racemic",
@@ -504,80 +353,49 @@
         "why": "The oxygen stays as an OH; a hydride never deoxygenates a ketone."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "CCCC[C@H](C)O",
-          "stereo": "racemic"
-        },
-        "why": "H₂/Pt would also saturate the alkene. To reduce only the ketone use a hydride."
-      }
-    ],
     "explanation": "The ketone becomes a racemic 2° alcohol; the terminal alkene is untouched.",
     "tip": "Alkene rides along, ketone gets reduced."
   },
   {
     "id": "q-R2-formylbenzoate-001",
-    "reactionId": "R2",
+    "reactionIds": [
+      "R2"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "COC(=O)c1ccc(C=O)cc1",
       "name": "methyl 4-formylbenzoate"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaBH4"
-          ],
-          "conditions": {
-            "solvent": "MeOH"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "COC(=O)c1ccc(CO)cc1",
+    "target": {
+      "name": "methyl 4-(hydroxymethyl)benzoate",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "methyl 4-(hydroxymethyl)benzoate"
-        ]
-      },
+      "smiles": "COC(=O)c1ccc(CO)cc1",
       "highlightAtoms": [
         8,
         9
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "OCc1ccc(CO)cc1",
         "stereo": "none",
@@ -597,98 +415,61 @@
         "why": "Backwards: NaBH₄ reduces the aldehyde and leaves the ester. You did the opposite."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "OCc1ccc(CO)cc1",
-          "stereo": "none"
-        },
-        "why": "LiAlH₄ reduces the ester too. The selective reagent for the aldehyde alone is NaBH₄."
-      }
-    ],
     "explanation": "NaBH₄ reduces the aldehyde to a 1° alcohol and leaves the methyl ester intact.",
     "tip": "Aldehyde beats ester every time with NaBH₄, because the ester never reacts."
   },
   {
     "id": "q-R2-cinnamaldehyde-001",
-    "reactionId": "R2",
+    "reactionIds": [
+      "R2"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "O=C/C=C/c1ccccc1",
       "name": "(E)-3-phenylprop-2-enal (cinnamaldehyde)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "NaBH4"
-          ],
-          "conditions": {
-            "solvent": "MeOH"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H3O_plus"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "OC/C=C/c1ccccc1",
+    "target": {
+      "name": "(E)-3-phenylprop-2-en-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "(E)-3-phenylprop-2-en-1-ol",
-          "cinnamyl alcohol",
-          "3-phenylprop-2-en-1-ol"
-        ]
-      },
+      "altNames": [
+        "cinnamyl alcohol",
+        "3-phenylprop-2-en-1-ol"
+      ],
+      "smiles": "OC/C=C/c1ccccc1",
       "highlightAtoms": [
         0,
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "NaBH4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H2O"
+        }
+      ],
+      [
+        {
+          "reagent": "LiAlH4"
+        },
+        {
+          "reagent": "H3O_plus"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "OCCCc1ccccc1",
         "stereo": "none",
@@ -706,26 +487,6 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaBH₄ reduces; it never oxidises an aldehyde to an acid."
-      }
-    ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "OCCCc1ccccc1",
-          "stereo": "none"
-        },
-        "why": "H₂/Pt would reduce the alkene as well. To keep it, use a hydride."
       }
     ],
     "explanation": "NaBH₄ reduces the aldehyde to the allylic 1° alcohol; the C=C keeps its E geometry.",

@@ -26,7 +26,8 @@ export function Title() {
       )}
       <div class="title-art">
         <img src={spriteDataUrl('sci_frog', 0, 4)} alt="" />
-        <img src={spriteDataUrl('flask_big', 0, 3)} alt="" />
+        <img src={spriteDataUrl('player', 0, 4)} alt="" />
+        <img src={spriteDataUrl('fx_flask', 3, 4)} alt="" />
         <img src={spriteDataUrl('sci_cat', 0, 4)} alt="" />
       </div>
       <h1>Beaker Buddies</h1>
@@ -39,10 +40,11 @@ export function Title() {
           Weakness clinic {due > 0 && <span class="chip chip-hot">{due} due</span>}
         </button>
         <button class="btn btn-big" type="button" onClick={() => { sfx.click(); screen.value = 'practice'; }}>Practice by reaction</button>
-        <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'notebook'; }}>Lab notebook</button>
+        <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'labbook'; }}>Lab book</button>
+        <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'notebook'; }}>Mastery notebook</button>
         <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'settings'; }}>Settings · export / import</button>
       </div>
-      <p class="muted small">Phase 1: Make it + What do I get? · {playableReactions(s.profile.chapters).length} reactions · coins {s.economy.coins}</p>
+      <p class="muted small">{playableReactions(s.profile.chapters).length} reactions on the shelf · coins {s.economy.coins}</p>
     </div>
   );
 }

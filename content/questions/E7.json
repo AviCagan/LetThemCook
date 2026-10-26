@@ -1,0 +1,402 @@
+[
+  {
+    "id": "q-E7-cyclohexene-001",
+    "reactionIds": [
+      "E7"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1=CCCCC1",
+      "name": "cyclohexene"
+    },
+    "target": {
+      "name": "7-oxabicyclo[4.1.0]heptane",
+      "stereo": "meso",
+      "altNames": [
+        "cyclohexene oxide",
+        "1,2-epoxycyclohexane"
+      ],
+      "stereoChoices": [
+        "meso",
+        "racemic",
+        "single_enantiomer"
+      ],
+      "smiles": "C1CCC2OC2C1",
+      "highlightAtoms": [
+        0,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "mCPBA",
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "OC1CCCCC1O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA)."
+      },
+      {
+        "smiles": "O=CCCCCC=O",
+        "stereo": "none",
+        "tag": "ozone_vs_osmium",
+        "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      }
+    ],
+    "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
+    "tip": "mCPBA: syn, stereospecific epoxidation."
+  },
+  {
+    "id": "q-E7-transbutene-001",
+    "reactionIds": [
+      "E7"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C/C=C/C",
+      "name": "(E)-but-2-ene"
+    },
+    "target": {
+      "name": "trans-2,3-dimethyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "trans-2,3-epoxybutane",
+        "(2R,3R)/(2S,3S)-2,3-dimethyloxirane"
+      ],
+      "stereoChoices": [
+        "racemic",
+        "meso",
+        "single_enantiomer"
+      ],
+      "smiles": "CC1OC1C",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "mCPBA",
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(O)C(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA)."
+      },
+      {
+        "smiles": "CC=O",
+        "stereo": "none",
+        "tag": "ozone_vs_osmium",
+        "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      }
+    ],
+    "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
+    "tip": "mCPBA: syn, stereospecific epoxidation."
+  },
+  {
+    "id": "q-E7-cisbutene-001",
+    "reactionIds": [
+      "E7"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C/C=C\\C",
+      "name": "(Z)-but-2-ene"
+    },
+    "target": {
+      "name": "cis-2,3-dimethyloxirane",
+      "stereo": "meso",
+      "altNames": [
+        "cis-2,3-epoxybutane",
+        "meso-2,3-dimethyloxirane"
+      ],
+      "stereoChoices": [
+        "meso",
+        "racemic",
+        "single_enantiomer"
+      ],
+      "smiles": "CC1OC1C",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "mCPBA",
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(O)C(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA)."
+      },
+      {
+        "smiles": "CC=O",
+        "stereo": "none",
+        "tag": "ozone_vs_osmium",
+        "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      }
+    ],
+    "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
+    "tip": "mCPBA: syn, stereospecific epoxidation."
+  },
+  {
+    "id": "q-E7-styrene-001",
+    "reactionIds": [
+      "E7"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=Cc1ccccc1",
+      "name": "styrene"
+    },
+    "target": {
+      "name": "2-phenyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "styrene oxide",
+        "(1,2-epoxyethyl)benzene"
+      ],
+      "smiles": "c1ccc(C2CO2)cc1",
+      "highlightAtoms": [
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "mCPBA",
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "OCC(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA)."
+      },
+      {
+        "smiles": "O=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "ozone_vs_osmium",
+        "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      }
+    ],
+    "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
+    "tip": "mCPBA: syn, stereospecific epoxidation."
+  },
+  {
+    "id": "q-E7-isobutylene-001",
+    "reactionIds": [
+      "E7"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=C",
+      "name": "2-methylpropene"
+    },
+    "target": {
+      "name": "2,2-dimethyloxirane",
+      "stereo": "none",
+      "altNames": [
+        "isobutylene oxide",
+        "1,2-epoxy-2-methylpropane"
+      ],
+      "smiles": "CC1(C)CO1",
+      "highlightAtoms": [
+        1,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "mCPBA",
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)(O)CO",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA)."
+      },
+      {
+        "smiles": "CC(C)=O",
+        "stereo": "none",
+        "tag": "ozone_vs_osmium",
+        "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      }
+    ],
+    "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
+    "tip": "mCPBA: syn, stereospecific epoxidation."
+  },
+  {
+    "id": "q-E7-hexene-001",
+    "reactionIds": [
+      "E7"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=CCCCC",
+      "name": "hex-1-ene"
+    },
+    "target": {
+      "name": "2-butyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "1,2-epoxyhexane"
+      ],
+      "smiles": "CCCCC1CO1",
+      "highlightAtoms": [
+        0,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "mCPBA",
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCC(O)CO",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA)."
+      },
+      {
+        "smiles": "CCCCC=O",
+        "stereo": "none",
+        "tag": "ozone_vs_osmium",
+        "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      }
+    ],
+    "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
+    "tip": "mCPBA: syn, stereospecific epoxidation."
+  },
+  {
+    "id": "q-E7-transstilbene-001",
+    "reactionIds": [
+      "E7"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "c1ccc(/C=C/c2ccccc2)cc1",
+      "name": "(E)-stilbene"
+    },
+    "target": {
+      "name": "trans-2,3-diphenyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "trans-stilbene oxide"
+      ],
+      "stereoChoices": [
+        "racemic",
+        "meso",
+        "single_enantiomer"
+      ],
+      "smiles": "c1ccc(C2OC2c2ccccc2)cc1",
+      "highlightAtoms": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "route": [
+      {
+        "reagent": "mCPBA",
+        "conditions": {
+          "equiv": 1
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "OC(c1ccccc1)C(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA)."
+      },
+      {
+        "smiles": "O=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "ozone_vs_osmium",
+        "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      }
+    ],
+    "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
+    "tip": "mCPBA: syn, stereospecific epoxidation."
+  }
+]

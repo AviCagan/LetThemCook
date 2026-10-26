@@ -1,168 +1,77 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://letthemcook.local/schema/question.schema.json",
-  "title": "Question item",
-  "description": "One chemistry fact (start + route + product) with everything needed to present it as several order types. The engine chooses an order type from `orderTypes`; the validator checks that each listed type has the sections it needs. Molecules are SMILES only; RDKit draws them at runtime.",
+  "title": "Order item (v2)",
+  "description": "One synthesis order: a starting material, a target the customer names, and the intended route (one bottle per step). The runtime engine (content/rules.json) turns the player's bottle choices into real products, so wrong routes need no authoring; `traps` tag the common wrong hand-overs. target.smiles and target.highlightAtoms are filled by scripts/validate_content.py --fill from the engine, never by hand.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "reactionId", "chapter", "difficulty", "orderTypes", "explanation"],
+  "required": ["id", "reactionIds", "chapter", "difficulty", "start", "target", "route", "explanation"],
   "properties": {
-    "id": { "type": "string", "pattern": "^q-[A-Za-z0-9]+-[a-z0-9-]+-[0-9]{3}$", "description": "q-<reactionId>-<slug>-<nnn>" },
-    "reactionId": { "type": "string", "description": "Primary reaction this item drills. Multi-step items list the others in `reactionIds`." },
-    "reactionIds": { "type": "array", "items": { "type": "string" }, "description": "All reactions involved (multistep specials). Mastery is logged for each." },
+    "id": { "type": "string", "pattern": "^q-[A-Za-z0-9]+-[a-z0-9-]+-[0-9]{3}$" },
+    "reactionIds": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "Toolkit reactions the intended route exercises (first = primary, for scheduling)." },
     "chapter": { "type": "integer", "enum": [16, 17] },
     "difficulty": { "type": "integer", "minimum": 1, "maximum": 3 },
-    "orderTypes": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": { "type": "string", "enum": ["make_it", "predict_product", "find_start", "spot_flaw", "name_it", "multistep"] },
-      "description": "Order types this item may be served as. Requirements per type: make_it -> start, route, answer, productDistractors(>=3); predict_product -> start, route, answer, productDistractors(>=3); find_start -> start, route, answer, startDistractors(>=3); name_it -> answer.names; spot_flaw -> flaw; multistep -> route with >=2 steps and reactionIds."
-    },
-    "start": { "$ref": "#/definitions/molecule", "description": "Starting material handed over by the customer." },
-    "route": {
+    "orderTypes": { "type": "array", "items": { "type": "string", "enum": ["make_it", "predict_product"] }, "description": "Defaults to [make_it]. predict_product (quiz: pick the product) also needs >= 3 traps." },
+    "start": { "$ref": "#/definitions/molecule" },
+    "target": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["steps"],
+      "required": ["name", "stereo"],
       "properties": {
-        "steps": { "$ref": "reaction.schema.json#/definitions/route" },
-        "alt": { "type": "array", "items": { "$ref": "reaction.schema.json#/definitions/route" }, "description": "Other routes graded as fully correct for THIS item (in addition to the reaction's altRoutes)." }
-      }
-    },
-    "answer": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["smiles", "stereo"],
-      "properties": {
-        "smiles": { "type": "string", "description": "Major product. Several molecules are dot-separated (LiAlH4 on an ester gives two alcohols)." },
+        "name": { "type": "string", "description": "The IUPAC (or accepted common) name the customer says first." },
+        "altNames": { "type": "array", "items": { "type": "string" } },
         "stereo": { "$ref": "#/definitions/stereoLabel" },
-        "stereoChoices": { "type": "array", "items": { "$ref": "#/definitions/stereoLabel" }, "description": "Options the stereo picker shows. Defaults to the reaction's usual set. Only used when stereo != none." },
-        "names": { "$ref": "#/definitions/names" },
-        "highlightAtoms": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "description": "Atom indices (SMILES order) that changed, for the translucent highlight. Optional: the validator can derive them from the reaction mapping." },
-        "minor": { "$ref": "#/definitions/molecule", "description": "Only when a minor product genuinely matters (Zaitsev vs Hofmann, o/p mixtures). Never byproducts." }
+        "stereoChoices": { "type": "array", "items": { "$ref": "#/definitions/stereoLabel" } },
+        "smiles": { "type": "string", "description": "Filled by the validator from start + route." },
+        "highlightAtoms": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "description": "Filled by the validator (changed atoms, SMILES order of target.smiles)." }
       }
     },
-    "productDistractors": {
+    "route": { "$ref": "#/definitions/route", "description": "Intended route: one bottle per step with the conditions that step needs." },
+    "altRoutes": { "type": "array", "items": { "$ref": "#/definitions/route" }, "description": "Other routes the validator checks also reach the target (graded as optimal)." },
+    "traps": {
       "type": "array",
-      "items": { "$ref": "#/definitions/productDistractor" },
-      "description": "Wrong products built from realistic mistakes. 3 are drawn at random for the 4-option picker."
-    },
-    "routeDistractors": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/routeDistractor" },
-      "description": "Flawed routes the grader matches the player's shelf picks against to choose a mistake tag. Missing workup, wrong order and missing stereo are detected automatically and need no entry."
-    },
-    "startDistractors": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/productDistractor" },
-      "description": "Wrong starting materials for 'What did I start with?'."
-    },
-    "flaw": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["target", "routes", "choices", "answer"],
-      "description": "Spot-the-flaw: two proposed routes to the same target; pick the one that works and tag why the other fails.",
-      "properties": {
-        "target": { "$ref": "#/definitions/molecule" },
-        "routes": {
-          "type": "array",
-          "minItems": 2,
-          "maxItems": 2,
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["id", "start", "steps", "works", "reactionId"],
-            "properties": {
-              "id": { "type": "string", "enum": ["A", "B"] },
-              "start": { "$ref": "#/definitions/molecule" },
-              "steps": { "$ref": "reaction.schema.json#/definitions/route" },
-              "works": { "type": "boolean" },
-              "reactionId": { "type": "string", "description": "Reaction that actually happens on this route (E4 for the E2 trap). Used to validate `product` with SMARTS." },
-              "product": { "$ref": "#/definitions/molecule", "description": "What the route really gives; shown by the mentor." },
-              "tag": { "type": "string", "description": "Required when works=false." },
-              "why": { "type": "string" }
-            }
-          }
-        },
-        "choices": {
-          "type": "array",
-          "minItems": 3,
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["tag", "label"],
-            "properties": { "tag": { "type": "string" }, "label": { "type": "string" } }
-          },
-          "description": "Reasons offered for 'why does the other route fail'. Exactly one must equal answer.tag."
-        },
-        "answer": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["route", "tag"],
-          "properties": { "route": { "type": "string", "enum": ["A", "B"] }, "tag": { "type": "string" } }
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["smiles", "tag", "why"],
+        "properties": {
+          "smiles": { "type": "string" },
+          "stereo": { "$ref": "#/definitions/stereoLabel" },
+          "tag": { "type": "string" },
+          "why": { "type": "string" },
+          "stereoOnly": { "type": "boolean" }
         }
-      }
+      },
+      "description": "Wrong products a student plausibly hands over, with the mistake tag and the mentor's specific why. Also the distractors for the predict_product quiz."
     },
-    "explanation": { "type": "string", "description": "1-3 sentences the mentor says when the answer is revealed, in addition to the tag-specific 'why'." },
-    "tip": { "type": "string", "description": "What the customer says on success." },
-    "source": { "type": "string", "description": "Where the item comes from (textbook section, HW set, tutor drill). Chapter notes/HW win over general knowledge." },
-    "review": { "type": "string", "description": "If set, the item is unsure and is listed in REVIEW.md; the engine will not serve it until the field is removed." }
+    "nameTraps": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": false, "required": ["name", "tag"], "properties": { "name": { "type": "string" }, "tag": { "type": "string" }, "why": { "type": "string" } } }
+    },
+    "explanation": { "type": "string" },
+    "tip": { "type": "string" },
+    "source": { "type": "string" },
+    "review": { "type": "string" }
   },
   "definitions": {
-    "stereoLabel": {
-      "type": "string",
-      "enum": ["none", "single_enantiomer", "racemic", "meso", "cis", "trans", "syn", "anti"],
-      "description": "none: the SMILES must carry no stereo marks. Anything else: the SMILES must carry @ or / \\ marks and the picker is shown."
-    },
+    "stereoLabel": { "type": "string", "enum": ["none", "single_enantiomer", "racemic", "meso", "cis", "trans", "syn", "anti"] },
     "molecule": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["smiles"],
-      "properties": {
-        "smiles": { "type": "string" },
-        "name": { "type": "string", "description": "Display name (optional; the card shows the drawing, not the name, unless the order type asks for it)." },
-        "stereo": { "$ref": "#/definitions/stereoLabel" }
-      }
+      "required": ["smiles", "name"],
+      "properties": { "smiles": { "type": "string" }, "name": { "type": "string" }, "stereo": { "$ref": "#/definitions/stereoLabel" } }
     },
-    "names": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["accepted"],
-      "properties": {
-        "accepted": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "All correct names: IUPAC, common, functional-class and substitutive ether names. Compared after normalisation (case, spaces, hyphens, en-dashes, commas)." },
-        "traps": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["name", "tag"],
-            "properties": { "name": { "type": "string" }, "tag": { "type": "string" }, "why": { "type": "string" } }
-          },
-          "description": "Specific wrong names with their tag. Generic slips (missing locant, alphabetical order, -al/-one, '-oxide' as an ether name) are also detected by the checker without an entry here."
+    "route": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reagent"],
+        "properties": {
+          "reagent": { "type": "string" },
+          "conditions": { "$ref": "reaction.schema.json#/definitions/conditions" }
         }
-      }
-    },
-    "productDistractor": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["smiles", "stereo", "tag", "why"],
-      "properties": {
-        "smiles": { "type": "string" },
-        "stereo": { "$ref": "#/definitions/stereoLabel" },
-        "tag": { "type": "string", "description": "Mistake tag from content/mistake_tags.json." },
-        "why": { "type": "string", "description": "1-3 sentences the mentor says if this option is picked. Must address this specific mistake." },
-        "stereoOnly": { "type": "boolean", "description": "true when the distractor differs from the answer only by stereochemistry (wrong enantiomer / meso vs racemic). The validator otherwise rejects distractors that match the answer with stereo stripped." }
-      }
-    },
-    "routeDistractor": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["steps", "tag", "why"],
-      "properties": {
-        "steps": { "$ref": "reaction.schema.json#/definitions/route" },
-        "tag": { "type": "string" },
-        "why": { "type": "string" },
-        "product": { "$ref": "#/definitions/molecule", "description": "What the flawed route would actually give, if anything (shown by the mentor)." }
       }
     }
   }

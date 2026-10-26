@@ -1,70 +1,55 @@
 [
   {
     "id": "q-R3-cyclopentanone-001",
-    "reactionId": "R3",
+    "reactionIds": [
+      "R3"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "O=C1CCCC1",
       "name": "cyclopentanone"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "OC1CCCC1",
+    "target": {
+      "name": "cyclopentanol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "cyclopentanol"
-        ]
-      },
+      "smiles": "OC1CCCC1",
       "highlightAtoms": [
         0,
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaBH4"
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "[O-]C1CCCC1.[Li+]",
         "stereo": "none",
@@ -84,94 +69,64 @@
         "why": "LiAlH₄ certainly reduces a ketone. 'No reaction' is never the answer for a ketone with a hydride."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "O=C1CCCC1",
-          "stereo": "none"
-        },
-        "why": "PCC is an oxidant; a ketone cannot be oxidised further. Ketone → alcohol is a reduction: LiAlH₄ then H₂O (or NaBH₄)."
-      }
-    ],
     "explanation": "LiAlH₄ delivers hydride to the carbonyl carbon to give the aluminium alkoxide; water then protonates it to cyclopentanol.",
     "tip": "Hydride first, water second. Never the other way round."
   },
   {
     "id": "q-R3-isovaleraldehyde-001",
-    "reactionId": "R3",
+    "reactionIds": [
+      "R3"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(C)CC=O",
       "name": "3-methylbutanal"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "CC(C)CCO",
+    "target": {
+      "name": "3-methylbutan-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "3-methylbutan-1-ol",
-          "3-methyl-1-butanol",
-          "isoamyl alcohol"
-        ]
-      },
+      "altNames": [
+        "3-methyl-1-butanol",
+        "isoamyl alcohol"
+      ],
+      "smiles": "CC(C)CCO",
       "highlightAtoms": [
         4,
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaBH4"
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "CC(C)CC[O-].[Li+]",
         "stereo": "none",
@@ -191,93 +146,63 @@
         "why": "The oxygen stays as OH. Full deoxygenation is not a hydride reaction."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2CrO4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(C)CC(=O)O",
-          "stereo": "none"
-        },
-        "why": "Chromic acid oxidises an aldehyde to the acid: wrong direction. Aldehyde → alcohol is a reduction."
-      }
-    ],
     "explanation": "The aldehyde is reduced to the 1° alcohol; water protonates the alkoxide. No stereocenter is formed.",
     "tip": "Aldehyde → 1° alcohol, then don't forget to add water."
   },
   {
     "id": "q-R3-acetophenone-001",
-    "reactionId": "R3",
+    "reactionIds": [
+      "R3"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(=O)c1ccccc1",
       "name": "acetophenone (1-phenylethan-1-one)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@H](O)c1ccccc1",
+    "target": {
+      "name": "1-phenylethan-1-ol",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "1-phenylethan-1-ol",
-          "1-phenylethanol"
-        ]
-      },
+      "altNames": [
+        "1-phenylethanol"
+      ],
+      "smiles": "CC(O)c1ccccc1",
       "highlightAtoms": [
         1,
         2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaBH4"
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "C[C@H]([O-])c1ccccc1.[Li+]",
         "stereo": "racemic",
@@ -297,83 +222,55 @@
         "why": "LiAlH₄ does not reduce aromatic rings."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(=O)c1ccccc1",
-          "stereo": "none"
-        },
-        "why": "PCC oxidises; you need a reduction. LiAlH₄ then H₂O, or NaBH₄."
-      }
-    ],
     "explanation": "Hydride adds to the ketone carbon from either face, so the 2° alcohol forms as a racemate; water protonates the alkoxide.",
     "tip": "Flat carbonyl, two faces, racemic alcohol."
   },
   {
     "id": "q-R3-heptenone-001",
-    "reactionId": "R3",
+    "reactionIds": [
+      "R3"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=CCCCC(C)=O",
       "name": "hept-6-en-2-one"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "C=CCCC[C@H](C)O",
+    "target": {
+      "name": "hept-6-en-2-ol",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "hept-6-en-2-ol",
-          "6-hepten-2-ol"
-        ]
-      },
+      "altNames": [
+        "6-hepten-2-ol"
+      ],
+      "smiles": "C=CCCCC(C)O",
       "highlightAtoms": [
         5,
         7
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaBH4"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "CCCCC[C@H](C)O",
         "stereo": "racemic",
@@ -393,96 +290,63 @@
         "why": "LiAlH₄ reduces ketones; there is definitely a reaction."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "CCCCC[C@H](C)O",
-          "stereo": "racemic"
-        },
-        "why": "H₂/Pt would reduce the alkene as well. A hydride touches only the carbonyl."
-      }
-    ],
     "explanation": "LiAlH₄ reduces the ketone and leaves the isolated alkene; the new stereocenter makes the alcohol racemic.",
     "tip": "Hydrides ignore isolated alkenes."
   },
   {
     "id": "q-R3-benzophenone-001",
-    "reactionId": "R3",
+    "reactionIds": [
+      "R3"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "O=C(c1ccccc1)c1ccccc1",
       "name": "benzophenone (diphenylmethanone)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "OC(c1ccccc1)c1ccccc1",
+    "target": {
+      "name": "diphenylmethanol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "diphenylmethanol",
-          "benzhydrol"
-        ]
-      },
+      "altNames": [
+        "benzhydrol"
+      ],
+      "smiles": "OC(c1ccccc1)c1ccccc1",
       "highlightAtoms": [
         0,
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaBH4"
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "[O-]C(c1ccccc1)c1ccccc1.[Li+]",
         "stereo": "none",
@@ -502,93 +366,63 @@
         "why": "Aromatic rings survive LiAlH₄."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2CrO4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "O=C(c1ccccc1)c1ccccc1",
-          "stereo": "none"
-        },
-        "why": "Chromic acid is an oxidant and a ketone cannot be oxidised further. You need a hydride."
-      }
-    ],
     "explanation": "The ketone is reduced to the 2° alcohol. Two identical phenyl groups mean the carbinol carbon is not a stereocenter.",
     "tip": "Two identical groups on the carbinol carbon: no stereo to report."
   },
   {
     "id": "q-R3-pivaldehyde-001",
-    "reactionId": "R3",
+    "reactionIds": [
+      "R3"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(C)(C)C=O",
       "name": "2,2-dimethylpropanal"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "CC(C)(C)CO",
+    "target": {
+      "name": "2,2-dimethylpropan-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "2,2-dimethylpropan-1-ol",
-          "neopentyl alcohol"
-        ]
-      },
+      "altNames": [
+        "neopentyl alcohol"
+      ],
+      "smiles": "CC(C)(C)CO",
       "highlightAtoms": [
         4,
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaBH4"
+        }
+      ],
+      [
+        {
+          "reagent": "H2_Pt",
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "CC(C)(C)C[O-].[Li+]",
         "stereo": "none",
@@ -606,23 +440,6 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen stays as an OH after a hydride reduction."
-      }
-    ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(C)(C)C=O",
-          "stereo": "none"
-        },
-        "why": "PCC oxidises alcohols to aldehydes: the wrong direction. Use a hydride."
       }
     ],
     "explanation": "Even a hindered aldehyde is reduced cleanly by LiAlH₄; water then gives the 1° alcohol.",

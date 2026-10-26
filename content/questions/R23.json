@@ -1,52 +1,23 @@
 [
   {
     "id": "q-R23-methylcyclohexanediol-001",
-    "reactionId": "R23",
+    "reactionIds": [
+      "R23"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "name_it",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC1(O)CCCCC1O",
       "name": "1-methylcyclohexane-1,2-diol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "HIO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CC(=O)CCCCC=O",
+    "target": {
+      "name": "6-oxoheptanal",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "6-oxoheptanal"
-        ],
-        "traps": [
-          {
-            "name": "heptane-2,6-dione",
-            "tag": "aldehyde_ketone_mixup",
-            "why": "Carbon 1 has only one carbon neighbour, so it is an aldehyde (-al), not a second ketone."
-          },
-          {
-            "name": "oxoheptanal",
-            "tag": "naming_locant",
-            "why": "The ketone needs its locant: 6-oxoheptanal."
-          },
-          {
-            "name": "2-oxoheptanal",
-            "tag": "naming_locant",
-            "why": "The aldehyde carbon is always C1, so the ketone sits on C6, not C2."
-          }
-        ]
-      },
+      "smiles": "CC(=O)CCCCC=O",
       "highlightAtoms": [
         1,
         2,
@@ -54,7 +25,12 @@
         8
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "HIO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC(O)CCCCCO",
         "stereo": "none",
@@ -80,32 +56,21 @@
         "why": "Periodate cleavage stops at the aldehyde. Going on to the carboxylic acid is Jones/chromic acid chemistry, not HIO₄."
       }
     ],
-    "routeDistractors": [
+    "nameTraps": [
       {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC1(O)CCCCC1=O",
-          "stereo": "none"
-        },
-        "why": "PCC oxidises the 2° alcohol to a ketone and leaves the 3° alcohol and the ring intact. Cleaving the ring between the two OHs is HIO₄'s job."
+        "name": "heptane-2,6-dione",
+        "tag": "aldehyde_ketone_mixup",
+        "why": "Carbon 1 has only one carbon neighbour, so it is an aldehyde (-al), not a second ketone."
       },
       {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "O₃ cleaves C=C double bonds. There is no alkene here; a vicinal diol is cleaved by HIO₄."
+        "name": "oxoheptanal",
+        "tag": "naming_locant",
+        "why": "The ketone needs its locant: 6-oxoheptanal."
+      },
+      {
+        "name": "2-oxoheptanal",
+        "tag": "naming_locant",
+        "why": "The aldehyde carbon is always C1, so the ketone sits on C6, not C2."
       }
     ],
     "explanation": "HIO₄ breaks the C1–C2 bond of the diol. C1 (bearing CH₃) has two carbon substituents → ketone; C2 (bearing H) has one → aldehyde. The ring opens into a single seven-carbon chain: 6-oxoheptanal.",
@@ -114,56 +79,37 @@
   },
   {
     "id": "q-R23-butanediol-001",
-    "reactionId": "R23",
+    "reactionIds": [
+      "R23"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
       "make_it",
-      "name_it"
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(O)C(O)C",
       "name": "butane-2,3-diol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "HIO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CC=O.CC=O",
+    "target": {
+      "name": "acetaldehyde",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "acetaldehyde (2 equiv)",
-          "ethanal (2 equiv)",
-          "2 acetaldehyde",
-          "2 ethanal",
-          "acetaldehyde",
-          "ethanal"
-        ],
-        "traps": [
-          {
-            "name": "ethanone",
-            "tag": "aldehyde_ketone_mixup",
-            "why": "A two-carbon carbonyl with an H on the carbonyl carbon is an aldehyde: ethanal."
-          }
-        ]
-      },
+      "altNames": [
+        "ethanal"
+      ],
+      "smiles": "CC=O",
       "highlightAtoms": [
         1,
-        2,
-        3,
-        4,
-        5
+        2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "HIO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC(=O)C(C)=O",
         "stereo": "none",
@@ -183,21 +129,11 @@
         "why": "Cleavage is oxidative: each carbinol carbon becomes a carbonyl, not an alcohol."
       }
     ],
-    "routeDistractors": [
+    "nameTraps": [
       {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(=O)C(C)=O",
-          "stereo": "none"
-        },
-        "why": "PCC oxidises each alcohol in place (diketone). Cleavage between the two OHs is HIO₄."
+        "name": "ethanone",
+        "tag": "aldehyde_ketone_mixup",
+        "why": "A two-carbon carbonyl with an H on the carbonyl carbon is an aldehyde: ethanal."
       }
     ],
     "explanation": "The C2–C3 bond is cleaved; each CH(OH)CH₃ becomes CH₃CHO. Two molecules of acetaldehyde.",
@@ -205,43 +141,34 @@
   },
   {
     "id": "q-R23-hydrobenzoin-001",
-    "reactionId": "R23",
+    "reactionIds": [
+      "R23"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "OC(c1ccccc1)C(O)c1ccccc1",
       "name": "1,2-diphenylethane-1,2-diol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "HIO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "O=Cc1ccccc1.O=Cc1ccccc1",
+    "target": {
+      "name": "benzaldehyde",
       "stereo": "none",
+      "smiles": "O=Cc1ccccc1",
       "highlightAtoms": [
         0,
-        1,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
+        1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "HIO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "OC(=O)c1ccccc1.OC(=O)c1ccccc1",
         "stereo": "none",
@@ -261,70 +188,31 @@
         "why": "Benzil would keep the C–C bond; HIO₄ breaks it."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2CrO4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "O=C(c1ccccc1)C(=O)c1ccccc1",
-          "stereo": "none"
-        },
-        "why": "Chromic acid oxidises the alcohols in place to the diketone and keeps the C–C bond. HIO₄ cleaves it."
-      }
-    ],
     "explanation": "Cleavage between the two carbinol carbons gives two benzaldehydes.",
     "tip": "Each half keeps its aryl group and gains a C=O."
   },
   {
     "id": "q-R23-cyclopentanediol-001",
-    "reactionId": "R23",
+    "reactionIds": [
+      "R23"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
       "make_it",
-      "name_it"
+      "predict_product"
     ],
     "start": {
       "smiles": "OC1CCCC1O",
       "name": "cyclopentane-1,2-diol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "HIO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "O=CCCCC=O",
+    "target": {
+      "name": "pentanedial",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "pentanedial",
-          "glutaraldehyde"
-        ],
-        "traps": [
-          {
-            "name": "pentanedione",
-            "tag": "aldehyde_ketone_mixup",
-            "why": "Both ends are CH=O: aldehydes, so -dial."
-          },
-          {
-            "name": "1,5-pentanedial",
-            "tag": "naming_locant",
-            "why": "Aldehyde locants are always 1 (and the last carbon), so they are dropped: pentanedial."
-          }
-        ]
-      },
+      "altNames": [
+        "glutaraldehyde"
+      ],
+      "smiles": "O=CCCCC=O",
       "highlightAtoms": [
         0,
         1,
@@ -332,7 +220,12 @@
         6
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "HIO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "OCCCCCO",
         "stereo": "none",
@@ -352,17 +245,16 @@
         "why": "A diketone keeps the ring; HIO₄ opens it."
       }
     ],
-    "routeDistractors": [
+    "nameTraps": [
       {
-        "steps": [
-          {
-            "reagents": [
-              "O3"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "why": "There is no C=C to ozonise. A vicinal diol is cleaved by HIO₄."
+        "name": "pentanedione",
+        "tag": "aldehyde_ketone_mixup",
+        "why": "Both ends are CH=O: aldehydes, so -dial."
+      },
+      {
+        "name": "1,5-pentanedial",
+        "tag": "naming_locant",
+        "why": "Aldehyde locants are always 1 (and the last carbon), so they are dropped: pentanedial."
       }
     ],
     "explanation": "The ring opens at the C1–C2 bond; both carbons had one H, so both become aldehydes: pentanedial.",
@@ -370,39 +262,34 @@
   },
   {
     "id": "q-R23-methylpentanediol-001",
-    "reactionId": "R23",
+    "reactionIds": [
+      "R23"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(C)(O)C(O)CC",
       "name": "2-methylpentane-2,3-diol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "HIO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CC(C)=O.CCC=O",
+    "target": {
+      "name": "propanal",
       "stereo": "none",
+      "smiles": "CC(C)=O",
       "highlightAtoms": [
         1,
-        3,
-        4,
-        5,
-        6,
-        7
+        3
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "HIO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC(C)=O.CCC(=O)O",
         "stereo": "none",
@@ -422,60 +309,39 @@
         "why": "That is PCC chemistry (oxidising the 2° OH in place). HIO₄ breaks the C2–C3 bond."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(C)(O)C(=O)CC",
-          "stereo": "none"
-        },
-        "why": "PCC oxidises the 2° alcohol in place and leaves the 3° one. Cleavage needs HIO₄."
-      }
-    ],
     "explanation": "C2 (two methyls) becomes acetone; C3 (ethyl + H) becomes propanal.",
     "tip": "Two carbons on the cut carbon → ketone; one carbon → aldehyde."
   },
   {
     "id": "q-R23-phenylpropanediol-001",
-    "reactionId": "R23",
+    "reactionIds": [
+      "R23"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "OC(c1ccccc1)C(C)O",
       "name": "1-phenylpropane-1,2-diol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "HIO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "O=Cc1ccccc1.CC=O",
+    "target": {
+      "name": "benzaldehyde",
       "stereo": "none",
+      "smiles": "O=Cc1ccccc1",
       "highlightAtoms": [
         0,
-        1,
-        8,
-        9,
-        10
+        1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "HIO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "OCc1ccccc1.CCO",
         "stereo": "none",
@@ -495,79 +361,43 @@
         "why": "A diketone keeps the C–C bond; HIO₄ breaks it."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2CrO4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(=O)C(=O)c1ccccc1",
-          "stereo": "none"
-        },
-        "why": "Chromic acid oxidises in place to the diketone; it does not cleave."
-      }
-    ],
     "explanation": "The C1–C2 bond breaks: C1 (phenyl + H) becomes benzaldehyde, C2 (methyl + H) becomes acetaldehyde.",
     "tip": "Each cut carbon keeps its own substituents and gains a C=O."
   },
   {
     "id": "q-R23-pinacol-001",
-    "reactionId": "R23",
+    "reactionIds": [
+      "R23"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
       "make_it",
-      "name_it"
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(C)(O)C(C)(C)O",
       "name": "2,3-dimethylbutane-2,3-diol (pinacol)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "HIO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CC(C)=O.CC(C)=O",
+    "target": {
+      "name": "acetone",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "acetone (2 equiv)",
-          "propanone (2 equiv)",
-          "propan-2-one (2 equiv)",
-          "2 acetone",
-          "acetone",
-          "propan-2-one"
-        ],
-        "traps": [
-          {
-            "name": "propanal",
-            "tag": "aldehyde_ketone_mixup",
-            "why": "The carbonyl carbon carries two methyls and no H: a ketone, propan-2-one."
-          }
-        ]
-      },
+      "altNames": [
+        "propan-2-one",
+        "propanone"
+      ],
+      "smiles": "CC(C)=O",
       "highlightAtoms": [
         1,
-        3,
-        4,
-        5,
-        6,
-        7
+        3
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "HIO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CC(C)O.CC(C)O",
         "stereo": "none",
@@ -587,24 +417,11 @@
         "why": "Any vicinal diol reacts with HIO₄, 3° carbinols included."
       }
     ],
-    "routeDistractors": [
+    "nameTraps": [
       {
-        "steps": [
-          {
-            "reagents": [
-              "H2SO4_heat"
-            ],
-            "conditions": {
-              "temp": "reflux"
-            }
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(=O)C(C)(C)C",
-          "stereo": "none"
-        },
-        "why": "Hot acid gives the pinacol rearrangement product. Cleavage to two acetones is HIO₄."
+        "name": "propanal",
+        "tag": "aldehyde_ketone_mixup",
+        "why": "The carbonyl carbon carries two methyls and no H: a ketone, propan-2-one."
       }
     ],
     "explanation": "Both carbinol carbons carry two methyls, so cleavage gives two molecules of acetone.",

@@ -1,0 +1,2704 @@
+{
+  "rules": [
+    {
+      "id": "NaBH4_carbonyl",
+      "reagent": "NaBH4",
+      "reactionIds": [
+        "R2"
+      ],
+      "label": "NaBH₄ delivered hydride to the aldehyde/ketone; the methanol solvent protonated the alkoxide → alcohol.",
+      "pipeline": [
+        {
+          "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O:2]>>[C:1][O:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "LiAlH4_reduce",
+      "reagent": "LiAlH4",
+      "reactionIds": [
+        "R3",
+        "R4",
+        "R5",
+        "E9"
+      ],
+      "label": "LiAlH₄ delivered hydride. You hold the aluminium alkoxide(s): add H₂O or H₃O⁺ to get the alcohol.",
+      "pipeline": [
+        {
+          "rxn": "[C:1](=[O:2])[O:3][#6;!$(C=O):4]>>([C:1][O-:2].[O-:3][#6:4])",
+          "repeat": true
+        },
+        {
+          "rxn": "[C:1](=[O:2])[OX2H1]>>[C:1][O-:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O:2]>>[C:1][O-:2]",
+          "repeat": true
+        },
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1>>[C:1][C:2][O-:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1>>[C:1][C:2][O-:3]",
+            "[CH1:1]1[O:3][CH1:2]1>>[C:1][C:2][O-:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2_Pt_hydrogenate",
+      "reagent": "H2_Pt",
+      "reactionIds": [
+        "R1"
+      ],
+      "label": "H₂ over Pt reduced every C=C and every aldehyde/ketone C=O.",
+      "pipeline": [
+        {
+          "rxn": "[C:1]=[C:2]>>[C:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O:2]>>[C:1][O:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Clemmensen",
+      "reagent": "Zn_Hg_HCl",
+      "reactionIds": [
+        "R24"
+      ],
+      "label": "Clemmensen reduction: the carbonyl became CH₂.",
+      "pipeline": [
+        {
+          "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O]>>[C:1]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "WolffKishner",
+      "reagent": "H2NNH2_KOH",
+      "reactionIds": [
+        "R24"
+      ],
+      "label": "Wolff–Kishner: hydrazone, then N₂ leaves; the carbonyl became CH₂.",
+      "conditions": {
+        "temp": [
+          "reflux"
+        ]
+      },
+      "pipeline": [
+        {
+          "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O]>>[C:1]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "PCC_oxidise",
+      "reagent": "PCC",
+      "reactionIds": [
+        "R22"
+      ],
+      "label": "PCC oxidised the alcohol: 1° → aldehyde (and stopped), 2° → ketone.",
+      "pipeline": [
+        {
+          "rxn": "[CX4;H1,H2;!$(C(O)O):1][OX2H1:2]>>[C:1]=[O:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Jones_quinone",
+      "reagent": "H2CrO4",
+      "reactionIds": [
+        "P10"
+      ],
+      "label": "Chromic acid oxidised the hydroquinone / catechol to the quinone.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[OH:1][c:2]1[c:3][c:4][c:5]([OH:6])[c:7][c:8]1>>[O:1]=[C:2]1[C:3]=[C:4][C:5](=[O:6])[C:7]=[C:8]1",
+            "[OH:1][c:2]1[c:3]([OH:4])[c:5][c:6][c:7][c:8]1>>[O:1]=[C:2]1[C:3](=[O:4])[C:5]=[C:6][C:7]=[C:8]1"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "Jones_oxidise",
+      "reagent": "H2CrO4",
+      "reactionIds": [
+        "R21"
+      ],
+      "label": "Chromic acid oxidised the alcohol: 1° → carboxylic acid (via the aldehyde), 2° → ketone. 3° alcohols are untouched.",
+      "pipeline": [
+        {
+          "rxn": "[CX4H2;!$(C(O)O):1][OX2H1:2]>>[C:1](=O)[O:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[CX4H1;!$(C(O)O):1][OX2H1:2]>>[C:1]=[O:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[CX3H1:1](=[O:2])[#6:3]>>[C:1](=[O:2])([#6:3])O",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "HIO4_cleave",
+      "reagent": "HIO4",
+      "reactionIds": [
+        "R23"
+      ],
+      "label": "HIO₄ cleaved the C–C bond between the two carbinol carbons; each end is now a carbonyl.",
+      "pipeline": [
+        {
+          "rxn": "[C:1]([OX2H1:3])[C:2]([OX2H1:4])>>([C:1]=[O:3].[C:2]=[O:4])",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "OsO4_dihydroxylate",
+      "reagent": "OsO4",
+      "reactionIds": [
+        "R11"
+      ],
+      "label": "OsO₄ added two OH groups syn across the C=C (cyclic osmate ester, then NaHSO₃).",
+      "pipeline": [
+        {
+          "rxn": "[C:1]=[C:2]>>[C:1]([OH])[C:2][OH]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "BH3_hydroborate",
+      "reagent": "BH3_THF",
+      "reactionIds": [
+        "R10"
+      ],
+      "label": "BH₃ added syn across the C=C with boron on the less substituted carbon. You hold the alkylborane: add H₂O₂/NaOH.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX3H2:1]=[CX3:2]>>[BH2][C:1][C:2]",
+            "[CX3H1:1]=[CX3H0:2]>>[BH2][C:1][C:2]",
+            "[CX3H1:1]=[CX3H1:2]>>[BH2][C:1][C:2]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2O2_oxidise_borane",
+      "reagent": "H2O2_NaOH",
+      "reactionIds": [
+        "R10"
+      ],
+      "label": "H₂O₂/NaOH replaced the C–B bond with C–OH (retention): the anti-Markovnikov alcohol.",
+      "pipeline": [
+        {
+          "rxn": "[BH2][C:1]>>[OH][C:1]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "mCPBA_epoxidise",
+      "reagent": "mCPBA",
+      "reactionIds": [
+        "E7"
+      ],
+      "label": "The peroxy acid delivered an oxygen to the C=C: epoxide (syn, stereospecific).",
+      "pipeline": [
+        {
+          "rxn": "[C:1]=[C:2]>>[C:1]1[O][C:2]1",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "mCPBA_sulfone",
+      "reagent": "mCPBA",
+      "reactionIds": [
+        "E12"
+      ],
+      "label": "Two equivalents of peroxy acid oxidised the sulfide all the way to the sulfone.",
+      "conditions": {
+        "equiv": 2
+      },
+      "pipeline": [
+        {
+          "rxn": "[#6:1][SX2:2][#6:3]>>[#6:1][S:2](=O)(=O)[#6:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "mCPBA_sulfoxide",
+      "reagent": "mCPBA",
+      "reactionIds": [
+        "E12"
+      ],
+      "label": "One equivalent of peroxy acid oxidised the sulfide to the sulfoxide.",
+      "conditions": {
+        "equiv": 1
+      },
+      "pipeline": [
+        {
+          "rxn": "[#6:1][SX2:2][#6:3]>>[#6:1][S:2](=O)[#6:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2O2_sulfone",
+      "reagent": "H2O2",
+      "reactionIds": [
+        "E12"
+      ],
+      "label": "Two equivalents of H₂O₂ oxidised the sulfide to the sulfone.",
+      "conditions": {
+        "equiv": 2
+      },
+      "pipeline": [
+        {
+          "rxn": "[#6:1][SX2:2][#6:3]>>[#6:1][S:2](=O)(=O)[#6:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2O2_sulfoxide",
+      "reagent": "H2O2",
+      "reactionIds": [
+        "E12"
+      ],
+      "label": "One equivalent of H₂O₂ oxidised the sulfide to the sulfoxide.",
+      "conditions": {
+        "equiv": 1
+      },
+      "pipeline": [
+        {
+          "rxn": "[#6:1][SX2:2][#6:3]>>[#6:1][S:2](=O)[#6:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaIO4_sulfoxide",
+      "reagent": "NaIO4",
+      "reactionIds": [
+        "E12"
+      ],
+      "label": "NaIO₄ oxidised the sulfide to the sulfoxide and stopped there.",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][SX2:2][#6:3]>>[#6:1][S:2](=O)[#6:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "I2_disulfide",
+      "reagent": "I2",
+      "reactionIds": [
+        "R26"
+      ],
+      "label": "I₂ oxidised two thiols to the disulfide RS–SR.",
+      "partner": "self",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][SX2H1:2].[#6:3][SX2H1:4]>>[#6:1][S:2][S:4][#6:3]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "NBS_brominate",
+      "reagent": "NBS",
+      "reactionIds": [
+        "R28"
+      ],
+      "label": "NBS with light/peroxide: radical bromination at the benzylic / allylic position.",
+      "conditions": {
+        "light": true
+      },
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4;!H0;$(C[c]):1]>>[C:1]Br",
+            "[CX4;!H0;$(CC=C):1]>>[C:1]Br"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "H2O_diazonium",
+      "reagent": "H2O",
+      "reactionIds": [
+        "P1"
+      ],
+      "label": "Hot water hydrolysed the diazonium salt: N₂ left and OH took its carbon → phenol.",
+      "conditions": {
+        "temp": [
+          "reflux"
+        ]
+      },
+      "pipeline": [
+        {
+          "rxn": "[c:1][N+]#N>>[c:1][OH]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2O_workup",
+      "reagent": "H2O",
+      "reactionIds": [],
+      "label": "Water protonated the anion(s) (and quenched any Grignard).",
+      "pipeline": [
+        {
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1]>>[OH+0:1]",
+          "repeat": true
+        },
+        {
+          "rxn": "[S-:1]>>[SH+0:1]",
+          "repeat": true
+        },
+        {
+          "rxn": "[#6:1][Mg][Br]>>[#6:1]",
+          "repeat": true
+        },
+        {
+          "rxn": "[#6:1][Mg][Cl]>>[#6:1]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H3O_workup",
+      "reagent": "H3O_plus",
+      "reactionIds": [],
+      "label": "Dilute acid protonated the anion(s) (and quenched any Grignard).",
+      "pipeline": [
+        {
+          "rxn": "[O-;!$([O-][N+]);!$([O-][n+]):1]>>[OH+0:1]",
+          "repeat": true
+        },
+        {
+          "rxn": "[S-:1]>>[SH+0:1]",
+          "repeat": true
+        },
+        {
+          "rxn": "[#6:1][Mg][Br]>>[#6:1]",
+          "repeat": true
+        },
+        {
+          "rxn": "[#6:1][Mg][Cl]>>[#6:1]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H3O_epoxide",
+      "reagent": "H3O_plus",
+      "reactionIds": [
+        "E10"
+      ],
+      "label": "Acid opened the epoxide: water attacked the more substituted carbon (anti), giving the trans-1,2-diol.",
+      "pipeline": [
+        {
+          "rxn": "[C:1]1[O:3][C:2]1>>[C:1]([OH])[C:2][OH:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H3O_hydrate",
+      "reagent": "H3O_plus",
+      "reactionIds": [],
+      "label": "Acid-catalysed hydration (Ch 6): Markovnikov, OH on the more substituted carbon.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX3H0:1]=[CX3:2]>>[C:1]([OH])[C:2]",
+            "[CX3H1:1]=[CX3H2:2]>>[C:1]([OH])[C:2]",
+            "[CX3H1:1]=[CX3H1:2]>>[C:1]([OH])[C:2]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "HBr_cleave_ether",
+      "reagent": "HBr",
+      "reactionIds": [
+        "E6"
+      ],
+      "label": "Excess HBr with heat cleaved the ether: alkyl groups became bromides; an aryl–O bond survives as the phenol.",
+      "conditions": {
+        "temp": [
+          "reflux"
+        ]
+      },
+      "pipeline": [
+        {
+          "rxn": "[c:1][O;!r3:2][CX4;!r3:3]>>([c:1][OH:2].[C:3]Br)",
+          "repeat": true
+        },
+        {
+          "rxn": "[CX4;!r3:1][O;!r3:2][CX4;!r3:3]>>([C:1]Br.[C:3]Br)",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "HBr_epoxide",
+      "reagent": "HBr",
+      "reactionIds": [
+        "E10"
+      ],
+      "label": "HBr opened the epoxide: bromide attacked the more substituted carbon (anti).",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4H0:1]1[O:3][C:2]1>>[C:1](Br)[C:2][OH:3]",
+            "[CX4H1:1]1[O:3][CX4;H1,H2:2]1>>[C:1](Br)[C:2][OH:3]",
+            "[CX4H2:1]1[O:3][CX4H2:2]1>>[C:1](Br)[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "HBr_alcohol",
+      "reagent": "HBr",
+      "reactionIds": [
+        "R14"
+      ],
+      "label": "HBr converted the alcohol to the bromide (3° by SN1, 1° by SN2).",
+      "warn": {
+        "light": true,
+        "tag": "wrong_temperature",
+        "why": "Light does nothing for HBr + an alcohol; the lamp was a decoy (it matters for NBS)."
+      },
+      "pipeline": [
+        {
+          "rxn": "[CX4:1][OX2H1]>>[C:1]Br",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "HI_cleave_ether",
+      "reagent": "HI",
+      "reactionIds": [
+        "E6"
+      ],
+      "label": "Excess HI with heat cleaved the ether: alkyl groups became iodides; an aryl–O bond survives as the phenol.",
+      "conditions": {
+        "temp": [
+          "reflux"
+        ]
+      },
+      "pipeline": [
+        {
+          "rxn": "[c:1][O;!r3:2][CX4;!r3:3]>>([c:1][OH:2].[C:3]I)",
+          "repeat": true
+        },
+        {
+          "rxn": "[CX4;!r3:1][O;!r3:2][CX4;!r3:3]>>([C:1]I.[C:3]I)",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "HCl_tertiary",
+      "reagent": "HCl",
+      "reactionIds": [
+        "R14"
+      ],
+      "label": "HCl converted the 3° alcohol to the chloride (SN1).",
+      "pipeline": [
+        {
+          "rxn": "[CX4H0;$(C([#6])([#6])[#6]):1][OX2H1]>>[C:1]Cl",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "HCl_ZnCl2_alcohol",
+      "reagent": "HCl_ZnCl2",
+      "reactionIds": [
+        "R14"
+      ],
+      "label": "HCl/ZnCl₂ (Lucas) converted the alcohol to the chloride.",
+      "pipeline": [
+        {
+          "rxn": "[CX4:1][OX2H1]>>[C:1]Cl",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "SOCl2_alcohol",
+      "reagent": "SOCl2",
+      "reactionIds": [
+        "R12"
+      ],
+      "label": "SOCl₂/pyridine converted the alcohol to the chloride.",
+      "pipeline": [
+        {
+          "rxn": "[CX4:1][OX2H1]>>[C:1]Cl",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "PBr3_alcohol",
+      "reagent": "PBr3",
+      "reactionIds": [
+        "R13"
+      ],
+      "label": "PBr₃ converted the 1°/2° alcohol to the bromide (SN2, no rearrangement).",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][OX2H1]>>[C:1]Br",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "H2SO4_cyclic_ether",
+      "reagent": "H2SO4_heat",
+      "reactionIds": [
+        "R17"
+      ],
+      "label": "Acid and heat: the diol cyclised to the cyclic ether (intramolecular SN2 on the protonated OH).",
+      "conditions": {
+        "temp": [
+          "reflux",
+          "c140",
+          "c180"
+        ]
+      },
+      "pipeline": [
+        {
+          "anyOf": [
+            "[OX2H1:5][CX4:1][C:2][C:3][CX4:4][OX2H1]>>[C:1]1[C:2][C:3][C:4][O:5]1",
+            "[OX2H1:6][CX4:1][C:2][C:3][C:4][CX4:5][OX2H1]>>[C:1]1[C:2][C:3][C:4][C:5][O:6]1"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "H2SO4_ether_140",
+      "reagent": "H2SO4_heat",
+      "reactionIds": [
+        "R16"
+      ],
+      "label": "At 140 °C two molecules of the 1° alcohol condensed (SN2) to the symmetric ether.",
+      "conditions": {
+        "temp": [
+          "c140"
+        ]
+      },
+      "partner": "self",
+      "pipeline": [
+        {
+          "rxn": "[CX4;H2,H3:1][OX2H1:2].[CX4;H2,H3:3][OX2H1]>>[C:1][O:2][C:3]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "H2SO4_dehydrate_sec_tert",
+      "reagent": "H2SO4_heat",
+      "reactionIds": [
+        "R15"
+      ],
+      "label": "Acid-catalysed dehydration (E1): the Zaitsev (more substituted) alkene.",
+      "conditions": {
+        "temp": [
+          "reflux",
+          "c140",
+          "c180"
+        ]
+      },
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4;H0,H1:1]([OX2H1])[CX4H1:2]>>[C:1]=[C:2]",
+            "[CX4;H0,H1:1]([OX2H1])[CX4H2:2]>>[C:1]=[C:2]",
+            "[CX4;H0,H1:1]([OX2H1])[CH3:2]>>[C:1]=[C:2]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "H2SO4_dehydrate_primary",
+      "reagent": "H2SO4_heat",
+      "reactionIds": [
+        "R15"
+      ],
+      "label": "At 180 °C even the 1° alcohol dehydrated (E2-like) to the alkene.",
+      "conditions": {
+        "temp": [
+          "c180"
+        ]
+      },
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4H2:1]([OX2H1])[CX4H1:2]>>[C:1]=[C:2]",
+            "[CX4H2:1]([OX2H1])[CX4H2:2]>>[C:1]=[C:2]",
+            "[CX4H2:1]([OX2H1])[CH3:2]>>[C:1]=[C:2]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "HNO3_dil_nitrate",
+      "reagent": "HNO3_dil",
+      "reactionIds": [
+        "P4"
+      ],
+      "label": "Dilute HNO₃ nitrated the ring once, para to the OH (ortho when para is blocked). Nothing already on the ring left.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[OX2H1:3][c:1]:[c]:[c]:[cH:2]>>[OX2H1:3][c:1]:[c]:[c]:[c:2][N+](=O)[O-]",
+            "[OX2H1:3][c:1]:[cH:2]>>[OX2H1:3][c:1]:[c:2][N+](=O)[O-]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "HNO3_H2SO4_nitrate",
+      "reagent": "HNO3_H2SO4",
+      "reactionIds": [],
+      "label": "Mixed acid nitrated the activated ring (para to the O/N group; ortho if para is blocked). The NH₂ stayed put: this is not the diazonium route.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[OX2,NX3;!$(N=*):3][c:1]:[c]:[c]:[cH:2]>>[*:3][c:1]:[c]:[c]:[c:2][N+](=O)[O-]",
+            "[OX2,NX3;!$(N=*):3][c:1]:[cH:2]>>[*:3][c:1]:[c:2][N+](=O)[O-]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "Br2_H2O_polybrominate",
+      "reagent": "Br2_H2O",
+      "reactionIds": [
+        "P2"
+      ],
+      "label": "Bromine water brominated every open ortho and para position of the phenol.",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:3][c:1]:[c]:[c]:[cH:2]>>[OX2H1:3][c:1]:[c]:[c]:[c:2]Br",
+          "repeat": true
+        },
+        {
+          "rxn": "[OX2H1:3][c:1]:[cH:2]>>[OX2H1:3][c:1]:[c:2]Br",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Br2_CHCl3_monobrominate",
+      "reagent": "Br2_CHCl3",
+      "reactionIds": [
+        "P3"
+      ],
+      "label": "Cold Br₂/CHCl₃ brominated once: para to the OH (ortho when para is blocked).",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[OX2H1:3][c:1]:[c]:[c]:[cH:2]>>[OX2H1:3][c:1]:[c]:[c]:[c:2]Br",
+            "[OX2H1:3][c:1]:[cH:2]>>[OX2H1:3][c:1]:[c:2]Br"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "NaNO2_diazotise",
+      "reagent": "NaNO2_H2SO4",
+      "reactionIds": [
+        "P1"
+      ],
+      "label": "Nitrous acid converted the Ar–NH₂ into the aryl diazonium salt (kept cold). Add H₂O and heat to replace N₂ with OH.",
+      "conditions": {
+        "temp": [
+          "ice"
+        ]
+      },
+      "pipeline": [
+        {
+          "rxn": "[c:1][NX3H2]>>[c:1][N+]#N",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaOH_epoxide_from_halohydrin",
+      "reagent": "NaOH",
+      "reactionIds": [
+        "E8"
+      ],
+      "label": "NaOH deprotonated the OH; the alkoxide displaced the halide on the next carbon (intramolecular Williamson) → epoxide.",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][C:2][C:3][Cl,Br,I]>>[O:1]1[C:2][C:3]1",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaOH_deprotonate",
+      "reagent": "NaOH",
+      "reactionIds": [
+        "P5"
+      ],
+      "label": "NaOH deprotonated the acidic group(s): phenol → phenoxide, thiol → thiolate, acid → carboxylate. Alcohols are left alone.",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][c:2]>>[O-:1][c:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[SX2H1:1][#6:2]>>[S-:1][#6:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[C:1](=O)[OX2H1:2]>>[C:1](=O)[O-:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaHCO3_deprotonate",
+      "reagent": "NaHCO3",
+      "reactionIds": [
+        "P5"
+      ],
+      "label": "NaHCO₃ is only strong enough for carboxylic acids (and phenols carrying two or more nitro groups).",
+      "pipeline": [
+        {
+          "rxn": "[C:1](=O)[OX2H1:2]>>[C:1](=O)[O-:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[OX2H1;$(Oc1c([N+](=O)[O-])cc([N+](=O)[O-])cc1),$(Oc1c([N+](=O)[O-])cccc1[N+](=O)[O-]):1][c:2]>>[O-:1][c:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "K2CO3_deprotonate",
+      "reagent": "K2CO3",
+      "reactionIds": [
+        "P6"
+      ],
+      "label": "K₂CO₃ deprotonated the phenol → phenoxide (ready for an alkyl halide).",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][c:2]>>[O-:1][c:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[SX2H1:1][#6:2]>>[S-:1][#6:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[C:1](=O)[OX2H1:2]>>[C:1](=O)[O-:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaH_epoxide_from_halohydrin",
+      "reagent": "NaH",
+      "reactionIds": [
+        "E8"
+      ],
+      "label": "The base deprotonated the OH; the alkoxide displaced the halide on the next carbon (intramolecular Williamson) → epoxide.",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][C:2][C:3][Cl,Br,I]>>[O:1]1[C:2][C:3]1",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaH_deprotonate",
+      "reagent": "NaH",
+      "reactionIds": [
+        "E3"
+      ],
+      "label": "NaH removed the O–H / S–H proton: you hold the alkoxide / phenoxide / thiolate.",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][CX4:2]>>[O-:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[OX2H1:1][c:2]>>[O-:1][c:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[SX2H1:1][#6:2]>>[S-:1][#6:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Na_epoxide_from_halohydrin",
+      "reagent": "Na",
+      "reactionIds": [
+        "E8"
+      ],
+      "label": "The base deprotonated the OH; the alkoxide displaced the halide on the next carbon (intramolecular Williamson) → epoxide.",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][C:2][C:3][Cl,Br,I]>>[O:1]1[C:2][C:3]1",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Na_deprotonate",
+      "reagent": "Na",
+      "reactionIds": [
+        "E3"
+      ],
+      "label": "Na removed the O–H / S–H proton: you hold the alkoxide / phenoxide / thiolate.",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][CX4:2]>>[O-:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[OX2H1:1][c:2]>>[O-:1][c:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[SX2H1:1][#6:2]>>[S-:1][#6:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "AlCl3_fries",
+      "reagent": "AlCl3",
+      "reactionIds": [
+        "P8"
+      ],
+      "label": "Fries rearrangement: the acyl group migrated from the oxygen to the ring, para (or ortho) to the OH → hydroxyaryl ketone.",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[c:1]([O:2][C:3](=[O:4])[#6:5]):[c]:[c]:[cH:6]>>[c:1]([OH:2]):[c]:[c]:[c:6][C:3](=[O:4])[#6:5]",
+            "[c:1]([O:2][C:3](=[O:4])[#6:5]):[cH:6]>>[c:1]([OH:2]):[c:6][C:3](=[O:4])[#6:5]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "Mg_insert",
+      "reagent": "Mg_ether",
+      "reactionIds": [
+        "R6"
+      ],
+      "label": "Magnesium inserted into the C–halogen bond: you hold the Grignard reagent R–MgBr. Now add the carbonyl (or epoxide) partner, then H₃O⁺.",
+      "requireNot": [
+        "[OX2H1]",
+        "[SX2H1]",
+        "[NX3;H1,H2]",
+        "[C]#[CH]"
+      ],
+      "requireNotWhy": "A Grignard reagent is destroyed by any acidic hydrogen (O–H, S–H, N–H). Protect or remove it first; no Grignard formed.",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][Br:2]>>[#6:1][Mg][Br:2]",
+          "repeat": false
+        },
+        {
+          "rxn": "[#6:1][Cl:2]>>[#6:1][Mg][Cl:2]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "CO2_kolbe",
+      "reagent": "CO2",
+      "reactionIds": [
+        "P9"
+      ],
+      "label": "Kolbe–Schmitt: the phenoxide attacked CO₂ ortho to the O⁻ (under pressure) → the carboxylate. Add H₃O⁺.",
+      "conditions": {
+        "pressure": true
+      },
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1][c:2]:[cH:3].[O:4]=[C:5]=[O:6]>>[O-:1][c:2]:[c:3][C:5](=[O:4])[O-:6]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "CH3I_sulfonium",
+      "reagent": "CH3I",
+      "reactionIds": [
+        "E13"
+      ],
+      "label": "The sulfide's lone pair attacked the alkyl halide → sulfonium salt R₃S⁺ X⁻.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:3][SX2;!$(S=O):1][#6:4].[CX4:2][Cl,Br,I]>>[#6:3][S+:1]([#6:4])[C:2]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "CH3I_williamson",
+      "reagent": "CH3I",
+      "reactionIds": [
+        "E3",
+        "P6",
+        "R27",
+        "E11"
+      ],
+      "label": "SN2: the alkoxide / phenoxide / thiolate attacked the CH₃ or 1° carbon and displaced the halide → ether / sulfide.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[S-:1].[CX4:2][Cl,Br,I]>>[SH0+0:1][C:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "EtBr_sulfonium",
+      "reagent": "EtBr",
+      "reactionIds": [
+        "E13"
+      ],
+      "label": "The sulfide's lone pair attacked the alkyl halide → sulfonium salt R₃S⁺ X⁻.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:3][SX2;!$(S=O):1][#6:4].[CX4:2][Cl,Br,I]>>[#6:3][S+:1]([#6:4])[C:2]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "EtBr_williamson",
+      "reagent": "EtBr",
+      "reactionIds": [
+        "E3",
+        "P6",
+        "R27",
+        "E11"
+      ],
+      "label": "SN2: the alkoxide / phenoxide / thiolate attacked the CH₃ or 1° carbon and displaced the halide → ether / sulfide.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[S-:1].[CX4:2][Cl,Br,I]>>[SH0+0:1][C:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "nPrBr_sulfonium",
+      "reagent": "nPrBr",
+      "reactionIds": [
+        "E13"
+      ],
+      "label": "The sulfide's lone pair attacked the alkyl halide → sulfonium salt R₃S⁺ X⁻.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:3][SX2;!$(S=O):1][#6:4].[CX4:2][Cl,Br,I]>>[#6:3][S+:1]([#6:4])[C:2]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "nPrBr_williamson",
+      "reagent": "nPrBr",
+      "reactionIds": [
+        "E3",
+        "P6",
+        "R27",
+        "E11"
+      ],
+      "label": "SN2: the alkoxide / phenoxide / thiolate attacked the CH₃ or 1° carbon and displaced the halide → ether / sulfide.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[S-:1].[CX4:2][Cl,Br,I]>>[SH0+0:1][C:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "BnBr_sulfonium",
+      "reagent": "BnBr",
+      "reactionIds": [
+        "E13"
+      ],
+      "label": "The sulfide's lone pair attacked the alkyl halide → sulfonium salt R₃S⁺ X⁻.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:3][SX2;!$(S=O):1][#6:4].[CX4:2][Cl,Br,I]>>[#6:3][S+:1]([#6:4])[C:2]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "BnBr_williamson",
+      "reagent": "BnBr",
+      "reactionIds": [
+        "E3",
+        "P6",
+        "R27",
+        "E11"
+      ],
+      "label": "SN2: the alkoxide / phenoxide / thiolate attacked the CH₃ or 1° carbon and displaced the halide → ether / sulfide.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[S-:1].[CX4:2][Cl,Br,I]>>[SH0+0:1][C:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "AllylBr_sulfonium",
+      "reagent": "AllylBr",
+      "reactionIds": [
+        "E13"
+      ],
+      "label": "The sulfide's lone pair attacked the alkyl halide → sulfonium salt R₃S⁺ X⁻.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:3][SX2;!$(S=O):1][#6:4].[CX4:2][Cl,Br,I]>>[#6:3][S+:1]([#6:4])[C:2]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "AllylBr_williamson",
+      "reagent": "AllylBr",
+      "reactionIds": [
+        "E3",
+        "P6",
+        "R27",
+        "E11"
+      ],
+      "label": "SN2: the alkoxide / phenoxide / thiolate attacked the CH₃ or 1° carbon and displaced the halide → ether / sulfide.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1].[CX4:2][Cl,Br,I]>>[OH0+0:1][C:2]",
+          "repeat": true
+        },
+        {
+          "rxn": "[S-:1].[CX4:2][Cl,Br,I]>>[SH0+0:1][C:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "iPrBr_E2",
+      "reagent": "iPrBr",
+      "reactionIds": [
+        "E4"
+      ],
+      "label": "The alkoxide acted as a base on the 2°/3° halide: E2 gave the alkene (Zaitsev) and returned the alcohol. No ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1].[CX4;H0,H1:2]([CX4;!H0:3])[Br]>>([OH+0:1].[C:2]=[C:3])",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "tBuBr_E2",
+      "reagent": "tBuBr",
+      "reactionIds": [
+        "E4"
+      ],
+      "label": "The alkoxide acted as a base on the 2°/3° halide: E2 gave the alkene (Zaitsev) and returned the alcohol. No ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[O-:1].[CX4;H0,H1:2]([CX4;!H0:3])[Br]>>([OH+0:1].[C:2]=[C:3])",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "HCHO_grignard_add",
+      "reagent": "HCHO",
+      "reactionIds": [
+        "R6"
+      ],
+      "label": "The Grignard carbon attacked the carbonyl carbon → magnesium alkoxide. Add H₃O⁺ for the alcohol.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][Mg][Br,Cl].[CH2:2]=[O:3]>>[#6:1][C:2][O-:3]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "CH3CHO_grignard_add",
+      "reagent": "CH3CHO",
+      "reactionIds": [
+        "R7"
+      ],
+      "label": "The Grignard carbon attacked the carbonyl carbon → magnesium alkoxide. Add H₃O⁺ for the alcohol.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][Mg][Br,Cl].[CX3H1:2]=[O:3]>>[#6:1][C:2][O-:3]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "PhCHO_grignard_add",
+      "reagent": "PhCHO",
+      "reactionIds": [
+        "R7"
+      ],
+      "label": "The Grignard carbon attacked the carbonyl carbon → magnesium alkoxide. Add H₃O⁺ for the alcohol.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][Mg][Br,Cl].[CX3H1:2]=[O:3]>>[#6:1][C:2][O-:3]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "acetone_grignard_add",
+      "reagent": "acetone",
+      "reactionIds": [
+        "R8"
+      ],
+      "label": "The Grignard carbon attacked the carbonyl carbon → magnesium alkoxide. Add H₃O⁺ for the alcohol.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][Mg][Br,Cl].[CX3H0;!$(C(=O)[O,N,S,Cl,Br]):2]=[O:3]>>[#6:1][C:2][O-:3]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "cyclohexanone_grignard_add",
+      "reagent": "cyclohexanone",
+      "reactionIds": [
+        "R8"
+      ],
+      "label": "The Grignard carbon attacked the carbonyl carbon → magnesium alkoxide. Add H₃O⁺ for the alcohol.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][Mg][Br,Cl].[CX3H0;!$(C(=O)[O,N,S,Cl,Br]):2]=[O:3]>>[#6:1][C:2][O-:3]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "ethylene_oxide_grignard",
+      "reagent": "ethylene_oxide",
+      "reactionIds": [
+        "R9"
+      ],
+      "label": "The Grignard opened ethylene oxide (SN2) → magnesium alkoxide with two extra carbons. Add H₃O⁺.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[#6:1][Mg][Br,Cl].[CH2:2]1[CH2:3][O:4]1>>[#6:1][C:2][C:3][O-:4]",
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "AcCl_pyr_acylate_O",
+      "reagent": "AcCl_pyr",
+      "reactionIds": [
+        "R18",
+        "P7"
+      ],
+      "label": "The acid chloride acylated the oxygen → ester (pyridine mops up HCl).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][#6;!$(C=O):2].[C:3](=[O:4])[Cl]>>[#6:2][O:1][C:3]=[O:4]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "BzCl_pyr_acylate_O",
+      "reagent": "BzCl_pyr",
+      "reactionIds": [
+        "R18",
+        "P7"
+      ],
+      "label": "Benzoyl chloride acylated the oxygen → benzoate ester.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][#6;!$(C=O):2].[C:3](=[O:4])[Cl]>>[#6:2][O:1][C:3]=[O:4]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "Ac2O_acylate_O",
+      "reagent": "Ac2O",
+      "reactionIds": [
+        "R19",
+        "P7"
+      ],
+      "label": "The anhydride acylated the oxygen → acetate ester (acetic acid is the byproduct).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][#6;!$(C=O):2].[C:3](=[O:4])[O][C](=O)C>>[#6:2][O:1][C:3]=[O:4]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "AcOH_fischer",
+      "reagent": "AcOH_H2SO4",
+      "reactionIds": [
+        "R20"
+      ],
+      "label": "Fischer esterification: the alcohol oxygen attacked the protonated acid; water left (from the acid's OH). Reversible.",
+      "conditions": {
+        "temp": [
+          "reflux"
+        ]
+      },
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[OX2H1:1][CX4:2].[C:3](=[O:4])[OX2H1]>>[C:2][O:1][C:3]=[O:4]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "MeOH_H2SO4_fischer",
+      "reagent": "MeOH_H2SO4",
+      "reactionIds": [
+        "R20"
+      ],
+      "label": "Fischer esterification: the alcohol (nucleophile) attacked the protonated carboxylic acid → ester + water.",
+      "conditions": {
+        "temp": [
+          "reflux"
+        ]
+      },
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[C:1](=[O:2])[OX2H1].[OX2H1:3][C:4]>>[C:1](=[O:2])[O:3][C:4]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "MeOH_H2SO4_epoxide",
+      "reagent": "MeOH_H2SO4",
+      "reactionIds": [
+        "E10"
+      ],
+      "label": "Acid-catalysed opening: the alcohol attacked the MORE substituted epoxide carbon (anti).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4H0:1]1[O:3][C:2]1.[OX2H1:4][C:5]>>[C:1]([O:4][C:5])[C:2][OH:3]",
+            "[CX4H1:1]1[O:3][CX4;H1,H2:2]1.[OX2H1:4][C:5]>>[C:1]([O:4][C:5])[C:2][OH:3]",
+            "[CX4H2:1]1[O:3][CX4H2:2]1.[OX2H1:4][C:5]>>[C:1]([O:4][C:5])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "EtOH_H2SO4_fischer",
+      "reagent": "EtOH_H2SO4",
+      "reactionIds": [
+        "R20"
+      ],
+      "label": "Fischer esterification: the alcohol (nucleophile) attacked the protonated carboxylic acid → ester + water.",
+      "conditions": {
+        "temp": [
+          "reflux"
+        ]
+      },
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[C:1](=[O:2])[OX2H1].[OX2H1:3][C:4]>>[C:1](=[O:2])[O:3][C:4]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "EtOH_H2SO4_epoxide",
+      "reagent": "EtOH_H2SO4",
+      "reactionIds": [
+        "E10"
+      ],
+      "label": "Acid-catalysed opening: the alcohol attacked the MORE substituted epoxide carbon (anti).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4H0:1]1[O:3][C:2]1.[OX2H1:4][C:5]>>[C:1]([O:4][C:5])[C:2][OH:3]",
+            "[CX4H1:1]1[O:3][CX4;H1,H2:2]1.[OX2H1:4][C:5]>>[C:1]([O:4][C:5])[C:2][OH:3]",
+            "[CX4H2:1]1[O:3][CX4H2:2]1.[OX2H1:4][C:5]>>[C:1]([O:4][C:5])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "AcCl_AlCl3_C_acylate",
+      "reagent": "AcCl_AlCl3",
+      "reactionIds": [
+        "P8"
+      ],
+      "label": "Friedel–Crafts C-acylation ortho/para to the OH → hydroxyaryl ketone. The OH stays.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[OX2H1:3][c:1]:[c]:[c]:[cH:2].[C:4](=[O:5])Cl>>[OX2H1:3][c:1]:[c]:[c]:[c:2][C:4]=[O:5]",
+            "[OX2H1:3][c:1]:[cH:2].[C:4](=[O:5])Cl>>[OX2H1:3][c:1]:[c:2][C:4]=[O:5]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "NaOMe_epoxide",
+      "reagent": "NaOMe",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[O-:4][C:5]>>[C:1]([OH0+0:4][C:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[O-:4][C:5]>>[C:1]([OH0+0:4][C:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[O-:4][C:5]>>[C:1]([OH0+0:4][C:5])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaOEt_epoxide",
+      "reagent": "NaOEt",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[O-:4][C:5]>>[C:1]([OH0+0:4][C:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[O-:4][C:5]>>[C:1]([OH0+0:4][C:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[O-:4][C:5]>>[C:1]([OH0+0:4][C:5])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaCN_epoxide",
+      "reagent": "NaCN",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[C-:4]#[N:5]>>[C:1]([CH0+0:4]#[N:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[C-:4]#[N:5]>>[C:1]([CH0+0:4]#[N:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[C-:4]#[N:5]>>[C:1]([CH0+0:4]#[N:5])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaN3_epoxide",
+      "reagent": "NaN3",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[N-:4]=[N+:5]=[N-:6]>>[C:1]([NH0+0:4]=[N+:5]=[N-:6])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[N-:4]=[N+:5]=[N-:6]>>[C:1]([NH0+0:4]=[N+:5]=[N-:6])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[N-:4]=[N+:5]=[N-:6]>>[C:1]([NH0+0:4]=[N+:5]=[N-:6])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NH3_epoxide",
+      "reagent": "NH3",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[NH3:4]>>[C:1]([NH2:4])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[NH3:4]>>[C:1]([NH2:4])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[NH3:4]>>[C:1]([NH2:4])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaSH_epoxide",
+      "reagent": "NaSH",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[SH-:4]>>[C:1]([SH+0:4])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[SH-:4]>>[C:1]([SH+0:4])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[SH-:4]>>[C:1]([SH+0:4])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaSMe_epoxide",
+      "reagent": "NaSMe",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there).",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[S-:4][C:5]>>[C:1]([SH0+0:4][C:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[S-:4][C:5]>>[C:1]([SH0+0:4][C:5])[C:2][OH:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[S-:4][C:5]>>[C:1]([SH0+0:4][C:5])[C:2][OH:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "MeMgBr_epoxide",
+      "reagent": "MeMgBr",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there). You hold the magnesium alkoxide: add H₃O⁺.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[CH3:4][Mg]Br>>[C:1]([C:4])[C:2][O-:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[CH3:4][Mg]Br>>[C:1]([C:4])[C:2][O-:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[CH3:4][Mg]Br>>[C:1]([C:4])[C:2][O-:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "PhMgBr_epoxide",
+      "reagent": "PhMgBr",
+      "reactionIds": [
+        "E9"
+      ],
+      "label": "The nucleophile opened the epoxide at the LESS substituted carbon (SN2, inversion there). You hold the magnesium alkoxide: add H₃O⁺.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CH2:1]1[O:3][C:2]1.[c:4][Mg]Br>>[C:1]([c:4])[C:2][O-:3]",
+            "[CH1:1]1[O:3][CX4H0:2]1.[c:4][Mg]Br>>[C:1]([c:4])[C:2][O-:3]",
+            "[CH1:1]1[O:3][CH1:2]1.[c:4][Mg]Br>>[C:1]([c:4])[C:2][O-:3]"
+          ],
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaSH_thiol",
+      "reagent": "NaSH",
+      "reactionIds": [
+        "R25"
+      ],
+      "label": "HS⁻ displaced the halide (SN2) → thiol.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][Cl,Br,I].[SH-:2]>>[C:1][SH+0:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaSMe_sulfide",
+      "reagent": "NaSMe",
+      "reactionIds": [
+        "R27",
+        "E11"
+      ],
+      "label": "The thiolate displaced the halide (SN2) → sulfide.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][Cl,Br,I].[S-:2][C:3]>>[C:1][SH0+0:2][C:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaCN_nitrile",
+      "reagent": "NaCN",
+      "reactionIds": [],
+      "label": "Cyanide displaced the halide (SN2) → nitrile.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][Cl,Br,I].[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaN3_azide",
+      "reagent": "NaN3",
+      "reactionIds": [],
+      "label": "Azide displaced the halide (SN2) → alkyl azide.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][Cl,Br,I].[N-:2]=[N+:3]=[N-:4]>>[C:1][NH0+0:2]=[N+:3]=[N-:4]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaOMe_SNAr",
+      "reagent": "NaOMe",
+      "reactionIds": [
+        "E5"
+      ],
+      "label": "SNAr: the alkoxide added to the ring carbon bearing the halide (the NO₂ ortho/para stabilised the Meisenheimer complex) and the halide left → aryl ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[c:1]([F,Cl,Br,I]):[c:2]:[c:3]:[c:4][N+:7](=[O:8])[O-:9].[O-:5][C:6]>>[c:1]([OH0+0:5][C:6]):[c:2]:[c:3]:[c:4][N+:7](=[O:8])[O-:9]",
+            "[c:1]([F,Cl,Br,I]):[c:2][N+:7](=[O:8])[O-:9].[O-:5][C:6]>>[c:1]([OH0+0:5][C:6]):[c:2][N+:7](=[O:8])[O-:9]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "NaOMe_williamson_on_halide",
+      "reagent": "NaOMe",
+      "reactionIds": [
+        "E3"
+      ],
+      "label": "The alkoxide displaced the halide on the CH₃/1° carbon (SN2) → ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;H2,H3:1][Cl,Br,I].[O-:2][C:3]>>[C:1][OH0+0:2][C:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaOMe_E2_on_halide",
+      "reagent": "NaOMe",
+      "reactionIds": [
+        "E4"
+      ],
+      "label": "The alkoxide acted as a base on the 2°/3° halide: E2 → alkene (Zaitsev), not an ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4;H0,H1:1]([Br,Cl,I])[CX4H1:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([Br,Cl,I])[CX4H2:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([Br,Cl,I])[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "NaOEt_SNAr",
+      "reagent": "NaOEt",
+      "reactionIds": [
+        "E5"
+      ],
+      "label": "SNAr: the alkoxide added to the ring carbon bearing the halide (the NO₂ ortho/para stabilised the Meisenheimer complex) and the halide left → aryl ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[c:1]([F,Cl,Br,I]):[c:2]:[c:3]:[c:4][N+:7](=[O:8])[O-:9].[O-:5][C:6]>>[c:1]([OH0+0:5][C:6]):[c:2]:[c:3]:[c:4][N+:7](=[O:8])[O-:9]",
+            "[c:1]([F,Cl,Br,I]):[c:2][N+:7](=[O:8])[O-:9].[O-:5][C:6]>>[c:1]([OH0+0:5][C:6]):[c:2][N+:7](=[O:8])[O-:9]"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "NaOEt_williamson_on_halide",
+      "reagent": "NaOEt",
+      "reactionIds": [
+        "E3"
+      ],
+      "label": "The alkoxide displaced the halide on the CH₃/1° carbon (SN2) → ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;H2,H3:1][Cl,Br,I].[O-:2][C:3]>>[C:1][OH0+0:2][C:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "NaOEt_E2_on_halide",
+      "reagent": "NaOEt",
+      "reactionIds": [
+        "E4"
+      ],
+      "label": "The alkoxide acted as a base on the 2°/3° halide: E2 → alkene (Zaitsev), not an ether.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "anyOf": [
+            "[CX4;H0,H1:1]([Br,Cl,I])[CX4H1:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([Br,Cl,I])[CX4H2:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])",
+            "[CX4;H0,H1:1]([Br,Cl,I])[CH3:2].[O-:3][C:4]>>([C:1]=[C:2].[OH+0:3][C:4])"
+          ],
+          "repeat": false
+        }
+      ]
+    },
+    {
+      "id": "KF_crown_SN2",
+      "reagent": "KF_crown",
+      "reactionIds": [
+        "E2"
+      ],
+      "label": "18-crown-6 freed the fluoride: SN2 on the halide → alkyl fluoride.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][Cl,Br,I].[F-:2]>>[C:1][FH0+0:2]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "KCN_crown_SN2",
+      "reagent": "KCN_crown",
+      "reactionIds": [
+        "E2"
+      ],
+      "label": "18-crown-6 freed the cyanide: SN2 on the halide → nitrile.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][Cl,Br,I].[C-:2]#[N:3]>>[C:1][CH0+0:2]#[N:3]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "KOAc_crown_SN2",
+      "reagent": "KOAc_crown",
+      "reactionIds": [
+        "E2"
+      ],
+      "label": "18-crown-6 freed the acetate: SN2 on the halide → acetate ester.",
+      "partner": "bottle",
+      "pipeline": [
+        {
+          "rxn": "[CX4;!H0:1][Cl,Br,I].[O-:2][C:3](=[O:4])[C:5]>>[C:1][OH0+0:2][C:3](=[O:4])[C:5]",
+          "repeat": true
+        }
+      ]
+    },
+    {
+      "id": "O3_ozonolysis",
+      "reagent": "O3",
+      "reactionIds": [],
+      "label": "Ozonolysis (Ch 6): O₃ cleaved the C=C into two carbonyls. (OsO₄ would have kept the C–C bond and given the diol.)",
+      "pipeline": [
+        {
+          "rxn": "[C:1]=[C:2]>>([C:1]=O.[C:2]=O)",
+          "repeat": true
+        }
+      ]
+    }
+  ],
+  "noReaction": [
+    {
+      "reagent": "NaBH4",
+      "pattern": "[CX3](=O)[OX2]",
+      "tag": "over_reduction",
+      "why": "NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water."
+    },
+    {
+      "reagent": "NaBH4",
+      "pattern": "[C]=[C]",
+      "tag": "over_reduction",
+      "why": "NaBH₄ does not reduce C=C; without an aldehyde or ketone there is nothing for it to do."
+    },
+    {
+      "reagent": "NaBH4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "No aldehyde or ketone here, so NaBH₄ has nothing to reduce."
+    },
+    {
+      "reagent": "LiAlH4",
+      "pattern": "[C]=[C]",
+      "tag": "reagent_label_unknown",
+      "why": "Hydrides never touch an isolated C=C; LiAlH₄ needs a carbonyl, an epoxide or an acid."
+    },
+    {
+      "reagent": "LiAlH4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Nothing for LiAlH₄ to reduce here (no C=O, no epoxide)."
+    },
+    {
+      "reagent": "H2_Pt",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "No C=C or aldehyde/ketone C=O to hydrogenate (esters, acids and benzene rings survive)."
+    },
+    {
+      "reagent": "PCC",
+      "pattern": "[CX4H0][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "A 3° alcohol has no H on the carbinol carbon, so PCC cannot oxidise it."
+    },
+    {
+      "reagent": "PCC",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "PCC needs a 1° or 2° alcohol."
+    },
+    {
+      "reagent": "H2CrO4",
+      "pattern": "[CX4H0][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "A 3° alcohol has no H on the carbinol carbon: chromic acid gives no reaction."
+    },
+    {
+      "reagent": "H2CrO4",
+      "pattern": "[OX2H1][c]",
+      "tag": "reagent_label_unknown",
+      "why": "An ordinary phenol is not oxidised by chromic acid; only hydroquinones/catechols give quinones."
+    },
+    {
+      "reagent": "H2CrO4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Chromic acid needs a 1° or 2° alcohol (or an aldehyde)."
+    },
+    {
+      "reagent": "HIO4",
+      "pattern": "[OX2H1][C][C][C][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "HIO₄ cleaves VICINAL (1,2-) diols only; a 1,3-diol is untouched."
+    },
+    {
+      "reagent": "HIO4",
+      "pattern": "[OX2H1]",
+      "tag": "diol_to_alcohols",
+      "why": "HIO₄ needs two OH groups on adjacent carbons; a lone alcohol is untouched."
+    },
+    {
+      "reagent": "HIO4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "No vicinal diol to cleave."
+    },
+    {
+      "reagent": "OsO4",
+      "pattern": "[OX2H1][C][C][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "The diol is already made; OsO₄ needs a C=C."
+    },
+    {
+      "reagent": "OsO4",
+      "pattern": "*",
+      "tag": "ozone_vs_osmium",
+      "why": "OsO₄ needs a C=C to dihydroxylate."
+    },
+    {
+      "reagent": "BH3_THF",
+      "pattern": "*",
+      "tag": "markovnikov_flip",
+      "why": "No C=C for BH₃ to add to."
+    },
+    {
+      "reagent": "H2O2_NaOH",
+      "pattern": "*",
+      "tag": "missing_workup",
+      "why": "Nothing to oxidise: H₂O₂/NaOH is step 2 of hydroboration and needs the alkylborane from BH₃·THF first."
+    },
+    {
+      "reagent": "mCPBA",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "A peroxy acid needs a C=C (epoxide) or a sulfide (sulfoxide/sulfone)."
+    },
+    {
+      "reagent": "H2O2",
+      "pattern": "*",
+      "tag": "sulfoxide_vs_sulfone",
+      "why": "H₂O₂ here only oxidises sulfides (1 equiv → sulfoxide, 2 → sulfone)."
+    },
+    {
+      "reagent": "NaIO4",
+      "pattern": "*",
+      "tag": "sulfoxide_vs_sulfone",
+      "why": "NaIO₄ only oxidises a sulfide to the sulfoxide."
+    },
+    {
+      "reagent": "I2",
+      "pattern": "[SX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "I₂ couples TWO thiols; make sure the flask holds a thiol with a free S–H."
+    },
+    {
+      "reagent": "I2",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "I₂ is for coupling thiols to a disulfide; no S–H here."
+    },
+    {
+      "reagent": "NBS",
+      "pattern": "*",
+      "tag": "wrong_temperature",
+      "why": "NBS needs light, peroxide or heat to start the radical chain; in the dark nothing happens."
+    },
+    {
+      "reagent": "H2O",
+      "pattern": "[c][N+]#N",
+      "tag": "wrong_temperature",
+      "why": "Cold water leaves the diazonium salt alone; heat it (reflux) to replace N₂ with OH."
+    },
+    {
+      "reagent": "H2O",
+      "pattern": "*",
+      "tag": "missing_workup",
+      "why": "Nothing to protonate yet: water is the workup after a hydride or Grignard step."
+    },
+    {
+      "reagent": "H3O_plus",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Nothing to protonate, no epoxide to open and no alkene to hydrate."
+    },
+    {
+      "reagent": "HBr",
+      "pattern": "[CX4;!r3][O;!r3][CX4;!r3]",
+      "tag": "wrong_temperature",
+      "why": "Ether cleavage needs excess HBr AND heat."
+    },
+    {
+      "reagent": "HBr",
+      "pattern": "[c][O;!r3][CX4;!r3]",
+      "tag": "wrong_temperature",
+      "why": "Ether cleavage needs excess HBr AND heat."
+    },
+    {
+      "reagent": "HBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "HBr needs an alcohol (→ bromide), an epoxide, or an ether with heat."
+    },
+    {
+      "reagent": "HI",
+      "pattern": "[O;!r3]([#6])[CX4;!r3]",
+      "tag": "wrong_temperature",
+      "why": "Ether cleavage needs excess HI AND heat."
+    },
+    {
+      "reagent": "HI",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "HI here is for cleaving ethers (with heat)."
+    },
+    {
+      "reagent": "HCl",
+      "pattern": "[CX4;!H0][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "1° and 2° alcohols are too slow with HCl alone; add ZnCl₂ (Lucas) or use SOCl₂."
+    },
+    {
+      "reagent": "HCl",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "HCl alone only converts 3° alcohols."
+    },
+    {
+      "reagent": "HCl_ZnCl2",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Lucas reagent needs an alcohol."
+    },
+    {
+      "reagent": "SOCl2",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "SOCl₂ needs an alcohol to convert to the chloride."
+    },
+    {
+      "reagent": "PBr3",
+      "pattern": "[CX4H0][OX2H1]",
+      "tag": "reagent_label_unknown",
+      "why": "PBr₃ works by SN2 and fails on a 3° alcohol; use HBr instead."
+    },
+    {
+      "reagent": "PBr3",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "PBr₃ needs a 1° or 2° alcohol."
+    },
+    {
+      "reagent": "H2SO4_heat",
+      "pattern": "[CX4H2][OX2H1]",
+      "tag": "wrong_temperature",
+      "why": "A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough."
+    },
+    {
+      "reagent": "H2SO4_heat",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_temperature",
+      "why": "Dehydration needs heat: turn the dial up."
+    },
+    {
+      "reagent": "H2SO4_heat",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "H₂SO₄/heat needs an alcohol to dehydrate (or two 1° alcohols at 140 °C)."
+    },
+    {
+      "reagent": "HNO3_dil",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Dilute HNO₃ nitrates phenols; no phenol with an open ortho/para position here."
+    },
+    {
+      "reagent": "HNO3_H2SO4",
+      "pattern": "[c][NX3H2]",
+      "tag": "nitrite_vs_nitric",
+      "why": "Mixed acid nitrates rings; it does not touch the NH₂. To replace NH₂ with OH you need NaNO₂/H₂SO₄ (cold) then H₂O/heat."
+    },
+    {
+      "reagent": "HNO3_H2SO4",
+      "pattern": "*",
+      "tag": "nitrite_vs_nitric",
+      "why": "HNO₃/H₂SO₄ is nitration (not in this toolkit), not the diazonium route."
+    },
+    {
+      "reagent": "NaNO2_H2SO4",
+      "pattern": "[c][NX3H2]",
+      "tag": "wrong_temperature",
+      "why": "Diazotisation must be done at 0–5 °C; warmer, the diazonium salt decomposes as soon as it forms. Use the ice bath."
+    },
+    {
+      "reagent": "NaNO2_H2SO4",
+      "pattern": "*",
+      "tag": "nitrite_vs_nitric",
+      "why": "NaNO₂/acid reacts with an aryl amine (Ar–NH₂); there is none here."
+    },
+    {
+      "reagent": "Br2_H2O",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Bromine water brominates phenols; no open ortho/para position on a phenol here."
+    },
+    {
+      "reagent": "Br2_CHCl3",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Br₂/CHCl₃ brominates phenols; no open ortho/para position on a phenol here."
+    },
+    {
+      "reagent": "NaOH",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "NaOH is too weak to deprotonate an ordinary alcohol fully; use NaH or Na to make the alkoxide."
+    },
+    {
+      "reagent": "NaOH",
+      "pattern": "[c][NX3H2]",
+      "tag": "reagent_label_unknown",
+      "why": "NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold)."
+    },
+    {
+      "reagent": "NaOH",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Nothing acidic enough for NaOH here."
+    },
+    {
+      "reagent": "NaHCO3",
+      "pattern": "[OX2H1][c]",
+      "tag": "reagent_label_unknown",
+      "why": "A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)"
+    },
+    {
+      "reagent": "NaHCO3",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "NaHCO₃ only deprotonates carboxylic acids."
+    },
+    {
+      "reagent": "K2CO3",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "K₂CO₃ is too weak for an alcohol; it is the base for phenols."
+    },
+    {
+      "reagent": "K2CO3",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Nothing acidic enough for K₂CO₃ here."
+    },
+    {
+      "reagent": "NaH",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "No O–H or S–H to deprotonate."
+    },
+    {
+      "reagent": "Na",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "No O–H or S–H to deprotonate."
+    },
+    {
+      "reagent": "AlCl3",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "lewis_acid_as_base",
+      "why": "AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms. Use NaH (or Na)."
+    },
+    {
+      "reagent": "AlCl3",
+      "pattern": "*",
+      "tag": "lewis_acid_as_base",
+      "why": "AlCl₃ alone only does the Fries rearrangement of an aryl ester."
+    },
+    {
+      "reagent": "Mg_ether",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Mg needs an alkyl or aryl halide to insert into."
+    },
+    {
+      "reagent": "CO2",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure."
+    },
+    {
+      "reagent": "CO2",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "CO₂ only reacts with a phenoxide (Kolbe–Schmitt)."
+    },
+    {
+      "reagent": "CH3I",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide."
+    },
+    {
+      "reagent": "CH3I",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃)."
+    },
+    {
+      "reagent": "CH3I",
+      "pattern": "[SX2H1]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt)."
+    },
+    {
+      "reagent": "CH3I",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkyl halide needs an alkoxide, phenoxide, thiolate or sulfide to attack it."
+    },
+    {
+      "reagent": "EtBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide."
+    },
+    {
+      "reagent": "EtBr",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃)."
+    },
+    {
+      "reagent": "EtBr",
+      "pattern": "[SX2H1]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt)."
+    },
+    {
+      "reagent": "EtBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkyl halide needs an alkoxide, phenoxide, thiolate or sulfide to attack it."
+    },
+    {
+      "reagent": "nPrBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide."
+    },
+    {
+      "reagent": "nPrBr",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃)."
+    },
+    {
+      "reagent": "nPrBr",
+      "pattern": "[SX2H1]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt)."
+    },
+    {
+      "reagent": "nPrBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkyl halide needs an alkoxide, phenoxide, thiolate or sulfide to attack it."
+    },
+    {
+      "reagent": "BnBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide."
+    },
+    {
+      "reagent": "BnBr",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃)."
+    },
+    {
+      "reagent": "BnBr",
+      "pattern": "[SX2H1]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt)."
+    },
+    {
+      "reagent": "BnBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkyl halide needs an alkoxide, phenoxide, thiolate or sulfide to attack it."
+    },
+    {
+      "reagent": "AllylBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide."
+    },
+    {
+      "reagent": "AllylBr",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃)."
+    },
+    {
+      "reagent": "AllylBr",
+      "pattern": "[SX2H1]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt)."
+    },
+    {
+      "reagent": "AllylBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkyl halide needs an alkoxide, phenoxide, thiolate or sulfide to attack it."
+    },
+    {
+      "reagent": "iPrBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide."
+    },
+    {
+      "reagent": "iPrBr",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃)."
+    },
+    {
+      "reagent": "iPrBr",
+      "pattern": "[SX2H1]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt)."
+    },
+    {
+      "reagent": "iPrBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkyl halide needs an alkoxide, phenoxide, thiolate or sulfide to attack it."
+    },
+    {
+      "reagent": "tBuBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide."
+    },
+    {
+      "reagent": "tBuBr",
+      "pattern": "[OX2H1][c]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃)."
+    },
+    {
+      "reagent": "tBuBr",
+      "pattern": "[SX2H1]",
+      "tag": "wrong_reagent_order",
+      "why": "A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt)."
+    },
+    {
+      "reagent": "tBuBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkyl halide needs an alkoxide, phenoxide, thiolate or sulfide to attack it."
+    },
+    {
+      "reagent": "HCHO",
+      "pattern": "[#6][Br,Cl]",
+      "tag": "wrong_reagent_order",
+      "why": "Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner."
+    },
+    {
+      "reagent": "HCHO",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This partner only reacts with a Grignard reagent (R–MgBr)."
+    },
+    {
+      "reagent": "CH3CHO",
+      "pattern": "[#6][Br,Cl]",
+      "tag": "wrong_reagent_order",
+      "why": "Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner."
+    },
+    {
+      "reagent": "CH3CHO",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This partner only reacts with a Grignard reagent (R–MgBr)."
+    },
+    {
+      "reagent": "PhCHO",
+      "pattern": "[#6][Br,Cl]",
+      "tag": "wrong_reagent_order",
+      "why": "Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner."
+    },
+    {
+      "reagent": "PhCHO",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This partner only reacts with a Grignard reagent (R–MgBr)."
+    },
+    {
+      "reagent": "acetone",
+      "pattern": "[#6][Br,Cl]",
+      "tag": "wrong_reagent_order",
+      "why": "Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner."
+    },
+    {
+      "reagent": "acetone",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This partner only reacts with a Grignard reagent (R–MgBr)."
+    },
+    {
+      "reagent": "cyclohexanone",
+      "pattern": "[#6][Br,Cl]",
+      "tag": "wrong_reagent_order",
+      "why": "Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner."
+    },
+    {
+      "reagent": "cyclohexanone",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This partner only reacts with a Grignard reagent (R–MgBr)."
+    },
+    {
+      "reagent": "ethylene_oxide",
+      "pattern": "[#6][Br,Cl]",
+      "tag": "wrong_reagent_order",
+      "why": "Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner."
+    },
+    {
+      "reagent": "ethylene_oxide",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This partner only reacts with a Grignard reagent (R–MgBr)."
+    },
+    {
+      "reagent": "AcCl_pyr",
+      "pattern": "*",
+      "tag": "acyl_wrong_site",
+      "why": "Acylation needs an O–H (alcohol or phenol) to acylate."
+    },
+    {
+      "reagent": "BzCl_pyr",
+      "pattern": "*",
+      "tag": "acyl_wrong_site",
+      "why": "Acylation needs an O–H (alcohol or phenol) to acylate."
+    },
+    {
+      "reagent": "Ac2O",
+      "pattern": "*",
+      "tag": "acyl_wrong_site",
+      "why": "Acylation needs an O–H (alcohol or phenol) to acylate."
+    },
+    {
+      "reagent": "AcOH_H2SO4",
+      "pattern": "[OX2H1][c]",
+      "tag": "reagent_label_unknown",
+      "why": "Phenols esterify poorly under Fischer conditions; use the acid chloride or the anhydride."
+    },
+    {
+      "reagent": "AcOH_H2SO4",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "wrong_temperature",
+      "why": "Fischer esterification needs heat."
+    },
+    {
+      "reagent": "AcOH_H2SO4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Fischer esterification needs an alcohol (the nucleophile)."
+    },
+    {
+      "reagent": "MeOH_H2SO4",
+      "pattern": "[C](=O)[OX2H1]",
+      "tag": "wrong_temperature",
+      "why": "Fischer esterification needs heat."
+    },
+    {
+      "reagent": "MeOH_H2SO4",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "An alcohol does not esterify another alcohol; the partner must be a carboxylic acid."
+    },
+    {
+      "reagent": "MeOH_H2SO4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This needs a carboxylic acid (with heat) or an epoxide."
+    },
+    {
+      "reagent": "EtOH_H2SO4",
+      "pattern": "[C](=O)[OX2H1]",
+      "tag": "wrong_temperature",
+      "why": "Fischer esterification needs heat."
+    },
+    {
+      "reagent": "EtOH_H2SO4",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "An alcohol does not esterify another alcohol; the partner must be a carboxylic acid."
+    },
+    {
+      "reagent": "EtOH_H2SO4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This needs a carboxylic acid (with heat) or an epoxide."
+    },
+    {
+      "reagent": "AcCl_AlCl3",
+      "pattern": "*",
+      "tag": "acyl_wrong_site",
+      "why": "Friedel–Crafts C-acylation needs a phenol ring with an open ortho/para position."
+    },
+    {
+      "reagent": "NaOMe",
+      "pattern": "[c]([F,Cl,Br,I]):[c]:[c]([N+](=O)[O-])",
+      "tag": "SNAr_meta",
+      "why": "A meta NO₂ cannot stabilise the Meisenheimer intermediate (the negative charge never reaches it): no SNAr."
+    },
+    {
+      "reagent": "NaOMe",
+      "pattern": "[c][F,Cl,Br,I]",
+      "tag": "aryl_SN2",
+      "why": "No SN2 on an sp² ring carbon, and without an ortho/para NO₂ there is no SNAr either: no reaction."
+    },
+    {
+      "reagent": "NaOMe",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkoxide needs an epoxide, a CH₃/1° halide, or an activated aryl halide."
+    },
+    {
+      "reagent": "NaOEt",
+      "pattern": "[c]([F,Cl,Br,I]):[c]:[c]([N+](=O)[O-])",
+      "tag": "SNAr_meta",
+      "why": "A meta NO₂ cannot stabilise the Meisenheimer intermediate (the negative charge never reaches it): no SNAr."
+    },
+    {
+      "reagent": "NaOEt",
+      "pattern": "[c][F,Cl,Br,I]",
+      "tag": "aryl_SN2",
+      "why": "No SN2 on an sp² ring carbon, and without an ortho/para NO₂ there is no SNAr either: no reaction."
+    },
+    {
+      "reagent": "NaOEt",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "The alkoxide needs an epoxide, a CH₃/1° halide, or an activated aryl halide."
+    },
+    {
+      "reagent": "NaCN",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "NaCN",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "NaN3",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "NaN3",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "NH3",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "NH3",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "NaSMe",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "NaSMe",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "KF_crown",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "KF_crown",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "KCN_crown",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "KCN_crown",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "KOAc_crown",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "KOAc_crown",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "MeMgBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "MeMgBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "PhMgBr",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first."
+    },
+    {
+      "reagent": "PhMgBr",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "This nucleophile needs an epoxide or an alkyl halide."
+    },
+    {
+      "reagent": "NaSH",
+      "pattern": "[OX2H1][CX4]",
+      "tag": "reagent_label_unknown",
+      "why": "NaSH cannot displace OH; convert the alcohol to the bromide first (PBr₃), then NaSH."
+    },
+    {
+      "reagent": "NaSH",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "HS⁻ needs an alkyl halide (→ thiol) or an epoxide."
+    },
+    {
+      "reagent": "Zn_Hg_HCl",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Clemmensen needs an aldehyde or ketone C=O."
+    },
+    {
+      "reagent": "H2NNH2_KOH",
+      "pattern": "[C]=[O]",
+      "tag": "wrong_temperature",
+      "why": "Wolff–Kishner needs heat to lose N₂ from the hydrazone."
+    },
+    {
+      "reagent": "H2NNH2_KOH",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Wolff–Kishner needs an aldehyde or ketone C=O."
+    },
+    {
+      "reagent": "KMnO4",
+      "pattern": "*",
+      "tag": "reagent_label_unknown",
+      "why": "Hot KMnO₄ is not a toolkit reagent (it cleaves C=C indiscriminately); use OsO₄, Jones or PCC."
+    },
+    {
+      "reagent": "O3",
+      "pattern": "*",
+      "tag": "ozone_vs_osmium",
+      "why": "Ozone needs a C=C to cleave."
+    }
+  ]
+}

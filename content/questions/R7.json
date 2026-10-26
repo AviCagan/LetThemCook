@@ -1,0 +1,400 @@
+[
+  {
+    "id": "q-R7-ethyl-acetaldehyde-001",
+    "reactionIds": [
+      "R7"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCBr",
+      "name": "bromoethane"
+    },
+    "target": {
+      "name": "butan-2-ol",
+      "stereo": "racemic",
+      "altNames": [
+        "2-butanol"
+      ],
+      "smiles": "CCC(C)O",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "CH3CHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CC",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "The Grignard carbon adds to the aldehyde carbonyl from either face; after H₃O⁺ you get a racemic 2° alcohol.",
+    "tip": "Aldehyde partner → 2° alcohol, new stereocenter → racemic."
+  },
+  {
+    "id": "q-R7-phenyl-acetaldehyde-001",
+    "reactionIds": [
+      "R7"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Brc1ccccc1",
+      "name": "bromobenzene"
+    },
+    "target": {
+      "name": "1-phenylethan-1-ol",
+      "stereo": "racemic",
+      "altNames": [
+        "1-phenylethanol"
+      ],
+      "smiles": "CC(O)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "CH3CHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC([O-])c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "c1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "The Grignard carbon adds to the aldehyde carbonyl from either face; after H₃O⁺ you get a racemic 2° alcohol.",
+    "tip": "Aldehyde partner → 2° alcohol, new stereocenter → racemic."
+  },
+  {
+    "id": "q-R7-propyl-benzaldehyde-001",
+    "reactionIds": [
+      "R7"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCBr",
+      "name": "1-bromopropane"
+    },
+    "target": {
+      "name": "1-phenylbutan-1-ol",
+      "stereo": "racemic",
+      "smiles": "CCCC(O)c1ccccc1",
+      "highlightAtoms": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "PhCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCC([O-])c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CCC",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "The Grignard carbon adds to the aldehyde carbonyl from either face; after H₃O⁺ you get a racemic 2° alcohol.",
+    "tip": "Aldehyde partner → 2° alcohol, new stereocenter → racemic."
+  },
+  {
+    "id": "q-R7-cyclohexyl-acetaldehyde-001",
+    "reactionIds": [
+      "R7"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrC1CCCCC1",
+      "name": "bromocyclohexane"
+    },
+    "target": {
+      "name": "1-cyclohexylethan-1-ol",
+      "stereo": "racemic",
+      "altNames": [
+        "1-cyclohexylethanol"
+      ],
+      "smiles": "CC(O)C1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "CH3CHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC([O-])C1CCCCC1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "C1CCCCC1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "The Grignard carbon adds to the aldehyde carbonyl from either face; after H₃O⁺ you get a racemic 2° alcohol.",
+    "tip": "Aldehyde partner → 2° alcohol, new stereocenter → racemic."
+  },
+  {
+    "id": "q-R7-isopropyl-benzaldehyde-001",
+    "reactionIds": [
+      "R7"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)Br",
+      "name": "2-bromopropane"
+    },
+    "target": {
+      "name": "2-methyl-1-phenylpropan-1-ol",
+      "stereo": "racemic",
+      "smiles": "CC(C)C(O)c1ccccc1",
+      "highlightAtoms": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "PhCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)C([O-])c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CCC",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "The Grignard carbon adds to the aldehyde carbonyl from either face; after H₃O⁺ you get a racemic 2° alcohol.",
+    "tip": "Aldehyde partner → 2° alcohol, new stereocenter → racemic."
+  },
+  {
+    "id": "q-R7-butyl-acetaldehyde-001",
+    "reactionIds": [
+      "R7"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCBr",
+      "name": "1-bromobutane"
+    },
+    "target": {
+      "name": "hexan-2-ol",
+      "stereo": "racemic",
+      "altNames": [
+        "2-hexanol"
+      ],
+      "smiles": "CCCCC(C)O",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "CH3CHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCC(C)[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CCCC",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "The Grignard carbon adds to the aldehyde carbonyl from either face; after H₃O⁺ you get a racemic 2° alcohol.",
+    "tip": "Aldehyde partner → 2° alcohol, new stereocenter → racemic."
+  },
+  {
+    "id": "q-R7-benzyl-benzaldehyde-001",
+    "reactionIds": [
+      "R7"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrCc1ccccc1",
+      "name": "(bromomethyl)benzene"
+    },
+    "target": {
+      "name": "1,2-diphenylethan-1-ol",
+      "stereo": "racemic",
+      "smiles": "OC(Cc1ccccc1)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "PhCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "[O-]C(Cc1ccccc1)c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "Cc1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "The Grignard carbon adds to the aldehyde carbonyl from either face; after H₃O⁺ you get a racemic 2° alcohol.",
+    "tip": "Aldehyde partner → 2° alcohol, new stereocenter → racemic."
+  }
+]

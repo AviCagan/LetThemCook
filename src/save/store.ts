@@ -69,6 +69,8 @@ function migrate(save: SaveData): SaveData {
     ...save,
     profile: { ...base.profile, ...save.profile, settings: { ...base.profile.settings, ...save.profile.settings } },
     mastery: { reactions: save.mastery.reactions ?? {}, reagents: save.mastery.reagents ?? {} },
+    notes: save.notes ?? {},
+    labBook: save.labBook ?? [],
     economy: { ...base.economy, ...save.economy },
     stats: { ...base.stats, ...save.stats },
   };

@@ -34,7 +34,7 @@ export function Notebook() {
   return (
     <div class="screen notebook">
       <div class="row space">
-        <h2>Lab notebook</h2>
+        <h2>Mastery notebook</h2>
         <button class="btn btn-sm" type="button" onClick={() => { sfx.click(); screen.value = flow.order.value ? 'lab' : 'title'; }}>Close</button>
       </div>
       <div class="tabs" role="tablist">

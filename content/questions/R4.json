@@ -1,51 +1,42 @@
 [
   {
     "id": "q-R4-benzoic-001",
-    "reactionId": "R4",
+    "reactionIds": [
+      "R4"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "O=C(O)c1ccccc1",
       "name": "benzoic acid"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OCc1ccccc1",
+    "target": {
+      "name": "benzyl alcohol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "benzyl alcohol",
-          "phenylmethanol"
-        ]
-      },
+      "altNames": [
+        "phenylmethanol"
+      ],
+      "smiles": "OCc1ccccc1",
       "highlightAtoms": [
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
       {
         "smiles": "O=Cc1ccccc1",
         "stereo": "none",
@@ -65,91 +56,47 @@
         "why": "Before the water step you hold the alkoxide, not the alcohol."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "O=C(O)c1ccccc1",
-          "stereo": "none"
-        },
-        "why": "NaBH₄ cannot reduce a carboxylic acid: nothing happens. Acids need LiAlH₄, then water."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "O=C(O)c1ccccc1",
-          "stereo": "none"
-        },
-        "why": "Catalytic hydrogenation leaves carboxylic acids alone. Use LiAlH₄."
-      }
-    ],
     "explanation": "LiAlH₄ reduces the carboxylic acid all the way to the 1° alcohol (via the aldehyde, which never survives). Water then protonates the alkoxide.",
     "tip": "Acid to 1° alcohol: only LiAlH₄ can do it, and it needs its water step."
   },
   {
     "id": "q-R4-hexanoic-001",
-    "reactionId": "R4",
+    "reactionIds": [
+      "R4"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CCCCCC(=O)O",
       "name": "hexanoic acid"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CCCCCCO",
+    "target": {
+      "name": "hexan-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "hexan-1-ol",
-          "1-hexanol"
-        ]
-      },
+      "altNames": [
+        "1-hexanol"
+      ],
+      "smiles": "CCCCCCO",
       "highlightAtoms": [
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
       {
         "smiles": "CCCCCC=O",
         "stereo": "none",
@@ -169,87 +116,44 @@
         "why": "This is the alkoxide. The water step gives the alcohol."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "CCCCCC(=O)O",
-          "stereo": "none"
-        },
-        "why": "NaBH₄ leaves carboxylic acids untouched. Use LiAlH₄ then H₂O."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CCCCCC(=O)O",
-          "stereo": "none"
-        },
-        "why": "PCC is an oxidant; you need a reduction."
-      }
-    ],
     "explanation": "The acid is reduced to hexan-1-ol. The carbonyl carbon ends up as CH₂OH.",
     "tip": "COOH → CH₂OH keeps the carbon count."
   },
   {
     "id": "q-R4-cyclohexanecarboxylic-001",
-    "reactionId": "R4",
+    "reactionIds": [
+      "R4"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "OC(=O)C1CCCCC1",
       "name": "cyclohexanecarboxylic acid"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OCC1CCCCC1",
+    "target": {
+      "name": "cyclohexylmethanol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "cyclohexylmethanol"
-        ]
-      },
+      "smiles": "OCC1CCCCC1",
       "highlightAtoms": [
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
       {
         "smiles": "O=CC1CCCCC1",
         "stereo": "none",
@@ -269,73 +173,47 @@
         "why": "This is the alkoxide. Add water."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "OC(=O)C1CCCCC1",
-          "stereo": "none"
-        },
-        "why": "NaBH₄ does not reduce carboxylic acids."
-      }
-    ],
     "explanation": "The COOH becomes CH₂OH; the ring is untouched.",
     "tip": "Ring or chain, an acid becomes a 1° alcohol with LiAlH₄."
   },
   {
     "id": "q-R4-hydrocinnamic-001",
-    "reactionId": "R4",
+    "reactionIds": [
+      "R4"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "OC(=O)CCc1ccccc1",
       "name": "3-phenylpropanoic acid"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OCCCc1ccccc1",
+    "target": {
+      "name": "3-phenylpropan-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "3-phenylpropan-1-ol",
-          "3-phenyl-1-propanol"
-        ]
-      },
+      "altNames": [
+        "3-phenyl-1-propanol"
+      ],
+      "smiles": "OCCCc1ccccc1",
       "highlightAtoms": [
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
       {
         "smiles": "O=CCCc1ccccc1",
         "stereo": "none",
@@ -355,76 +233,47 @@
         "why": "Alkoxide: water still needed."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "OC(=O)CCc1ccccc1",
-          "stereo": "none"
-        },
-        "why": "H₂/Pt does not reduce carboxylic acids (and does not touch the benzene ring)."
-      }
-    ],
     "explanation": "LiAlH₄ reduces the acid to the 1° alcohol; the benzene ring is untouched.",
     "tip": "Benzene ring stays, acid goes to alcohol."
   },
   {
     "id": "q-R4-toluic-001",
-    "reactionId": "R4",
+    "reactionIds": [
+      "R4"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "Cc1ccc(C(=O)O)cc1",
       "name": "4-methylbenzoic acid"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "Cc1ccc(CO)cc1",
+    "target": {
+      "name": "(4-methylphenyl)methanol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "(4-methylphenyl)methanol",
-          "4-methylbenzyl alcohol"
-        ]
-      },
+      "altNames": [
+        "4-methylbenzyl alcohol"
+      ],
+      "smiles": "Cc1ccc(CO)cc1",
       "highlightAtoms": [
         5
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
       {
         "smiles": "Cc1ccc(C=O)cc1",
         "stereo": "none",
@@ -444,73 +293,47 @@
         "why": "Alkoxide before the water step."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "Cc1ccc(C(=O)O)cc1",
-          "stereo": "none"
-        },
-        "why": "NaBH₄ cannot reduce a carboxylic acid."
-      }
-    ],
     "explanation": "The acid becomes a benzylic 1° alcohol; the methyl group and the ring are untouched.",
     "tip": "Only the COOH changes."
   },
   {
     "id": "q-R4-pentenoic-001",
-    "reactionId": "R4",
+    "reactionIds": [
+      "R4"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "C=CCCC(=O)O",
       "name": "pent-4-enoic acid"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "C=CCCCO",
+    "target": {
+      "name": "pent-4-en-1-ol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "pent-4-en-1-ol",
-          "4-penten-1-ol"
-        ]
-      },
+      "altNames": [
+        "4-penten-1-ol"
+      ],
+      "smiles": "C=CCCCO",
       "highlightAtoms": [
         4
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
       {
         "smiles": "CCCCCO",
         "stereo": "none",
@@ -530,77 +353,48 @@
         "why": "Alkoxide: add water to finish."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2_Pt"
-            ],
-            "conditions": {
-              "pressure": true
-            }
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CCCCC(=O)O",
-          "stereo": "none"
-        },
-        "why": "H₂/Pt reduces the alkene and leaves the acid: the opposite of what you want."
-      }
-    ],
     "explanation": "LiAlH₄ reduces the COOH to CH₂OH and ignores the isolated alkene.",
     "tip": "Hydrides never touch isolated alkenes, even strong ones."
   },
   {
     "id": "q-R4-succinic-001",
-    "reactionId": "R4",
+    "reactionIds": [
+      "R4"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "OC(=O)CCC(=O)O",
       "name": "butanedioic acid (succinic acid)"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "LiAlH4"
-          ],
-          "conditions": {
-            "solvent": "ether"
-          }
-        },
-        {
-          "reagents": [
-            "H2O"
-          ],
-          "conditions": {
-            "temp": "rt"
-          }
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OCCCCO",
+    "target": {
+      "name": "butane-1,4-diol",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "butane-1,4-diol",
-          "1,4-butanediol"
-        ]
-      },
+      "altNames": [
+        "1,4-butanediol"
+      ],
+      "smiles": "OCCCCO",
       "highlightAtoms": [
         1,
         4
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
       {
         "smiles": "OCCCC(=O)O",
         "stereo": "none",
@@ -618,23 +412,6 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Each COOH becomes CH₂OH; the oxygens are not removed."
-      }
-    ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        "tag": "over_reduction",
-        "product": {
-          "smiles": "OC(=O)CCC(=O)O",
-          "stereo": "none"
-        },
-        "why": "NaBH₄ does not reduce carboxylic acids."
       }
     ],
     "explanation": "Both carboxylic acids are reduced to 1° alcohols: butane-1,4-diol.",

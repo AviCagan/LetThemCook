@@ -1,0 +1,242 @@
+[
+  {
+    "id": "q-R14-tbuoh-hbr-001",
+    "reactionIds": [
+      "R14"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(C)O",
+      "name": "2-methylpropan-2-ol"
+    },
+    "target": {
+      "name": "2-bromo-2-methylpropane",
+      "stereo": "none",
+      "altNames": [
+        "tert-butyl bromide"
+      ],
+      "smiles": "CC(C)(C)Br",
+      "highlightAtoms": [
+        1,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+  },
+  {
+    "id": "q-R14-methylcyclohexanol-hcl-001",
+    "reactionIds": [
+      "R14"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(O)CCCCC1",
+      "name": "1-methylcyclohexan-1-ol"
+    },
+    "target": {
+      "name": "1-chloro-1-methylcyclohexane",
+      "stereo": "none",
+      "smiles": "CC1(Cl)CCCCC1",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HCl"
+      }
+    ],
+    "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+  },
+  {
+    "id": "q-R14-methylbutanol-hbr-001",
+    "reactionIds": [
+      "R14"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(C)(C)O",
+      "name": "2-methylbutan-2-ol"
+    },
+    "target": {
+      "name": "2-bromo-2-methylbutane",
+      "stereo": "none",
+      "smiles": "CCC(C)(C)Br",
+      "highlightAtoms": [
+        2,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+  },
+  {
+    "id": "q-R14-cyclohexanol-hbr-001",
+    "reactionIds": [
+      "R14"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1",
+      "name": "cyclohexanol"
+    },
+    "target": {
+      "name": "bromocyclohexane",
+      "stereo": "none",
+      "smiles": "BrC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+  },
+  {
+    "id": "q-R14-cumyl-hcl-001",
+    "reactionIds": [
+      "R14"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(O)c1ccccc1",
+      "name": "2-phenylpropan-2-ol"
+    },
+    "target": {
+      "name": "(2-chloropropan-2-yl)benzene",
+      "stereo": "none",
+      "smiles": "CC(C)(Cl)c1ccccc1",
+      "highlightAtoms": [
+        1,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HCl"
+      }
+    ],
+    "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+  },
+  {
+    "id": "q-R14-propanol-lucas-001",
+    "reactionIds": [
+      "R14"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCO",
+      "name": "propan-1-ol"
+    },
+    "target": {
+      "name": "1-chloropropane",
+      "stereo": "none",
+      "smiles": "CCCCl",
+      "highlightAtoms": [
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HCl_ZnCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCBr",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ fails on 3° alcohols and gives the wrong halogen for a chloride target; HX works by SN1 on 3° alcohols."
+      }
+    ],
+    "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+  },
+  {
+    "id": "q-R14-methylcyclopentanol-hbr-001",
+    "reactionIds": [
+      "R14"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(O)CCCC1",
+      "name": "1-methylcyclopentan-1-ol"
+    },
+    "target": {
+      "name": "1-bromo-1-methylcyclopentane",
+      "stereo": "none",
+      "smiles": "CC1(Br)CCCC1",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+  }
+]

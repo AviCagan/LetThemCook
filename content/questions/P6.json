@@ -1,0 +1,507 @@
+[
+  {
+    "id": "q-P6-phenol-mei-001",
+    "reactionIds": [
+      "P6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1",
+      "name": "phenol"
+    },
+    "target": {
+      "name": "methoxybenzene",
+      "stereo": "none",
+      "altNames": [
+        "anisole",
+        "methyl phenyl ether"
+      ],
+      "smiles": "COc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccccc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "An acid chloride makes the aryl ESTER. For the ether the phenoxide must attack an alkyl halide."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      }
+    ],
+    "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+  },
+  {
+    "id": "q-P6-pcresol-etbr-001",
+    "reactionIds": [
+      "P6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccc(O)cc1",
+      "name": "4-methylphenol"
+    },
+    "target": {
+      "name": "1-ethoxy-4-methylbenzene",
+      "stereo": "none",
+      "altNames": [
+        "ethyl 4-methylphenyl ether",
+        "4-methylphenetole"
+      ],
+      "smiles": "CCOc1ccc(C)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "EtBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        },
+        {
+          "reagent": "EtBr"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "EtBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "An acid chloride makes the aryl ESTER. For the ether the phenoxide must attack an alkyl halide."
+      },
+      {
+        "smiles": "CC(=O)c1cc(C)ccc1O",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      }
+    ],
+    "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+  },
+  {
+    "id": "q-P6-chlorophenol-mei-001",
+    "reactionIds": [
+      "P6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc(Cl)cc1",
+      "name": "4-chlorophenol"
+    },
+    "target": {
+      "name": "1-chloro-4-methoxybenzene",
+      "stereo": "none",
+      "altNames": [
+        "4-chloroanisole"
+      ],
+      "smiles": "COc1ccc(Cl)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "An acid chloride makes the aryl ESTER. For the ether the phenoxide must attack an alkyl halide."
+      },
+      {
+        "smiles": "CC(=O)c1cc(Cl)ccc1O",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      }
+    ],
+    "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+  },
+  {
+    "id": "q-P6-phenol-bnbr-001",
+    "reactionIds": [
+      "P6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1",
+      "name": "phenol"
+    },
+    "target": {
+      "name": "(benzyloxy)benzene",
+      "stereo": "none",
+      "altNames": [
+        "benzyl phenyl ether"
+      ],
+      "smiles": "c1ccc(COc2ccccc2)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        12,
+        13
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "BnBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        },
+        {
+          "reagent": "BnBr"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "BnBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccccc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "An acid chloride makes the aryl ESTER. For the ether the phenoxide must attack an alkyl halide."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      }
+    ],
+    "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+  },
+  {
+    "id": "q-P6-nitrophenol-mei-001",
+    "reactionIds": [
+      "P6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+      "name": "4-nitrophenol"
+    },
+    "target": {
+      "name": "1-methoxy-4-nitrobenzene",
+      "stereo": "none",
+      "altNames": [
+        "4-nitroanisole"
+      ],
+      "smiles": "COc1ccc([N+](=O)OC)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccc([N+](=O)[O-])cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "An acid chloride makes the aryl ESTER. For the ether the phenoxide must attack an alkyl halide."
+      },
+      {
+        "smiles": "CC(=O)c1cc([N+](=O)[O-])ccc1O",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      }
+    ],
+    "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+  },
+  {
+    "id": "q-P6-mcresol-prbr-001",
+    "reactionIds": [
+      "P6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1cccc(O)c1",
+      "name": "3-methylphenol"
+    },
+    "target": {
+      "name": "1-methyl-3-propoxybenzene",
+      "stereo": "none",
+      "altNames": [
+        "3-methylphenyl propyl ether"
+      ],
+      "smiles": "CCCOc1cccc(C)c1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "nPrBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        },
+        {
+          "reagent": "nPrBr"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "nPrBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1cccc(C)c1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "An acid chloride makes the aryl ESTER. For the ether the phenoxide must attack an alkyl halide."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(O)cc1C",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      }
+    ],
+    "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+  },
+  {
+    "id": "q-P6-ocresol-allyl-001",
+    "reactionIds": [
+      "P6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccccc1O",
+      "name": "2-methylphenol"
+    },
+    "target": {
+      "name": "1-methyl-2-(prop-2-en-1-yloxy)benzene",
+      "stereo": "none",
+      "altNames": [
+        "allyl 2-methylphenyl ether"
+      ],
+      "smiles": "C=CCOc1ccccc1C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "AllylBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        },
+        {
+          "reagent": "AllylBr"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "AllylBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccccc1C",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "An acid chloride makes the aryl ESTER. For the ether the phenoxide must attack an alkyl halide."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(O)c(C)c1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      }
+    ],
+    "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+  }
+]

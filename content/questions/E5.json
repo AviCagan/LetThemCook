@@ -1,0 +1,259 @@
+[
+  {
+    "id": "q-E5-pchloronitro-naome-001",
+    "reactionIds": [
+      "E5"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Clc1ccc([N+](=O)[O-])cc1",
+      "name": "1-chloro-4-nitrobenzene"
+    },
+    "target": {
+      "name": "1-methoxy-4-nitrobenzene",
+      "stereo": "none",
+      "altNames": [
+        "4-nitroanisole"
+      ],
+      "smiles": "COc1ccc([N+](=O)[O-])cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CO[N+](=O)c1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "aryl_SN2",
+        "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      }
+    ],
+    "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+  },
+  {
+    "id": "q-E5-ochloronitro-naoet-001",
+    "reactionIds": [
+      "E5"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Clc1ccccc1[N+](=O)[O-]",
+      "name": "1-chloro-2-nitrobenzene"
+    },
+    "target": {
+      "name": "1-ethoxy-2-nitrobenzene",
+      "stereo": "none",
+      "altNames": [
+        "2-nitrophenetole"
+      ],
+      "smiles": "CCOc1ccccc1[N+](=O)[O-]",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOEt"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCO[N+](=O)c1ccccc1Cl",
+        "stereo": "none",
+        "tag": "aryl_SN2",
+        "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      }
+    ],
+    "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+  },
+  {
+    "id": "q-E5-pfluoronitro-naome-001",
+    "reactionIds": [
+      "E5"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Fc1ccc([N+](=O)[O-])cc1",
+      "name": "1-fluoro-4-nitrobenzene"
+    },
+    "target": {
+      "name": "1-methoxy-4-nitrobenzene",
+      "stereo": "none",
+      "altNames": [
+        "4-nitroanisole"
+      ],
+      "smiles": "COc1ccc([N+](=O)[O-])cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CO[N+](=O)c1ccc(F)cc1",
+        "stereo": "none",
+        "tag": "aryl_SN2",
+        "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      }
+    ],
+    "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+  },
+  {
+    "id": "q-E5-dinitrochloro-naome-001",
+    "reactionIds": [
+      "E5"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Clc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+      "name": "1-chloro-2,4-dinitrobenzene"
+    },
+    "target": {
+      "name": "1-methoxy-2,4-dinitrobenzene",
+      "stereo": "none",
+      "altNames": [
+        "2,4-dinitroanisole"
+      ],
+      "smiles": "COc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CO[N+](=O)c1ccc(Cl)c([N+](=O)OC)c1",
+        "stereo": "none",
+        "tag": "aryl_SN2",
+        "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      }
+    ],
+    "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+  },
+  {
+    "id": "q-E5-pbromonitro-naoet-001",
+    "reactionIds": [
+      "E5"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Brc1ccc([N+](=O)[O-])cc1",
+      "name": "1-bromo-4-nitrobenzene"
+    },
+    "target": {
+      "name": "1-ethoxy-4-nitrobenzene",
+      "stereo": "none",
+      "altNames": [
+        "4-nitrophenetole"
+      ],
+      "smiles": "CCOc1ccc([N+](=O)[O-])cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOEt"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCO[N+](=O)c1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "aryl_SN2",
+        "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      }
+    ],
+    "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+  },
+  {
+    "id": "q-E5-chloromethylnitro-naome-001",
+    "reactionIds": [
+      "E5"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1cc([N+](=O)[O-])ccc1Cl",
+      "name": "1-chloro-2-methyl-4-nitrobenzene"
+    },
+    "target": {
+      "name": "1-methoxy-2-methyl-4-nitrobenzene",
+      "stereo": "none",
+      "smiles": "COc1ccc([N+](=O)[O-])cc1C",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CO[N+](=O)c1ccc(Cl)c(C)c1",
+        "stereo": "none",
+        "tag": "aryl_SN2",
+        "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      }
+    ],
+    "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+  }
+]

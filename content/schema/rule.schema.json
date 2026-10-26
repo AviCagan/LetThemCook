@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://letthemcook.local/schema/rule.schema.json",
+  "title": "Engine rule file",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rules", "noReaction"],
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "reagent", "reactionIds", "label", "pipeline"],
+        "properties": {
+          "id": { "type": "string" },
+          "reagent": { "type": "string", "description": "Bottle id. Rules for a bottle are tried in file order; the first whose pipeline changes the flask wins." },
+          "reactionIds": { "type": "array", "items": { "type": "string" }, "description": "Toolkit rows credited when this rule fires (empty for workups / out-of-toolkit chemistry)." },
+          "label": { "type": "string", "description": "What the flask says happened." },
+          "conditions": { "type": "object", "additionalProperties": true, "description": "Required chosen conditions, e.g. {temp: ['reflux']} or {equiv: 2}." },
+          "partner": { "type": "string", "enum": ["bottle", "self"], "description": "bottle: the bottle's smiles is reactant 2. self: a second copy of the flask is reactant 2." },
+          "requireNot": { "type": "array", "items": { "type": "string" }, "description": "SMARTS that block the rule when present (e.g. acidic H blocks Grignard formation)." },
+          "requireNotWhy": { "type": "string" },
+          "warn": { "type": "object", "additionalProperties": true },
+          "pipeline": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "rxn": { "type": "string" },
+                "anyOf": { "type": "array", "items": { "type": "string" }, "description": "Ordered alternatives: the first template that matches is applied (regiochemistry preference)." },
+                "repeat": { "type": "boolean", "description": "Apply until nothing changes (all sites react)." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "noReaction": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reagent", "pattern", "tag", "why"],
+        "properties": { "reagent": { "type": "string" }, "pattern": { "type": "string", "description": "SMARTS present in the flask, or '*' for a catch-all." }, "tag": { "type": "string" }, "why": { "type": "string" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,306 @@
+[
+  {
+    "id": "q-R19-propanol-001",
+    "reactionIds": [
+      "R19"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCO",
+      "name": "propan-1-ol"
+    },
+    "target": {
+      "name": "propyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "propyl ethanoate"
+      ],
+      "smiles": "CCCOC(C)=O",
+      "highlightAtoms": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Ac2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "AcCl_pyr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCC=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises the alcohol. To make the acetate the alcohol must attack acetic anhydride (or acetyl chloride)."
+      }
+    ],
+    "explanation": "The alcohol attacks one carbonyl of the anhydride; acetate leaves: the ester plus acetic acid.",
+    "tip": "Anhydride + alcohol = ester + the acid as byproduct."
+  },
+  {
+    "id": "q-R19-cyclohexanol-001",
+    "reactionIds": [
+      "R19"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1",
+      "name": "cyclohexanol"
+    },
+    "target": {
+      "name": "cyclohexyl acetate",
+      "stereo": "none",
+      "smiles": "CC(=O)OC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Ac2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "AcCl_pyr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "O=C1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises the alcohol. To make the acetate the alcohol must attack acetic anhydride (or acetyl chloride)."
+      }
+    ],
+    "explanation": "The alcohol attacks one carbonyl of the anhydride; acetate leaves: the ester plus acetic acid.",
+    "tip": "Anhydride + alcohol = ester + the acid as byproduct."
+  },
+  {
+    "id": "q-R19-isoamyl-001",
+    "reactionIds": [
+      "R19"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CCO",
+      "name": "3-methylbutan-1-ol"
+    },
+    "target": {
+      "name": "3-methylbutyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "isoamyl acetate",
+        "isopentyl acetate"
+      ],
+      "smiles": "CC(=O)OCCC(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Ac2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "AcCl_pyr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)CC=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises the alcohol. To make the acetate the alcohol must attack acetic anhydride (or acetyl chloride)."
+      }
+    ],
+    "explanation": "The alcohol attacks one carbonyl of the anhydride; acetate leaves: the ester plus acetic acid.",
+    "tip": "Anhydride + alcohol = ester + the acid as byproduct."
+  },
+  {
+    "id": "q-R19-butan2ol-001",
+    "reactionIds": [
+      "R19"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(C)O",
+      "name": "butan-2-ol"
+    },
+    "target": {
+      "name": "butan-2-yl acetate",
+      "stereo": "racemic",
+      "altNames": [
+        "sec-butyl acetate"
+      ],
+      "smiles": "CCC(C)OC(C)=O",
+      "highlightAtoms": [
+        2,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Ac2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "AcCl_pyr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises the alcohol. To make the acetate the alcohol must attack acetic anhydride (or acetyl chloride)."
+      }
+    ],
+    "explanation": "The alcohol attacks one carbonyl of the anhydride; acetate leaves: the ester plus acetic acid.",
+    "tip": "Anhydride + alcohol = ester + the acid as byproduct."
+  },
+  {
+    "id": "q-R19-phenylethanol-001",
+    "reactionIds": [
+      "R19"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCCc1ccccc1",
+      "name": "2-phenylethan-1-ol"
+    },
+    "target": {
+      "name": "2-phenylethyl acetate",
+      "stereo": "none",
+      "smiles": "CC(=O)OCCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Ac2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "AcCl_pyr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "O=CCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises the alcohol. To make the acetate the alcohol must attack acetic anhydride (or acetyl chloride)."
+      }
+    ],
+    "explanation": "The alcohol attacks one carbonyl of the anhydride; acetate leaves: the ester plus acetic acid.",
+    "tip": "Anhydride + alcohol = ester + the acid as byproduct."
+  },
+  {
+    "id": "q-R19-cyclopentanol-001",
+    "reactionIds": [
+      "R19"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCC1",
+      "name": "cyclopentanol"
+    },
+    "target": {
+      "name": "cyclopentyl acetate",
+      "stereo": "none",
+      "smiles": "CC(=O)OC1CCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Ac2O"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "AcCl_pyr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "O=C1CCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises the alcohol. To make the acetate the alcohol must attack acetic anhydride (or acetyl chloride)."
+      }
+    ],
+    "explanation": "The alcohol attacks one carbonyl of the anhydride; acetate leaves: the ester plus acetic acid.",
+    "tip": "Anhydride + alcohol = ester + the acid as byproduct."
+  }
+]

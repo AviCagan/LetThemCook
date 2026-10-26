@@ -1,40 +1,34 @@
 [
   {
     "id": "q-R21-hexanol-001",
-    "reactionId": "R21",
+    "reactionIds": [
+      "R21"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CCCCCCO",
       "name": "hexan-1-ol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "H2CrO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CCCCCC(=O)O",
+    "target": {
+      "name": "hexanoic acid",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "hexanoic acid"
-        ]
-      },
+      "smiles": "CCCCCC(=O)O",
       "highlightAtoms": [
         5,
         6
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "CCCCCC=O",
         "stereo": "none",
@@ -54,89 +48,46 @@
         "why": "Dehydration needs H₂SO₄ and heat without a chromium oxidant. Jones oxidises the alcohol instead."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "stopped_halfway",
-        "product": {
-          "smiles": "CCCCCC=O",
-          "stereo": "none"
-        },
-        "why": "PCC stops at the aldehyde. For the carboxylic acid you need chromic acid (Na₂Cr₂O₇/H₂SO₄)."
-      },
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CCCCCCO",
-          "stereo": "none"
-        },
-        "why": "NaBH₄ reduces; alcohol → acid is an oxidation."
-      }
-    ],
     "explanation": "A 1° alcohol is oxidised past the aldehyde to the carboxylic acid by chromic acid.",
     "tip": "Jones on a 1° alcohol: all the way to COOH."
   },
   {
     "id": "q-R21-cyclohexanol-001",
-    "reactionId": "R21",
+    "reactionIds": [
+      "R21"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
       "name": "cyclohexanol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "H2CrO4"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "PCC"
-            ],
-            "conditions": {
-              "solvent": "CH₂Cl₂"
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "O=C1CCCCC1",
+    "target": {
+      "name": "cyclohexanone",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "cyclohexanone"
-        ]
-      },
+      "smiles": "O=C1CCCCC1",
       "highlightAtoms": [
         0,
         1
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "OC(=O)CCCCC(=O)O",
         "stereo": "none",
@@ -156,135 +107,50 @@
         "why": "2° alcohols do react: they give ketones. Only 3° alcohols are inert to chromic acid."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "H2SO4_heat"
-            ],
-            "conditions": {
-              "temp": "reflux"
-            }
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "C1=CCCCC1",
-          "stereo": "none"
-        },
-        "why": "H₂SO₄/heat dehydrates to cyclohexene. For the ketone use an oxidant (Jones or PCC)."
-      }
-    ],
     "explanation": "A 2° alcohol is oxidised to the ketone and stops there. PCC would give the same product.",
     "tip": "2° alcohol → ketone, with either oxidant."
   },
   {
-    "id": "q-R21-tbutanol-001",
-    "reactionId": "R21",
-    "chapter": 16,
-    "difficulty": 2,
-    "orderTypes": [
-      "predict_product"
-    ],
-    "start": {
-      "smiles": "CC(C)(C)O",
-      "name": "2-methylpropan-2-ol (tert-butanol)"
-    },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "H2CrO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "CC(C)(C)O",
-      "stereo": "none",
-      "names": {
-        "accepted": [
-          "no reaction",
-          "2-methylpropan-2-ol",
-          "tert-butanol"
-        ]
-      },
-      "highlightAtoms": []
-    },
-    "productDistractors": [
-      {
-        "smiles": "C=C(C)C",
-        "stereo": "none",
-        "tag": "reagent_label_unknown",
-        "why": "Under the mild Jones conditions a 3° alcohol is simply not oxidised; dehydration is a different reaction (H₂SO₄, heat)."
-      },
-      {
-        "smiles": "CC(C)C(=O)O",
-        "stereo": "none",
-        "tag": "reagent_label_unknown",
-        "why": "Oxidation needs a hydrogen on the carbinol carbon to remove. A 3° carbinol carbon has none, and chromic acid does not rearrange the skeleton."
-      },
-      {
-        "smiles": "CC(C)C=O",
-        "stereo": "none",
-        "tag": "reagent_label_unknown",
-        "why": "No C–H on the carbinol carbon means no oxidation. The skeleton does not rearrange either."
-      }
-    ],
-    "explanation": "Chromic acid oxidation removes the H on the carbinol carbon. A 3° alcohol has no such H, so there is no reaction.",
-    "tip": "3° alcohol + any chromium oxidant = no reaction."
-  },
-  {
     "id": "q-R21-phenylethanol-001",
-    "reactionId": "R21",
+    "reactionIds": [
+      "R21"
+    ],
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC(O)c1ccccc1",
       "name": "1-phenylethanol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "H2CrO4"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "PCC"
-            ],
-            "conditions": {
-              "solvent": "CH₂Cl₂"
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "CC(=O)c1ccccc1",
+    "target": {
+      "name": "acetophenone",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "acetophenone",
-          "1-phenylethan-1-one",
-          "1-phenylethanone"
-        ]
-      },
+      "altNames": [
+        "1-phenylethan-1-one",
+        "1-phenylethanone"
+      ],
+      "smiles": "CC(=O)c1ccccc1",
       "highlightAtoms": [
         1,
         2
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "OC(=O)c1ccccc1",
         "stereo": "none",
@@ -304,68 +170,42 @@
         "why": "Styrene is the dehydration product (H₂SO₄/heat). Chromic acid oxidises instead."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "LiAlH4"
-            ]
-          },
-          {
-            "reagents": [
-              "H2O"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC(O)c1ccccc1",
-          "stereo": "none"
-        },
-        "why": "Hydrides reduce. Alcohol → ketone needs an oxidant."
-      }
-    ],
     "explanation": "The 2° benzylic alcohol is oxidised to acetophenone.",
     "tip": "A 2° alcohol has exactly one H to lose: ketone."
   },
   {
     "id": "q-R21-methylbenzylalcohol-001",
-    "reactionId": "R21",
+    "reactionIds": [
+      "R21"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "Cc1ccc(CO)cc1",
       "name": "(4-methylphenyl)methanol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "H2CrO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "Cc1ccc(C(=O)O)cc1",
+    "target": {
+      "name": "4-methylbenzoic acid",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "4-methylbenzoic acid",
-          "p-toluic acid"
-        ]
-      },
+      "altNames": [
+        "p-toluic acid"
+      ],
+      "smiles": "Cc1ccc(C(=O)O)cc1",
       "highlightAtoms": [
         5,
         6
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "Cc1ccc(C=O)cc1",
         "stereo": "none",
@@ -385,65 +225,44 @@
         "why": "An oxidant never removes an oxygen."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "stopped_halfway",
-        "product": {
-          "smiles": "Cc1ccc(C=O)cc1",
-          "stereo": "none"
-        },
-        "why": "PCC stops at the aldehyde. Use chromic acid for the acid."
-      }
-    ],
     "explanation": "The benzylic 1° alcohol is oxidised to the carboxylic acid; the ring methyl is not an alcohol and is left alone.",
     "tip": "Only carbons bearing OH get oxidised."
   },
   {
     "id": "q-R21-pentanediol-001",
-    "reactionId": "R21",
+    "reactionIds": [
+      "R21"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "OCCCCCO",
       "name": "pentane-1,5-diol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "H2CrO4"
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "smiles": "OC(=O)CCCC(=O)O",
+    "target": {
+      "name": "pentanedioic acid",
       "stereo": "none",
-      "names": {
-        "accepted": [
-          "pentanedioic acid",
-          "glutaric acid"
-        ]
-      },
+      "altNames": [
+        "glutaric acid"
+      ],
+      "smiles": "O=C(O)CCCC(=O)O",
       "highlightAtoms": [
+        0,
         1,
-        2,
         6,
         7
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "traps": [
       {
         "smiles": "OCCCCC(=O)O",
         "stereo": "none",
@@ -463,75 +282,49 @@
         "why": "A lactone would need an ester-forming step; Jones simply oxidises each CH₂OH to COOH."
       }
     ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "PCC"
-            ]
-          }
-        ],
-        "tag": "stopped_halfway",
-        "product": {
-          "smiles": "O=CCCCC=O",
-          "stereo": "none"
-        },
-        "why": "PCC gives the dialdehyde. For the diacid use chromic acid."
-      }
-    ],
     "explanation": "Both 1° alcohols are oxidised to carboxylic acids: pentanedioic acid.",
     "tip": "Two CH₂OH groups, two COOH groups."
   },
   {
     "id": "q-R21-methylcyclohexanol-001",
-    "reactionId": "R21",
+    "reactionIds": [
+      "R21"
+    ],
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "predict_product",
-      "make_it"
+      "make_it",
+      "predict_product"
     ],
     "start": {
       "smiles": "CC1CCCCC1O",
       "name": "2-methylcyclohexanol"
     },
-    "route": {
-      "steps": [
-        {
-          "reagents": [
-            "H2CrO4"
-          ]
-        }
-      ],
-      "alt": [
-        [
-          {
-            "reagents": [
-              "PCC"
-            ],
-            "conditions": {
-              "solvent": "CH₂Cl₂"
-            }
-          }
-        ]
-      ]
-    },
-    "answer": {
-      "smiles": "C[C@H]1CCCCC1=O",
+    "target": {
+      "name": "2-methylcyclohexan-1-one",
       "stereo": "racemic",
-      "names": {
-        "accepted": [
-          "2-methylcyclohexan-1-one",
-          "2-methylcyclohexanone"
-        ]
-      },
+      "altNames": [
+        "2-methylcyclohexanone"
+      ],
+      "smiles": "CC1CCCCC1=O",
       "highlightAtoms": [
         6,
         7
       ]
     },
-    "productDistractors": [
+    "route": [
+      {
+        "reagent": "H2CrO4"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "PCC"
+        }
+      ]
+    ],
+    "traps": [
       {
         "smiles": "CC1=CCCCC1",
         "stereo": "none",
@@ -549,23 +342,6 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A 2° alcohol is oxidised; only 3° alcohols are inert."
-      }
-    ],
-    "routeDistractors": [
-      {
-        "steps": [
-          {
-            "reagents": [
-              "NaBH4"
-            ]
-          }
-        ],
-        "tag": "reagent_label_unknown",
-        "product": {
-          "smiles": "CC1CCCCC1O",
-          "stereo": "none"
-        },
-        "why": "NaBH₄ reduces; you need an oxidant."
       }
     ],
     "explanation": "The 2° alcohol becomes a ketone. C2 keeps its stereocenter; from a racemic starting material the ketone is racemic.",

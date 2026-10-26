@@ -1,0 +1,311 @@
+[
+  {
+    "id": "q-P2-phenol-001",
+    "reactionIds": [
+      "P2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1",
+      "name": "phenol"
+    },
+    "target": {
+      "name": "2,4,6-tribromophenol",
+      "stereo": "none",
+      "smiles": "Oc1c(Br)cc(Br)cc1Br",
+      "highlightAtoms": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_H2O"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      }
+    ],
+    "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+  },
+  {
+    "id": "q-P2-pcresol-001",
+    "reactionIds": [
+      "P2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccc(O)cc1",
+      "name": "4-methylphenol"
+    },
+    "target": {
+      "name": "2,6-dibromo-4-methylphenol",
+      "stereo": "none",
+      "smiles": "Cc1cc(Br)c(O)c(Br)c1",
+      "highlightAtoms": [
+        3,
+        4,
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_H2O"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1ccc(O)c(Br)c1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      },
+      {
+        "smiles": "Oc1c(Br)cc(Br)cc1Br",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The group already on the ring does not leave. EAS only replaces ring hydrogens: count the open ortho/para positions."
+      }
+    ],
+    "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+  },
+  {
+    "id": "q-P2-ocresol-001",
+    "reactionIds": [
+      "P2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccccc1O",
+      "name": "2-methylphenol"
+    },
+    "target": {
+      "name": "2,4-dibromo-6-methylphenol",
+      "stereo": "none",
+      "smiles": "Cc1cc(Br)cc(Br)c1O",
+      "highlightAtoms": [
+        3,
+        4,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_H2O"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1cc(Br)ccc1O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      }
+    ],
+    "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+  },
+  {
+    "id": "q-P2-mcresol-001",
+    "reactionIds": [
+      "P2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1cccc(O)c1",
+      "name": "3-methylphenol"
+    },
+    "target": {
+      "name": "2,4,6-tribromo-3-methylphenol",
+      "stereo": "none",
+      "smiles": "Cc1c(Br)cc(Br)c(O)c1Br",
+      "highlightAtoms": [
+        2,
+        3,
+        5,
+        6,
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_H2O"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1cc(O)ccc1Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      }
+    ],
+    "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+  },
+  {
+    "id": "q-P2-chlorophenol-001",
+    "reactionIds": [
+      "P2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc(Cl)cc1",
+      "name": "4-chlorophenol"
+    },
+    "target": {
+      "name": "2,6-dibromo-4-chlorophenol",
+      "stereo": "none",
+      "smiles": "Oc1c(Br)cc(Cl)cc1Br",
+      "highlightAtoms": [
+        2,
+        3,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_H2O"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Oc1ccc(Cl)cc1Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      },
+      {
+        "smiles": "Oc1c(Br)cc(Br)cc1Br",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The group already on the ring does not leave. EAS only replaces ring hydrogens: count the open ortho/para positions."
+      }
+    ],
+    "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+  },
+  {
+    "id": "q-P2-nitrophenol-001",
+    "reactionIds": [
+      "P2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+      "name": "4-nitrophenol"
+    },
+    "target": {
+      "name": "2,6-dibromo-4-nitrophenol",
+      "stereo": "none",
+      "smiles": "O=[N+]([O-])c1cc(Br)c(O)c(Br)c1",
+      "highlightAtoms": [
+        5,
+        6,
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_H2O"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=[N+]([O-])c1ccc(O)c(Br)c1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      },
+      {
+        "smiles": "Oc1c(Br)cc(Br)cc1Br",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The group already on the ring does not leave. EAS only replaces ring hydrogens: count the open ortho/para positions."
+      }
+    ],
+    "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+  },
+  {
+    "id": "q-P2-ochlorophenol-001",
+    "reactionIds": [
+      "P2"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1Cl",
+      "name": "2-chlorophenol"
+    },
+    "target": {
+      "name": "2,4-dibromo-6-chlorophenol",
+      "stereo": "none",
+      "smiles": "Oc1c(Cl)cc(Br)cc1Br",
+      "highlightAtoms": [
+        5,
+        6,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Br2_H2O"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Oc1ccc(Br)cc1Cl",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      }
+    ],
+    "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+  }
+]

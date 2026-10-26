@@ -1,0 +1,386 @@
+[
+  {
+    "id": "q-R6-bromoethane-001",
+    "reactionIds": [
+      "R6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCBr",
+      "name": "bromoethane"
+    },
+    "target": {
+      "name": "propan-1-ol",
+      "stereo": "none",
+      "altNames": [
+        "1-propanol"
+      ],
+      "smiles": "CCCO",
+      "highlightAtoms": [
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "HCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CC",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "Mg inserts into the C–Br bond; the Grignard carbon attacks formaldehyde's carbonyl; H₃O⁺ protonates the alkoxide. One extra carbon, 1° alcohol.",
+    "tip": "Grignard + HCHO = 1° alcohol, one carbon longer."
+  },
+  {
+    "id": "q-R6-bromobutane-001",
+    "reactionIds": [
+      "R6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCBr",
+      "name": "1-bromobutane"
+    },
+    "target": {
+      "name": "pentan-1-ol",
+      "stereo": "none",
+      "altNames": [
+        "1-pentanol"
+      ],
+      "smiles": "CCCCCO",
+      "highlightAtoms": [
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "HCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CCCC",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "Mg inserts into the C–Br bond; the Grignard carbon attacks formaldehyde's carbonyl; H₃O⁺ protonates the alkoxide. One extra carbon, 1° alcohol.",
+    "tip": "Grignard + HCHO = 1° alcohol, one carbon longer."
+  },
+  {
+    "id": "q-R6-bromocyclohexane-001",
+    "reactionIds": [
+      "R6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrC1CCCCC1",
+      "name": "bromocyclohexane"
+    },
+    "target": {
+      "name": "cyclohexylmethanol",
+      "stereo": "none",
+      "smiles": "OCC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "HCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "[O-]CC1CCCCC1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "C1CCCCC1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "Mg inserts into the C–Br bond; the Grignard carbon attacks formaldehyde's carbonyl; H₃O⁺ protonates the alkoxide. One extra carbon, 1° alcohol.",
+    "tip": "Grignard + HCHO = 1° alcohol, one carbon longer."
+  },
+  {
+    "id": "q-R6-bromobenzene-001",
+    "reactionIds": [
+      "R6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Brc1ccccc1",
+      "name": "bromobenzene"
+    },
+    "target": {
+      "name": "benzyl alcohol",
+      "stereo": "none",
+      "altNames": [
+        "phenylmethanol"
+      ],
+      "smiles": "OCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "HCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "[O-]Cc1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "c1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "Mg inserts into the C–Br bond; the Grignard carbon attacks formaldehyde's carbonyl; H₃O⁺ protonates the alkoxide. One extra carbon, 1° alcohol.",
+    "tip": "Grignard + HCHO = 1° alcohol, one carbon longer."
+  },
+  {
+    "id": "q-R6-isopropylbromide-001",
+    "reactionIds": [
+      "R6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)Br",
+      "name": "2-bromopropane"
+    },
+    "target": {
+      "name": "2-methylpropan-1-ol",
+      "stereo": "none",
+      "altNames": [
+        "isobutyl alcohol",
+        "2-methyl-1-propanol"
+      ],
+      "smiles": "CC(C)CO",
+      "highlightAtoms": [
+        1,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "HCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)C[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CCC",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "Mg inserts into the C–Br bond; the Grignard carbon attacks formaldehyde's carbonyl; H₃O⁺ protonates the alkoxide. One extra carbon, 1° alcohol.",
+    "tip": "Grignard + HCHO = 1° alcohol, one carbon longer."
+  },
+  {
+    "id": "q-R6-benzylbromide-001",
+    "reactionIds": [
+      "R6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrCc1ccccc1",
+      "name": "(bromomethyl)benzene"
+    },
+    "target": {
+      "name": "2-phenylethan-1-ol",
+      "stereo": "none",
+      "altNames": [
+        "2-phenylethanol"
+      ],
+      "smiles": "OCCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "HCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "[O-]CCc1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "Cc1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "Mg inserts into the C–Br bond; the Grignard carbon attacks formaldehyde's carbonyl; H₃O⁺ protonates the alkoxide. One extra carbon, 1° alcohol.",
+    "tip": "Grignard + HCHO = 1° alcohol, one carbon longer."
+  },
+  {
+    "id": "q-R6-isobutylbromide-001",
+    "reactionIds": [
+      "R6"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CBr",
+      "name": "1-bromo-2-methylpropane"
+    },
+    "target": {
+      "name": "3-methylbutan-1-ol",
+      "stereo": "none",
+      "altNames": [
+        "isoamyl alcohol",
+        "3-methyl-1-butanol"
+      ],
+      "smiles": "CC(C)CCO",
+      "highlightAtoms": [
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "Mg_ether"
+      },
+      {
+        "reagent": "HCHO"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)CC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol."
+      },
+      {
+        "smiles": "CC(C)C",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      }
+    ],
+    "explanation": "Mg inserts into the C–Br bond; the Grignard carbon attacks formaldehyde's carbonyl; H₃O⁺ protonates the alkoxide. One extra carbon, 1° alcohol.",
+    "tip": "Grignard + HCHO = 1° alcohol, one carbon longer."
+  }
+]

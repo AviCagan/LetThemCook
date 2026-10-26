@@ -15,8 +15,8 @@ export function DayEnd() {
       <div class="report-grid">
         <div class="stat"><div class="stat-num">{r.orders}</div><div class="stat-label">orders</div></div>
         <div class="stat"><div class="stat-num">{acc}%</div><div class="stat-label">correct</div></div>
-        <div class="stat"><div class="stat-num"><img class="icon" src={spriteDataUrl('star', 0, 2)} alt="" /> {r.stars}</div><div class="stat-label">stars</div></div>
-        <div class="stat"><div class="stat-num"><img class="icon" src={spriteDataUrl('coin', 0, 2)} alt="" /> {r.coins}</div><div class="stat-label">coins</div></div>
+        <div class="stat"><div class="stat-num"><img class="icon" src={spriteDataUrl('ic_star', 0, 2)} alt="" /> {r.stars}</div><div class="stat-label">stars</div></div>
+        <div class="stat"><div class="stat-num"><img class="icon" src={spriteDataUrl('ic_coin', 0, 2)} alt="" /> {r.coins}</div><div class="stat-label">coins</div></div>
         <div class="stat"><div class="stat-num">×{r.bestCombo}</div><div class="stat-label">best combo</div></div>
       </div>
       {tags.length > 0 && (
@@ -37,7 +37,8 @@ export function DayEnd() {
       )}
       <div class="row gap">
         <button class="btn btn-primary btn-big" type="button" onClick={() => { sfx.tap(); flow.startShift('shift'); }}>Another shift ▶</button>
-        <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'notebook'; }}>Lab notebook</button>
+        <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'labbook'; }}>Lab book</button>
+        <button class="btn" type="button" onClick={() => { sfx.click(); screen.value = 'notebook'; }}>Mastery</button>
         <button class="btn btn-ghost" type="button" onClick={() => { sfx.click(); flow.abandonShift(); }}>Home</button>
       </div>
     </div>

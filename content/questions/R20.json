@@ -1,0 +1,267 @@
+[
+  {
+    "id": "q-R20-methanol-acoh-001",
+    "reactionIds": [
+      "R20"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CO",
+      "name": "methanol"
+    },
+    "target": {
+      "name": "methyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "methyl ethanoate"
+      ],
+      "smiles": "COC(C)=O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcOH_H2SO4",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+  },
+  {
+    "id": "q-R20-benzoic-meoh-001",
+    "reactionIds": [
+      "R20"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC(=O)c1ccccc1",
+      "name": "benzoic acid"
+    },
+    "target": {
+      "name": "methyl benzoate",
+      "stereo": "none",
+      "smiles": "COC(=O)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+  },
+  {
+    "id": "q-R20-acetic-etoh-001",
+    "reactionIds": [
+      "R20"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(=O)O",
+      "name": "acetic acid"
+    },
+    "target": {
+      "name": "ethyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "ethyl ethanoate"
+      ],
+      "smiles": "CCOC(C)=O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "EtOH_H2SO4",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+  },
+  {
+    "id": "q-R20-butanol-acoh-001",
+    "reactionIds": [
+      "R20"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "butyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "butyl ethanoate"
+      ],
+      "smiles": "CCCCOC(C)=O",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcOH_H2SO4",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+  },
+  {
+    "id": "q-R20-cyclohexanecarboxylic-etoh-001",
+    "reactionIds": [
+      "R20"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC(=O)C1CCCCC1",
+      "name": "cyclohexanecarboxylic acid"
+    },
+    "target": {
+      "name": "ethyl cyclohexanecarboxylate",
+      "stereo": "none",
+      "smiles": "CCOC(=O)C1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "EtOH_H2SO4",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+  },
+  {
+    "id": "q-R20-hydrocinnamic-meoh-001",
+    "reactionIds": [
+      "R20"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC(=O)CCc1ccccc1",
+      "name": "3-phenylpropanoic acid"
+    },
+    "target": {
+      "name": "methyl 3-phenylpropanoate",
+      "stereo": "none",
+      "smiles": "COC(=O)CCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+  },
+  {
+    "id": "q-R20-isobutanol-acoh-001",
+    "reactionIds": [
+      "R20"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CO",
+      "name": "2-methylpropan-1-ol"
+    },
+    "target": {
+      "name": "2-methylpropyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "isobutyl acetate"
+      ],
+      "smiles": "CC(=O)OCC(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcOH_H2SO4",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+  }
+]

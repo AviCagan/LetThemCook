@@ -1,0 +1,387 @@
+[
+  {
+    "id": "q-R13-butanol-001",
+    "reactionIds": [
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "1-bromobutane",
+      "stereo": "none",
+      "smiles": "CCCCBr",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "HBr",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCCl",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride; for the bromide use PBr₃ (or HBr)."
+      },
+      {
+        "smiles": "CCCC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol; you wanted a substitution."
+      }
+    ],
+    "explanation": "PBr₃ turns the OH into a good leaving group and bromide displaces it by SN2, with no carbocation and no rearrangement.",
+    "tip": "PBr₃: 1°/2° alcohol → bromide, no rearrangement."
+  },
+  {
+    "id": "q-R13-cyclopentanol-001",
+    "reactionIds": [
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCC1",
+      "name": "cyclopentanol"
+    },
+    "target": {
+      "name": "bromocyclopentane",
+      "stereo": "none",
+      "smiles": "BrC1CCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "HBr",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "ClC1CCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride; for the bromide use PBr₃ (or HBr)."
+      },
+      {
+        "smiles": "O=C1CCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol; you wanted a substitution."
+      }
+    ],
+    "explanation": "PBr₃ turns the OH into a good leaving group and bromide displaces it by SN2, with no carbocation and no rearrangement.",
+    "tip": "PBr₃: 1°/2° alcohol → bromide, no rearrangement."
+  },
+  {
+    "id": "q-R13-isoamyl-001",
+    "reactionIds": [
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CCO",
+      "name": "3-methylbutan-1-ol"
+    },
+    "target": {
+      "name": "1-bromo-3-methylbutane",
+      "stereo": "none",
+      "smiles": "CC(C)CCBr",
+      "highlightAtoms": [
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "HBr",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)CCCl",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride; for the bromide use PBr₃ (or HBr)."
+      },
+      {
+        "smiles": "CC(C)CC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol; you wanted a substitution."
+      }
+    ],
+    "explanation": "PBr₃ turns the OH into a good leaving group and bromide displaces it by SN2, with no carbocation and no rearrangement.",
+    "tip": "PBr₃: 1°/2° alcohol → bromide, no rearrangement."
+  },
+  {
+    "id": "q-R13-benzyl-001",
+    "reactionIds": [
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCc1ccccc1",
+      "name": "benzyl alcohol"
+    },
+    "target": {
+      "name": "(bromomethyl)benzene",
+      "stereo": "none",
+      "smiles": "BrCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "HBr",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "ClCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride; for the bromide use PBr₃ (or HBr)."
+      },
+      {
+        "smiles": "O=C(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol; you wanted a substitution."
+      }
+    ],
+    "explanation": "PBr₃ turns the OH into a good leaving group and bromide displaces it by SN2, with no carbocation and no rearrangement.",
+    "tip": "PBr₃: 1°/2° alcohol → bromide, no rearrangement."
+  },
+  {
+    "id": "q-R13-pentan2ol-001",
+    "reactionIds": [
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCC(C)O",
+      "name": "pentan-2-ol"
+    },
+    "target": {
+      "name": "2-bromopentane",
+      "stereo": "racemic",
+      "smiles": "CCCC(C)Br",
+      "highlightAtoms": [
+        3,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "HBr",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCCC(C)Cl",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride; for the bromide use PBr₃ (or HBr)."
+      },
+      {
+        "smiles": "CCCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol; you wanted a substitution."
+      }
+    ],
+    "explanation": "PBr₃ turns the OH into a good leaving group and bromide displaces it by SN2, with no carbocation and no rearrangement.",
+    "tip": "PBr₃: 1°/2° alcohol → bromide, no rearrangement."
+  },
+  {
+    "id": "q-R13-isobutanol-001",
+    "reactionIds": [
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CO",
+      "name": "2-methylpropan-1-ol"
+    },
+    "target": {
+      "name": "1-bromo-2-methylpropane",
+      "stereo": "none",
+      "smiles": "CC(C)CBr",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "HBr",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)CCl",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride; for the bromide use PBr₃ (or HBr)."
+      },
+      {
+        "smiles": "CC(C)C(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol; you wanted a substitution."
+      }
+    ],
+    "explanation": "PBr₃ turns the OH into a good leaving group and bromide displaces it by SN2, with no carbocation and no rearrangement.",
+    "tip": "PBr₃: 1°/2° alcohol → bromide, no rearrangement."
+  },
+  {
+    "id": "q-R13-cyclohexylmethanol-001",
+    "reactionIds": [
+      "R13"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCC1CCCCC1",
+      "name": "cyclohexylmethanol"
+    },
+    "target": {
+      "name": "(bromomethyl)cyclohexane",
+      "stereo": "none",
+      "smiles": "BrCC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "PBr3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "HBr",
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "ClCC1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride; for the bromide use PBr₃ (or HBr)."
+      },
+      {
+        "smiles": "O=C(O)C1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol; you wanted a substitution."
+      }
+    ],
+    "explanation": "PBr₃ turns the OH into a good leaving group and bromide displaces it by SN2, with no carbocation and no rearrangement.",
+    "tip": "PBr₃: 1°/2° alcohol → bromide, no rearrangement."
+  }
+]

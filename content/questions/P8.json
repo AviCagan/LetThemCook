@@ -1,0 +1,342 @@
+[
+  {
+    "id": "q-P8-phenol-accl-001",
+    "reactionIds": [
+      "P8"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1",
+      "name": "phenol"
+    },
+    "target": {
+      "name": "1-(4-hydroxyphenyl)ethan-1-one",
+      "stereo": "none",
+      "altNames": [
+        "4-hydroxyacetophenone",
+        "4'-hydroxyacetophenone"
+      ],
+      "smiles": "CC(=O)c1ccc(O)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_AlCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccccc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester)."
+      },
+      {
+        "smiles": "CC(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      }
+    ],
+    "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+  },
+  {
+    "id": "q-P8-pcresol-accl-001",
+    "reactionIds": [
+      "P8"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccc(O)cc1",
+      "name": "4-methylphenol"
+    },
+    "target": {
+      "name": "1-(2-hydroxy-5-methylphenyl)ethan-1-one",
+      "stereo": "none",
+      "altNames": [
+        "2-hydroxy-5-methylacetophenone"
+      ],
+      "smiles": "CC(=O)c1cc(C)ccc1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_AlCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester)."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      }
+    ],
+    "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+  },
+  {
+    "id": "q-P8-phenylacetate-fries-001",
+    "reactionIds": [
+      "P8"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(=O)Oc1ccccc1",
+      "name": "phenyl acetate"
+    },
+    "target": {
+      "name": "1-(4-hydroxyphenyl)ethan-1-one",
+      "stereo": "none",
+      "altNames": [
+        "4-hydroxyacetophenone"
+      ],
+      "smiles": "CC(=O)c1ccc(O)cc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AlCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccc(C(C)=O)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      }
+    ],
+    "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+  },
+  {
+    "id": "q-P8-tolylacetate-fries-001",
+    "reactionIds": [
+      "P8"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(=O)Oc1ccc(C)cc1",
+      "name": "4-methylphenyl acetate"
+    },
+    "target": {
+      "name": "1-(2-hydroxy-5-methylphenyl)ethan-1-one",
+      "stereo": "none",
+      "altNames": [
+        "2-hydroxy-5-methylacetophenone"
+      ],
+      "smiles": "CC(=O)c1cc(C)ccc1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AlCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)c1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      }
+    ],
+    "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+  },
+  {
+    "id": "q-P8-mcresol-accl-001",
+    "reactionIds": [
+      "P8"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Cc1cccc(O)c1",
+      "name": "3-methylphenol"
+    },
+    "target": {
+      "name": "1-(4-hydroxy-2-methylphenyl)ethan-1-one",
+      "stereo": "none",
+      "altNames": [
+        "4-hydroxy-2-methylacetophenone"
+      ],
+      "smiles": "CC(=O)c1ccc(O)cc1C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_AlCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1cccc(C)c1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester)."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      }
+    ],
+    "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+  },
+  {
+    "id": "q-P8-chlorophenol-accl-001",
+    "reactionIds": [
+      "P8"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc(Cl)cc1",
+      "name": "4-chlorophenol"
+    },
+    "target": {
+      "name": "1-(5-chloro-2-hydroxyphenyl)ethan-1-one",
+      "stereo": "none",
+      "altNames": [
+        "5-chloro-2-hydroxyacetophenone"
+      ],
+      "smiles": "CC(=O)c1cc(Cl)ccc1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_AlCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester)."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      }
+    ],
+    "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+  },
+  {
+    "id": "q-P8-tbutylphenol-accl-001",
+    "reactionIds": [
+      "P8"
+    ],
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(C)c1ccc(O)cc1",
+      "name": "4-tert-butylphenol"
+    },
+    "target": {
+      "name": "1-(5-tert-butyl-2-hydroxyphenyl)ethan-1-one",
+      "stereo": "none",
+      "smiles": "CC(=O)c1cc(C(C)(C)C)ccc1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_AlCl3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)Oc1ccc(C(C)(C)C)cc1",
+        "stereo": "none",
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester)."
+      },
+      {
+        "smiles": "CC(=O)c1ccc(C(C)(C)C)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      }
+    ],
+    "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+  }
+]

@@ -2,7 +2,7 @@
 import { signal } from '@preact/signals';
 import type { SaveData } from './save/types';
 
-export type Screen = 'boot' | 'title' | 'lab' | 'notebook' | 'settings' | 'practice' | 'report';
+export type Screen = 'boot' | 'title' | 'lab' | 'notebook' | 'labbook' | 'settings' | 'practice' | 'report';
 
 export const save = signal<SaveData | null>(null);
 export const screen = signal<Screen>('boot');

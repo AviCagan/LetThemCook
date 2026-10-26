@@ -1,0 +1,255 @@
+[
+  {
+    "id": "q-E8-bromoethanol-001",
+    "reactionIds": [
+      "E8"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCCBr",
+      "name": "2-bromoethan-1-ol"
+    },
+    "target": {
+      "name": "oxirane",
+      "stereo": "none",
+      "altNames": [
+        "ethylene oxide"
+      ],
+      "smiles": "C1CO1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        }
+      ]
+    ],
+    "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+  },
+  {
+    "id": "q-E8-bromopropanol-001",
+    "reactionIds": [
+      "E8"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(O)CBr",
+      "name": "1-bromopropan-2-ol"
+    },
+    "target": {
+      "name": "2-methyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "propylene oxide",
+        "1,2-epoxypropane"
+      ],
+      "smiles": "CC1CO1",
+      "highlightAtoms": [
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        }
+      ]
+    ],
+    "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+  },
+  {
+    "id": "q-E8-bromocyclohexanol-001",
+    "reactionIds": [
+      "E8"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1Br",
+      "name": "2-bromocyclohexan-1-ol (trans)"
+    },
+    "target": {
+      "name": "7-oxabicyclo[4.1.0]heptane",
+      "stereo": "meso",
+      "altNames": [
+        "cyclohexene oxide"
+      ],
+      "smiles": "C1CCC2OC2C1",
+      "highlightAtoms": [
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        }
+      ]
+    ],
+    "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+  },
+  {
+    "id": "q-E8-chlorophenylethanol-001",
+    "reactionIds": [
+      "E8"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC(CCl)c1ccccc1",
+      "name": "2-chloro-1-phenylethan-1-ol"
+    },
+    "target": {
+      "name": "2-phenyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "styrene oxide"
+      ],
+      "smiles": "c1ccc(C2CO2)cc1",
+      "highlightAtoms": [
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        }
+      ]
+    ],
+    "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+  },
+  {
+    "id": "q-E8-bromomethylpropanol-001",
+    "reactionIds": [
+      "E8"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(O)CBr",
+      "name": "1-bromo-2-methylpropan-2-ol"
+    },
+    "target": {
+      "name": "2,2-dimethyloxirane",
+      "stereo": "none",
+      "altNames": [
+        "isobutylene oxide"
+      ],
+      "smiles": "CC1(C)CO1",
+      "highlightAtoms": [
+        1,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        }
+      ]
+    ],
+    "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+  },
+  {
+    "id": "q-E8-chlorohexanol-001",
+    "reactionIds": [
+      "E8"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCC(O)CCl",
+      "name": "1-chlorohexan-2-ol"
+    },
+    "target": {
+      "name": "2-butyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "1,2-epoxyhexane"
+      ],
+      "smiles": "CCCCC1CO1",
+      "highlightAtoms": [
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        }
+      ]
+    ],
+    "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+  }
+]

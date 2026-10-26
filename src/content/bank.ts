@@ -15,16 +15,16 @@ export const REACTIONS: Reaction[] = reactionsJson as Reaction[];
 export const TAGS: MistakeTag[] = tagsJson as MistakeTag[];
 export const ITEMS: QuestionItem[] = Object.values(questionModules)
   .flatMap((m) => m.default)
-  .filter((q) => !q.review);
+  .filter((q) => !q.review && !!q.target.smiles);
 
 const reagentById = new Map(REAGENTS.map((r) => [r.id, r]));
 const reactionById = new Map(REACTIONS.map((r) => [r.id, r]));
 const tagById = new Map(TAGS.map((t) => [t.id, t]));
 const itemsByReaction = new Map<string, QuestionItem[]>();
 for (const item of ITEMS) {
-  const list = itemsByReaction.get(item.reactionId) ?? [];
+  const list = itemsByReaction.get(item.reactionIds[0]) ?? [];
   list.push(item);
-  itemsByReaction.set(item.reactionId, list);
+  itemsByReaction.set(item.reactionIds[0], list);
 }
 
 export function getReagent(id: string): Reagent {
@@ -55,10 +55,6 @@ export function orderTypeLabel(t: string): string {
     {
       make_it: 'Make it',
       predict_product: 'What do I get?',
-      find_start: 'What did I start with?',
-      spot_flaw: 'Spot the flaw',
-      name_it: 'Name it',
-      multistep: 'Special order',
     } as Record<string, string>
   )[t] ?? t;
 }

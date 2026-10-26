@@ -6,15 +6,23 @@ import { loadRDKit, warmCache } from './chem/rdkit';
 import { createGame } from './game/game';
 import { sfx } from './audio/sfx';
 import { ITEMS } from './content/bank';
+import { flow } from './flow';
+import { applyTheme } from './theme';
+import '@fontsource/press-start-2p/400.css';
 import './styles.css';
 
 async function boot(): Promise<void> {
+  // ?debug exposes the game state for smoke tests and console poking
+  if (new URLSearchParams(location.search).has('debug')) (window as unknown as { __bb: unknown }).__bb = { flow, save, screen };
   render(<App />, document.getElementById('ui')!);
   const data = await loadSave();
   save.value = data;
   sfx.setMuted(data.profile.settings.mute);
   document.documentElement.classList.toggle('reduced-motion', data.profile.settings.reducedMotion);
-  createGame(document.getElementById('game')!);
+  applyTheme(data.profile.settings.theme ?? 'auto');
+  const game = createGame(document.getElementById('game')!);
+  const dbg = (window as unknown as { __bb?: { game?: unknown } }).__bb;
+  if (dbg) dbg.game = game;
   bootMessage.value = 'Loading the molecule drawer (first time takes a moment)…';
   try {
     await loadRDKit();

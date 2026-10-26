@@ -1,0 +1,294 @@
+[
+  {
+    "id": "q-E10-cyclohexeneoxide-h3o-001",
+    "reactionIds": [
+      "E10"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1CCC2OC2C1",
+      "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)"
+    },
+    "target": {
+      "name": "trans-cyclohexane-1,2-diol",
+      "stereo": "racemic",
+      "altNames": [
+        "trans-1,2-cyclohexanediol"
+      ],
+      "stereoChoices": [
+        "racemic",
+        "meso",
+        "single_enantiomer"
+      ],
+      "smiles": "OC1CCCCC1O",
+      "highlightAtoms": [
+        0,
+        1,
+        5,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+  },
+  {
+    "id": "q-E10-methyloxirane-meoh-001",
+    "reactionIds": [
+      "E10"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1CO1",
+      "name": "2-methyloxirane"
+    },
+    "target": {
+      "name": "2-methoxypropan-1-ol",
+      "stereo": "racemic",
+      "smiles": "COC(C)CO",
+      "highlightAtoms": [
+        0,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "COCC(C)O",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Under acid the nucleophile goes to the MORE substituted carbon (the one that best supports positive charge). The less-substituted product is what methoxide gives."
+      }
+    ],
+    "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+  },
+  {
+    "id": "q-E10-dimethyloxirane-h3o-001",
+    "reactionIds": [
+      "E10"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(C)CO1",
+      "name": "2,2-dimethyloxirane"
+    },
+    "target": {
+      "name": "2-methylpropane-1,2-diol",
+      "stereo": "none",
+      "smiles": "CC(C)(O)CO",
+      "highlightAtoms": [
+        1,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+  },
+  {
+    "id": "q-E10-dimethyloxirane-meoh-001",
+    "reactionIds": [
+      "E10"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(C)CO1",
+      "name": "2,2-dimethyloxirane"
+    },
+    "target": {
+      "name": "2-methoxy-2-methylpropan-1-ol",
+      "stereo": "none",
+      "smiles": "COC(C)(C)CO",
+      "highlightAtoms": [
+        0,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "COCC(C)(C)O",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Acid: methanol attacks the 3° carbon. Methoxide (base) would attack the CH₂ instead."
+      }
+    ],
+    "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+  },
+  {
+    "id": "q-E10-methyloxirane-hbr-001",
+    "reactionIds": [
+      "E10"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1CO1",
+      "name": "2-methyloxirane"
+    },
+    "target": {
+      "name": "2-bromopropan-1-ol",
+      "stereo": "racemic",
+      "smiles": "CC(Br)CO",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "rt",
+          "light": false
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(O)CS",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "A different nucleophile, and the wrong carbon: HBr puts Br on the more substituted carbon."
+      }
+    ],
+    "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+  },
+  {
+    "id": "q-E10-styreneoxide-etoh-001",
+    "reactionIds": [
+      "E10"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "c1ccc(C2CO2)cc1",
+      "name": "2-phenyloxirane"
+    },
+    "target": {
+      "name": "2-ethoxy-2-phenylethan-1-ol",
+      "stereo": "racemic",
+      "smiles": "CCOC(CO)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "EtOH_H2SO4",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCOCC(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Under acid ethanol attacks the benzylic carbon (best cation character). Ethoxide would attack the CH₂."
+      }
+    ],
+    "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+  },
+  {
+    "id": "q-E10-cyclopenteneoxide-h3o-001",
+    "reactionIds": [
+      "E10"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1CC2OC2C1",
+      "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)"
+    },
+    "target": {
+      "name": "trans-cyclopentane-1,2-diol",
+      "stereo": "racemic",
+      "altNames": [
+        "trans-1,2-cyclopentanediol"
+      ],
+      "stereoChoices": [
+        "racemic",
+        "meso",
+        "single_enantiomer"
+      ],
+      "smiles": "OC1CCCC1O",
+      "highlightAtoms": [
+        0,
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+  }
+]

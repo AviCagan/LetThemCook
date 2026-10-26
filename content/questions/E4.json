@@ -1,0 +1,250 @@
+[
+  {
+    "id": "q-E4-tbubr-001",
+    "reactionIds": [
+      "E4"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(C)Br",
+      "name": "2-bromo-2-methylpropane"
+    },
+    "target": {
+      "name": "2-methylpropene",
+      "stereo": "none",
+      "altNames": [
+        "isobutylene",
+        "2-methylprop-1-ene"
+      ],
+      "smiles": "C=C(C)C",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "COC(C)(C)C",
+        "stereo": "none",
+        "tag": "williamson_E2",
+        "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      }
+    ],
+    "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+  },
+  {
+    "id": "q-E4-iprbr-001",
+    "reactionIds": [
+      "E4"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)Br",
+      "name": "2-bromopropane"
+    },
+    "target": {
+      "name": "propene",
+      "stereo": "none",
+      "smiles": "C=CC",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOEt"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCOC(C)C",
+        "stereo": "none",
+        "tag": "williamson_E2",
+        "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      }
+    ],
+    "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+  },
+  {
+    "id": "q-E4-bromocyclohexane-001",
+    "reactionIds": [
+      "E4"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrC1CCCCC1",
+      "name": "bromocyclohexane"
+    },
+    "target": {
+      "name": "cyclohexene",
+      "stereo": "none",
+      "smiles": "C1=CCCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "COC1CCCCC1",
+        "stereo": "none",
+        "tag": "williamson_E2",
+        "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      }
+    ],
+    "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+  },
+  {
+    "id": "q-E4-2bromobutane-001",
+    "reactionIds": [
+      "E4"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(C)Br",
+      "name": "2-bromobutane"
+    },
+    "target": {
+      "name": "but-2-ene",
+      "stereo": "none",
+      "altNames": [
+        "2-butene"
+      ],
+      "smiles": "CC=CC",
+      "highlightAtoms": [
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)OC",
+        "stereo": "none",
+        "tag": "williamson_E2",
+        "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      }
+    ],
+    "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+  },
+  {
+    "id": "q-E4-methylcyclohexylbromide-001",
+    "reactionIds": [
+      "E4"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(Br)CCCCC1",
+      "name": "1-bromo-1-methylcyclohexane"
+    },
+    "target": {
+      "name": "1-methylcyclohexene",
+      "stereo": "none",
+      "smiles": "CC1=CCCCC1",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOEt"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCOC1(C)CCCCC1",
+        "stereo": "none",
+        "tag": "williamson_E2",
+        "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      }
+    ],
+    "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+  },
+  {
+    "id": "q-E4-bromomethylbutane-001",
+    "reactionIds": [
+      "E4"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(C)(C)Br",
+      "name": "2-bromo-2-methylbutane"
+    },
+    "target": {
+      "name": "2-methylbut-2-ene",
+      "stereo": "none",
+      "altNames": [
+        "2-methyl-2-butene"
+      ],
+      "smiles": "CC=C(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)(C)OC",
+        "stereo": "none",
+        "tag": "williamson_E2",
+        "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      }
+    ],
+    "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+  }
+]

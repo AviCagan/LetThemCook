@@ -5,6 +5,7 @@ import { decodeSave, encodeSave } from '../save/codec';
 import { mergeSaves } from '../save/merge';
 import { emptySave } from '../save/types';
 import { sfx } from '../audio/sfx';
+import { applyTheme, THEME_LABEL, type Theme } from '../theme';
 
 export function Settings() {
   const s = save.value!;
@@ -80,6 +81,14 @@ export function Settings() {
         <input type="checkbox" checked={s.profile.settings.mute} onChange={(e) => update((d) => { d.profile.settings.mute = (e.target as HTMLInputElement).checked; sfx.setMuted(d.profile.settings.mute); })} />
         <span>Mute sound</span>
       </label>
+      <div class="field">
+        <span>Theme</span>
+        <div class="chips" role="radiogroup" aria-label="Theme">
+          {(['auto', 'light', 'dark'] as Theme[]).map((t) => (
+            <button key={t} type="button" role="radio" aria-checked={(s.profile.settings.theme ?? 'auto') === t} class={`chip chip-btn ${(s.profile.settings.theme ?? 'auto') === t ? 'is-on' : ''}`} onClick={() => update((d) => { d.profile.settings.theme = t; applyTheme(t); })}>{THEME_LABEL[t]}</button>
+          ))}
+        </div>
+      </div>
       <label class="field check">
         <input type="checkbox" checked={s.profile.settings.reducedMotion} onChange={(e) => update((d) => { d.profile.settings.reducedMotion = (e.target as HTMLInputElement).checked; document.documentElement.classList.toggle('reduced-motion', d.profile.settings.reducedMotion); })} />
         <span>Reduce motion</span>

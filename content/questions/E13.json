@@ -1,0 +1,267 @@
+[
+  {
+    "id": "q-E13-dms-mei-001",
+    "reactionIds": [
+      "E13"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CSC",
+      "name": "dimethyl sulfide"
+    },
+    "target": {
+      "name": "trimethylsulfonium",
+      "stereo": "none",
+      "altNames": [
+        "trimethylsulfonium iodide"
+      ],
+      "smiles": "C[S+](C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CS(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      }
+    ],
+    "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+  },
+  {
+    "id": "q-E13-des-mei-001",
+    "reactionIds": [
+      "E13"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCSCC",
+      "name": "diethyl sulfide"
+    },
+    "target": {
+      "name": "diethyl(methyl)sulfonium",
+      "stereo": "none",
+      "altNames": [
+        "diethylmethylsulfonium iodide"
+      ],
+      "smiles": "CC[S+](C)CC",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCS(=O)CC",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      }
+    ],
+    "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+  },
+  {
+    "id": "q-E13-thioanisole-mei-001",
+    "reactionIds": [
+      "E13"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CSc1ccccc1",
+      "name": "methyl phenyl sulfide"
+    },
+    "target": {
+      "name": "dimethyl(phenyl)sulfonium",
+      "stereo": "none",
+      "altNames": [
+        "dimethylphenylsulfonium iodide"
+      ],
+      "smiles": "C[S+](C)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CS(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      }
+    ],
+    "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+  },
+  {
+    "id": "q-E13-thiolane-mei-001",
+    "reactionIds": [
+      "E13"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1CCSC1",
+      "name": "thiolane"
+    },
+    "target": {
+      "name": "1-methylthiolan-1-ium",
+      "stereo": "none",
+      "altNames": [
+        "S-methyltetrahydrothiophenium iodide"
+      ],
+      "smiles": "C[S+]1CCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=S1CCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      }
+    ],
+    "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+  },
+  {
+    "id": "q-E13-dms-etbr-001",
+    "reactionIds": [
+      "E13"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CSC",
+      "name": "dimethyl sulfide"
+    },
+    "target": {
+      "name": "ethyl(dimethyl)sulfonium",
+      "stereo": "none",
+      "altNames": [
+        "ethyldimethylsulfonium bromide"
+      ],
+      "smiles": "CC[S+](C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "EtBr"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CS(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      }
+    ],
+    "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+  },
+  {
+    "id": "q-E13-dibutyl-mei-001",
+    "reactionIds": [
+      "E13"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCSCCCC",
+      "name": "dibutyl sulfide"
+    },
+    "target": {
+      "name": "dibutyl(methyl)sulfonium",
+      "stereo": "none",
+      "altNames": [
+        "dibutylmethylsulfonium iodide"
+      ],
+      "smiles": "CCCC[S+](C)CCCC",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCS(=O)CCCC",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      }
+    ],
+    "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+  }
+]

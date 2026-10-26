@@ -1,67 +1,151 @@
+// Top-down lab room (GBC style): customers come in through the door at the bottom and walk up
+// to the counter; the player stands behind it; the mentor drops in when a batch fails.
 import Phaser from 'phaser';
 import { effect } from '@preact/signals';
-import { StageScene, VW, VH, hudHeight } from '../stage';
+import { StageScene, TILE, VW, VH, hudHeight } from '../stage';
 import { flow } from '../../flow';
 import { save } from '../../state';
 import { frameCount } from '../../art/textures';
 
-const BENCH_Y = 84;
+type Dir = 'down' | 'up' | 'left' | 'right';
+const DIR_BASE: Record<Dir, number> = { down: 0, up: 3, left: 6, right: 9 };
+
+// 10 x 9 tiles. Row 0 wall top; row 1 back wall; row 2 benches; row 3 player aisle; rows 4-5 counter; 6-8 shop floor + door.
+const ROOM: string[][] = [
+  ['t_wall_top', 't_wall_top', 't_wall_top', 't_wall_top', 't_wall_top', 't_wall_top', 't_wall_top', 't_wall_top', 't_wall_top', 't_wall_top'],
+  ['t_wall', 't_window', 't_wall_poster', 't_wall_shelf', 't_fumehood_tl', 't_fumehood_tr', 't_wall_cabinet', 't_wall_shelf', 't_window', 't_wall'],
+  ['t_bookshelf', 't_bench_flask', 't_bench_hotplate', 't_bench_icebath', 't_fumehood_bl', 't_fumehood_br', 't_bench_computer', 't_bench_books', 't_bench', 't_plant'],
+  ['t_floor_a', 't_floor_b', 't_floor_a', 't_floor_b', 't_floor_a', 't_floor_b', 't_floor_a', 't_floor_b', 't_floor_a', 't_floor_b'],
+  ['t_floor_b', 't_counter_l', 't_counter_m', 't_counter_m', 't_counter_m', 't_counter_m', 't_counter_m', 't_counter_m', 't_counter_r', 't_floor_a'],
+  ['t_floor_a', 't_counter_front_l', 't_counter_front_m', 't_counter_front_m', 't_counter_front_m', 't_counter_front_m', 't_counter_front_m', 't_counter_front_m', 't_counter_front_r', 't_floor_b'],
+  ['t_trash', 't_floor_a', 't_floor_b', 't_rug_tl', 't_rug_edge_top', 't_rug_edge_top', 't_rug_edge_top', 't_floor_a', 't_floor_b', 't_plant'],
+  ['t_floor_b', 't_floor_a', 't_floor_b', 't_rug_edge_left', 't_rug', 't_rug', 't_rug', 't_floor_b', 't_floor_a', 't_sink'],
+  ['t_floor_dark', 't_floor_dark', 't_floor_dark', 't_floor_dark', 't_floor_dark', 't_door', 't_floor_dark', 't_floor_dark', 't_floor_dark', 't_floor_dark'],
+];
+const DOOR = { col: 5, row: 8 };
+const CUSTOMER_SPOT = { col: 5, row: 6 };
+const MENTOR_SPOT = { col: 6, row: 6 };
+const PLAYER_SPOT = { col: 5, row: 3 };
+const FLASK_SPOT = { x: 3 * TILE + 8, y: 4 * TILE + 6 };
+
+class Walker {
+  img: Phaser.GameObjects.Image;
+  emote?: Phaser.GameObjects.Image;
+  private timer?: Phaser.Time.TimerEvent;
+  constructor(private scene: StageScene, public key: string, col: number, row: number, public dir: Dir = 'down') {
+    this.img = scene.sprite(key, col * TILE + TILE / 2, row * TILE + TILE, DIR_BASE[dir]);
+    this.img.setDepth(row * TILE + TILE + 1);
+  }
+  face(dir: Dir): void {
+    this.dir = dir;
+    this.img.setFrame(String(DIR_BASE[dir]));
+  }
+  place(col: number, row: number): void {
+    this.img.setPosition(this.scene.vx(col * TILE + TILE / 2), this.scene.vy(row * TILE + TILE)).setDepth(row * TILE + TILE + 1);
+  }
+  walkTo(col: number, row: number, reduced: boolean, onDone?: () => void): void {
+    const tx = this.scene.vx(col * TILE + TILE / 2);
+    const ty = this.scene.vy(row * TILE + TILE);
+    const dy = ty - this.img.y;
+    const dx = tx - this.img.x;
+    const dir: Dir = Math.abs(dy) >= Math.abs(dx) ? (dy < 0 ? 'up' : 'down') : dx < 0 ? 'left' : 'right';
+    this.face(dir);
+    if (reduced) {
+      this.place(col, row);
+      onDone?.();
+      return;
+    }
+    const base = DIR_BASE[dir];
+    let step = 1;
+    this.timer?.remove();
+    this.timer = this.scene.time.addEvent({ delay: 130, loop: true, callback: () => { step = step === 1 ? 2 : 1; this.img.setFrame(String(base + step)); } });
+    const dist = Math.abs(dx) + Math.abs(dy);
+    this.scene.tweens.add({
+      targets: this.img,
+      x: tx,
+      y: ty,
+      duration: Math.max(200, (dist / this.scene.r.zoom) * 14),
+      ease: 'Linear',
+      onUpdate: () => this.img.setDepth((this.img.y - (this.scene.r.oy - this.scene.r.y)) / this.scene.r.zoom + 1),
+      onComplete: () => {
+        this.timer?.remove();
+        this.img.setFrame(String(base));
+        this.img.setDepth(row * TILE + TILE + 1);
+        onDone?.();
+      },
+    });
+  }
+  showEmote(key: string, reduced: boolean, hold = 1400): void {
+    this.emote?.destroy();
+    const e = this.scene.sprite(key, 0, 0, 1, 0.5, 1);
+    e.setPosition(this.img.x + 6 * this.scene.r.zoom, this.img.y - 20 * this.scene.r.zoom).setDepth(1000);
+    this.emote = e;
+    if (!reduced) {
+      e.setFrame('0');
+      this.scene.time.delayedCall(120, () => e.active && e.setFrame('1'));
+    }
+    if (hold > 0) this.scene.time.delayedCall(hold, () => { if (this.emote === e) { e.destroy(); this.emote = undefined; } });
+  }
+  hideEmote(): void {
+    this.emote?.destroy();
+    this.emote = undefined;
+  }
+  setVisible(v: boolean): void {
+    this.img.setVisible(v);
+    if (!v) this.hideEmote();
+  }
+}
 
 export class LabScene extends StageScene {
-  private customer?: Phaser.GameObjects.Image;
-  private mentor?: Phaser.GameObjects.Image;
-  private window?: Phaser.GameObjects.Image;
-  private bubble?: Phaser.GameObjects.Text;
+  private customer?: Walker;
+  private mentor?: Walker;
+  private player?: Walker;
+  private windows: Phaser.GameObjects.Image[] = [];
+  private hotplate?: Phaser.GameObjects.Image;
+  private computer?: Phaser.GameObjects.Image;
+  private door?: Phaser.GameObjects.Image;
+  private flask?: Phaser.GameObjects.Image;
   private liquid?: Phaser.GameObjects.Image;
-  private pet?: Phaser.GameObjects.Image;
-  private walkTween?: Phaser.Tweens.Tween;
   private lastPhase = '';
+  private lastStepCount = 0;
   private hudCheck = 0;
 
+  constructor() {
+    super('lab');
+  }
+
   update(time: number): void {
-    // the DOM HUD mounts after boot and can change height; re-layout when it does
     if (time - this.hudCheck > 400) {
       this.hudCheck = time;
       if (Math.abs(hudHeight() - this.r.y) > 2) this.scene.restart();
     }
   }
 
-  constructor() {
-    super('lab');
-  }
-
   create(): void {
     super.create();
     const reduced = () => !!save.value?.profile.settings.reducedMotion;
-    // room
-    this.tile('wall_tile', 0, 0, VW, BENCH_Y);
-    this.tile('floor_tile', 0, BENCH_Y, VW, VH - BENCH_Y);
-    this.window = this.sprite('window', 6, 4, 0, 0, 0);
-    this.sprite('shelf_board', 58, 40, 0, 0, 0).setScale(this.r.zoom * 1.5, this.r.zoom);
-    this.sprite('bottle_tall', 66, 40);
-    this.sprite('bottle_round', 82, 40);
-    this.sprite('bottle_flask', 98, 40);
-    this.sprite('fume_hood', 108, 10, 0, 0, 0);
-    this.tile('bench_tile', 0, BENCH_Y, VW, 32);
-    this.tile('bench_front', 0, BENCH_Y + 32, VW, Math.max(4, VH - BENCH_Y - 32));
-    this.sprite('hotplate', 124, BENCH_Y + 12);
-    this.sprite('flask_big', 124, BENCH_Y + 10);
-    this.liquid = this.sprite('flask_liquid', 124, BENCH_Y + 10, 1).setTint(0xa8dcff);
-    this.sprite('ice_bath', 164, BENCH_Y + 14);
-    this.sprite('beaker', 92, BENCH_Y + 12, 1);
-    this.sprite('plant', 184, BENCH_Y + 4);
-    this.pet = this.sprite('pet_slime', 18, BENCH_Y + 2);
-    this.customer = this.sprite(flow.customerKey.value, -40, VH).setVisible(false);
-    this.mentor = this.sprite('mentor', VW + 40, VH).setVisible(false);
-    this.bubble = this.text(0, 0, '', 16).setVisible(false);
+    this.windows = [];
+    ROOM.forEach((row, r) => row.forEach((key, c) => {
+      const t = this.tile(key, c, r);
+      if (key === 't_window') this.windows.push(t);
+      if (key === 't_bench_hotplate') this.hotplate = t;
+      if (key === 't_bench_computer') this.computer = t;
+      if (key === 't_door') this.door = t;
+    }));
+    // the working flask on the counter
+    this.flask = this.sprite('fx_flask', FLASK_SPOT.x, FLASK_SPOT.y, 0).setDepth(4 * TILE + TILE + 2);
+    this.liquid = this.sprite('fx_flask', FLASK_SPOT.x, FLASK_SPOT.y, 1).setDepth(4 * TILE + TILE + 3).setTint(0x8ecbff).setVisible(false);
+    this.player = new Walker(this, 'player', PLAYER_SPOT.col, PLAYER_SPOT.row, 'down');
+    this.customer = new Walker(this, flow.customerKey.value, DOOR.col, DOOR.row, 'up');
+    this.customer.setVisible(false);
+    this.mentor = new Walker(this, 'mentor', DOOR.col, DOOR.row, 'up');
+    this.mentor.setVisible(false);
 
-    // idle animations
     if (!reduced()) {
-      this.tweens.add({ targets: this.pet, y: this.pet.y - 3 * this.r.zoom, duration: 700, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
-      this.time.addEvent({ delay: 900, loop: true, callback: () => this.pet?.setFrame(this.pet.frame.name === '0' ? '1' : '0') });
+      this.time.addEvent({ delay: 700, loop: true, callback: () => this.computer?.setFrame(this.computer.frame.name === '0' ? '1' : '0') });
+      this.time.addEvent({ delay: 2600, loop: true, callback: () => { if (Math.random() < 0.5 && this.player) { const d: Dir[] = ['down', 'left', 'right']; this.player.face(d[Math.floor(Math.random() * d.length)]); this.time.delayedCall(900, () => this.player?.face('down')); } } });
     }
 
-    // react to flow state
     this.disposers.push(
       effect(() => {
         const phase = flow.phase.value;
@@ -73,117 +157,110 @@ export class LabScene extends StageScene {
       effect(() => {
         const t = flow.timeOfDay.value;
         const f = t < 0.4 ? 0 : t < 0.75 ? 1 : 2;
-        this.window?.setFrame(String(Math.min(f, frameCount('window') - 1)));
+        this.windows.forEach((w) => w.setFrame(String(Math.min(f, frameCount('t_window') - 1))));
       }),
       effect(() => {
-        const mg = flow.minigame.value;
-        if (mg && flow.phase.value === 'minigame') {
-          const sceneKey = mg.kind === 'pressure' ? 'pour' : mg.kind;
-          this.scene.launch(sceneKey, mg);
+        const steps = flow.steps.value;
+        const n = steps.length;
+        if (n !== this.lastStepCount) {
+          this.lastStepCount = n;
+          const last = steps[n - 1];
+          if (last && last.kind === 'step') this.onStep(last.changed, last.conditions?.temp, reduced());
         }
       }),
     );
   }
 
   private handlePhase(phase: string, key: string, reduced: boolean): void {
-    const z = this.r.zoom;
+    if (!this.customer || !this.mentor) return;
     if (phase === 'arrive') {
       this.mentorLeave(reduced);
-      this.customer?.setTexture(key, '0').setPosition(this.vx(-30), this.vy(VH)).setVisible(true);
-      this.bubble?.setVisible(false);
-      this.liquid?.setFrame('1').setTint(0xa8dcff);
-      const target = this.vx(44);
-      this.walkTween?.stop();
-      if (reduced) {
-        this.customer?.setX(target);
-        this.time.delayedCall(150, () => flow.customerArrived());
-        return;
-      }
-      let frame = 1;
-      const walkTimer = this.time.addEvent({ delay: 140, loop: true, callback: () => { frame = frame === 1 ? 2 : 1; this.customer?.setFrame(String(frame)); } });
-      this.walkTween = this.tweens.add({
-        targets: this.customer,
-        x: target,
-        duration: 1100,
-        ease: 'Linear',
-        onComplete: () => {
-          walkTimer.remove();
-          this.customer?.setFrame('3');
-          this.showBubble('!');
-          flow.customerArrived();
-        },
+      this.customer.key = key;
+      this.customer.img.setTexture(key, '3');
+      this.customer.place(DOOR.col, DOOR.row);
+      this.customer.setVisible(true);
+      this.door?.setFrame('1');
+      this.liquid?.setVisible(false);
+      this.customer.walkTo(CUSTOMER_SPOT.col, CUSTOMER_SPOT.row, reduced, () => {
+        this.door?.setFrame('0');
+        this.customer?.face('up');
+        this.customer?.showEmote('emote_exclaim', reduced);
+        flow.customerArrived();
       });
-    } else if (phase === 'card' || phase === 'shelf') {
-      this.customer?.setFrame('3');
-    } else if (phase === 'minigame') {
-      this.customer?.setFrame('0');
-      this.bubble?.setVisible(false);
-    } else if (phase === 'picker' || phase === 'stereo') {
-      this.liquid?.setFrame('4').setTint(0xffd6a5);
-      this.showBubble('?');
+    } else if (phase === 'request') {
+      this.time.delayedCall(600, () => this.customer?.showEmote('emote_question', reduced, 2500));
+    } else if (phase === 'bench') {
+      this.customer.hideEmote();
+      this.player?.face('down');
     } else if (phase === 'result') {
-      this.showBubble('♥');
-      this.liquid?.setTint(0xb5f0c8);
-      this.sparkle(124, BENCH_Y - 12, reduced);
+      this.customer.showEmote('emote_heart', reduced, 3000);
+      this.liquid?.setVisible(true).setTint(0x9fe3b4);
+      this.sparkle(reduced);
     } else if (phase === 'mentor') {
-      this.showBubble('…');
-      this.liquid?.setTint(0x9e9e9e);
-      this.puff(124, BENCH_Y - 16, reduced);
+      this.customer.showEmote('emote_sweat', reduced, 3000);
+      this.liquid?.setVisible(true).setTint(0xa9a6ba);
+      this.smoke(reduced);
       this.mentorEnter(reduced);
-    } else if (phase === 'dayend' || phase === 'idle') {
-      this.bubble?.setVisible(false);
-      if (this.customer && phase === 'idle') {
-        if (reduced) this.customer.setVisible(false);
-        else this.tweens.add({ targets: this.customer, x: this.vx(VW + 40), duration: 700, ease: 'Linear', onComplete: () => this.customer?.setVisible(false) });
+    } else if (phase === 'idle' || phase === 'dayend') {
+      this.customer.hideEmote();
+      if (this.customer.img.visible) {
+        this.door?.setFrame('1');
+        this.customer.walkTo(DOOR.col, DOOR.row, reduced, () => { this.customer?.setVisible(false); this.door?.setFrame('0'); });
       }
+      this.mentorLeave(reduced);
     }
-    void z;
   }
 
-  private showBubble(ch: string): void {
-    if (!this.customer || !this.bubble) return;
-    this.bubble.setText(ch).setPosition(this.customer.x + 14 * this.r.zoom, this.customer.y - 38 * this.r.zoom).setVisible(true);
+  private onStep(changed: boolean, temp: string | undefined, reduced: boolean): void {
+    if (!this.flask) return;
+    this.liquid?.setVisible(true).setTint(changed ? 0x8ecbff : 0xffb3c6);
+    this.hotplate?.setFrame(temp === 'reflux' || temp === 'c140' || temp === 'c180' ? '1' : '0');
+    if (reduced) return;
+    const n = changed ? 4 : 2;
+    for (let i = 0; i < n; i++) {
+      const b = this.sprite('fx_bubble', FLASK_SPOT.x - 6 + Math.random() * 12, FLASK_SPOT.y - 10, i % 3, 0.5, 0.5).setDepth(900);
+      this.tweens.add({ targets: b, y: b.y - 14 * this.r.zoom, alpha: 0, duration: 500 + i * 120, onComplete: () => b.destroy() });
+    }
+    this.player?.face('down');
   }
 
   private mentorEnter(reduced: boolean): void {
     if (!this.mentor) return;
-    this.mentor.setFrame('2').setVisible(true);
-    const target = this.vx(VW - 36);
-    if (reduced) {
-      this.mentor.setX(target);
-      return;
-    }
-    this.tweens.add({ targets: this.mentor, x: target, duration: 800, ease: 'Sine.easeOut' });
+    this.mentor.place(DOOR.col, DOOR.row);
+    this.mentor.setVisible(true);
+    this.door?.setFrame('1');
+    this.mentor.walkTo(MENTOR_SPOT.col, MENTOR_SPOT.row, reduced, () => {
+      this.door?.setFrame('0');
+      this.mentor?.face('up');
+      this.mentor?.showEmote('emote_idea', reduced, 2500);
+    });
   }
 
   private mentorLeave(reduced: boolean): void {
-    if (!this.mentor) return;
-    const off = this.vx(VW + 40);
-    if (reduced || !this.mentor.visible) {
-      this.mentor.setX(off).setVisible(false);
-      return;
-    }
-    this.tweens.add({ targets: this.mentor, x: off, duration: 500, onComplete: () => this.mentor?.setVisible(false) });
+    if (!this.mentor || !this.mentor.img.visible) return;
+    this.mentor.walkTo(DOOR.col, DOOR.row, reduced, () => this.mentor?.setVisible(false));
   }
 
-  private sparkle(x: number, y: number, reduced: boolean): void {
-    const n = reduced ? 3 : 8;
+  private sparkle(reduced: boolean): void {
+    const n = reduced ? 2 : 6;
     for (let i = 0; i < n; i++) {
-      const s = this.sprite('sparkle', x + (Math.random() - 0.5) * 50, y + (Math.random() - 0.5) * 30, 0, 0.5, 0.5);
+      const s = this.sprite('fx_sparkle', FLASK_SPOT.x + (Math.random() - 0.5) * 40, FLASK_SPOT.y - 6 + (Math.random() - 0.5) * 24, 0, 0.5, 0.5).setDepth(950);
       let f = 0;
-      const ev = this.time.addEvent({ delay: 110, repeat: 4, callback: () => { f = (f + 1) % frameCount('sparkle'); s.setFrame(String(f)); } });
-      this.time.delayedCall(650 + i * 40, () => { ev.remove(); s.destroy(); });
+      const ev = this.time.addEvent({ delay: 110, repeat: 4, callback: () => { f = (f + 1) % frameCount('fx_sparkle'); s.setFrame(String(f)); } });
+      this.time.delayedCall(650 + i * 50, () => { ev.remove(); s.destroy(); });
     }
   }
 
-  private puff(x: number, y: number, reduced: boolean): void {
+  private smoke(reduced: boolean): void {
     const n = reduced ? 1 : 3;
     for (let i = 0; i < n; i++) {
-      const p = this.sprite('puff', x + (i - 1) * 12, y, 0, 0.5, 1);
+      const p = this.sprite('fx_smoke', FLASK_SPOT.x + (i - 1) * 8, FLASK_SPOT.y - 8, 0, 0.5, 1).setDepth(950);
       let f = 0;
-      const ev = this.time.addEvent({ delay: 160, repeat: 3, callback: () => { f = Math.min(f + 1, frameCount('puff') - 1); p.setFrame(String(f)); } });
-      if (!reduced) this.tweens.add({ targets: p, y: p.y - 20 * this.r.zoom, alpha: 0.2, duration: 700 });
+      const ev = this.time.addEvent({ delay: 160, repeat: 3, callback: () => { f = Math.min(f + 1, frameCount('fx_smoke') - 1); p.setFrame(String(f)); } });
+      if (!reduced) this.tweens.add({ targets: p, y: p.y - 18 * this.r.zoom, alpha: 0.2, duration: 700 });
       this.time.delayedCall(750, () => { ev.remove(); p.destroy(); });
     }
   }
 }
+void VW;
+void VH;

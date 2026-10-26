@@ -1,0 +1,282 @@
+[
+  {
+    "id": "q-E6-diethylether-hbr-001",
+    "reactionIds": [
+      "E6"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCOCC",
+      "name": "ethoxyethane (diethyl ether)"
+    },
+    "target": {
+      "name": "bromoethane",
+      "stereo": "none",
+      "smiles": "CCBr",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+  },
+  {
+    "id": "q-E6-anisole-hbr-001",
+    "reactionIds": [
+      "E6"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "COc1ccccc1",
+      "name": "methoxybenzene (anisole)"
+    },
+    "target": {
+      "name": "phenol",
+      "stereo": "none",
+      "smiles": "Oc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Brc1ccccc1",
+        "stereo": "none",
+        "tag": "ether_cleavage_aryl",
+        "why": "The aryl–O bond never breaks: SN2 cannot happen on an sp² ring carbon. The aryl side ends up as the phenol; only the alkyl side becomes the halide."
+      }
+    ],
+    "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+  },
+  {
+    "id": "q-E6-ethyltolylether-hi-001",
+    "reactionIds": [
+      "E6"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCOc1ccc(C)cc1",
+      "name": "1-ethoxy-4-methylbenzene"
+    },
+    "target": {
+      "name": "4-methylphenol",
+      "stereo": "none",
+      "altNames": [
+        "p-cresol"
+      ],
+      "smiles": "Cc1ccc(O)cc1",
+      "highlightAtoms": [
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HI",
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Cc1ccc(I)cc1",
+        "stereo": "none",
+        "tag": "ether_cleavage_aryl",
+        "why": "The aryl–O bond never breaks: SN2 cannot happen on an sp² ring carbon. The aryl side ends up as the phenol; only the alkyl side becomes the halide."
+      }
+    ],
+    "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+  },
+  {
+    "id": "q-E6-thf-hbr-001",
+    "reactionIds": [
+      "E6"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1CCOC1",
+      "name": "oxolane (THF)"
+    },
+    "target": {
+      "name": "1,4-dibromobutane",
+      "stereo": "none",
+      "smiles": "BrCCCCBr",
+      "highlightAtoms": [
+        0,
+        1,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+  },
+  {
+    "id": "q-E6-mtbe-hbr-001",
+    "reactionIds": [
+      "E6"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "COC(C)(C)C",
+      "name": "2-methoxy-2-methylpropane (MTBE)"
+    },
+    "target": {
+      "name": "2-bromo-2-methylpropane",
+      "stereo": "none",
+      "altNames": [
+        "tert-butyl bromide"
+      ],
+      "smiles": "CC(C)(C)Br",
+      "highlightAtoms": [
+        1,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+  },
+  {
+    "id": "q-E6-methoxypropane-hi-001",
+    "reactionIds": [
+      "E6"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCOC",
+      "name": "1-methoxypropane"
+    },
+    "target": {
+      "name": "1-iodopropane",
+      "stereo": "none",
+      "smiles": "CCCI",
+      "highlightAtoms": [
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HI",
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+  },
+  {
+    "id": "q-E6-benzylphenylether-hbr-001",
+    "reactionIds": [
+      "E6"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "c1ccc(OCc2ccccc2)cc1",
+      "name": "(benzyloxy)benzene"
+    },
+    "target": {
+      "name": "(bromomethyl)benzene",
+      "stereo": "none",
+      "altNames": [
+        "benzyl bromide"
+      ],
+      "smiles": "BrCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "HBr",
+        "conditions": {
+          "temp": "reflux",
+          "light": false
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "Brc1ccccc1",
+        "stereo": "none",
+        "tag": "ether_cleavage_aryl",
+        "why": "The aryl–O bond never breaks: SN2 cannot happen on an sp² ring carbon. The aryl side ends up as the phenol; only the alkyl side becomes the halide."
+      }
+    ],
+    "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+  }
+]

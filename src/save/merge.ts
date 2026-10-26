@@ -23,6 +23,16 @@ export function mergeSaves(a: SaveData, b: SaveData): SaveData {
     }
   }
   out.history.sort((x, y) => x.t - y.t);
+  out.notes = { ...older.notes, ...newer.notes };
+  const seenBook = new Set(out.labBook.map((b) => `${b.t}:${b.item}`));
+  for (const b of older.labBook) {
+    const key = `${b.t}:${b.item}`;
+    if (!seenBook.has(key)) {
+      seenBook.add(key);
+      out.labBook.push(b);
+    }
+  }
+  out.labBook.sort((x, y) => x.t - y.t);
   out.economy.coins = Math.max(a.economy.coins, b.economy.coins);
   out.economy.unlocked = uniq([...a.economy.unlocked, ...b.economy.unlocked]);
   out.stats.shiftsPlayed = Math.max(a.stats.shiftsPlayed, b.stats.shiftsPlayed);

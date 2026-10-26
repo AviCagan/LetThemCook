@@ -1,0 +1,1117 @@
+[
+  {
+    "id": "nabh4_ketoester",
+    "flask": "CC(=O)CC(=O)OCC",
+    "reagent": "NaBH4",
+    "expect": "CC(O)CC(=O)OCC"
+  },
+  {
+    "id": "nabh4_ester_nr",
+    "flask": "CCOC(C)=O",
+    "reagent": "NaBH4",
+    "noReaction": true,
+    "trap": "over_reduction"
+  },
+  {
+    "id": "nabh4_enal",
+    "flask": "O=C/C=C/c1ccccc1",
+    "reagent": "NaBH4",
+    "expect": "OC/C=C/c1ccccc1"
+  },
+  {
+    "id": "lialh4_ester",
+    "flask": "CCOC(=O)c1ccccc1",
+    "reagent": "LiAlH4",
+    "expect": "CC[O-].[O-]Cc1ccccc1"
+  },
+  {
+    "id": "lialh4_ester_then_water",
+    "flask": "CC[O-].[O-]Cc1ccccc1",
+    "reagent": "H2O",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "CCO.OCc1ccccc1"
+  },
+  {
+    "id": "lialh4_acid",
+    "flask": "OC(=O)c1ccccc1",
+    "reagent": "LiAlH4",
+    "expect": "[O-]Cc1ccccc1"
+  },
+  {
+    "id": "lialh4_ketone",
+    "flask": "CC(=O)c1ccccc1",
+    "reagent": "LiAlH4",
+    "expect": "CC([O-])c1ccccc1"
+  },
+  {
+    "id": "lialh4_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "LiAlH4",
+    "expect": "CC(C)[O-]"
+  },
+  {
+    "id": "lialh4_lactone",
+    "flask": "O=C1CCCO1",
+    "reagent": "LiAlH4",
+    "expect": "[O-]CCCC[O-]"
+  },
+  {
+    "id": "lialh4_alkene_nr",
+    "flask": "C=CCCC",
+    "reagent": "LiAlH4",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "h2pt_enone",
+    "flask": "C=CCCC(=O)c1ccccc1",
+    "reagent": "H2_Pt",
+    "expect": "CCCCC(O)c1ccccc1"
+  },
+  {
+    "id": "h2pt_ester_survives",
+    "flask": "COC(=O)c1ccc(C(C)=O)cc1",
+    "reagent": "H2_Pt",
+    "expect": "COC(=O)c1ccc(C(C)O)cc1"
+  },
+  {
+    "id": "clemmensen",
+    "flask": "CC(=O)c1ccccc1",
+    "reagent": "Zn_Hg_HCl",
+    "expect": "CCc1ccccc1"
+  },
+  {
+    "id": "wolff_kishner",
+    "flask": "O=C1CCCCC1",
+    "reagent": "H2NNH2_KOH",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "C1CCCCC1"
+  },
+  {
+    "id": "wolff_kishner_cold_nr",
+    "flask": "O=C1CCCCC1",
+    "reagent": "H2NNH2_KOH",
+    "conditions": {
+      "temp": "rt"
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "pcc_primary",
+    "flask": "CCCCCCO",
+    "reagent": "PCC",
+    "expect": "CCCCCC=O"
+  },
+  {
+    "id": "pcc_secondary",
+    "flask": "OC1CCCCC1",
+    "reagent": "PCC",
+    "expect": "O=C1CCCCC1"
+  },
+  {
+    "id": "pcc_tertiary_nr",
+    "flask": "CC(C)(C)O",
+    "reagent": "PCC",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "pcc_keeps_alkene",
+    "flask": "CC/C=C/CCO",
+    "reagent": "PCC",
+    "expect": "CC/C=C/CC=O"
+  },
+  {
+    "id": "jones_primary",
+    "flask": "CCCCCCO",
+    "reagent": "H2CrO4",
+    "expect": "CCCCCC(=O)O"
+  },
+  {
+    "id": "jones_diol",
+    "flask": "OCCCCCO",
+    "reagent": "H2CrO4",
+    "expect": "OC(=O)CCCC(=O)O"
+  },
+  {
+    "id": "jones_secondary",
+    "flask": "CC(O)c1ccccc1",
+    "reagent": "H2CrO4",
+    "expect": "CC(=O)c1ccccc1"
+  },
+  {
+    "id": "jones_tertiary_nr",
+    "flask": "CC(C)(C)O",
+    "reagent": "H2CrO4",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "jones_hydroquinone",
+    "flask": "Oc1ccc(O)cc1",
+    "reagent": "H2CrO4",
+    "expect": "O=C1C=CC(=O)C=C1"
+  },
+  {
+    "id": "jones_catechol",
+    "flask": "Oc1ccccc1O",
+    "reagent": "H2CrO4",
+    "expect": "O=C1C=CC=CC1=O"
+  },
+  {
+    "id": "jones_aldehyde",
+    "flask": "CCCCCC=O",
+    "reagent": "H2CrO4",
+    "expect": "CCCCCC(=O)O"
+  },
+  {
+    "id": "hio4_cyclic",
+    "flask": "CC1(O)CCCCC1O",
+    "reagent": "HIO4",
+    "expect": "CC(=O)CCCCC=O"
+  },
+  {
+    "id": "hio4_butanediol",
+    "flask": "CC(O)C(O)C",
+    "reagent": "HIO4",
+    "expect": "CC=O.CC=O"
+  },
+  {
+    "id": "hio4_13diol_nr",
+    "flask": "OCCCO",
+    "reagent": "HIO4",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "oso4_cyclohexene",
+    "flask": "C1=CCCCC1",
+    "reagent": "OsO4",
+    "expect": "OC1CCCCC1O"
+  },
+  {
+    "id": "oso4_styrene",
+    "flask": "C=Cc1ccccc1",
+    "reagent": "OsO4",
+    "expect": "OCC(O)c1ccccc1"
+  },
+  {
+    "id": "bh3_methylcyclohexene",
+    "flask": "CC1=CCCCC1",
+    "reagent": "BH3_THF",
+    "expect": "BC1CCCCC1C"
+  },
+  {
+    "id": "bh3_then_h2o2",
+    "flask": "BC1CCCCC1C",
+    "reagent": "H2O2_NaOH",
+    "expect": "CC1CCCCC1O"
+  },
+  {
+    "id": "bh3_hexene",
+    "flask": "C=CCCCC",
+    "reagent": "BH3_THF",
+    "expect": "BCCCCCC"
+  },
+  {
+    "id": "bh3_styrene_oxidised",
+    "flask": "BCCc1ccccc1",
+    "reagent": "H2O2_NaOH",
+    "expect": "OCCc1ccccc1"
+  },
+  {
+    "id": "h2o2naoh_no_borane_nr",
+    "flask": "C=CCCCC",
+    "reagent": "H2O2_NaOH",
+    "noReaction": true,
+    "trap": "missing_workup"
+  },
+  {
+    "id": "mcpba_epoxide",
+    "flask": "C1=CCCCC1",
+    "reagent": "mCPBA",
+    "conditions": {
+      "equiv": 1
+    },
+    "expect": "C1CCC2OC2C1"
+  },
+  {
+    "id": "mcpba_sulfoxide",
+    "flask": "CSC",
+    "reagent": "mCPBA",
+    "conditions": {
+      "equiv": 1
+    },
+    "expect": "CS(C)=O"
+  },
+  {
+    "id": "mcpba_sulfone",
+    "flask": "CSC",
+    "reagent": "mCPBA",
+    "conditions": {
+      "equiv": 2
+    },
+    "expect": "CS(C)(=O)=O"
+  },
+  {
+    "id": "h2o2_sulfoxide",
+    "flask": "CCSCC",
+    "reagent": "H2O2",
+    "conditions": {
+      "equiv": 1
+    },
+    "expect": "CCS(=O)CC"
+  },
+  {
+    "id": "h2o2_sulfone",
+    "flask": "CCSCC",
+    "reagent": "H2O2",
+    "conditions": {
+      "equiv": 2
+    },
+    "expect": "CCS(=O)(=O)CC"
+  },
+  {
+    "id": "naio4_sulfoxide",
+    "flask": "CSc1ccccc1",
+    "reagent": "NaIO4",
+    "expect": "CS(=O)c1ccccc1"
+  },
+  {
+    "id": "i2_disulfide",
+    "flask": "CCS",
+    "reagent": "I2",
+    "expect": "CCSSCC"
+  },
+  {
+    "id": "nbs_benzylic",
+    "flask": "Cc1ccccc1",
+    "reagent": "NBS",
+    "conditions": {
+      "light": true
+    },
+    "expect": "BrCc1ccccc1"
+  },
+  {
+    "id": "nbs_allylic",
+    "flask": "CC=CC",
+    "reagent": "NBS",
+    "conditions": {
+      "light": true
+    },
+    "expect": "BrCC=CC"
+  },
+  {
+    "id": "nbs_dark_nr",
+    "flask": "Cc1ccccc1",
+    "reagent": "NBS",
+    "conditions": {
+      "light": false
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "h2o_diazonium_hot",
+    "flask": "Cc1ccc([N+]#N)cc1",
+    "reagent": "H2O",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "Cc1ccc(O)cc1"
+  },
+  {
+    "id": "h2o_diazonium_cold_nr",
+    "flask": "Cc1ccc([N+]#N)cc1",
+    "reagent": "H2O",
+    "conditions": {
+      "temp": "rt"
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "h2o_alkoxide",
+    "flask": "CC([O-])c1ccccc1",
+    "reagent": "H2O",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "CC(O)c1ccccc1"
+  },
+  {
+    "id": "h2o_grignard_quench",
+    "flask": "CC[Mg]Br",
+    "reagent": "H2O",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "CC"
+  },
+  {
+    "id": "h2o_nitro_untouched",
+    "flask": "O=[N+]([O-])c1ccccc1",
+    "reagent": "H2O",
+    "conditions": {
+      "temp": "rt"
+    },
+    "noReaction": true,
+    "trap": "missing_workup"
+  },
+  {
+    "id": "h3o_epoxide_diol",
+    "flask": "C1CCC2OC2C1",
+    "reagent": "H3O_plus",
+    "expect": "OC1CCCCC1O"
+  },
+  {
+    "id": "h3o_markovnikov",
+    "flask": "CC(C)=C",
+    "reagent": "H3O_plus",
+    "expect": "CC(C)(C)O"
+  },
+  {
+    "id": "h3o_markovnikov_internal",
+    "flask": "C=CCC",
+    "reagent": "H3O_plus",
+    "expect": "CCC(C)O"
+  },
+  {
+    "id": "h3o_carboxylate",
+    "flask": "[O-]C(=O)c1ccccc1",
+    "reagent": "H3O_plus",
+    "expect": "OC(=O)c1ccccc1"
+  },
+  {
+    "id": "hbr_ether_cleave",
+    "flask": "CCOCC",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "CCBr.CCBr"
+  },
+  {
+    "id": "hbr_anisole_cleave",
+    "flask": "COc1ccccc1",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "CBr.Oc1ccccc1"
+  },
+  {
+    "id": "hbr_thf_cleave",
+    "flask": "C1CCOC1",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "BrCCCCBr"
+  },
+  {
+    "id": "hbr_ether_cold_nr",
+    "flask": "CCOCC",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "rt"
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "hbr_tert_alcohol",
+    "flask": "CC(C)(C)O",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "CC(C)(C)Br"
+  },
+  {
+    "id": "hbr_prim_alcohol",
+    "flask": "CCCCO",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "CCCCBr"
+  },
+  {
+    "id": "hbr_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "CC(Br)CO"
+  },
+  {
+    "id": "hbr_light_trap",
+    "flask": "CC(C)(C)O",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "rt",
+      "light": true
+    },
+    "expect": "CC(C)(C)Br",
+    "warn": "wrong_temperature"
+  },
+  {
+    "id": "hi_anisole",
+    "flask": "COc1ccccc1",
+    "reagent": "HI",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "CI.Oc1ccccc1"
+  },
+  {
+    "id": "hcl_tert",
+    "flask": "CC(C)(C)O",
+    "reagent": "HCl",
+    "expect": "CC(C)(C)Cl"
+  },
+  {
+    "id": "hcl_prim_nr",
+    "flask": "CCCO",
+    "reagent": "HCl",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "lucas_prim",
+    "flask": "CCCO",
+    "reagent": "HCl_ZnCl2",
+    "expect": "CCCCl"
+  },
+  {
+    "id": "socl2",
+    "flask": "CCCO",
+    "reagent": "SOCl2",
+    "expect": "CCCCl"
+  },
+  {
+    "id": "pbr3_prim",
+    "flask": "CCCO",
+    "reagent": "PBr3",
+    "expect": "CCCBr"
+  },
+  {
+    "id": "pbr3_tert_nr",
+    "flask": "CC(C)(C)O",
+    "reagent": "PBr3",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "h2so4_zaitsev",
+    "flask": "CC(C)(O)CC",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "CC(C)=CC"
+  },
+  {
+    "id": "h2so4_cyclohexanol",
+    "flask": "OC1CCCCC1",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "C1=CCCCC1"
+  },
+  {
+    "id": "h2so4_primary_heat_nr",
+    "flask": "CCCCO",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "h2so4_primary_180",
+    "flask": "CCCCO",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "c180"
+    },
+    "expect": "CCC=C"
+  },
+  {
+    "id": "h2so4_primary_140_ether",
+    "flask": "CCCCO",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "c140"
+    },
+    "expect": "CCCCOCCCC"
+  },
+  {
+    "id": "h2so4_14diol_thf",
+    "flask": "OCCCCO",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "C1CCOC1"
+  },
+  {
+    "id": "h2so4_15diol_thp",
+    "flask": "OCCCCCO",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "C1CCOCC1"
+  },
+  {
+    "id": "h2so4_rt_nr",
+    "flask": "OC1CCCCC1",
+    "reagent": "H2SO4_heat",
+    "conditions": {
+      "temp": "rt"
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "hno3_dil_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "HNO3_dil",
+    "expect": "O=[N+]([O-])c1ccc(O)cc1"
+  },
+  {
+    "id": "hno3_dil_pcresol_ortho",
+    "flask": "Cc1ccc(O)cc1",
+    "reagent": "HNO3_dil",
+    "expect": "Cc1ccc(O)c([N+](=O)[O-])c1"
+  },
+  {
+    "id": "hno3_mixed_aniline",
+    "flask": "Nc1ccccc1",
+    "reagent": "HNO3_H2SO4",
+    "expect": "Nc1ccc([N+](=O)[O-])cc1"
+  },
+  {
+    "id": "br2_h2o_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "Br2_H2O",
+    "expect": "Oc1c(Br)cc(Br)cc1Br"
+  },
+  {
+    "id": "br2_h2o_pcresol",
+    "flask": "Cc1ccc(O)cc1",
+    "reagent": "Br2_H2O",
+    "expect": "Cc1cc(Br)c(O)c(Br)c1"
+  },
+  {
+    "id": "br2_chcl3_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "Br2_CHCl3",
+    "expect": "Oc1ccc(Br)cc1"
+  },
+  {
+    "id": "br2_chcl3_pcresol",
+    "flask": "Cc1ccc(O)cc1",
+    "reagent": "Br2_CHCl3",
+    "expect": "Cc1ccc(O)c(Br)c1"
+  },
+  {
+    "id": "nano2_ice",
+    "flask": "Nc1ccccc1",
+    "reagent": "NaNO2_H2SO4",
+    "conditions": {
+      "temp": "ice"
+    },
+    "expect": "N#[N+]c1ccccc1"
+  },
+  {
+    "id": "nano2_rt_nr",
+    "flask": "Nc1ccccc1",
+    "reagent": "NaNO2_H2SO4",
+    "conditions": {
+      "temp": "rt"
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "naoh_halohydrin",
+    "flask": "CC(O)CBr",
+    "reagent": "NaOH",
+    "expect": "CC1CO1"
+  },
+  {
+    "id": "naoh_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "NaOH",
+    "expect": "[O-]c1ccccc1"
+  },
+  {
+    "id": "naoh_thiol",
+    "flask": "CCS",
+    "reagent": "NaOH",
+    "expect": "CC[S-]"
+  },
+  {
+    "id": "naoh_acid",
+    "flask": "CC(=O)O",
+    "reagent": "NaOH",
+    "expect": "CC(=O)[O-]"
+  },
+  {
+    "id": "naoh_alcohol_nr",
+    "flask": "CCO",
+    "reagent": "NaOH",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "nahco3_acid",
+    "flask": "CC(=O)O",
+    "reagent": "NaHCO3",
+    "expect": "CC(=O)[O-]"
+  },
+  {
+    "id": "nahco3_phenol_nr",
+    "flask": "Oc1ccccc1",
+    "reagent": "NaHCO3",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "nahco3_picric",
+    "flask": "Oc1c([N+](=O)[O-])cc([N+](=O)[O-])cc1[N+](=O)[O-]",
+    "reagent": "NaHCO3",
+    "expect": "[O-]c1c([N+](=O)[O-])cc([N+](=O)[O-])cc1[N+](=O)[O-]"
+  },
+  {
+    "id": "k2co3_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "K2CO3",
+    "expect": "[O-]c1ccccc1"
+  },
+  {
+    "id": "nah_alcohol",
+    "flask": "OC1CCCCC1",
+    "reagent": "NaH",
+    "expect": "[O-]C1CCCCC1"
+  },
+  {
+    "id": "nah_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "NaH",
+    "expect": "[O-]c1ccccc1"
+  },
+  {
+    "id": "alcl3_fries",
+    "flask": "CC(=O)Oc1ccccc1",
+    "reagent": "AlCl3",
+    "expect": "CC(=O)c1ccc(O)cc1"
+  },
+  {
+    "id": "alcl3_alcohol_nr",
+    "flask": "OC1CCCCC1",
+    "reagent": "AlCl3",
+    "noReaction": true,
+    "trap": "lewis_acid_as_base"
+  },
+  {
+    "id": "mg_insert",
+    "flask": "CCBr",
+    "reagent": "Mg_ether",
+    "expect": "CC[Mg]Br"
+  },
+  {
+    "id": "mg_blocked_by_oh",
+    "flask": "OCCBr",
+    "reagent": "Mg_ether",
+    "noReaction": true
+  },
+  {
+    "id": "co2_kolbe",
+    "flask": "[O-]c1ccccc1",
+    "reagent": "CO2",
+    "conditions": {
+      "pressure": true
+    },
+    "expect": "[O-]C(=O)c1ccccc1[O-]"
+  },
+  {
+    "id": "co2_then_acid",
+    "flask": "[O-]C(=O)c1ccccc1[O-]",
+    "reagent": "H3O_plus",
+    "expect": "OC(=O)c1ccccc1O"
+  },
+  {
+    "id": "co2_on_phenol_nr",
+    "flask": "Oc1ccccc1",
+    "reagent": "CO2",
+    "conditions": {
+      "pressure": true
+    },
+    "noReaction": true,
+    "trap": "wrong_reagent_order"
+  },
+  {
+    "id": "ch3i_alkoxide",
+    "flask": "[O-]C1CCCCC1",
+    "reagent": "CH3I",
+    "expect": "COC1CCCCC1"
+  },
+  {
+    "id": "ch3i_phenoxide",
+    "flask": "[O-]c1ccccc1",
+    "reagent": "CH3I",
+    "expect": "COc1ccccc1"
+  },
+  {
+    "id": "ch3i_thiolate",
+    "flask": "CC[S-]",
+    "reagent": "CH3I",
+    "expect": "CCSC"
+  },
+  {
+    "id": "ch3i_sulfonium",
+    "flask": "CSC",
+    "reagent": "CH3I",
+    "expect": "C[S+](C)C"
+  },
+  {
+    "id": "ch3i_alcohol_nr",
+    "flask": "OC1CCCCC1",
+    "reagent": "CH3I",
+    "noReaction": true,
+    "trap": "wrong_reagent_order"
+  },
+  {
+    "id": "etbr_phenoxide",
+    "flask": "[O-]c1ccccc1",
+    "reagent": "EtBr",
+    "expect": "CCOc1ccccc1"
+  },
+  {
+    "id": "bnbr_alkoxide",
+    "flask": "CC(C)(C)[O-]",
+    "reagent": "BnBr",
+    "expect": "CC(C)(C)OCc1ccccc1"
+  },
+  {
+    "id": "tbubr_e2",
+    "flask": "CC(C)(C)[O-]",
+    "reagent": "tBuBr",
+    "expect": "C=C(C)C.CC(C)(C)O"
+  },
+  {
+    "id": "iprbr_e2",
+    "flask": "C[O-]",
+    "reagent": "iPrBr",
+    "expect": "C=CC.CO"
+  },
+  {
+    "id": "hcho_grignard",
+    "flask": "CC[Mg]Br",
+    "reagent": "HCHO",
+    "expect": "CCC[O-]"
+  },
+  {
+    "id": "ch3cho_grignard",
+    "flask": "CC[Mg]Br",
+    "reagent": "CH3CHO",
+    "expect": "CCC(C)[O-]"
+  },
+  {
+    "id": "phcho_grignard",
+    "flask": "CC[Mg]Br",
+    "reagent": "PhCHO",
+    "expect": "CCC([O-])c1ccccc1"
+  },
+  {
+    "id": "acetone_grignard",
+    "flask": "CC[Mg]Br",
+    "reagent": "acetone",
+    "expect": "CCC(C)(C)[O-]"
+  },
+  {
+    "id": "cyclohexanone_grignard",
+    "flask": "CC[Mg]Br",
+    "reagent": "cyclohexanone",
+    "expect": "CCC1([O-])CCCCC1"
+  },
+  {
+    "id": "ethylene_oxide_grignard",
+    "flask": "CC[Mg]Br",
+    "reagent": "ethylene_oxide",
+    "expect": "CCCC[O-]"
+  },
+  {
+    "id": "phmgbr_from_bromobenzene",
+    "flask": "Brc1ccccc1",
+    "reagent": "Mg_ether",
+    "expect": "Br[Mg]c1ccccc1"
+  },
+  {
+    "id": "grignard_partner_on_halide_nr",
+    "flask": "CCBr",
+    "reagent": "HCHO",
+    "noReaction": true,
+    "trap": "wrong_reagent_order"
+  },
+  {
+    "id": "accl_pyr_alcohol",
+    "flask": "CCO",
+    "reagent": "AcCl_pyr",
+    "expect": "CCOC(C)=O"
+  },
+  {
+    "id": "accl_pyr_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "AcCl_pyr",
+    "expect": "CC(=O)Oc1ccccc1"
+  },
+  {
+    "id": "ac2o_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "Ac2O",
+    "expect": "CC(=O)Oc1ccccc1"
+  },
+  {
+    "id": "bzcl_pyr_alcohol",
+    "flask": "CCO",
+    "reagent": "BzCl_pyr",
+    "expect": "CCOC(=O)c1ccccc1"
+  },
+  {
+    "id": "acoh_fischer",
+    "flask": "CCO",
+    "reagent": "AcOH_H2SO4",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "CCOC(C)=O"
+  },
+  {
+    "id": "acoh_fischer_cold_nr",
+    "flask": "CCO",
+    "reagent": "AcOH_H2SO4",
+    "conditions": {
+      "temp": "rt"
+    },
+    "noReaction": true,
+    "trap": "wrong_temperature"
+  },
+  {
+    "id": "meoh_fischer",
+    "flask": "OC(=O)c1ccccc1",
+    "reagent": "MeOH_H2SO4",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "COC(=O)c1ccccc1"
+  },
+  {
+    "id": "meoh_epoxide_acid",
+    "flask": "CC1CO1",
+    "reagent": "MeOH_H2SO4",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "COC(C)CO"
+  },
+  {
+    "id": "etoh_fischer",
+    "flask": "CC(=O)O",
+    "reagent": "EtOH_H2SO4",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "expect": "CCOC(C)=O"
+  },
+  {
+    "id": "accl_alcl3_phenol",
+    "flask": "Oc1ccccc1",
+    "reagent": "AcCl_AlCl3",
+    "expect": "CC(=O)c1ccc(O)cc1"
+  },
+  {
+    "id": "accl_alcl3_pcresol",
+    "flask": "Cc1ccc(O)cc1",
+    "reagent": "AcCl_AlCl3",
+    "expect": "CC(=O)c1cc(C)ccc1O"
+  },
+  {
+    "id": "naome_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "NaOMe",
+    "expect": "COCC(C)O"
+  },
+  {
+    "id": "nacn_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "NaCN",
+    "expect": "CC(O)CC#N"
+  },
+  {
+    "id": "nan3_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "NaN3",
+    "expect": "CC(O)CN=[N+]=[N-]"
+  },
+  {
+    "id": "nh3_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "NH3",
+    "expect": "CC(O)CN"
+  },
+  {
+    "id": "nash_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "NaSH",
+    "expect": "CC(O)CS"
+  },
+  {
+    "id": "nasme_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "NaSMe",
+    "expect": "CSCC(C)O"
+  },
+  {
+    "id": "memgbr_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "MeMgBr",
+    "expect": "CCC(C)[O-]"
+  },
+  {
+    "id": "phmgbr_epoxide",
+    "flask": "CC1CO1",
+    "reagent": "PhMgBr",
+    "expect": "CC([O-])Cc1ccccc1"
+  },
+  {
+    "id": "nash_thiol",
+    "flask": "CCCBr",
+    "reagent": "NaSH",
+    "expect": "CCCS"
+  },
+  {
+    "id": "nash_alcohol_nr",
+    "flask": "CCCO",
+    "reagent": "NaSH",
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "nasme_sulfide",
+    "flask": "CCBr",
+    "reagent": "NaSMe",
+    "expect": "CCSC"
+  },
+  {
+    "id": "nacn_nitrile",
+    "flask": "CCBr",
+    "reagent": "NaCN",
+    "expect": "CCC#N"
+  },
+  {
+    "id": "kf_crown",
+    "flask": "CCCCBr",
+    "reagent": "KF_crown",
+    "expect": "CCCCF"
+  },
+  {
+    "id": "kcn_crown",
+    "flask": "CCCCBr",
+    "reagent": "KCN_crown",
+    "expect": "CCCCC#N"
+  },
+  {
+    "id": "koac_crown",
+    "flask": "CCCCBr",
+    "reagent": "KOAc_crown",
+    "expect": "CCCCOC(C)=O"
+  },
+  {
+    "id": "snar_para",
+    "flask": "Clc1ccc([N+](=O)[O-])cc1",
+    "reagent": "NaOMe",
+    "expect": "COc1ccc([N+](=O)[O-])cc1"
+  },
+  {
+    "id": "snar_ortho",
+    "flask": "Clc1ccccc1[N+](=O)[O-]",
+    "reagent": "NaOEt",
+    "expect": "CCOc1ccccc1[N+](=O)[O-]"
+  },
+  {
+    "id": "snar_meta_nr",
+    "flask": "Clc1cccc([N+](=O)[O-])c1",
+    "reagent": "NaOMe",
+    "noReaction": true,
+    "trap": "SNAr_meta"
+  },
+  {
+    "id": "aryl_sn2_nr",
+    "flask": "Clc1ccccc1",
+    "reagent": "NaOMe",
+    "noReaction": true,
+    "trap": "aryl_SN2"
+  },
+  {
+    "id": "naome_primary_halide",
+    "flask": "CCBr",
+    "reagent": "NaOMe",
+    "expect": "CCOC"
+  },
+  {
+    "id": "naome_secondary_halide_e2",
+    "flask": "CC(C)Br",
+    "reagent": "NaOMe",
+    "expect": "C=CC.CO"
+  },
+  {
+    "id": "o3_cyclohexene",
+    "flask": "C1=CCCCC1",
+    "reagent": "O3",
+    "expect": "O=CCCCCC=O"
+  },
+  {
+    "id": "kmno4_nr",
+    "flask": "C1=CCCCC1",
+    "reagent": "KMnO4",
+    "conditions": {
+      "temp": "reflux"
+    },
+    "noReaction": true,
+    "trap": "reagent_label_unknown"
+  },
+  {
+    "id": "hbr_cyclohexanol",
+    "flask": "OC1CCCCC1",
+    "reagent": "HBr",
+    "conditions": {
+      "temp": "rt"
+    },
+    "expect": "BrC1CCCCC1"
+  },
+  {
+    "id": "lialh4_both_ester_and_ketone",
+    "flask": "CC(=O)CC(=O)OCC",
+    "reagent": "LiAlH4",
+    "expect": "CC([O-])CC[O-].CC[O-]"
+  },
+  {
+    "id": "nah_halohydrin_epoxide",
+    "flask": "CC(O)CBr",
+    "reagent": "NaH",
+    "expect": "CC1CO1"
+  }
+]

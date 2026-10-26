@@ -1,19 +1,20 @@
 # Beaker Buddies
 
-A cute pixel-art lab game for drilling Organic Chemistry II reactions (Carey 12e, Ch 16–17). Scientists bring a starting material to your bench; you pick reagents from the shelf in the right order, run each step as a small minigame, identify the product, and the game tracks what you know reaction by reaction with spaced repetition.
+A Game Boy Color-style lab game for drilling Organic Chemistry II reactions (Carey 12e, Ch 16–17). A customer walks into the lab with a molecule and asks for another one by IUPAC name (tap "?" to see the structure). You make it: pick a bottle from the shelf, set heat, light, equivalents or pressure, and the game runs the real reaction on your flask with RDKit and shows you what you actually got. Keep going until the flask holds the target, then hand it over. One step or five, your call. A "?" button asks the mentor for the next step (costs stars), a notepad keeps your notes per problem, and the lab book records every step of every order. Mastery is tracked per reaction and per reagent with spaced repetition.
 
 Original characters, art and names. All chemistry lives in `content/` as data and is validated with RDKit in CI.
 
 ## Status
 
-**Phase 1 (MVP)**: "Make it" and "What do I get?" orders for 12 reactions (R1–R5, R10, R11, R21–R23, P1, E3; 82 items), pour / temperature / workup / stir / lamp minigames, scoring, SRS with your seeded weak spots, Lab Notebook, save + export/import, PWA, GitHub Pages deploy, content validation in CI. See `docs/PLAN.md` for the architecture and `REVIEW.md` for open chemistry questions.
+**Phase 2 (current)**: the full Exam 2 toolkit, 50 reactions (R1–R28, P1–P10, E2–E13; E1 is pure naming) with 331 orders, a live RDKit reaction engine (72 bottles, 103 rules, 148 no-reaction traps, 159 rule tests, Python/JS parity checked in CI), the make-it loop with step-by-step products, mentor help, per-order notes, lab book, stereo check at hand-over, SRS with your seeded weak spots, mastery notebook, save + export/import, light/dark theme (follows the OS, or pick one in Settings), PWA, GitHub Pages deploy. See `docs/PLAN.md` for the architecture and `REVIEW.md` for open chemistry questions.
 
 ## Run it locally
 
 ```
 npm install
 npm run dev        # http://localhost:5173
-npm test           # engine + SRS unit tests (vitest)
+npm test           # SRS, save and sprite unit tests (vitest)
+npm run parity     # bundles the TS reaction engine for Node and checks it against the Python engine on every rule test and every order route
 npm run typecheck
 npm run build      # production build in dist/ (PWA service worker included)
 npm run preview    # serve dist/ to test offline / install behaviour
@@ -26,11 +27,12 @@ npm run preview    # serve dist/ to test offline / install behaviour
 ```
 python3 -m venv .venv && . .venv/bin/activate
 pip install -r scripts/requirements.txt
-python scripts/validate_content.py          # fails on bad SMILES, answer == distractor, duplicates, stereo mismatches, broken templates
-python scripts/derive_highlights.py         # fills answer.highlightAtoms for new items (changed atoms, via MCS)
+python scripts/validate_content.py          # fails on bad SMILES/SMARTS, routes that do not reach the target, duplicates, stereo mismatches, failed rule tests
+python scripts/validate_content.py --fill   # same, and writes target.smiles / highlightAtoms for new items by running their route through the engine
+python scripts/run_rule_tests.py            # just the engine rule tests (content/rule_tests.json)
 ```
 
-CI (`.github/workflows/validate.yml`) runs both the validator (`--strict`) and the TypeScript build on every push.
+CI (`.github/workflows/validate.yml`) runs the validator (`--strict`), the engine parity check, typecheck, unit tests and the build on every push.
 
 ## Deploy to GitHub Pages
 
@@ -52,25 +54,31 @@ Phase 3 adds the Capacitor project and the `android.yml` workflow that builds a 
 
 Everything the engine knows comes from `content/`:
 
-- `reagents.json`: shelf bottles (label, what the card says, default minigame, optional `classes` such as `alkyl_halide_1`).
-- `reactions.json`: toolkit rows with canonical steps, rules, stereo outcome and RDKit reaction SMARTS used by the validator.
-- `questions/<reaction>.json`: items. One item can be served as several order types depending on which sections it has (see `content/schema/question.schema.json`).
+- `reagents.json`: shelf bottles (label, card text, which conditions the bottle asks for: temperature presets, lamp, equivalents, pressure).
+- `rules.json`: what each bottle does to a flask, as ordered RDKit reaction SMARTS pipelines with optional conditions, partner reagent, blockers and warnings; plus `noReaction` traps (the mistake tag and the "why" shown when a bottle does nothing).
+- `rule_tests.json`: flask + reagent + conditions → expected product. Run by the validator and by `npm run parity` through the browser engine.
+- `reactions.json`: the toolkit rows (summary, typical mistake tags, decoy bottles) that the notebook and the scheduler use.
+- `questions/<reaction>.json`: orders. Each has a start molecule, the target by name (and stereo label), the intended `route` of bottles, optional `altRoutes`, and `traps` (wrong products with their mistake tag). `target.smiles` and the highlights are filled by the validator from the route, so the answer always matches what the engine does.
 - `mistake_tags.json`: tags with the rule the mentor restates.
 
-Add a file, run the validator, and the reactions appear in the game and the notebook. No engine changes needed.
+Add a file, run `validate_content.py --fill`, and the orders appear in the game and the notebook. No engine changes needed.
+
+Open `?debug=1` on the game URL to get `window.__bb` (flow, save, screen, Phaser game) in the console.
 
 ## Layout
 
 ```
 content/     chemistry data + JSON schemas (no code)
-scripts/     validate_content.py, derive_highlights.py, copy-rdkit.mjs, gen-icons.mjs
-src/chem     RDKit.js loader + SVG drawing (translucent highlights)
+scripts/     validate_content.py, chem_engine.py (Python twin of the engine), run_rule_tests.py,
+             build-engine.mjs + parity.mjs, copy-rdkit.mjs, gen-icons.mjs
+src/chem     RDKit.js loader, SVG drawing (translucent highlights), reaction engine (rules.json → run_reactants)
 src/content  typed loaders
-src/engine   order builder, route/product grader, scoring
+src/flow.ts  the game loop: shift → customer → request → bench → stereo → result/mentor → day end
+src/engine   scoring, stereo labels
 src/mastery  SRS, scheduler, seeds, stats
 src/save     IndexedDB store, export/import codes, merge
-src/game     Phaser scenes: lab + minigames
-src/art      code-defined pixel sprites -> textures
-src/ui       Preact overlays
+src/game     Phaser: the top-down lab room (tiles, walking customers, mentor, effects)
+src/art      code-defined GBC sprites and tiles -> textures / data URLs
+src/ui       Preact overlays: request card, workbench + shelf, notepad, lab book, notebook, settings
 tests/       vitest
 ```

@@ -10,3 +10,4 @@ android/.gradle/
 android/build/
 android/local.properties
 public/rdkit/
+scripts/.engine/

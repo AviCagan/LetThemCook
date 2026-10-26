@@ -4,12 +4,32 @@
 export interface RDKitMol {
   get_svg_with_highlights(details: string): string;
   get_svg(w: number, h: number): string;
+  get_smiles(): string;
+  get_substruct_match(query: RDKitMol): string;
   is_valid(): boolean;
+  delete(): void;
+}
+export interface RDKitMolList {
+  append(mol: RDKitMol): number;
+  at(i: number): RDKitMol | undefined;
+  size(): number;
+  delete(): void;
+}
+export interface RDKitMolListList {
+  get(i: number): RDKitMolList | undefined;
+  size(): number;
+  delete(): void;
+}
+export interface RDKitReaction {
+  run_reactants(reactants: RDKitMolList, maxProducts: number): RDKitMolListList;
   delete(): void;
 }
 export interface RDKitModule {
   version(): string;
   get_mol(smiles: string, details?: string): RDKitMol | null;
+  get_qmol(smarts: string): RDKitMol | null;
+  get_rxn(smarts: string): RDKitReaction | null;
+  MolList: new () => RDKitMolList;
   prefer_coordgen?(v: boolean): void;
 }
 

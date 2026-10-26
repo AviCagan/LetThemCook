@@ -1,0 +1,235 @@
+[
+  {
+    "id": "q-R26-ethanethiol-001",
+    "reactionIds": [
+      "R26"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCS",
+      "name": "ethanethiol"
+    },
+    "target": {
+      "name": "diethyl disulfide",
+      "stereo": "none",
+      "altNames": [
+        "1,2-diethyldisulfane"
+      ],
+      "smiles": "CCSSCC",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "I2"
+      }
+    ],
+    "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+  },
+  {
+    "id": "q-R26-propanethiol-001",
+    "reactionIds": [
+      "R26"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCS",
+      "name": "propane-1-thiol"
+    },
+    "target": {
+      "name": "dipropyl disulfide",
+      "stereo": "none",
+      "altNames": [
+        "1,2-dipropyldisulfane"
+      ],
+      "smiles": "CCCSSCCC",
+      "highlightAtoms": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "I2"
+      }
+    ],
+    "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+  },
+  {
+    "id": "q-R26-benzylthiol-001",
+    "reactionIds": [
+      "R26"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "SCc1ccccc1",
+      "name": "phenylmethanethiol"
+    },
+    "target": {
+      "name": "dibenzyl disulfide",
+      "stereo": "none",
+      "altNames": [
+        "1,2-dibenzyldisulfane"
+      ],
+      "smiles": "c1ccc(CSSCc2ccccc2)cc1",
+      "highlightAtoms": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "route": [
+      {
+        "reagent": "I2"
+      }
+    ],
+    "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+  },
+  {
+    "id": "q-R26-butanethiol-001",
+    "reactionIds": [
+      "R26"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCS",
+      "name": "butane-1-thiol"
+    },
+    "target": {
+      "name": "dibutyl disulfide",
+      "stereo": "none",
+      "altNames": [
+        "1,2-dibutyldisulfane"
+      ],
+      "smiles": "CCCCSSCCCC",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "I2"
+      }
+    ],
+    "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+  },
+  {
+    "id": "q-R26-thiophenol-001",
+    "reactionIds": [
+      "R26"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Sc1ccccc1",
+      "name": "benzenethiol"
+    },
+    "target": {
+      "name": "diphenyl disulfide",
+      "stereo": "none",
+      "altNames": [
+        "1,2-diphenyldisulfane"
+      ],
+      "smiles": "c1ccc(SSc2ccccc2)cc1",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "route": [
+      {
+        "reagent": "I2"
+      }
+    ],
+    "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+  },
+  {
+    "id": "q-R26-methanethiol-001",
+    "reactionIds": [
+      "R26"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CS",
+      "name": "methanethiol"
+    },
+    "target": {
+      "name": "dimethyl disulfide",
+      "stereo": "none",
+      "altNames": [
+        "1,2-dimethyldisulfane"
+      ],
+      "smiles": "CSSC",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "I2"
+      }
+    ],
+    "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+  }
+]

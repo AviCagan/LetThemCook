@@ -1,0 +1,369 @@
+[
+  {
+    "id": "q-R15-cyclohexanol-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1",
+      "name": "cyclohexanol"
+    },
+    "target": {
+      "name": "cyclohexene",
+      "stereo": "none",
+      "smiles": "C1=CCCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=C1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  },
+  {
+    "id": "q-R15-methylbutanol-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(C)(C)O",
+      "name": "2-methylbutan-2-ol"
+    },
+    "target": {
+      "name": "2-methylbut-2-ene",
+      "stereo": "none",
+      "altNames": [
+        "2-methyl-2-butene"
+      ],
+      "smiles": "CC=C(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "C=CC(C)C",
+        "stereo": "none",
+        "tag": "zaitsev_flip",
+        "why": "That is the Hofmann (less substituted) alkene. E1 dehydration gives the Zaitsev product, the more substituted alkene."
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  },
+  {
+    "id": "q-R15-methylcyclohexanol-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(O)CCCCC1",
+      "name": "1-methylcyclohexan-1-ol"
+    },
+    "target": {
+      "name": "1-methylcyclohexene",
+      "stereo": "none",
+      "altNames": [
+        "1-methylcyclohex-1-ene"
+      ],
+      "smiles": "CC1=CCCCC1",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "C=C1CCCCC1",
+        "stereo": "none",
+        "tag": "zaitsev_flip",
+        "why": "The exocyclic alkene is less substituted. Zaitsev: the trisubstituted ring alkene is major."
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  },
+  {
+    "id": "q-R15-butan2ol-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(C)O",
+      "name": "butan-2-ol"
+    },
+    "target": {
+      "name": "but-2-ene",
+      "stereo": "none",
+      "altNames": [
+        "2-butene"
+      ],
+      "smiles": "CC=CC",
+      "highlightAtoms": [
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      },
+      {
+        "smiles": "C=CCC",
+        "stereo": "none",
+        "tag": "zaitsev_flip",
+        "why": "But-1-ene is the less substituted alkene; Zaitsev favours but-2-ene."
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  },
+  {
+    "id": "q-R15-phenylethanol-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(O)c1ccccc1",
+      "name": "1-phenylethan-1-ol"
+    },
+    "target": {
+      "name": "styrene",
+      "stereo": "none",
+      "altNames": [
+        "ethenylbenzene",
+        "vinylbenzene"
+      ],
+      "smiles": "C=Cc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  },
+  {
+    "id": "q-R15-2methylcyclohexanol-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1CCCCC1O",
+      "name": "2-methylcyclohexan-1-ol"
+    },
+    "target": {
+      "name": "1-methylcyclohexene",
+      "stereo": "none",
+      "altNames": [
+        "1-methylcyclohex-1-ene"
+      ],
+      "smiles": "CC1=CCCCC1",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC1CCCCC1=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      },
+      {
+        "smiles": "C=C1CCCCC1",
+        "stereo": "none",
+        "tag": "zaitsev_flip",
+        "why": "The exocyclic alkene is less substituted. Zaitsev: the trisubstituted ring alkene is major."
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  },
+  {
+    "id": "q-R15-cumyl-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(O)c1ccccc1",
+      "name": "2-phenylpropan-2-ol"
+    },
+    "target": {
+      "name": "(prop-1-en-2-yl)benzene",
+      "stereo": "none",
+      "altNames": [
+        "α-methylstyrene",
+        "2-phenylpropene"
+      ],
+      "smiles": "C=C(C)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "reflux"
+        }
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  },
+  {
+    "id": "q-R15-butanol-180-001",
+    "reactionIds": [
+      "R15"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "but-1-ene",
+      "stereo": "none",
+      "altNames": [
+        "1-butene"
+      ],
+      "smiles": "C=CCC",
+      "highlightAtoms": [
+        0,
+        1,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "c180"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      }
+    ],
+    "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+  }
+]

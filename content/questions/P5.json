@@ -1,0 +1,172 @@
+[
+  {
+    "id": "q-P5-phenol-naoh-001",
+    "reactionIds": [
+      "P5"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccccc1",
+      "name": "phenol"
+    },
+    "target": {
+      "name": "sodium phenoxide",
+      "stereo": "none",
+      "altNames": [
+        "phenoxide ion",
+        "phenolate"
+      ],
+      "smiles": "[O-]c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        }
+      ],
+      [
+        {
+          "reagent": "NaH"
+        }
+      ]
+    ],
+    "explanation": "A phenol (pKa ≈ 10) is deprotonated by NaOH (and K₂CO₃), but not by NaHCO₃ (carbonic acid pKa ≈ 6.4 is a weaker acid than... its conjugate base is too weak).",
+    "tip": "NaOH yes, NaHCO₃ no, for a plain phenol."
+  },
+  {
+    "id": "q-P5-benzoic-nahco3-001",
+    "reactionIds": [
+      "P5"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC(=O)c1ccccc1",
+      "name": "benzoic acid"
+    },
+    "target": {
+      "name": "sodium benzoate",
+      "stereo": "none",
+      "altNames": [
+        "benzoate ion"
+      ],
+      "smiles": "O=C([O-])c1ccccc1",
+      "highlightAtoms": [
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaHCO3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaOH"
+        }
+      ]
+    ],
+    "explanation": "A carboxylic acid (pKa ≈ 4–5) is acidic enough for bicarbonate: CO₂ bubbles off. This is how acids are separated from phenols.",
+    "tip": "NaHCO₃ picks out carboxylic acids; phenols stay neutral."
+  },
+  {
+    "id": "q-P5-picric-nahco3-001",
+    "reactionIds": [
+      "P5"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1c([N+](=O)[O-])cc([N+](=O)[O-])cc1[N+](=O)[O-]",
+      "name": "2,4,6-trinitrophenol (picric acid)"
+    },
+    "target": {
+      "name": "sodium 2,4,6-trinitrophenoxide",
+      "stereo": "none",
+      "altNames": [
+        "picrate ion"
+      ],
+      "smiles": "O=[N+]([O-])c1cc([N+](=O)[O-])c([O-])c([N+](=O)[O-])c1",
+      "highlightAtoms": [
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaHCO3"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaOH"
+        }
+      ]
+    ],
+    "explanation": "Three ortho/para nitro groups delocalise the negative charge so well that picric acid (pKa ≈ 0.4) is as strong as a mineral acid: even NaHCO₃ deprotonates it.",
+    "tip": "o/p electron-withdrawing groups make a phenol much more acidic."
+  },
+  {
+    "id": "q-P5-nitrophenol-naoh-001",
+    "reactionIds": [
+      "P5"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+      "name": "4-nitrophenol"
+    },
+    "target": {
+      "name": "sodium 4-nitrophenoxide",
+      "stereo": "none",
+      "altNames": [
+        "4-nitrophenoxide ion"
+      ],
+      "smiles": "O=[N+]([O-])c1ccc([O-])cc1",
+      "highlightAtoms": [
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "K2CO3"
+        }
+      ]
+    ],
+    "explanation": "The para nitro group lowers the pKa to about 7, but one nitro group is still not enough for NaHCO₃; NaOH does it easily.",
+    "tip": "One EWG: more acidic, still NaOH territory."
+  }
+]

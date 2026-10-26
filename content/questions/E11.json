@@ -1,0 +1,260 @@
+[
+  {
+    "id": "q-E11-bromopropane-001",
+    "reactionIds": [
+      "E11"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCBr",
+      "name": "1-bromopropane"
+    },
+    "target": {
+      "name": "methyl propyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "1-(methylsulfanyl)propane"
+      ],
+      "smiles": "CCCSC",
+      "highlightAtoms": [
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      }
+    ],
+    "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
+    "tip": "RS⁻ + R'X = sulfide."
+  },
+  {
+    "id": "q-E11-benzylbromide-001",
+    "reactionIds": [
+      "E11"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrCc1ccccc1",
+      "name": "(bromomethyl)benzene"
+    },
+    "target": {
+      "name": "benzyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "[(methylsulfanyl)methyl]benzene"
+      ],
+      "smiles": "CSCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "SCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      }
+    ],
+    "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
+    "tip": "RS⁻ + R'X = sulfide."
+  },
+  {
+    "id": "q-E11-bromoethane-001",
+    "reactionIds": [
+      "E11"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCBr",
+      "name": "bromoethane"
+    },
+    "target": {
+      "name": "ethyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "(methylsulfanyl)ethane"
+      ],
+      "smiles": "CCSC",
+      "highlightAtoms": [
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      }
+    ],
+    "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
+    "tip": "RS⁻ + R'X = sulfide."
+  },
+  {
+    "id": "q-E11-bromobutane-001",
+    "reactionIds": [
+      "E11"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCBr",
+      "name": "1-bromobutane"
+    },
+    "target": {
+      "name": "butyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "1-(methylsulfanyl)butane"
+      ],
+      "smiles": "CCCCSC",
+      "highlightAtoms": [
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      }
+    ],
+    "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
+    "tip": "RS⁻ + R'X = sulfide."
+  },
+  {
+    "id": "q-E11-isopropylbromide-001",
+    "reactionIds": [
+      "E11"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)Br",
+      "name": "2-bromopropane"
+    },
+    "target": {
+      "name": "isopropyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "2-(methylsulfanyl)propane"
+      ],
+      "smiles": "CSC(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)S",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      }
+    ],
+    "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
+    "tip": "RS⁻ + R'X = sulfide."
+  },
+  {
+    "id": "q-E11-bromocyclohexane-001",
+    "reactionIds": [
+      "E11"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrC1CCCCC1",
+      "name": "bromocyclohexane"
+    },
+    "target": {
+      "name": "cyclohexyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "(methylsulfanyl)cyclohexane"
+      ],
+      "smiles": "CSC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "SC1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      }
+    ],
+    "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
+    "tip": "RS⁻ + R'X = sulfide."
+  }
+]

@@ -167,5 +167,15 @@
     "id": "naming_alkoxide",
     "label": "'-oxide' used as an ether name",
     "rule": "'Ethoxide' is the anion RO⁻. An ether is named as a functional-class name (groups alphabetically + 'ether': ethyl methyl ether) or substitutively (alkoxy + parent: methoxyethane)."
+  },
+  {
+    "id": "gave_up",
+    "label": "Asked the mentor to do it",
+    "rule": "Try the first step yourself next time: even a wrong step shows you what the reagent does, and the undo button is free."
+  },
+  {
+    "id": "wrong_product",
+    "label": "Handed over the wrong molecule",
+    "rule": "Compare your flask with the target before handing over: count carbons, find the functional groups, then check stereochemistry."
   }
 ]

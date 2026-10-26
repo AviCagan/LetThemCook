@@ -1,0 +1,346 @@
+[
+  {
+    "id": "q-R27-ethanethiol-mei-001",
+    "reactionIds": [
+      "R27"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCS",
+      "name": "ethanethiol"
+    },
+    "target": {
+      "name": "ethyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "(methylsulfanyl)ethane"
+      ],
+      "smiles": "CCSC",
+      "highlightAtoms": [
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC[S-]",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      }
+    ],
+    "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
+    "tip": "Thiol + base, then RX = sulfide."
+  },
+  {
+    "id": "q-R27-propanethiol-etbr-001",
+    "reactionIds": [
+      "R27"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCS",
+      "name": "propane-1-thiol"
+    },
+    "target": {
+      "name": "ethyl propyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "1-(ethylsulfanyl)propane"
+      ],
+      "smiles": "CCCSCC",
+      "highlightAtoms": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "EtBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "EtBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCC[S-]",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      }
+    ],
+    "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
+    "tip": "Thiol + base, then RX = sulfide."
+  },
+  {
+    "id": "q-R27-benzylthiol-mei-001",
+    "reactionIds": [
+      "R27"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "SCc1ccccc1",
+      "name": "phenylmethanethiol"
+    },
+    "target": {
+      "name": "benzyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "[(methylsulfanyl)methyl]benzene"
+      ],
+      "smiles": "CSCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "[S-]Cc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      }
+    ],
+    "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
+    "tip": "Thiol + base, then RX = sulfide."
+  },
+  {
+    "id": "q-R27-thiophenol-etbr-001",
+    "reactionIds": [
+      "R27"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "Sc1ccccc1",
+      "name": "benzenethiol"
+    },
+    "target": {
+      "name": "ethyl phenyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "(ethylsulfanyl)benzene"
+      ],
+      "smiles": "CCSc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "EtBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "EtBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "[S-]c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      }
+    ],
+    "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
+    "tip": "Thiol + base, then RX = sulfide."
+  },
+  {
+    "id": "q-R27-butanethiol-bnbr-001",
+    "reactionIds": [
+      "R27"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCS",
+      "name": "butane-1-thiol"
+    },
+    "target": {
+      "name": "benzyl butyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "[(butylsulfanyl)methyl]benzene"
+      ],
+      "smiles": "CCCCSCc1ccccc1",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "BnBr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "BnBr"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CCCC[S-]",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      }
+    ],
+    "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
+    "tip": "Thiol + base, then RX = sulfide."
+  },
+  {
+    "id": "q-R27-cyclohexanethiol-mei-001",
+    "reactionIds": [
+      "R27"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "SC1CCCCC1",
+      "name": "cyclohexanethiol"
+    },
+    "target": {
+      "name": "cyclohexyl methyl sulfide",
+      "stereo": "none",
+      "altNames": [
+        "(methylsulfanyl)cyclohexane"
+      ],
+      "smiles": "CSC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOH"
+      },
+      {
+        "reagent": "CH3I"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "NaH"
+        },
+        {
+          "reagent": "CH3I"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "[S-]C1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      }
+    ],
+    "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
+    "tip": "Thiol + base, then RX = sulfide."
+  }
+]

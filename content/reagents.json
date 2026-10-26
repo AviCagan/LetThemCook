@@ -7,20 +7,20 @@
     "kind": "reagent",
     "technique": "pour",
     "card": {
-      "does": "Mild hydride. Aldehyde → 1° alcohol, ketone → 2° alcohol.",
+      "does": "Mild hydride. Aldehyde → 1° alcohol, ketone → 2° alcohol (the solvent supplies the proton).",
       "doesNot": "Leaves C=C, esters and carboxylic acids alone."
     }
   },
   {
     "id": "LiAlH4",
     "label": "LiAlH₄",
-    "name": "Lithium aluminium hydride (in dry ether or THF)",
+    "name": "Lithium aluminium hydride (dry ether or THF)",
     "shelf": "ch16",
     "kind": "reagent",
     "technique": "pour",
     "card": {
-      "does": "Strong hydride. Aldehydes, ketones, acids and esters → alcohols (an ester gives two).",
-      "doesNot": "Needs a separate H₂O workup step. Does not touch isolated C=C."
+      "does": "Strong hydride. Aldehydes, ketones, acids and esters → metal alkoxides (an ester gives two). Opens epoxides at the less substituted carbon.",
+      "doesNot": "Needs a separate H₂O / H₃O⁺ workup. Does not touch isolated C=C."
     }
   },
   {
@@ -36,39 +36,51 @@
     }
   },
   {
-    "id": "BH3_THF",
-    "label": "BH₃·THF",
-    "name": "Borane–THF complex",
+    "id": "Zn_Hg_HCl",
+    "label": "Zn(Hg), HCl",
+    "name": "Zinc amalgam in hydrochloric acid (Clemmensen)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Aldehyde/ketone C=O → CH₂.",
+      "doesNot": "Does not reduce alcohols, esters or acids."
+    }
+  },
+  {
+    "id": "H2NNH2_KOH",
+    "label": "H₂NNH₂, KOH, Δ",
+    "name": "Hydrazine and KOH with heat (Wolff–Kishner)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Aldehyde/ketone C=O → CH₂ (base conditions).",
+      "doesNot": "Does not reduce alcohols, esters or acids."
+    }
+  },
+  {
+    "id": "PCC",
+    "label": "PCC",
+    "name": "Pyridinium chlorochromate (dry CH₂Cl₂)",
     "shelf": "ch16",
     "kind": "reagent",
     "technique": "pour",
     "card": {
-      "does": "Step 1 of hydroboration: B and H add syn across the C=C, B on the less substituted carbon.",
-      "doesNot": "Gives no alcohol by itself; needs H₂O₂/NaOH."
-    }
-  },
-  {
-    "id": "H2O2_NaOH",
-    "label": "H₂O₂, NaOH",
-    "name": "Basic hydrogen peroxide (oxidative workup)",
-    "shelf": "workup",
-    "kind": "workup",
-    "technique": "pour",
-    "card": {
-      "does": "Step 2 of hydroboration: swaps the C–B bond for C–OH with retention.",
-      "doesNot": "Does nothing to an alkene on its own."
-    }
-  },
-  {
-    "id": "OsO4",
-    "label": "OsO₄",
-    "name": "Osmium tetroxide, then NaHSO₃/H₂O (or cat. OsO₄ + NMO)",
-    "shelf": "ch16",
-    "kind": "reagent",
-    "technique": "pour",
-    "card": {
-      "does": "Syn dihydroxylation: two OH groups on the same face of the C=C. C–C bond kept.",
-      "doesNot": "Does not cleave the C=C (that is O₃)."
+      "does": "1° alcohol → aldehyde (stops there); 2° alcohol → ketone.",
+      "doesNot": "Leaves C=C alone; no acids; does not cleave C–C bonds."
     }
   },
   {
@@ -79,20 +91,8 @@
     "kind": "reagent",
     "technique": "pour",
     "card": {
-      "does": "1° alcohol → carboxylic acid; 2° alcohol → ketone.",
+      "does": "1° alcohol → carboxylic acid; 2° alcohol → ketone; hydroquinone/catechol → quinone.",
       "doesNot": "3° alcohols: no reaction. Never stops at the aldehyde."
-    }
-  },
-  {
-    "id": "PCC",
-    "label": "PCC",
-    "name": "Pyridinium chlorochromate (CH₂Cl₂)",
-    "shelf": "ch16",
-    "kind": "reagent",
-    "technique": "pour",
-    "card": {
-      "does": "1° alcohol → aldehyde (stops there); 2° alcohol → ketone.",
-      "doesNot": "Leaves C=C alone; does not cleave C–C bonds; no acids."
     }
   },
   {
@@ -105,6 +105,245 @@
     "card": {
       "does": "Cleaves the C–C bond of a vicinal diol; each carbon becomes an aldehyde or ketone.",
       "doesNot": "Does nothing to an isolated alcohol or a 1,3-diol."
+    }
+  },
+  {
+    "id": "OsO4",
+    "label": "OsO₄",
+    "name": "Osmium tetroxide, then NaHSO₃/H₂O (or cat. OsO₄ + NMO)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Syn dihydroxylation: two OH groups on the same face of a C=C. The C–C bond is kept.",
+      "doesNot": "Does not cleave the C=C (that is O₃)."
+    }
+  },
+  {
+    "id": "BH3_THF",
+    "label": "BH₃·THF",
+    "name": "Borane–THF complex",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Step 1 of hydroboration: B and H add syn across the C=C, boron on the less substituted carbon.",
+      "doesNot": "Gives no alcohol by itself; follow with H₂O₂/NaOH."
+    }
+  },
+  {
+    "id": "H2O2_NaOH",
+    "label": "H₂O₂, NaOH",
+    "name": "Basic hydrogen peroxide (oxidative workup)",
+    "shelf": "workup",
+    "kind": "workup",
+    "technique": "pour",
+    "card": {
+      "does": "Step 2 of hydroboration: swaps C–B for C–OH with retention.",
+      "doesNot": "Does nothing to an alkene on its own."
+    }
+  },
+  {
+    "id": "KMnO4",
+    "label": "KMnO₄, hot",
+    "name": "Hot concentrated potassium permanganate",
+    "shelf": "decoy",
+    "kind": "decoy",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Strong, unselective oxidant that cleaves C=C bonds.",
+      "trap": "Not a toolkit reagent: use OsO₄ for diols, Jones or PCC for alcohols."
+    }
+  },
+  {
+    "id": "O3",
+    "label": "O₃",
+    "name": "Ozone, then Zn or (CH₃)₂S",
+    "shelf": "decoy",
+    "kind": "decoy",
+    "technique": "pour",
+    "card": {
+      "does": "Cleaves C=C into two carbonyls.",
+      "trap": "Decoy for OsO₄: OsO₄ keeps the C–C bond and gives a syn diol."
+    }
+  },
+  {
+    "id": "mCPBA",
+    "label": "mCPBA",
+    "name": "meta-Chloroperoxybenzoic acid (peroxy acid)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "techniqueParams": {
+      "equivOptions": [
+        1,
+        2
+      ]
+    },
+    "card": {
+      "does": "Alkene → epoxide (syn, stereospecific). Sulfide → sulfoxide (1 equiv) → sulfone (2 equiv).",
+      "doesNot": "Not a diol reagent."
+    }
+  },
+  {
+    "id": "H2O2",
+    "label": "H₂O₂",
+    "name": "Hydrogen peroxide",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "techniqueParams": {
+      "equivOptions": [
+        1,
+        2
+      ]
+    },
+    "card": {
+      "does": "Sulfide → sulfoxide with 1 equiv, → sulfone with 2 equiv.",
+      "doesNot": "Does not open epoxides or oxidise alcohols here."
+    }
+  },
+  {
+    "id": "NaIO4",
+    "label": "NaIO₄",
+    "name": "Sodium periodate",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Sulfide → sulfoxide, and stops there.",
+      "doesNot": "Does not go on to the sulfone."
+    }
+  },
+  {
+    "id": "I2",
+    "label": "I₂",
+    "name": "Iodine",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Oxidises two thiols to a disulfide RS–SR.",
+      "doesNot": "Does not touch alcohols or alkenes here."
+    }
+  },
+  {
+    "id": "NBS",
+    "label": "NBS",
+    "name": "N-Bromosuccinimide",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "light",
+    "techniqueParams": {
+      "lightToggle": true
+    },
+    "card": {
+      "does": "With light, peroxide or heat: allylic / benzylic bromination.",
+      "doesNot": "Nothing happens in the dark without an initiator."
+    }
+  },
+  {
+    "id": "H2O",
+    "label": "H₂O",
+    "name": "Water (workup, or hydrolysis with heat)",
+    "shelf": "workup",
+    "kind": "workup",
+    "technique": "temperature",
+    "smiles": "O",
+    "techniqueParams": {
+      "tempPresets": [
+        "ice",
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Protonates alkoxides, carboxylates and thiolates; quenches Grignards. With heat: Ar–N₂⁺ → Ar–OH.",
+      "doesNot": "Does nothing useful before the hydride or Grignard has reacted."
+    }
+  },
+  {
+    "id": "H3O_plus",
+    "label": "H₃O⁺",
+    "name": "Dilute aqueous acid",
+    "shelf": "workup",
+    "kind": "workup",
+    "technique": "workup",
+    "smiles": "O",
+    "card": {
+      "does": "Acidic workup: protonates alkoxides, phenoxides and carboxylates. On an epoxide: trans-diol. On an alkene: Markovnikov hydration.",
+      "doesNot": "Kills a Grignard or hydride if added too early."
+    }
+  },
+  {
+    "id": "HBr",
+    "label": "HBr",
+    "name": "Hydrobromic acid (conc.; excess with heat)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "light",
+    "smiles": "Br",
+    "techniqueParams": {
+      "lightToggle": true,
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "ROH → RBr (3° fast by SN1, 1° by SN2). Epoxide → bromohydrin at the more substituted carbon. Excess + heat: cleaves ethers to alkyl bromides (an aryl–O bond survives as the phenol).",
+      "trap": "Light does nothing useful here; keep the lamp off."
+    }
+  },
+  {
+    "id": "HI",
+    "label": "HI",
+    "name": "Hydroiodic acid (excess, heat)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "temperature",
+    "smiles": "I",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Excess + heat: cleaves ethers to alkyl iodides; alkyl aryl ethers → phenol + RI.",
+      "doesNot": "Never breaks the aryl–O bond."
+    }
+  },
+  {
+    "id": "HCl",
+    "label": "HCl",
+    "name": "Hydrochloric acid",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "Cl",
+    "card": {
+      "does": "3° alcohol → 3° chloride (SN1).",
+      "doesNot": "1° and 2° alcohols need ZnCl₂ (Lucas) to react."
+    }
+  },
+  {
+    "id": "HCl_ZnCl2",
+    "label": "HCl / ZnCl₂",
+    "name": "Hydrochloric acid with zinc chloride (Lucas)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "Cl",
+    "card": {
+      "does": "1°, 2° and 3° alcohols → alkyl chlorides.",
+      "doesNot": "Not an oxidant."
     }
   },
   {
@@ -128,22 +367,7 @@
     "technique": "pour",
     "card": {
       "does": "1°/2° ROH → RBr by SN2, no rearrangement.",
-      "doesNot": "Not for 3° alcohols; not an oxidant."
-    }
-  },
-  {
-    "id": "HBr",
-    "label": "HBr",
-    "name": "Hydrobromic acid",
-    "shelf": "ch16",
-    "kind": "reagent",
-    "technique": "light",
-    "techniqueParams": {
-      "lightToggle": true
-    },
-    "card": {
-      "does": "ROH → RBr (3° fast, SN1; 1° by SN2).",
-      "trap": "Light does nothing useful here; keep the lamp off."
+      "doesNot": "Not for 3° alcohols."
     }
   },
   {
@@ -156,14 +380,38 @@
     "techniqueParams": {
       "tempPresets": [
         "rt",
+        "reflux",
         "c140",
-        "c180",
-        "reflux"
+        "c180"
       ]
     },
     "card": {
-      "does": "Dehydrates alcohols to the Zaitsev alkene (E1); 1° alcohols at 180 °C, ether at 140 °C.",
+      "does": "Dehydration to the Zaitsev alkene (E1; 1° alcohols only at 180 °C). Two 1° alcohols at 140 °C → symmetric ether. 1,4- and 1,5-diols → cyclic ether.",
       "doesNot": "Not an oxidant."
+    }
+  },
+  {
+    "id": "HNO3_H2SO4",
+    "label": "HNO₃ / H₂SO₄",
+    "name": "Nitric acid with sulfuric acid (nitration)",
+    "shelf": "decoy",
+    "kind": "decoy",
+    "technique": "pour",
+    "card": {
+      "does": "Electrophilic nitration of benzene rings (not in this toolkit).",
+      "trap": "Looks like NaNO₂ on a tired day. It is not the diazonium route."
+    }
+  },
+  {
+    "id": "HNO3_dil",
+    "label": "dil. HNO₃",
+    "name": "Dilute nitric acid",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Mononitrates a phenol ortho/para to the OH (para if open).",
+      "doesNot": "Does not touch the OH group."
     }
   },
   {
@@ -182,87 +430,83 @@
     },
     "card": {
       "does": "Makes HONO; at 0–5 °C converts Ar–NH₂ into the aryl diazonium salt Ar–N₂⁺.",
-      "doesNot": "Not a nitrating agent: it never puts NO₂ on a ring."
+      "doesNot": "Not a nitrating agent. Warm, the diazonium salt decomposes."
     }
   },
   {
-    "id": "HNO3_H2SO4",
-    "label": "HNO₃ / H₂SO₄",
-    "name": "Nitric acid with sulfuric acid (nitration)",
+    "id": "Br2_H2O",
+    "label": "Br₂, H₂O",
+    "name": "Bromine water",
     "shelf": "phenols",
     "kind": "reagent",
-    "technique": "temperature",
-    "techniqueParams": {
-      "tempPresets": [
-        "ice",
-        "rt",
-        "reflux"
-      ]
-    },
+    "technique": "pour",
     "card": {
-      "does": "Electrophilic nitration: adds NO₂ to a ring C–H (o/p to OH, NH₂, OR).",
-      "trap": "Looks like NaNO₂ on a tired day. It is not the diazonium route."
+      "does": "Brominates every open ortho/para position of a phenol.",
+      "doesNot": "Does not touch the OH."
+    }
+  },
+  {
+    "id": "Br2_CHCl3",
+    "label": "Br₂, CHCl₃, cold",
+    "name": "Bromine in chloroform (or CS₂), cold",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Mono-brominates a phenol: para if open, otherwise ortho.",
+      "doesNot": "Not polybromination."
     }
   },
   {
     "id": "NaOH",
     "label": "NaOH",
-    "name": "Sodium hydroxide (aqueous)",
+    "name": "Sodium hydroxide",
     "shelf": "phenols",
     "kind": "reagent",
     "technique": "pour",
     "card": {
-      "does": "Strong base: deprotonates phenols (pKa ≈ 10) and carboxylic acids.",
-      "doesNot": "Too weak to deprotonate an ordinary alcohol completely; does not replace NH₂ or OH on a ring."
+      "does": "Deprotonates phenols (pKa ≈ 10), thiols and carboxylic acids. Vicinal halohydrin → epoxide.",
+      "doesNot": "Too weak to deprotonate an ordinary alcohol fully; does not replace NH₂ or OH on a ring."
     }
   },
   {
-    "id": "H2O",
-    "label": "H₂O",
-    "name": "Water (workup, or hydrolysis with heat)",
-    "shelf": "workup",
-    "kind": "workup",
-    "technique": "temperature",
-    "techniqueParams": {
-      "tempPresets": [
-        "ice",
-        "rt",
-        "reflux"
-      ]
-    },
-    "smiles": "O",
+    "id": "NaHCO3",
+    "label": "NaHCO₃",
+    "name": "Sodium bicarbonate",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
     "card": {
-      "does": "Quenches hydride/Grignard alkoxides to the alcohol (room temp). With heat, converts Ar–N₂⁺ into Ar–OH.",
-      "doesNot": "Does nothing useful before the hydride or Grignard has reacted."
+      "does": "Deprotonates carboxylic acids (and only very acidic phenols such as picric acid).",
+      "doesNot": "Does not deprotonate an ordinary phenol or an alcohol."
     }
   },
   {
-    "id": "H3O_plus",
-    "label": "H₃O⁺",
-    "name": "Dilute aqueous acid (workup)",
-    "shelf": "workup",
-    "kind": "workup",
-    "technique": "workup",
-    "smiles": "O",
+    "id": "K2CO3",
+    "label": "K₂CO₃",
+    "name": "Potassium carbonate",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
     "card": {
-      "does": "Acidic workup: protonates alkoxides and carboxylates. As a reagent on an alkene it gives Markovnikov hydration.",
-      "doesNot": "Kills a Grignard or hydride if added too early."
+      "does": "Deprotonates phenols for a Williamson aryl ether synthesis.",
+      "doesNot": "Too weak for ordinary alcohols."
     }
   },
   {
     "id": "NaH",
     "label": "NaH",
-    "name": "Sodium hydride (in THF)",
+    "name": "Sodium hydride (THF)",
     "shelf": "ch17",
     "kind": "reagent",
     "technique": "stir",
-    "card": {
-      "does": "Strong base: deprotonates an alcohol completely to the alkoxide (step 1 of a Williamson).",
-      "doesNot": "Not a nucleophile and not a reducing agent."
-    },
     "classes": [
       "base_strong"
-    ]
+    ],
+    "card": {
+      "does": "Strong base: alcohol → alkoxide, phenol → phenoxide, thiol → thiolate (step 1 of a Williamson).",
+      "doesNot": "Not a nucleophile and not a reducing agent."
+    }
   },
   {
     "id": "Na",
@@ -271,13 +515,50 @@
     "shelf": "ch17",
     "kind": "reagent",
     "technique": "stir",
-    "card": {
-      "does": "Deprotonates an alcohol to the alkoxide (with H₂ gas), like NaH.",
-      "doesNot": "Not a nucleophile."
-    },
     "classes": [
       "base_strong"
-    ]
+    ],
+    "card": {
+      "does": "Alcohol → alkoxide (with H₂ gas), like NaH.",
+      "doesNot": "Not a nucleophile."
+    }
+  },
+  {
+    "id": "AlCl3",
+    "label": "AlCl₃",
+    "name": "Aluminium chloride (Lewis acid)",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Fries rearrangement: aryl ester → ortho/para hydroxyaryl ketone.",
+      "trap": "Not a base. It cannot make an alkoxide for a Williamson synthesis."
+    }
+  },
+  {
+    "id": "Mg_ether",
+    "label": "Mg, ether",
+    "name": "Magnesium turnings in dry ether",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "stir",
+    "card": {
+      "does": "Alkyl / aryl halide → Grignard reagent R–MgBr.",
+      "doesNot": "Destroyed by any acidic H (OH, SH, COOH, NH) in the molecule."
+    }
+  },
+  {
+    "id": "CO2",
+    "label": "CO₂, pressure",
+    "name": "Carbon dioxide under pressure (125 °C, ~100 atm)",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pressure",
+    "smiles": "O=C=O",
+    "card": {
+      "does": "Kolbe–Schmitt: phenoxide + CO₂ → carboxylate ortho to the O⁻.",
+      "doesNot": "Does nothing to a neutral phenol."
+    }
   },
   {
     "id": "CH3I",
@@ -287,13 +568,13 @@
     "kind": "reagent",
     "technique": "pour",
     "smiles": "CI",
-    "card": {
-      "does": "Perfect SN2 electrophile: methylates alkoxides, phenoxides, thiolates and sulfides.",
-      "doesNot": "Cannot be eliminated (no β-hydrogens)."
-    },
     "classes": [
       "alkyl_halide_1"
-    ]
+    ],
+    "card": {
+      "does": "Perfect SN2 electrophile: alkylates alkoxides, phenoxides, thiolates and sulfides (→ sulfonium).",
+      "doesNot": "Cannot be eliminated (no β-hydrogens)."
+    }
   },
   {
     "id": "EtBr",
@@ -303,13 +584,29 @@
     "kind": "reagent",
     "technique": "pour",
     "smiles": "CCBr",
-    "card": {
-      "does": "1° halide: SN2 electrophile for alkoxides (Williamson).",
-      "doesNot": "Elimination is minor with a 1° halide."
-    },
     "classes": [
       "alkyl_halide_1"
-    ]
+    ],
+    "card": {
+      "does": "1° halide: SN2 electrophile for alkoxides, phenoxides and thiolates.",
+      "doesNot": "Elimination is minor with a 1° halide."
+    }
+  },
+  {
+    "id": "nPrBr",
+    "label": "CH₃CH₂CH₂Br",
+    "name": "1-Bromopropane",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CCCBr",
+    "classes": [
+      "alkyl_halide_1"
+    ],
+    "card": {
+      "does": "1° halide: SN2 electrophile.",
+      "doesNot": "Elimination is minor with a 1° halide."
+    }
   },
   {
     "id": "BnBr",
@@ -319,16 +616,16 @@
     "kind": "reagent",
     "technique": "pour",
     "smiles": "BrCc1ccccc1",
+    "classes": [
+      "alkyl_halide_1"
+    ],
     "card": {
-      "does": "Benzylic 1° halide: excellent SN2 electrophile (Williamson).",
-      "doesNot": "No β-hydrogens on the benzylic carbon's neighbour, so no E2."
+      "does": "Benzylic 1° halide: excellent SN2 electrophile.",
+      "doesNot": "No β-hydrogens next to the benzylic carbon, so no E2."
     },
     "aliases": [
       "benzyl bromide",
       "(bromomethyl)benzene"
-    ],
-    "classes": [
-      "alkyl_halide_1"
     ]
   },
   {
@@ -339,89 +636,171 @@
     "kind": "reagent",
     "technique": "pour",
     "smiles": "C=CCBr",
-    "card": {
-      "does": "Allylic 1° halide: excellent SN2 electrophile (Williamson).",
-      "doesNot": "Does not add across its own C=C under these conditions."
-    },
     "classes": [
       "alkyl_halide_1"
-    ]
-  },
-  {
-    "id": "tBuBr",
-    "label": "(CH₃)₃CBr",
-    "name": "2-Bromo-2-methylpropane (tert-butyl bromide)",
-    "shelf": "ch17",
-    "kind": "reagent",
-    "technique": "pour",
-    "smiles": "CC(C)(C)Br",
+    ],
     "card": {
-      "does": "3° halide: E2 with alkoxides, SN1/E1 with weak nucleophiles.",
-      "trap": "Never the electrophile in a Williamson ether synthesis."
-    },
-    "classes": [
-      "alkyl_halide_3"
-    ]
+      "does": "Allylic 1° halide: excellent SN2 electrophile.",
+      "doesNot": "Its own C=C is untouched."
+    }
   },
   {
     "id": "iPrBr",
     "label": "(CH₃)₂CHBr",
-    "name": "2-Bromopropane (isopropyl bromide)",
+    "name": "2-Bromopropane",
     "shelf": "ch17",
     "kind": "reagent",
     "technique": "pour",
     "smiles": "CC(C)Br",
-    "card": {
-      "does": "2° halide: mostly E2 with alkoxides.",
-      "trap": "Put the isopropyl group on the alkoxide side instead."
-    },
     "classes": [
       "alkyl_halide_2"
-    ]
-  },
-  {
-    "id": "AlCl3",
-    "label": "AlCl₃",
-    "name": "Aluminium chloride (Lewis acid)",
-    "shelf": "phenols",
-    "kind": "reagent",
-    "technique": "pour",
+    ],
     "card": {
-      "does": "Lewis acid catalyst for Friedel–Crafts C-acylation and the Fries rearrangement.",
-      "trap": "Not a base. It cannot make an alkoxide for a Williamson synthesis."
+      "does": "2° halide: E2 with alkoxides (propene).",
+      "trap": "Put the isopropyl group on the alkoxide side instead."
     }
   },
   {
-    "id": "mCPBA",
-    "label": "mCPBA",
-    "name": "meta-Chloroperoxybenzoic acid",
+    "id": "tBuBr",
+    "label": "(CH₃)₃CBr",
+    "name": "2-Bromo-2-methylpropane",
     "shelf": "ch17",
     "kind": "reagent",
     "technique": "pour",
+    "smiles": "CC(C)(C)Br",
+    "classes": [
+      "alkyl_halide_3"
+    ],
     "card": {
-      "does": "Alkene → epoxide (syn, stereospecific).",
-      "trap": "Not a diol reagent: OsO₄ gives the syn diol."
+      "does": "3° halide: E2 with alkoxides (2-methylpropene).",
+      "trap": "Never the electrophile in a Williamson ether synthesis."
     }
   },
   {
-    "id": "O3",
-    "label": "O₃",
-    "name": "Ozone, then Zn or (CH₃)₂S",
-    "shelf": "decoy",
-    "kind": "decoy",
+    "id": "HCHO",
+    "label": "HCHO",
+    "name": "Formaldehyde",
+    "shelf": "ch16",
+    "kind": "reagent",
     "technique": "pour",
+    "smiles": "C=O",
     "card": {
-      "does": "Cleaves C=C into two carbonyls.",
-      "trap": "Decoy for OsO₄: OsO₄ keeps the C–C bond and gives a syn diol."
+      "does": "Grignard partner: R–MgBr + HCHO → 1° alcohol with one extra carbon (after H₃O⁺).",
+      "doesNot": "Nothing without a Grignard or hydride."
     }
   },
   {
-    "id": "KMnO4",
-    "label": "KMnO₄, hot",
-    "name": "Hot concentrated potassium permanganate",
-    "shelf": "decoy",
-    "kind": "decoy",
+    "id": "CH3CHO",
+    "label": "CH₃CHO",
+    "name": "Acetaldehyde",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC=O",
+    "card": {
+      "does": "Grignard partner: → 2° alcohol (after H₃O⁺).",
+      "doesNot": "Nothing without a Grignard or hydride."
+    }
+  },
+  {
+    "id": "PhCHO",
+    "label": "PhCHO",
+    "name": "Benzaldehyde",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "O=Cc1ccccc1",
+    "card": {
+      "does": "Grignard partner: → 2° benzylic alcohol (after H₃O⁺).",
+      "doesNot": "Nothing without a Grignard or hydride."
+    }
+  },
+  {
+    "id": "acetone",
+    "label": "(CH₃)₂C=O",
+    "name": "Acetone",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC(C)=O",
+    "card": {
+      "does": "Grignard partner: → 3° alcohol (after H₃O⁺).",
+      "doesNot": "Nothing without a Grignard or hydride."
+    }
+  },
+  {
+    "id": "cyclohexanone",
+    "label": "cyclohexanone",
+    "name": "Cyclohexanone",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "O=C1CCCCC1",
+    "card": {
+      "does": "Grignard partner: → 3° alcohol on the ring (after H₃O⁺).",
+      "doesNot": "Nothing without a Grignard or hydride."
+    }
+  },
+  {
+    "id": "ethylene_oxide",
+    "label": "ethylene oxide",
+    "name": "Oxirane",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "C1CO1",
+    "card": {
+      "does": "Grignard partner: R–MgBr opens it → 1° alcohol with two extra carbons (after H₃O⁺).",
+      "doesNot": "Nothing without a nucleophile."
+    }
+  },
+  {
+    "id": "AcCl_pyr",
+    "label": "CH₃COCl, pyr",
+    "name": "Acetyl chloride with pyridine",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC(=O)Cl",
+    "card": {
+      "does": "Acylates alcohols and phenols on oxygen → acetate ester.",
+      "doesNot": "No AlCl₃, so no ring acylation."
+    }
+  },
+  {
+    "id": "BzCl_pyr",
+    "label": "PhCOCl, pyr",
+    "name": "Benzoyl chloride with pyridine",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "O=C(Cl)c1ccccc1",
+    "card": {
+      "does": "Acylates alcohols and phenols on oxygen → benzoate ester.",
+      "doesNot": "No AlCl₃, so no ring acylation."
+    }
+  },
+  {
+    "id": "Ac2O",
+    "label": "(CH₃CO)₂O",
+    "name": "Acetic anhydride",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC(=O)OC(C)=O",
+    "card": {
+      "does": "Acylates alcohols and phenols on oxygen → acetate ester.",
+      "doesNot": "No AlCl₃, so no ring acylation."
+    }
+  },
+  {
+    "id": "AcOH_H2SO4",
+    "label": "CH₃COOH, H₂SO₄ cat., Δ",
+    "name": "Acetic acid with catalytic sulfuric acid, heat (Fischer)",
+    "shelf": "ch16",
+    "kind": "reagent",
     "technique": "temperature",
+    "smiles": "CC(=O)O",
     "techniqueParams": {
       "tempPresets": [
         "rt",
@@ -429,8 +808,218 @@
       ]
     },
     "card": {
-      "does": "Strong, unselective oxidant that cleaves C=C bonds.",
-      "trap": "Not in the toolkit as a selective reagent: use OsO₄ for diols, Jones or PCC for alcohols."
+      "does": "Fischer esterification: alcohol (the nucleophile) + acid → acetate ester + water.",
+      "doesNot": "Phenols esterify poorly this way; use the acid chloride or anhydride."
+    }
+  },
+  {
+    "id": "MeOH_H2SO4",
+    "label": "CH₃OH, H₂SO₄ cat.",
+    "name": "Methanol with catalytic sulfuric acid",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "temperature",
+    "smiles": "CO",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "With heat: Fischer esterification of a carboxylic acid → methyl ester. On an epoxide: methoxy goes to the MORE substituted carbon.",
+      "doesNot": "Does not esterify alcohols (needs an acid partner)."
+    }
+  },
+  {
+    "id": "EtOH_H2SO4",
+    "label": "CH₃CH₂OH, H₂SO₄ cat.",
+    "name": "Ethanol with catalytic sulfuric acid",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "temperature",
+    "smiles": "CCO",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "With heat: Fischer esterification of a carboxylic acid → ethyl ester. On an epoxide: ethoxy to the MORE substituted carbon.",
+      "doesNot": "Does not esterify alcohols."
+    }
+  },
+  {
+    "id": "AcCl_AlCl3",
+    "label": "CH₃COCl, AlCl₃",
+    "name": "Acetyl chloride with aluminium chloride (Friedel–Crafts)",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC(=O)Cl",
+    "card": {
+      "does": "C-acylation of a phenol ring ortho/para to the OH → hydroxyaryl ketone; the OH stays.",
+      "doesNot": "Not O-acylation (no pyridine)."
+    }
+  },
+  {
+    "id": "NaOMe",
+    "label": "NaOCH₃ / CH₃OH",
+    "name": "Sodium methoxide in methanol",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "C[O-]",
+    "card": {
+      "does": "Alkoxide nucleophile: opens epoxides at the less substituted carbon; SNAr on aryl halides with NO₂ ortho/para.",
+      "doesNot": "No reaction with a plain aryl halide (no SN2 on sp² carbon)."
+    }
+  },
+  {
+    "id": "NaOEt",
+    "label": "NaOCH₂CH₃ / EtOH",
+    "name": "Sodium ethoxide in ethanol",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC[O-]",
+    "card": {
+      "does": "Alkoxide nucleophile: opens epoxides at the less substituted carbon; SNAr on activated aryl halides.",
+      "doesNot": "No reaction with a plain aryl halide."
+    }
+  },
+  {
+    "id": "NaCN",
+    "label": "NaCN",
+    "name": "Sodium cyanide",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "[C-]#N",
+    "card": {
+      "does": "Cyanide nucleophile: opens epoxides at the less substituted carbon.",
+      "doesNot": "Nothing on an alcohol."
+    }
+  },
+  {
+    "id": "NaN3",
+    "label": "NaN₃",
+    "name": "Sodium azide",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "[N-]=[N+]=[N-]",
+    "card": {
+      "does": "Azide nucleophile: opens epoxides at the less substituted carbon.",
+      "doesNot": "Nothing on an alcohol."
+    }
+  },
+  {
+    "id": "NH3",
+    "label": "NH₃",
+    "name": "Ammonia",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "N",
+    "card": {
+      "does": "Opens epoxides at the less substituted carbon → amino alcohol.",
+      "doesNot": "Nothing on an alcohol."
+    }
+  },
+  {
+    "id": "NaSH",
+    "label": "NaSH",
+    "name": "Sodium hydrosulfide",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "[SH-]",
+    "card": {
+      "does": "HS⁻ nucleophile: CH₃/1°/2° halide → thiol (SN2); opens epoxides at the less substituted carbon.",
+      "doesNot": "Cannot displace OH: convert the alcohol to the bromide first."
+    }
+  },
+  {
+    "id": "NaSMe",
+    "label": "NaSCH₃",
+    "name": "Sodium methanethiolate",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "C[S-]",
+    "card": {
+      "does": "Thiolate nucleophile: halide → sulfide (SN2); opens epoxides at the less substituted carbon.",
+      "doesNot": "Cannot displace OH."
+    }
+  },
+  {
+    "id": "KF_crown",
+    "label": "KF, 18-crown-6",
+    "name": "Potassium fluoride with 18-crown-6 (benzene/MeCN)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "[F-]",
+    "card": {
+      "does": "'Naked' fluoride: SN2 on a CH₃/1°/2° halide → alkyl fluoride.",
+      "doesNot": "Nothing on alcohols."
+    }
+  },
+  {
+    "id": "KCN_crown",
+    "label": "KCN, 18-crown-6",
+    "name": "Potassium cyanide with 18-crown-6",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "[C-]#N",
+    "card": {
+      "does": "'Naked' cyanide: SN2 on a CH₃/1°/2° halide → nitrile.",
+      "doesNot": "Nothing on alcohols."
+    }
+  },
+  {
+    "id": "KOAc_crown",
+    "label": "CH₃CO₂K, 18-crown-6",
+    "name": "Potassium acetate with 18-crown-6",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC(=O)[O-]",
+    "card": {
+      "does": "'Naked' acetate: SN2 on a CH₃/1°/2° halide → acetate ester.",
+      "doesNot": "Nothing on alcohols."
+    },
+    "aliases": [
+      "potassium acetate"
+    ]
+  },
+  {
+    "id": "MeMgBr",
+    "label": "CH₃MgBr",
+    "name": "Methylmagnesium bromide (Grignard, in ether)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "C[Mg]Br",
+    "card": {
+      "does": "Carbon nucleophile: opens an epoxide at the less substituted carbon → magnesium alkoxide (then H₃O⁺).",
+      "doesNot": "Destroyed by acidic O–H / S–H / N–H in the flask."
+    }
+  },
+  {
+    "id": "PhMgBr",
+    "label": "PhMgBr",
+    "name": "Phenylmagnesium bromide (Grignard, in ether)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "Br[Mg]c1ccccc1",
+    "card": {
+      "does": "Carbon nucleophile: opens an epoxide at the less substituted carbon → magnesium alkoxide (then H₃O⁺).",
+      "doesNot": "Destroyed by acidic O–H / S–H / N–H in the flask."
     }
   }
 ]

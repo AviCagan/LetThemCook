@@ -1,0 +1,285 @@
+[
+  {
+    "id": "q-R16-ethanol-001",
+    "reactionIds": [
+      "R16"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCO",
+      "name": "ethanol"
+    },
+    "target": {
+      "name": "diethyl ether",
+      "stereo": "none",
+      "altNames": [
+        "ethoxyethane"
+      ],
+      "smiles": "CCOCC",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "c140"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "C=C",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      }
+    ],
+    "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
+    "tip": "140 °C ether, 180 °C alkene."
+  },
+  {
+    "id": "q-R16-propanol-001",
+    "reactionIds": [
+      "R16"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCO",
+      "name": "propan-1-ol"
+    },
+    "target": {
+      "name": "dipropyl ether",
+      "stereo": "none",
+      "altNames": [
+        "1-propoxypropane"
+      ],
+      "smiles": "CCCOCCC",
+      "highlightAtoms": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "c140"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "C=CC",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      }
+    ],
+    "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
+    "tip": "140 °C ether, 180 °C alkene."
+  },
+  {
+    "id": "q-R16-butanol-001",
+    "reactionIds": [
+      "R16"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "dibutyl ether",
+      "stereo": "none",
+      "altNames": [
+        "1-butoxybutane"
+      ],
+      "smiles": "CCCCOCCCC",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "c140"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "C=CCC",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      }
+    ],
+    "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
+    "tip": "140 °C ether, 180 °C alkene."
+  },
+  {
+    "id": "q-R16-methanol-001",
+    "reactionIds": [
+      "R16"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CO",
+      "name": "methanol"
+    },
+    "target": {
+      "name": "dimethyl ether",
+      "stereo": "none",
+      "altNames": [
+        "methoxymethane"
+      ],
+      "smiles": "COC",
+      "highlightAtoms": [
+        0,
+        1,
+        2
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "c140"
+        }
+      }
+    ],
+    "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
+    "tip": "140 °C ether, 180 °C alkene."
+  },
+  {
+    "id": "q-R16-isobutanol-001",
+    "reactionIds": [
+      "R16"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CO",
+      "name": "2-methylpropan-1-ol"
+    },
+    "target": {
+      "name": "diisobutyl ether",
+      "stereo": "none",
+      "altNames": [
+        "bis(2-methylpropyl) ether",
+        "1-(2-methylpropoxy)-2-methylpropane"
+      ],
+      "smiles": "CC(C)COCC(C)C",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "c140"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "C=C(C)C",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      }
+    ],
+    "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
+    "tip": "140 °C ether, 180 °C alkene."
+  },
+  {
+    "id": "q-R16-isoamyl-001",
+    "reactionIds": [
+      "R16"
+    ],
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CCO",
+      "name": "3-methylbutan-1-ol"
+    },
+    "target": {
+      "name": "diisopentyl ether",
+      "stereo": "none",
+      "altNames": [
+        "bis(3-methylbutyl) ether",
+        "3-methyl-1-(3-methylbutoxy)butane"
+      ],
+      "smiles": "CC(C)CCOCCC(C)C",
+      "highlightAtoms": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "route": [
+      {
+        "reagent": "H2SO4_heat",
+        "conditions": {
+          "temp": "c140"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "C=CC(C)C",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      }
+    ],
+    "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
+    "tip": "140 °C ether, 180 °C alkene."
+  }
+]

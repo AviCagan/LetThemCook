@@ -1,0 +1,317 @@
+[
+  {
+    "id": "q-R12-butanol-001",
+    "reactionIds": [
+      "R12"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "1-chlorobutane",
+      "stereo": "none",
+      "smiles": "CCCCCl",
+      "highlightAtoms": [
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "SOCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCBr",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives the bromide. For the chloride use SOCl₂ (or HCl/ZnCl₂)."
+      },
+      {
+        "smiles": "CCCC=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises; you need a substitution of OH by Cl."
+      }
+    ],
+    "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
+    "tip": "SOCl₂ = alcohol to chloride."
+  },
+  {
+    "id": "q-R12-cyclohexanol-001",
+    "reactionIds": [
+      "R12"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1",
+      "name": "cyclohexanol"
+    },
+    "target": {
+      "name": "chlorocyclohexane",
+      "stereo": "none",
+      "smiles": "ClC1CCCCC1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "SOCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "BrC1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives the bromide. For the chloride use SOCl₂ (or HCl/ZnCl₂)."
+      },
+      {
+        "smiles": "O=C1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises; you need a substitution of OH by Cl."
+      }
+    ],
+    "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
+    "tip": "SOCl₂ = alcohol to chloride."
+  },
+  {
+    "id": "q-R12-isoamyl-001",
+    "reactionIds": [
+      "R12"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)CCO",
+      "name": "3-methylbutan-1-ol"
+    },
+    "target": {
+      "name": "1-chloro-3-methylbutane",
+      "stereo": "none",
+      "smiles": "CC(C)CCCl",
+      "highlightAtoms": [
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "SOCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)CCBr",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives the bromide. For the chloride use SOCl₂ (or HCl/ZnCl₂)."
+      },
+      {
+        "smiles": "CC(C)CC=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises; you need a substitution of OH by Cl."
+      }
+    ],
+    "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
+    "tip": "SOCl₂ = alcohol to chloride."
+  },
+  {
+    "id": "q-R12-benzyl-001",
+    "reactionIds": [
+      "R12"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCc1ccccc1",
+      "name": "benzyl alcohol"
+    },
+    "target": {
+      "name": "(chloromethyl)benzene",
+      "stereo": "none",
+      "smiles": "ClCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "SOCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "BrCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives the bromide. For the chloride use SOCl₂ (or HCl/ZnCl₂)."
+      },
+      {
+        "smiles": "O=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises; you need a substitution of OH by Cl."
+      }
+    ],
+    "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
+    "tip": "SOCl₂ = alcohol to chloride."
+  },
+  {
+    "id": "q-R12-butan2ol-001",
+    "reactionIds": [
+      "R12"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(C)O",
+      "name": "butan-2-ol"
+    },
+    "target": {
+      "name": "2-chlorobutane",
+      "stereo": "racemic",
+      "smiles": "CCC(C)Cl",
+      "highlightAtoms": [
+        2,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "SOCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives the bromide. For the chloride use SOCl₂ (or HCl/ZnCl₂)."
+      },
+      {
+        "smiles": "CCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises; you need a substitution of OH by Cl."
+      }
+    ],
+    "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
+    "tip": "SOCl₂ = alcohol to chloride."
+  },
+  {
+    "id": "q-R12-phenylethanol-001",
+    "reactionIds": [
+      "R12"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCCc1ccccc1",
+      "name": "2-phenylethan-1-ol"
+    },
+    "target": {
+      "name": "(2-chloroethyl)benzene",
+      "stereo": "none",
+      "smiles": "ClCCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "route": [
+      {
+        "reagent": "SOCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "BrCCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives the bromide. For the chloride use SOCl₂ (or HCl/ZnCl₂)."
+      },
+      {
+        "smiles": "O=CCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises; you need a substitution of OH by Cl."
+      }
+    ],
+    "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
+    "tip": "SOCl₂ = alcohol to chloride."
+  },
+  {
+    "id": "q-R12-hexan2ol-001",
+    "reactionIds": [
+      "R12"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCC(C)O",
+      "name": "hexan-2-ol"
+    },
+    "target": {
+      "name": "2-chlorohexane",
+      "stereo": "racemic",
+      "smiles": "CCCCC(C)Cl",
+      "highlightAtoms": [
+        4,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "SOCl2"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCC(C)Br",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives the bromide. For the chloride use SOCl₂ (or HCl/ZnCl₂)."
+      },
+      {
+        "smiles": "CCCCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises; you need a substitution of OH by Cl."
+      }
+    ],
+    "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
+    "tip": "SOCl₂ = alcohol to chloride."
+  }
+]

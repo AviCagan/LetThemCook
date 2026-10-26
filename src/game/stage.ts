@@ -1,11 +1,15 @@
-// Shared layout helpers: the "stage" is the part of the viewport the Phaser scenes draw in
-// (top ~42% in portrait, left half in landscape); the DOM panel takes the rest.
+// The Phaser "stage" is the part of the viewport the lab room draws in (top ~42% in portrait,
+// left half in landscape). The room is a Game Boy Color-sized 160x144 grid of 16px tiles,
+// scaled by an integer zoom so pixels stay crisp.
 import Phaser from 'phaser';
 import { registerAllTextures } from '../art/textures';
 
-export const VW = 192; // virtual pixel width of the lab
-export const VH = 128; // virtual pixel height
-export const HUD_H = 52; // CSS px reserved for the DOM HUD at the top
+export const TILE = 16;
+export const COLS = 10;
+export const ROWS = 9;
+export const VW = TILE * COLS; // 160
+export const VH = TILE * ROWS; // 144
+export const HUD_H = 52;
 
 export interface StageRect {
   x: number;
@@ -52,59 +56,25 @@ export class StageScene extends Phaser.Scene {
     registerAllTextures(this);
   }
 
-  /** Virtual -> camera coordinates. The main camera's viewport is the stage rect, so (0,0) is the stage's top-left. */
+  /** Virtual (160x144) -> camera coordinates; the camera viewport is the stage rect. */
   vx(x: number): number {
     return this.r.ox - this.r.x + x * this.r.zoom;
   }
   vy(y: number): number {
     return this.r.oy - this.r.y + y * this.r.zoom;
   }
-  /** Add a sprite at virtual coords with the pixel zoom applied. Origin default bottom-centre. */
   sprite(key: string, x: number, y: number, frame = 0, originX = 0.5, originY = 1): Phaser.GameObjects.Image {
     const img = this.add.image(this.vx(x), this.vy(y), key, String(frame));
     img.setOrigin(originX, originY).setScale(this.r.zoom);
     return img;
   }
-  tile(key: string, x: number, y: number, w: number, h: number): Phaser.GameObjects.TileSprite {
-    const t = this.add.tileSprite(this.vx(x), this.vy(y), w, h, key, '0');
-    t.setOrigin(0, 0).setScale(this.r.zoom);
-    return t;
-  }
-  text(x: number, y: number, str: string, size = 14, color = '#4a3f5c', originX = 0.5): Phaser.GameObjects.Text {
-    const t = this.add.text(this.vx(x), this.vy(y), str, {
-      fontFamily: '"Segoe UI", system-ui, sans-serif',
-      fontSize: `${size}px`,
-      color,
-      fontStyle: 'bold',
-      stroke: '#fff8ef',
-      strokeThickness: 3,
-    });
-    t.setOrigin(originX, 0.5).setResolution(2);
-    return t;
-  }
-  button(x: number, y: number, label: string, onClick: () => void, w = 72, h = 20): Phaser.GameObjects.Container {
-    const z = this.r.zoom;
-    const g = this.add.graphics();
-    g.fillStyle(0x7fc8a9, 1).fillRoundedRect(-w * z * 0.5, -h * z * 0.5, w * z, h * z, 4 * z);
-    g.lineStyle(2, 0x4a3f5c, 1).strokeRoundedRect(-w * z * 0.5, -h * z * 0.5, w * z, h * z, 4 * z);
-    const t = this.add.text(0, 0, label, { fontFamily: 'system-ui, sans-serif', fontSize: `${Math.max(13, 7 * z)}px`, color: '#2e2740', fontStyle: 'bold' }).setOrigin(0.5).setResolution(2);
-    const c = this.add.container(this.vx(x), this.vy(y), [g, t]);
-    c.setSize(w * z, h * z).setInteractive({ useHandCursor: true });
-    c.on('pointerdown', (p: Phaser.Input.Pointer, _x: number, _y: number, ev: Phaser.Types.Input.EventData) => {
-      ev.stopPropagation();
-      onClick();
-    });
-    return c;
-  }
-  /** Dim the lab behind a minigame. */
-  dimBackdrop(): Phaser.GameObjects.Rectangle {
-    return this.add.rectangle(0, 0, this.r.w, this.r.h, 0xf6e7d8, 0.82).setOrigin(0, 0);
+  tile(key: string, col: number, row: number, frame = 0): Phaser.GameObjects.Image {
+    return this.sprite(key, col * TILE, row * TILE, frame, 0, 0).setDepth(row * TILE + TILE);
   }
   onResize(): void {
     this.scene.restart();
   }
   create(): void {
-    // Everything this scene draws is clipped to the stage rect; sprites parked outside it are invisible.
     this.cameras.main.setViewport(this.r.x, this.r.y, this.r.w, this.r.h);
     this.scale.on('resize', this.onResize, this);
     this.events.once('shutdown', () => {
@@ -113,17 +83,4 @@ export class StageScene extends Phaser.Scene {
       this.disposers = [];
     });
   }
-}
-
-export function clamp01(x: number): number {
-  return Math.max(0, Math.min(1, x));
-}
-
-/** Precision from a value's distance to a band [lo, hi]: 1 at the centre, ~0.7 at the edges, falling to 0 outside. */
-export function bandPrecision(value: number, lo: number, hi: number): number {
-  const c = (lo + hi) / 2;
-  const half = Math.max(1e-6, (hi - lo) / 2);
-  const d = Math.abs(value - c) / half;
-  if (d <= 1) return 1 - 0.3 * d;
-  return clamp01(0.7 - (d - 1) * 0.5);
 }

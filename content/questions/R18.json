@@ -1,0 +1,332 @@
+[
+  {
+    "id": "q-R18-ethanol-accl-001",
+    "reactionIds": [
+      "R18"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCO",
+      "name": "ethanol"
+    },
+    "target": {
+      "name": "ethyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "ethyl ethanoate"
+      ],
+      "smiles": "CCOC(C)=O",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_pyr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Ac2O"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      }
+    ],
+    "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+  },
+  {
+    "id": "q-R18-isopropanol-accl-001",
+    "reactionIds": [
+      "R18"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)O",
+      "name": "propan-2-ol"
+    },
+    "target": {
+      "name": "propan-2-yl acetate",
+      "stereo": "none",
+      "altNames": [
+        "isopropyl acetate"
+      ],
+      "smiles": "CC(=O)OC(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_pyr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Ac2O"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      }
+    ],
+    "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+  },
+  {
+    "id": "q-R18-benzyl-accl-001",
+    "reactionIds": [
+      "R18"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCc1ccccc1",
+      "name": "benzyl alcohol"
+    },
+    "target": {
+      "name": "benzyl acetate",
+      "stereo": "none",
+      "smiles": "CC(=O)OCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_pyr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Ac2O"
+        }
+      ]
+    ],
+    "traps": [
+      {
+        "smiles": "O=C(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      }
+    ],
+    "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+  },
+  {
+    "id": "q-R18-cyclohexanol-bzcl-001",
+    "reactionIds": [
+      "R18"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1",
+      "name": "cyclohexanol"
+    },
+    "target": {
+      "name": "cyclohexyl benzoate",
+      "stereo": "none",
+      "smiles": "O=C(OC1CCCCC1)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "route": [
+      {
+        "reagent": "BzCl_pyr"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "O=C1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      }
+    ],
+    "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+  },
+  {
+    "id": "q-R18-methanol-bzcl-001",
+    "reactionIds": [
+      "R18"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CO",
+      "name": "methanol"
+    },
+    "target": {
+      "name": "methyl benzoate",
+      "stereo": "none",
+      "smiles": "COC(=O)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "route": [
+      {
+        "reagent": "BzCl_pyr"
+      }
+    ],
+    "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+  },
+  {
+    "id": "q-R18-tbuoh-accl-001",
+    "reactionIds": [
+      "R18"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)(C)O",
+      "name": "2-methylpropan-2-ol"
+    },
+    "target": {
+      "name": "tert-butyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "2-methylpropan-2-yl acetate"
+      ],
+      "smiles": "CC(=O)OC(C)(C)C",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "AcCl_pyr"
+      }
+    ],
+    "altRoutes": [
+      [
+        {
+          "reagent": "Ac2O"
+        }
+      ]
+    ],
+    "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+  },
+  {
+    "id": "q-R18-butanol-bzcl-001",
+    "reactionIds": [
+      "R18"
+    ],
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCO",
+      "name": "butan-1-ol"
+    },
+    "target": {
+      "name": "butyl benzoate",
+      "stereo": "none",
+      "smiles": "CCCCOC(=O)c1ccccc1",
+      "highlightAtoms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "route": [
+      {
+        "reagent": "BzCl_pyr"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      }
+    ],
+    "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+  }
+]

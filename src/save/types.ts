@@ -14,11 +14,38 @@ export interface HistoryEntry {
   seconds: number;
 }
 
+export interface LabBookStep {
+  reagent: string;
+  conditions?: import('../content/types').Conditions;
+  before: string;
+  after: string;
+  changed: boolean;
+  label: string;
+  kind: 'step' | 'undo' | 'reset';
+}
+
+export interface LabBookEntry {
+  t: number;
+  item: string;
+  startSmiles: string;
+  startName: string;
+  targetSmiles: string;
+  targetName: string;
+  ok: boolean;
+  stars: number;
+  steps: LabBookStep[];
+  finalSmiles: string;
+  tags: string[];
+  note?: string;
+}
+
 export interface Settings {
   mute: boolean;
   reducedMotion: boolean;
   hintsEnabled: boolean;
   shiftLength: number;
+  /** 'auto' follows the OS setting */
+  theme: 'auto' | 'light' | 'dark';
 }
 
 export interface SaveData {
@@ -38,6 +65,10 @@ export interface SaveData {
     reagents: Record<string, ReagentRecord>;
   };
   history: HistoryEntry[];
+  /** free-text notes per item id */
+  notes: Record<string, string>;
+  /** every order played, with all its steps */
+  labBook: LabBookEntry[];
   economy: {
     coins: number;
     unlocked: string[];
@@ -46,6 +77,8 @@ export interface SaveData {
   stats: {
     shiftsPlayed: number;
     bestStreak: number;
+    /** how often the target structure was revealed on the request card */
+    reveals?: number;
   };
 }
 
@@ -58,11 +91,13 @@ export function emptySave(now = Date.now()): SaveData {
     profile: {
       name: 'Avi',
       chapters: { '16': true, '17': true },
-      settings: { mute: false, reducedMotion: false, hintsEnabled: true, shiftLength: 10 },
+      settings: { mute: false, reducedMotion: false, hintsEnabled: true, shiftLength: 10, theme: 'auto' },
       seededReactions: [],
     },
     mastery: { reactions: {}, reagents: {} },
     history: [],
+    notes: {},
+    labBook: [],
     economy: { coins: 0, unlocked: [], equipped: {} },
     stats: { shiftsPlayed: 0, bestStreak: 0 },
   };

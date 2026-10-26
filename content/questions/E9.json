@@ -1,0 +1,346 @@
+[
+  {
+    "id": "q-E9-methyloxirane-naome-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1CO1",
+      "name": "2-methyloxirane"
+    },
+    "target": {
+      "name": "1-methoxypropan-2-ol",
+      "stereo": "racemic",
+      "smiles": "COCC(C)O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "COC(C)CO",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Methoxide (anionic) attacks the LESS substituted carbon by SN2. The more-substituted product is the acid-catalysed outcome."
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  },
+  {
+    "id": "q-E9-methyloxirane-nacn-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1CO1",
+      "name": "2-methyloxirane"
+    },
+    "target": {
+      "name": "3-hydroxybutanenitrile",
+      "stereo": "racemic",
+      "smiles": "CC(O)CC#N",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaCN"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "N#CC(C)CO",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Cyanide attacks the less substituted CH₂, so the OH ends up on the CH(CH₃) carbon."
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  },
+  {
+    "id": "q-E9-dimethyloxirane-nan3-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(C)CO1",
+      "name": "2,2-dimethyloxirane"
+    },
+    "target": {
+      "name": "1-azido-2-methylpropan-2-ol",
+      "stereo": "none",
+      "smiles": "CC(C)(O)CN=[N+]=[N-]",
+      "highlightAtoms": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaN3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)(CO)N=[N+]=[N-]",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Azide attacks the less hindered CH₂; the OH stays on the quaternary carbon."
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  },
+  {
+    "id": "q-E9-styreneoxide-nasme-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "c1ccc(C2CO2)cc1",
+      "name": "2-phenyloxirane"
+    },
+    "target": {
+      "name": "2-(methylsulfanyl)-1-phenylethan-1-ol",
+      "stereo": "racemic",
+      "smiles": "CSCC(O)c1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaSMe"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CSC(CO)c1ccccc1",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Thiolate (anionic, SN2) attacks the CH₂, not the benzylic carbon."
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  },
+  {
+    "id": "q-E9-methyloxirane-nh3-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1CO1",
+      "name": "2-methyloxirane"
+    },
+    "target": {
+      "name": "1-aminopropan-2-ol",
+      "stereo": "racemic",
+      "smiles": "CC(O)CN",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NH3"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(N)CO",
+        "stereo": "none",
+        "tag": "epoxide_wrong_carbon",
+        "why": "Ammonia attacks the less substituted carbon."
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  },
+  {
+    "id": "q-E9-cyclohexeneoxide-naome-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C1CCC2OC2C1",
+      "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)"
+    },
+    "target": {
+      "name": "trans-2-methoxycyclohexan-1-ol",
+      "stereo": "racemic",
+      "smiles": "COC1CCCCC1O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8
+      ]
+    },
+    "route": [
+      {
+        "reagent": "NaOMe"
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  },
+  {
+    "id": "q-E9-dimethyloxirane-memgbr-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1(C)CO1",
+      "name": "2,2-dimethyloxirane"
+    },
+    "target": {
+      "name": "2-methylbutan-2-ol",
+      "stereo": "none",
+      "altNames": [
+        "2-methyl-2-butanol"
+      ],
+      "smiles": "CCC(C)(C)O",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "MeMgBr"
+      },
+      {
+        "reagent": "H3O_plus"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCC(C)(C)[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide; add H₃O⁺."
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  },
+  {
+    "id": "q-E9-methyloxirane-lialh4-001",
+    "reactionIds": [
+      "E9"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC1CO1",
+      "name": "2-methyloxirane"
+    },
+    "target": {
+      "name": "propan-2-ol",
+      "stereo": "none",
+      "altNames": [
+        "2-propanol",
+        "isopropanol"
+      ],
+      "smiles": "CC(C)O",
+      "highlightAtoms": [
+        1,
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "LiAlH4"
+      },
+      {
+        "reagent": "H2O",
+        "conditions": {
+          "temp": "rt"
+        }
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "Still the alkoxide: add water."
+      }
+    ],
+    "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+  }
+]

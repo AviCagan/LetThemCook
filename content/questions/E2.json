@@ -1,0 +1,250 @@
+[
+  {
+    "id": "q-E2-bromobutane-kcn-001",
+    "reactionIds": [
+      "E2"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCBr",
+      "name": "1-bromobutane"
+    },
+    "target": {
+      "name": "pentanenitrile",
+      "stereo": "none",
+      "smiles": "CCCCC#N",
+      "highlightAtoms": [
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "KCN_crown"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      }
+    ],
+    "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
+    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+  },
+  {
+    "id": "q-E2-bromopropane-kf-001",
+    "reactionIds": [
+      "E2"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCBr",
+      "name": "1-bromopropane"
+    },
+    "target": {
+      "name": "1-fluoropropane",
+      "stereo": "none",
+      "smiles": "CCCF",
+      "highlightAtoms": [
+        2,
+        3
+      ]
+    },
+    "route": [
+      {
+        "reagent": "KF_crown"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      }
+    ],
+    "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
+    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+  },
+  {
+    "id": "q-E2-benzylbromide-koac-001",
+    "reactionIds": [
+      "E2"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "BrCc1ccccc1",
+      "name": "(bromomethyl)benzene"
+    },
+    "target": {
+      "name": "benzyl acetate",
+      "stereo": "none",
+      "smiles": "CC(=O)OCc1ccccc1",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "KOAc_crown"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "SCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      }
+    ],
+    "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
+    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+  },
+  {
+    "id": "q-E2-isopropylbromide-kcn-001",
+    "reactionIds": [
+      "E2"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)Br",
+      "name": "2-bromopropane"
+    },
+    "target": {
+      "name": "2-methylpropanenitrile",
+      "stereo": "none",
+      "altNames": [
+        "isobutyronitrile"
+      ],
+      "smiles": "CC(C)C#N",
+      "highlightAtoms": [
+        1,
+        3,
+        4
+      ]
+    },
+    "route": [
+      {
+        "reagent": "KCN_crown"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CC(C)S",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      }
+    ],
+    "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
+    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+  },
+  {
+    "id": "q-E2-bromohexane-kf-001",
+    "reactionIds": [
+      "E2"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCCCBr",
+      "name": "1-bromohexane"
+    },
+    "target": {
+      "name": "1-fluorohexane",
+      "stereo": "none",
+      "smiles": "CCCCCCF",
+      "highlightAtoms": [
+        5,
+        6
+      ]
+    },
+    "route": [
+      {
+        "reagent": "KF_crown"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCCCCCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      }
+    ],
+    "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
+    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+  },
+  {
+    "id": "q-E2-bromoethane-koac-001",
+    "reactionIds": [
+      "E2"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCBr",
+      "name": "bromoethane"
+    },
+    "target": {
+      "name": "ethyl acetate",
+      "stereo": "none",
+      "altNames": [
+        "ethyl ethanoate"
+      ],
+      "smiles": "CCOC(C)=O",
+      "highlightAtoms": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "route": [
+      {
+        "reagent": "KOAc_crown"
+      }
+    ],
+    "traps": [
+      {
+        "smiles": "CCS",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      }
+    ],
+    "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
+    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+  }
+]
