@@ -95,7 +95,7 @@ export function buildShelf(item: QuestionItem, reaction: Reaction, rng: Rng, siz
   for (const id of needed) extras.delete(id);
 
   const ids = [...needed, ...shuffle(rng, [...extras])];
-  const fillerPool = REAGENTS.filter((r) => !ids.includes(r.id) && r.kind !== 'workup').map((r) => r.id);
+  const fillerPool = REAGENTS.filter((r) => !ids.includes(r.id) && r.kind === 'reagent').map((r) => r.id);
   for (const id of shuffle(rng, fillerPool)) {
     if (ids.length >= size) break;
     ids.push(id);

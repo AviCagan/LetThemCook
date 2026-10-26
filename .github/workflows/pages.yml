@@ -1,8 +1,9 @@
 name: Deploy web build to GitHub Pages
 
+# Deploys on every push to the repository's default branch (whatever it is called),
+# and on demand from any branch via "Run workflow".
 on:
   push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,6 +17,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

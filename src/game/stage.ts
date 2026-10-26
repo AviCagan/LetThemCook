@@ -3,8 +3,9 @@
 import Phaser from 'phaser';
 import { registerAllTextures } from '../art/textures';
 
-export const VW = 240; // virtual pixel width of the lab
-export const VH = 160; // virtual pixel height
+export const VW = 192; // virtual pixel width of the lab
+export const VH = 128; // virtual pixel height
+export const HUD_H = 52; // CSS px reserved for the DOM HUD at the top
 
 export interface StageRect {
   x: number;
@@ -20,14 +21,19 @@ export function isLandscape(): boolean {
   return window.innerWidth > window.innerHeight * 1.25;
 }
 
+export function hudHeight(): number {
+  const hud = document.querySelector('.hud') as HTMLElement | null;
+  return hud ? Math.round(hud.getBoundingClientRect().height) : HUD_H;
+}
+
 export function stageRect(): StageRect {
   const W = window.innerWidth;
   const H = window.innerHeight;
   const land = isLandscape();
   const x = 0;
-  const y = 0;
+  const y = hudHeight();
   const w = land ? Math.floor(W * 0.5) : W;
-  const h = land ? H : Math.floor(H * 0.42);
+  const h = (land ? H : Math.floor(H * 0.42)) - y;
   const zoom = Math.max(1, Math.floor(Math.min(w / VW, h / VH)));
   const ox = x + Math.floor((w - VW * zoom) / 2);
   const oy = y + Math.floor((h - VH * zoom) / 2);
@@ -46,11 +52,12 @@ export class StageScene extends Phaser.Scene {
     registerAllTextures(this);
   }
 
+  /** Virtual -> camera coordinates. The main camera's viewport is the stage rect, so (0,0) is the stage's top-left. */
   vx(x: number): number {
-    return this.r.ox + x * this.r.zoom;
+    return this.r.ox - this.r.x + x * this.r.zoom;
   }
   vy(y: number): number {
-    return this.r.oy + y * this.r.zoom;
+    return this.r.oy - this.r.y + y * this.r.zoom;
   }
   /** Add a sprite at virtual coords with the pixel zoom applied. Origin default bottom-centre. */
   sprite(key: string, x: number, y: number, frame = 0, originX = 0.5, originY = 1): Phaser.GameObjects.Image {
@@ -91,12 +98,14 @@ export class StageScene extends Phaser.Scene {
   }
   /** Dim the lab behind a minigame. */
   dimBackdrop(): Phaser.GameObjects.Rectangle {
-    return this.add.rectangle(this.r.x, this.r.y, this.r.w, this.r.h, 0xf6e7d8, 0.82).setOrigin(0, 0);
+    return this.add.rectangle(0, 0, this.r.w, this.r.h, 0xf6e7d8, 0.82).setOrigin(0, 0);
   }
   onResize(): void {
     this.scene.restart();
   }
   create(): void {
+    // Everything this scene draws is clipped to the stage rect; sprites parked outside it are invisible.
+    this.cameras.main.setViewport(this.r.x, this.r.y, this.r.w, this.r.h);
     this.scale.on('resize', this.onResize, this);
     this.events.once('shutdown', () => {
       this.scale.off('resize', this.onResize, this);

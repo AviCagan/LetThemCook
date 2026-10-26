@@ -1,11 +1,11 @@
 import Phaser from 'phaser';
 import { effect } from '@preact/signals';
-import { StageScene, VW, VH } from '../stage';
+import { StageScene, VW, VH, hudHeight } from '../stage';
 import { flow } from '../../flow';
 import { save } from '../../state';
 import { frameCount } from '../../art/textures';
 
-const BENCH_Y = 104;
+const BENCH_Y = 84;
 
 export class LabScene extends StageScene {
   private customer?: Phaser.GameObjects.Image;
@@ -16,6 +16,15 @@ export class LabScene extends StageScene {
   private pet?: Phaser.GameObjects.Image;
   private walkTween?: Phaser.Tweens.Tween;
   private lastPhase = '';
+  private hudCheck = 0;
+
+  update(time: number): void {
+    // the DOM HUD mounts after boot and can change height; re-layout when it does
+    if (time - this.hudCheck > 400) {
+      this.hudCheck = time;
+      if (Math.abs(hudHeight() - this.r.y) > 2) this.scene.restart();
+    }
+  }
 
   constructor() {
     super('lab');
@@ -25,25 +34,25 @@ export class LabScene extends StageScene {
     super.create();
     const reduced = () => !!save.value?.profile.settings.reducedMotion;
     // room
-    this.tile('wall_tile', 0, 0, VW, 100);
-    this.tile('floor_tile', 0, 100, VW, VH - 100);
-    this.window = this.sprite('window', 8, 6, 0, 0, 0);
-    this.sprite('shelf_board', 64, 44, 0, 0, 0).setScale(this.r.zoom * 2, this.r.zoom);
-    this.sprite('bottle_tall', 72, 44);
-    this.sprite('bottle_round', 90, 44);
-    this.sprite('bottle_flask', 108, 44);
-    this.sprite('fume_hood', 136, 24, 0, 0, 0);
+    this.tile('wall_tile', 0, 0, VW, BENCH_Y);
+    this.tile('floor_tile', 0, BENCH_Y, VW, VH - BENCH_Y);
+    this.window = this.sprite('window', 6, 4, 0, 0, 0);
+    this.sprite('shelf_board', 58, 40, 0, 0, 0).setScale(this.r.zoom * 1.5, this.r.zoom);
+    this.sprite('bottle_tall', 66, 40);
+    this.sprite('bottle_round', 82, 40);
+    this.sprite('bottle_flask', 98, 40);
+    this.sprite('fume_hood', 108, 10, 0, 0, 0);
     this.tile('bench_tile', 0, BENCH_Y, VW, 32);
-    this.tile('bench_front', 0, BENCH_Y + 32, VW, VH - BENCH_Y - 32);
-    this.sprite('hotplate', 150, BENCH_Y + 12);
-    this.sprite('flask_big', 150, BENCH_Y + 12 - 2);
-    this.liquid = this.sprite('flask_liquid', 150, BENCH_Y + 12 - 2, 1).setTint(0xa8dcff);
-    this.sprite('ice_bath', 200, BENCH_Y + 16);
-    this.sprite('beaker', 112, BENCH_Y + 12, 1);
-    this.sprite('plant', 228, BENCH_Y + 4);
-    this.pet = this.sprite('pet_slime', 24, BENCH_Y + 2);
-    this.customer = this.sprite(flow.customerKey.value, -40, VH);
-    this.mentor = this.sprite('mentor', VW + 40, VH);
+    this.tile('bench_front', 0, BENCH_Y + 32, VW, Math.max(4, VH - BENCH_Y - 32));
+    this.sprite('hotplate', 124, BENCH_Y + 12);
+    this.sprite('flask_big', 124, BENCH_Y + 10);
+    this.liquid = this.sprite('flask_liquid', 124, BENCH_Y + 10, 1).setTint(0xa8dcff);
+    this.sprite('ice_bath', 164, BENCH_Y + 14);
+    this.sprite('beaker', 92, BENCH_Y + 12, 1);
+    this.sprite('plant', 184, BENCH_Y + 4);
+    this.pet = this.sprite('pet_slime', 18, BENCH_Y + 2);
+    this.customer = this.sprite(flow.customerKey.value, -40, VH).setVisible(false);
+    this.mentor = this.sprite('mentor', VW + 40, VH).setVisible(false);
     this.bubble = this.text(0, 0, '', 16).setVisible(false);
 
     // idle animations
@@ -83,7 +92,7 @@ export class LabScene extends StageScene {
       this.customer?.setTexture(key, '0').setPosition(this.vx(-30), this.vy(VH)).setVisible(true);
       this.bubble?.setVisible(false);
       this.liquid?.setFrame('1').setTint(0xa8dcff);
-      const target = this.vx(48);
+      const target = this.vx(44);
       this.walkTween?.stop();
       if (reduced) {
         this.customer?.setX(target);
@@ -115,16 +124,17 @@ export class LabScene extends StageScene {
     } else if (phase === 'result') {
       this.showBubble('♥');
       this.liquid?.setTint(0xb5f0c8);
-      this.sparkle(150, BENCH_Y - 10, reduced);
+      this.sparkle(124, BENCH_Y - 12, reduced);
     } else if (phase === 'mentor') {
       this.showBubble('…');
       this.liquid?.setTint(0x9e9e9e);
-      this.puff(150, BENCH_Y - 14, reduced);
+      this.puff(124, BENCH_Y - 16, reduced);
       this.mentorEnter(reduced);
     } else if (phase === 'dayend' || phase === 'idle') {
       this.bubble?.setVisible(false);
-      if (!reduced && this.customer && phase === 'idle') {
-        this.tweens.add({ targets: this.customer, x: this.vx(VW + 40), duration: 700, ease: 'Linear' });
+      if (this.customer && phase === 'idle') {
+        if (reduced) this.customer.setVisible(false);
+        else this.tweens.add({ targets: this.customer, x: this.vx(VW + 40), duration: 700, ease: 'Linear', onComplete: () => this.customer?.setVisible(false) });
       }
     }
     void z;
@@ -132,13 +142,13 @@ export class LabScene extends StageScene {
 
   private showBubble(ch: string): void {
     if (!this.customer || !this.bubble) return;
-    this.bubble.setText(ch).setPosition(this.customer.x + 14 * this.r.zoom, this.customer.y - 36 * this.r.zoom).setVisible(true);
+    this.bubble.setText(ch).setPosition(this.customer.x + 14 * this.r.zoom, this.customer.y - 38 * this.r.zoom).setVisible(true);
   }
 
   private mentorEnter(reduced: boolean): void {
     if (!this.mentor) return;
     this.mentor.setFrame('2').setVisible(true);
-    const target = this.vx(VW - 44);
+    const target = this.vx(VW - 36);
     if (reduced) {
       this.mentor.setX(target);
       return;
@@ -149,11 +159,11 @@ export class LabScene extends StageScene {
   private mentorLeave(reduced: boolean): void {
     if (!this.mentor) return;
     const off = this.vx(VW + 40);
-    if (reduced) {
-      this.mentor.setX(off);
+    if (reduced || !this.mentor.visible) {
+      this.mentor.setX(off).setVisible(false);
       return;
     }
-    this.tweens.add({ targets: this.mentor, x: off, duration: 500 });
+    this.tweens.add({ targets: this.mentor, x: off, duration: 500, onComplete: () => this.mentor?.setVisible(false) });
   }
 
   private sparkle(x: number, y: number, reduced: boolean): void {

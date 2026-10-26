@@ -34,7 +34,7 @@ CI (`.github/workflows/validate.yml`) runs both the validator (`--strict`) and t
 
 ## Deploy to GitHub Pages
 
-`.github/workflows/pages.yml` builds with `BASE_PATH=/<repo>/` and deploys `dist/` on every push to `main`.
+`.github/workflows/pages.yml` builds with `BASE_PATH=/<repo>/` and deploys `dist/` on every push to the default branch (or on demand from any branch via Actions → "Run workflow").
 
 One-time setup in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site then lives at `https://<user>.github.io/<repo>/` over HTTPS, which iOS needs for the PWA.
 

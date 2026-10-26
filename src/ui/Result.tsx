@@ -85,7 +85,7 @@ export function MentorPanel({ order }: { order: Order }) {
         />
       </div>
       {o.pickedOption && !o.pickedOption.correct && (
-        <div class="muted small">You picked: <MoleculeCard smiles={o.pickedOption.smiles} size="sm" /></div>
+        <div class="muted small picked-mol">You picked: <MoleculeCard smiles={o.pickedOption.smiles} size="sm" /></div>
       )}
       {o.pickedStereo && o.stage === 'stereo' && <div class="muted small">You said: {stereoLabelText(o.pickedStereo)}</div>}
       {first && (

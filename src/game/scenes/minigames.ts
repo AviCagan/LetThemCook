@@ -18,7 +18,7 @@ abstract class MinigameScene extends StageScene {
   create(): void {
     super.create();
     this.dimBackdrop();
-    this.text(VW / 2, 10, this.title(), 15);
+    this.text(VW / 2, 9, this.title(), 14);
   }
 
   abstract title(): string;
@@ -73,14 +73,14 @@ export class PourScene extends MinigameScene {
       this.bands = [{ lo: 0.52, hi: 0.7, required: true }];
     }
     // flask + liquid
-    this.sprite(isPump ? 'hotplate' : 'flask_big', VW / 2 - 20, 128, 0);
-    if (isPump) this.sprite('flask_big', VW / 2 - 20, 124);
-    this.liquid = this.sprite('flask_liquid', VW / 2 - 20, isPump ? 124 : 128, 0).setTint(isPump ? 0xd7d7ff : 0xa8dcff).setVisible(false);
-    this.bottle = this.sprite(isPump ? 'beaker' : 'bottle_tall', VW / 2 - 56, 70, 0, 0.5, 1).setAngle(0);
+    this.sprite(isPump ? 'hotplate' : 'flask_big', VW / 2 - 16, VH - 8, 0);
+    if (isPump) this.sprite('flask_big', VW / 2 - 16, VH - 12);
+    this.liquid = this.sprite('flask_liquid', VW / 2 - 16, isPump ? VH - 12 : VH - 8, 0).setTint(isPump ? 0xd7d7ff : 0xa8dcff).setVisible(false);
+    this.bottle = this.sprite(isPump ? 'beaker' : 'bottle_tall', VW / 2 - 52, 54, 0, 0.5, 1).setAngle(0);
     // gauge
-    const gx = VW / 2 + 36;
-    const gy0 = 36;
-    const gh = 100;
+    const gx = VW / 2 + 34;
+    const gy0 = 26;
+    const gh = VH - 44;
     const g = this.add.graphics();
     g.fillStyle(0xfff8ef, 1).fillRect(this.vx(gx), this.vy(gy0), 14 * z, gh * z);
     g.lineStyle(2, 0x4a3f5c).strokeRect(this.vx(gx), this.vy(gy0), 14 * z, gh * z);
@@ -91,8 +91,8 @@ export class PourScene extends MinigameScene {
       if (b.equiv !== undefined) this.text(gx + 24, (y1 + y2) / 2, `${b.equiv} eq`, 12, '#4a3f5c', 0);
     }
     this.marker = this.add.rectangle(this.vx(gx) - 2 * z, this.vy(gy0 + gh), 18 * z, 2 * z, 0xb04a5a).setOrigin(0, 0.5);
-    this.text(gx + 7, gy0 - 8, isPump ? 'pressure' : 'fill', 11);
-    this.text(VW / 2, VH - 10, isPump ? 'hold to pump · release in the green band' : 'hold to pour · release in the green band', 12);
+    this.text(gx + 7, gy0 - 7, isPump ? 'pressure' : 'fill', 11);
+    this.text(VW / 2 - 24, VH - 4, isPump ? 'hold to pump · release in the green band' : 'hold to pour · release in the green band', 11);
 
     this.input.on('pointerdown', () => {
       if (this.finished) return;
@@ -113,8 +113,8 @@ export class PourScene extends MinigameScene {
   }
 
   private drop(): void {
-    const d = this.sprite('drop', VW / 2 - 40 + Math.random() * 8, 80, 0, 0.5, 0.5);
-    this.tweens.add({ targets: d, y: this.vy(110), duration: 220, onComplete: () => d.destroy() });
+    const d = this.sprite('drop', VW / 2 - 36 + Math.random() * 8, 60, 0, 0.5, 0.5);
+    this.tweens.add({ targets: d, y: this.vy(VH - 30), duration: 220, onComplete: () => d.destroy() });
   }
 
   update(_t: number, dt: number): void {
@@ -123,7 +123,7 @@ export class PourScene extends MinigameScene {
       const frames = frameCount('flask_liquid');
       const f = Math.min(frames - 1, Math.floor(this.level * frames));
       this.liquid?.setVisible(this.level > 0.02).setFrame(String(f));
-      if (this.marker) this.marker.y = this.vy(36 + 100 * (1 - Math.min(1, this.level)));
+      if (this.marker) this.marker.y = this.vy(26 + (VH - 44) * (1 - Math.min(1, this.level)));
       if (this.level >= 1.05) {
         this.pouring = false;
         this.dropTimer?.remove();
@@ -160,11 +160,11 @@ export class PourScene extends MinigameScene {
 /* ---------------- Temperature ---------------- */
 
 const PRESET_BANDS: Record<TempPreset, { lo: number; hi: number; label: string }> = {
-  ice: { lo: 0, hi: 5, label: 'ice 0–5 °C' },
-  rt: { lo: 18, hi: 30, label: 'room temp' },
-  reflux: { lo: 75, hi: 115, label: 'heat / reflux' },
-  c140: { lo: 130, hi: 150, label: '140 °C' },
-  c180: { lo: 170, hi: 190, label: '180 °C' },
+  ice: { lo: 0, hi: 5, label: 'ice 0–5°' },
+  rt: { lo: 18, hi: 30, label: 'rt' },
+  reflux: { lo: 75, hi: 115, label: 'heat' },
+  c140: { lo: 130, hi: 150, label: '140°' },
+  c180: { lo: 170, hi: 190, label: '180°' },
 };
 const T_MIN = -10;
 const T_MAX = 200;
@@ -194,32 +194,32 @@ export class TemperatureScene extends MinigameScene {
     this.presets = (this.req.tempPresets as TempPreset[] | undefined) ?? ['ice', 'rt', 'reflux', 'c140', 'c180'];
     const target = this.req.target?.temp;
     // scale bar
-    const bx = 24;
-    const bw = VW - 48;
-    const by = 44;
+    const bx = 16;
+    const bw = VW - 32;
+    const by = 30;
     const g = this.add.graphics();
     g.fillStyle(0xfff8ef, 1).fillRect(this.vx(bx), this.vy(by), bw * z, 12 * z);
     g.lineStyle(2, 0x4a3f5c).strokeRect(this.vx(bx), this.vy(by), bw * z, 12 * z);
-    for (const p of this.presets) {
+    this.presets.forEach((p, i) => {
       const b = PRESET_BANDS[p];
       const x1 = bx + (bw * (b.lo - T_MIN)) / (T_MAX - T_MIN);
       const x2 = bx + (bw * (b.hi - T_MIN)) / (T_MAX - T_MIN);
       const required = this.req.choose || target === p;
       g.fillStyle(required ? 0x7fe0a8 : 0xd9d2cc, 1).fillRect(this.vx(x1), this.vy(by) + 2 * z, Math.max(2 * z, (x2 - x1) * z), 8 * z);
-      this.text((x1 + x2) / 2, by + 20, b.label, 10);
-    }
+      this.text((x1 + x2) / 2, by + 18 + (i % 2) * 9, b.label, 10, required ? '#2f8f5b' : '#7a6f8a');
+    });
     this.needle = this.add.rectangle(this.vx(bx), this.vy(by - 2), 2 * z, 16 * z, 0xb04a5a).setOrigin(0.5, 0);
-    this.readout = this.text(VW / 2, by + 36, '', 16);
+    this.readout = this.text(VW / 2, by + 34, '', 16);
     // bench props
-    this.ice = this.sprite('ice_bath', 70, 136);
-    this.hot = this.sprite('hotplate', 150, 136, 0);
-    this.sprite('flask_big', 150, 132);
-    this.sprite('flask_liquid', 150, 132, 2).setTint(0xa8dcff);
-    this.sprite('thermometer', 190, 136, 0, 0.5, 1);
-    this.mercury = this.add.rectangle(this.vx(190), this.vy(132), 2 * z, 0, 0xb04a5a).setOrigin(0.5, 1);
-    this.sprite('dial', VW / 2, 120, 0, 0.5, 0.5).setInteractive();
-    this.text(VW / 2, VH - 10, 'drag left/right to turn the dial', 12);
-    this.button(VW - 44, 118, 'Set', () => this.evaluate(), 56, 20);
+    this.ice = this.sprite('ice_bath', 30, VH - 6);
+    this.hot = this.sprite('hotplate', 100, VH - 6, 0);
+    this.sprite('flask_big', 100, VH - 10);
+    this.sprite('flask_liquid', 100, VH - 10, 2).setTint(0xa8dcff);
+    this.sprite('thermometer', 130, VH - 6, 0, 0.5, 1);
+    this.mercury = this.add.rectangle(this.vx(130), this.vy(VH - 10), 2 * z, 0, 0xb04a5a).setOrigin(0.5, 1);
+    this.sprite('dial', 64, VH - 24, 0, 0.5, 0.5);
+    this.text(VW / 2 - 20, VH - 4, 'drag left/right to turn the dial', 11);
+    this.button(VW - 26, VH - 22, 'Set', () => this.evaluate(), 40, 18);
 
     this.input.on('pointerdown', (p: Phaser.Input.Pointer) => {
       this.dragging = true;
@@ -240,8 +240,8 @@ export class TemperatureScene extends MinigameScene {
 
   private render(): void {
     const z = this.r.zoom;
-    const bx = 24;
-    const bw = VW - 48;
+    const bx = 16;
+    const bw = VW - 32;
     const x = bx + (bw * (this.temp - T_MIN)) / (T_MAX - T_MIN);
     this.needle?.setX(this.vx(x));
     this.readout?.setText(`${Math.round(this.temp)} °C`);
@@ -282,27 +282,28 @@ export class WorkupScene extends MinigameScene {
   create(): void {
     super.create();
     const z = this.r.zoom;
-    this.sprite('flask_big', VW / 2 - 20, 128);
-    this.liquid = this.sprite('flask_liquid', VW / 2 - 20, 128, 2).setTint(0xffd6a5);
-    this.sprite('bottle_round', VW / 2 - 56, 76);
-    const gx = VW / 2 + 36;
+    const gh = VH - 44;
+    this.sprite('flask_big', VW / 2 - 16, VH - 8);
+    this.liquid = this.sprite('flask_liquid', VW / 2 - 16, VH - 8, 2).setTint(0xffd6a5);
+    this.sprite('bottle_round', VW / 2 - 52, 58);
+    const gx = VW / 2 + 34;
     const g = this.add.graphics();
-    g.fillStyle(0xfff8ef, 1).fillRect(this.vx(gx), this.vy(36), 14 * z, 100 * z);
-    g.lineStyle(2, 0x4a3f5c).strokeRect(this.vx(gx), this.vy(36), 14 * z, 100 * z);
-    g.fillStyle(0x7fe0a8, 1).fillRect(this.vx(gx) + 2 * z, this.vy(36 + 100 * (1 - 0.85)), 10 * z, 25 * z);
-    this.fill = this.add.rectangle(this.vx(gx) + 2 * z, this.vy(136), 10 * z, 0, 0x7fb2e0).setOrigin(0, 1).setAlpha(0.7);
-    this.text(gx + 7, 28, 'quench', 11);
-    this.text(VW / 2, VH - 10, 'tap to add drops · stop in the green band', 12);
-    this.button(VW - 44, 118, 'Done', () => this.evaluate(), 56, 20);
+    g.fillStyle(0xfff8ef, 1).fillRect(this.vx(gx), this.vy(26), 14 * z, gh * z);
+    g.lineStyle(2, 0x4a3f5c).strokeRect(this.vx(gx), this.vy(26), 14 * z, gh * z);
+    g.fillStyle(0x7fe0a8, 1).fillRect(this.vx(gx) + 2 * z, this.vy(26 + gh * (1 - 0.85)), 10 * z, gh * 0.25 * z);
+    this.fill = this.add.rectangle(this.vx(gx) + 2 * z, this.vy(26 + gh), 10 * z, 0, 0x7fb2e0).setOrigin(0, 1).setAlpha(0.7);
+    this.text(gx + 7, 19, 'quench', 11);
+    this.text(VW / 2 - 30, VH - 4, 'tap to add drops · stop in the green band', 11);
+    this.button(VW - 32, VH - 24, 'Done', () => this.evaluate(), 48, 18);
     this.input.on('pointerdown', () => {
       if (this.finished) return;
       this.meter = Math.min(1.1, this.meter + 0.11);
       sfx.bubble();
-      const d = this.sprite('drop', VW / 2 - 36 + Math.random() * 10, 84, 0, 0.5, 0.5);
-      this.tweens.add({ targets: d, y: this.vy(108), duration: 200, onComplete: () => d.destroy() });
-      const b = this.sprite('bubble', VW / 2 - 28 + Math.random() * 16, 112, Math.random() < 0.5 ? 0 : 1, 0.5, 0.5);
-      this.tweens.add({ targets: b, y: this.vy(90), alpha: 0, duration: 500, onComplete: () => b.destroy() });
-      this.fill?.setSize(10 * z, Math.min(1, this.meter) * 100 * z);
+      const d = this.sprite('drop', VW / 2 - 32 + Math.random() * 10, 64, 0, 0.5, 0.5);
+      this.tweens.add({ targets: d, y: this.vy(VH - 30), duration: 200, onComplete: () => d.destroy() });
+      const b = this.sprite('bubble', VW / 2 - 24 + Math.random() * 16, VH - 24, Math.random() < 0.5 ? 0 : 1, 0.5, 0.5);
+      this.tweens.add({ targets: b, y: this.vy(VH - 44), alpha: 0, duration: 500, onComplete: () => b.destroy() });
+      this.fill?.setSize(10 * z, Math.min(1, this.meter) * gh * z);
       this.liquid?.setTint(this.meter > 0.6 ? 0xb5f0c8 : 0xffd6a5);
       if (this.meter > 1.0) {
         sfx.fizzle();
@@ -335,25 +336,25 @@ export class StirScene extends MinigameScene {
     super.create();
     const z = this.r.zoom;
     this.cx = this.vx(VW / 2);
-    this.cy = this.vy(100);
-    this.sprite('beaker', VW / 2, 120, 2);
-    this.rod = this.add.rectangle(this.cx, this.cy, 2 * z, 36 * z, 0x4a3f5c).setOrigin(0.5, 1);
+    this.cy = this.vy(VH - 24);
+    this.sprite('beaker', VW / 2, VH - 8, 2);
+    this.rod = this.add.rectangle(this.cx, this.cy, 2 * z, 30 * z, 0x4a3f5c).setOrigin(0.5, 1);
     const g = this.add.graphics();
-    g.fillStyle(0xfff8ef, 1).fillRect(this.vx(40), this.vy(40), (VW - 80) * z, 10 * z);
-    g.lineStyle(2, 0x4a3f5c).strokeRect(this.vx(40), this.vy(40), (VW - 80) * z, 10 * z);
-    this.bar = this.add.rectangle(this.vx(40) + 2 * z, this.vy(45), 0, 6 * z, 0x7fe0a8).setOrigin(0, 0.5);
-    this.text(VW / 2, VH - 10, 'swipe in circles around the beaker', 12);
-    this.button(VW - 44, 60, 'Done', () => this.evaluate(), 56, 20);
+    g.fillStyle(0xfff8ef, 1).fillRect(this.vx(24), this.vy(26), (VW - 48) * z, 10 * z);
+    g.lineStyle(2, 0x4a3f5c).strokeRect(this.vx(24), this.vy(26), (VW - 48) * z, 10 * z);
+    this.bar = this.add.rectangle(this.vx(24) + 2 * z, this.vy(31), 0, 6 * z, 0x7fe0a8).setOrigin(0, 0.5);
+    this.text(VW / 2, VH - 4, 'swipe in circles around the beaker', 11);
+    this.button(VW - 32, 52, 'Done', () => this.evaluate(), 48, 18);
     this.input.on('pointermove', (p: Phaser.Input.Pointer) => {
       if (!p.isDown || this.finished) return;
-      const a = Math.atan2(p.y - this.cy, p.x - this.cx);
+      const a = Math.atan2(p.worldY - this.cy, p.worldX - this.cx);
       if (this.lastAngle !== null) {
         let d = a - this.lastAngle;
         if (d > Math.PI) d -= 2 * Math.PI;
         if (d < -Math.PI) d += 2 * Math.PI;
         this.revs += Math.abs(d) / (2 * Math.PI);
         this.rod?.setRotation(a + Math.PI / 2);
-        const w = Math.min(1, this.revs / 3) * (VW - 84) * z;
+        const w = Math.min(1, this.revs / 3) * (VW - 52) * z;
         this.bar?.setSize(w, 6 * z);
         if (Math.random() < 0.08) sfx.bubble();
         if (this.revs >= 3) this.evaluate();
@@ -383,21 +384,21 @@ export class LightScene extends MinigameScene {
   create(): void {
     super.create();
     const z = this.r.zoom;
-    this.sprite('flask_big', VW / 2, 132);
-    this.sprite('flask_liquid', VW / 2, 132, 2).setTint(0xa8dcff);
-    this.lamp = this.add.circle(this.vx(VW / 2), this.vy(60), 16 * z, 0xd9d2cc).setStrokeStyle(2, 0x4a3f5c).setInteractive({ useHandCursor: true });
-    this.label = this.text(VW / 2, 90, 'lamp OFF', 14);
+    this.sprite('flask_big', VW / 2 + 40, VH - 8);
+    this.sprite('flask_liquid', VW / 2 + 40, VH - 8, 2).setTint(0xa8dcff);
+    this.lamp = this.add.circle(this.vx(VW / 2 - 30), this.vy(56), 14 * z, 0xd9d2cc).setStrokeStyle(2, 0x4a3f5c).setInteractive({ useHandCursor: true });
+    this.label = this.text(VW / 2 - 30, 82, 'lamp OFF', 13);
     this.lamp.on('pointerdown', () => {
       this.on = !this.on;
       sfx.click();
       this.lamp?.setFillStyle(this.on ? 0xffe066 : 0xd9d2cc);
       this.label?.setText(this.on ? 'lamp ON (hν / peroxide)' : 'lamp OFF');
     });
-    this.text(VW / 2, VH - 10, this.req.choose ? 'does this step need light?' : `this step needs the lamp ${this.req.target?.light ? 'ON' : 'OFF'}`, 12);
-    this.button(VW - 44, 118, 'Done', () => {
+    this.text(VW / 2, VH - 4, this.req.choose ? 'does this step need light?' : `this step needs the lamp ${this.req.target?.light ? 'ON' : 'OFF'}`, 11);
+    this.button(VW - 32, VH - 24, 'Done', () => {
       const want = this.req.target?.light;
       const p = this.req.choose || want === undefined ? 1 : want === this.on ? 1 : 0.3;
       this.finish({ precision: p, conditions: { light: this.on } }, this.verdictFor(p));
-    }, 56, 20);
+    }, 48, 18);
   }
 }
