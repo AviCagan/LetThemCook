@@ -5,6 +5,7 @@ import { newRecord } from '../mastery/srs';
 import { spriteDataUrl } from '../art/textures';
 import { sfx } from '../audio/sfx';
 import { useState } from 'preact/hooks';
+import { COURSE, daysUntil } from '../content/course';
 
 export function Title() {
   const s = save.value!;
@@ -12,8 +13,17 @@ export function Title() {
     const rec = s.mastery.reactions[r.id] ?? newRecord();
     return rec.state === 'missed' || (rec.state !== 'new' && rec.dueAt <= Date.now());
   }).length;
+  const examDate = s.profile.examDate;
+  const exam = examDate ? COURSE.exams.find((e) => e.date === examDate) : undefined;
+  const days = examDate ? daysUntil(examDate) : undefined;
   return (
     <div class="screen title">
+      {examDate && days !== undefined && days >= 0 && (
+        <div class="exam-banner">
+          <b>{exam?.name ?? 'Exam'}</b> {days === 0 ? 'is today' : days === 1 ? 'is tomorrow' : `in ${days} days`}
+          {exam?.topics ? ` · ${exam.topics}` : ''} · every reaction is reviewed at least once before it
+        </div>
+      )}
       <div class="title-art">
         <img src={spriteDataUrl('sci_frog', 0, 4)} alt="" />
         <img src={spriteDataUrl('flask_big', 0, 3)} alt="" />

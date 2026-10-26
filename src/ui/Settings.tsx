@@ -61,7 +61,7 @@ export function Settings() {
         <button class="btn btn-sm" type="button" onClick={() => { sfx.click(); screen.value = 'title'; }}>Close</button>
       </div>
       <label class="field">
-        <span>Exam date (caps review intervals so everything comes back before it)</span>
+        <span>Exam date (caps review intervals so everything comes back before it; defaults to the next exam in content/course.json)</span>
         <input type="date" value={s.profile.examDate ?? ''} onChange={(e) => update((d) => { d.profile.examDate = (e.target as HTMLInputElement).value || undefined; })} />
       </label>
       <label class="field">

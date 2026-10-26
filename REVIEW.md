@@ -24,3 +24,8 @@ Items here need your call. Nothing listed is guessed into the game; questions ma
 
 ## Naming
 6. Accepted names for p-cresol are `4-methylphenol`, `p-methylphenol`, `p-cresol`. Tell me if your course also accepts `4-hydroxytoluene` (it is not a systematic name, so I left it out).
+
+## What I found in your Drive (Fall 2026 / CHM 256 lecture)
+- Syllabus dates from the tracker note: **Exam 2 (Ch 16, 17 + phenols) on 2026-10-28**, Exam 3 (Ch 18–20) 2026-11-18, Exam 4 (Ch 21, 22, 23, 25) 2026-12-09. These are now in `content/course.json`; the game defaults your exam date to the next one so the review cap applies immediately.
+- `CH16 HW.pdf` is handwritten and the text extraction is unreadable, so I could not use it to settle the questions above. The problem types visible in it (NaBH₄ vs LiAlH₄, BH₃·THF then H₂O₂/NaOH, PCC vs Na₂Cr₂O₇/H₂SO₄, HIO₄, H₂SO₄/heat dehydration, thiols) all match the toolkit.
+- No lecture slides or notes are in the folder, only the Carey PDF and the solutions manual. If you drop lecture notes or a typed HW answer key in there, I will treat them as the source of truth over the textbook.

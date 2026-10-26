@@ -67,6 +67,7 @@ ul.plain li { margin: 0.25em 0; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* title */
+.exam-banner { background: var(--butter); border: 3px solid var(--outline); border-radius: var(--radius); padding: 8px 12px; margin-bottom: 12px; max-width: 520px; font-size: 0.95rem; }
 .title { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .title-art { display: flex; gap: 12px; align-items: flex-end; margin-bottom: 8px; }
 .menu { display: flex; flex-direction: column; gap: 12px; width: min(420px, 100%); margin: 16px 0; }

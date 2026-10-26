@@ -2,23 +2,33 @@
 import { get, set } from 'idb-keyval';
 import { emptySave, type SaveData } from './types';
 import { validateSave } from './codec';
+import { nextExam } from '../content/course';
 
 const KEY = 'beaker-buddies:save:v1';
 
 export async function loadSave(): Promise<SaveData> {
   try {
     const data = await get<SaveData>(KEY);
-    if (data) return migrate(validateSave(data));
+    if (data) return withExamDefault(migrate(validateSave(data)));
   } catch {
     /* fall through to localStorage */
   }
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return migrate(validateSave(JSON.parse(raw)));
+    if (raw) return withExamDefault(migrate(validateSave(JSON.parse(raw))));
   } catch {
     /* ignore */
   }
-  return emptySave();
+  return withExamDefault(emptySave());
+}
+
+/** First run: point the SRS cap at the next exam on the course schedule. */
+function withExamDefault(save: SaveData): SaveData {
+  if (!save.profile.examDate) {
+    const exam = nextExam();
+    if (exam) save.profile.examDate = exam.date;
+  }
+  return save;
 }
 
 let pending: ReturnType<typeof setTimeout> | undefined;

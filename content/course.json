@@ -1,0 +1,9 @@
+{
+  "course": "CHM 256 Organic Chemistry II (Carey 12e)",
+  "source": "Syllabus schedule via the Drive tracker note (dates 'subject to change')",
+  "exams": [
+    { "name": "Exam 2", "date": "2026-10-28", "chapters": [16, 17], "topics": "alcohols, diols, thiols, phenols, ethers, epoxides, sulfides" },
+    { "name": "Exam 3", "date": "2026-11-18", "chapters": [18, 19, 20], "topics": "aldehydes and ketones, carboxylic acids, acid derivatives" },
+    { "name": "Exam 4", "date": "2026-12-09", "chapters": [21, 22, 23, 25], "topics": "enols/enolates, amines, aryl halides, carbohydrates" }
+  ]
+}
