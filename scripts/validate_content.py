@@ -146,12 +146,22 @@ def check_smiles(label: str, smiles: str, report: Report) -> bool:
     return True
 
 
+def has_tetrahedral_marks(smiles: str) -> bool:
+    mol = mol_from_smiles(smiles)
+    return mol is not None and "@" in Chem.MolToSmiles(mol, isomericSmiles=True)
+
+
 def check_stereo_consistency(label: str, smiles: str, stereo: str, report: Report) -> None:
-    marks = has_stereo_marks(smiles)
-    if stereo in STEREO_LABELS_NEEDING_MARKS and not marks:
+    """Labels that the stereo picker asks about need tetrahedral marks; 'none' forbids them.
+    Retained E/Z alkene geometry (/ \\ marks) is allowed under any label: it is drawn, not asked."""
+    tetra = has_tetrahedral_marks(smiles)
+    any_marks = has_stereo_marks(smiles)
+    if stereo in ("single_enantiomer", "racemic", "meso", "syn", "anti") and not tetra:
+        report.error(f"[stereo] {label}: labelled '{stereo}' but SMILES '{smiles}' has no tetrahedral (@) marks")
+    elif stereo in ("cis", "trans") and not any_marks:
         report.error(f"[stereo] {label}: labelled '{stereo}' but SMILES '{smiles}' has no stereo marks")
-    elif stereo == "none" and marks:
-        report.error(f"[stereo] {label}: labelled 'none' but SMILES '{smiles}' carries stereo marks")
+    elif stereo == "none" and tetra:
+        report.error(f"[stereo] {label}: labelled 'none' but SMILES '{smiles}' carries tetrahedral (@) marks")
     else:
         report.ok()
 
@@ -173,16 +183,53 @@ def steps_signature(steps) -> tuple:
     return tuple((tuple(sorted(s["reagents"])), json.dumps(s.get("conditions", {}), sort_keys=True)) for s in steps)
 
 
-def check_route_reagents(label: str, steps, reagents: dict, report: Report) -> None:
+def reagent_classes(reagents: dict) -> set[str]:
+    return {c for r in reagents.values() for c in r.get("classes", [])}
+
+
+def check_route_reagents(label: str, steps, reagents: dict, report: Report, allow_classes: bool = False) -> None:
+    known_classes = reagent_classes(reagents)
     for i, step in enumerate(steps, 1):
         for rid in step["reagents"]:
-            if rid not in reagents:
+            if rid.startswith("#"):
+                if not allow_classes:
+                    report.error(f"[ref] {label}: step {i} uses class token '{rid}' but only reaction definitions may")
+                elif rid[1:] not in known_classes:
+                    report.error(f"[ref] {label}: step {i} uses unknown reagent class '{rid}'")
+                else:
+                    report.ok()
+            elif rid not in reagents:
                 report.error(f"[ref] {label}: step {i} uses unknown reagent '{rid}'")
             else:
                 report.ok()
 
 
-def resolve_reactants(spec_reactants: list[str], start_smiles: str | None, reagents: dict, label: str, report: Report) -> list[str] | None:
+def step_matches_template(template_reagents: list[str], actual_reagents: list[str], reagents: dict) -> bool:
+    """A reaction step template matches an item step when every template token is satisfied by a distinct actual bottle."""
+    if len(template_reagents) != len(actual_reagents):
+        return False
+    remaining = list(actual_reagents)
+    for tok in template_reagents:
+        hit = None
+        for rid in remaining:
+            if tok.startswith("#"):
+                if tok[1:] in reagents.get(rid, {}).get("classes", []):
+                    hit = rid
+                    break
+            elif tok == rid:
+                hit = rid
+                break
+        if hit is None:
+            return False
+        remaining.remove(hit)
+    return True
+
+
+def route_matches_template(template, actual, reagents: dict) -> bool:
+    return len(template) == len(actual) and all(step_matches_template(t["reagents"], a["reagents"], reagents) for t, a in zip(template, actual))
+
+
+def resolve_reactants(spec_reactants: list[str], start_smiles: str | None, reagents: dict, label: str, report: Report, route=None) -> list[str] | None:
     out = []
     for token in spec_reactants:
         if token == "start":
@@ -190,6 +237,14 @@ def resolve_reactants(spec_reactants: list[str], start_smiles: str | None, reage
                 report.error(f"[smarts] {label}: template needs 'start' but the item has no start")
                 return None
             out.append(start_smiles)
+        elif token.startswith("step:"):
+            n = int(token.split(":")[1])
+            step = (route or [])[n - 1] if route and len(route) >= n else None
+            cands = [reagents[r]["smiles"] for r in (step["reagents"] if step else []) if "smiles" in reagents.get(r, {})]
+            if not cands:
+                report.error(f"[smarts] {label}: template reactant '{token}' but no reagent with smiles in that step")
+                return None
+            out.append(cands[0])
         else:
             reagent = reagents.get(token)
             if reagent is None or "smiles" not in reagent:
@@ -199,18 +254,53 @@ def resolve_reactants(spec_reactants: list[str], start_smiles: str | None, reage
     return out
 
 
-def check_template(label: str, reaction: dict, start_smiles: str | None, answer_smiles: str, reagents: dict, report: Report) -> None:
+def run_pipeline(templates: list[dict], start_smiles: str, reagents: dict, label: str, report: Report, route) -> set[str] | None:
+    """Apply templates in order. exhaustive: 0..n times per molecule; single: exactly once (any match)."""
+    current: set[str] = {canonical(start_smiles, stereo=False)}
+    for t in templates:
+        nxt: set[str] = set()
+        for smi in current:
+            reactants = resolve_reactants(t["reactants"], smi, reagents, label, report, route)
+            if reactants is None:
+                return None
+            if t["mode"] == "exhaustive":
+                prods = run_template(t["rxn"], reactants, "exhaustive")
+                nxt |= prods if prods else {smi}
+            else:
+                prods = run_template(t["rxn"], reactants, "single")
+                if not prods:
+                    report.error(f"[smarts] {label}: pipeline template '{t['rxn']}' does not apply to {smi}")
+                    return None
+                nxt |= prods
+        current = nxt
+    return current
+
+
+def check_template(label: str, reaction: dict, start_smiles: str | None, answer_smiles: str, reagents: dict, report: Report, route=None) -> None:
     templates = reaction.get("smarts") or []
     if not templates:
         report.warn(f"[smarts] {label}: reaction {reaction['id']} has no SMARTS template; answer not machine-checked")
         return
     expected = canonical(answer_smiles, stereo=False)
+    if reaction.get("smartsMode") == "pipeline":
+        if start_smiles is None:
+            report.error(f"[smarts] {label}: pipeline needs a start")
+            return
+        products = run_pipeline(templates, start_smiles, reagents, label, report, route)
+        if products is None:
+            return
+        if expected in products:
+            report.ok()
+        else:
+            report.error(f"[smarts] {label}: pipeline for {reaction['id']} gives {sorted(products)}, answer is {expected}")
+        return
+    products: set[str] = set()
     for t in templates:
-        reactants = resolve_reactants(t["reactants"], start_smiles, reagents, label, report)
+        reactants = resolve_reactants(t["reactants"], start_smiles, reagents, label, report, route)
         if reactants is None:
             return
         try:
-            products = run_template(t["rxn"], reactants, t["mode"])
+            products |= run_template(t["rxn"], reactants, t["mode"])
         except Exception as exc:  # bad SMARTS
             report.error(f"[smarts] {label}: template for {reaction['id']} failed to run: {exc}")
             return
@@ -218,6 +308,32 @@ def check_template(label: str, reaction: dict, start_smiles: str | None, answer_
             report.ok()
             return
     report.error(f"[smarts] {label}: template(s) for {reaction['id']} give {sorted(products) or 'nothing'}, answer is {expected}")
+
+
+def mirror_canonical(smiles: str) -> str | None:
+    """Canonical SMILES of the mirror image (all tetrahedral centres inverted)."""
+    mol = mol_from_smiles(smiles)
+    if mol is None:
+        return None
+    can = Chem.MolToSmiles(mol, isomericSmiles=True)
+    flipped = can.replace("@@", "\x00").replace("@", "@@").replace("\x00", "@")
+    m2 = mol_from_smiles(flipped)
+    return Chem.MolToSmiles(m2, isomericSmiles=True) if m2 else None
+
+
+def check_meso_racemic(label: str, smiles: str, stereo: str, report: Report) -> None:
+    if stereo not in ("meso", "racemic", "single_enantiomer"):
+        return
+    can = canonical(smiles, stereo=True)
+    mirror = mirror_canonical(smiles)
+    if mirror is None:
+        return
+    if stereo == "meso" and can != mirror:
+        report.error(f"[stereo] {label}: labelled meso but '{smiles}' is chiral (mirror image differs)")
+    elif stereo in ("racemic", "single_enantiomer") and can == mirror:
+        report.error(f"[stereo] {label}: labelled {stereo} but '{smiles}' is achiral/meso (equals its mirror image)")
+    else:
+        report.ok()
 
 
 def validate_question(q: dict, reactions: dict, reagents: dict, tags: set, report: Report, seen_facts: dict) -> None:
@@ -263,12 +379,11 @@ def validate_question(q: dict, reactions: dict, reagents: dict, tags: set, repor
         for alt in route.get("alt", []):
             check_route_reagents(f"{label}.alt", alt, reagents, report)
         if reaction and reaction.get("steps"):
-            # the canonical route must use the reaction's bottles (order and sets), ignoring conditions
-            r_sig = tuple(tuple(sorted(s["reagents"])) for s in reaction["steps"])
-            q_sig = tuple(tuple(sorted(s["reagents"])) for s in route["steps"])
-            alts = [tuple(tuple(sorted(s["reagents"])) for s in a) for a in reaction.get("altRoutes", [])]
-            if q_sig != r_sig and q_sig not in alts and "multistep" not in q["orderTypes"]:
-                report.error(f"[route] {label}: route bottles {q_sig} do not match reaction {reaction['id']} {r_sig} or its altRoutes")
+            # the canonical route must use the reaction's bottles (order and sets; '#class' tokens allowed), ignoring conditions
+            templates = [reaction["steps"], *reaction.get("altRoutes", [])]
+            if "multistep" not in q["orderTypes"] and not any(route_matches_template(t, route["steps"], reagents) for t in templates):
+                q_sig = tuple(tuple(sorted(s["reagents"])) for s in route["steps"])
+                report.error(f"[route] {label}: route bottles {q_sig} do not match reaction {reaction['id']} steps or its altRoutes")
             else:
                 report.ok()
 
@@ -278,9 +393,10 @@ def validate_question(q: dict, reactions: dict, reagents: dict, tags: set, repor
         if check_smiles(f"{label}.answer", answer["smiles"], report):
             answer_canon = canonical(answer["smiles"], stereo=True)
             check_stereo_consistency(f"{label}.answer", answer["smiles"], answer["stereo"], report)
+            check_meso_racemic(f"{label}.answer", answer["smiles"], answer["stereo"], report)
             check_highlights(f"{label}.answer", answer["smiles"], answer.get("highlightAtoms"), report)
             if start and reaction:
-                check_template(label, reaction, start["smiles"], answer["smiles"], reagents, report)
+                check_template(label, reaction, start["smiles"], answer["smiles"], reagents, report, route["steps"] if route else None)
         for trap in answer.get("names", {}).get("traps", []):
             if trap["tag"] not in tags:
                 report.error(f"[tag] {label}: name trap '{trap['name']}' has unknown tag '{trap['tag']}'")
@@ -301,6 +417,7 @@ def validate_question(q: dict, reactions: dict, reagents: dict, tags: set, repor
             if not check_smiles(dl, d["smiles"], report):
                 continue
             check_stereo_consistency(dl, d["smiles"], d["stereo"], report)
+            check_meso_racemic(dl, d["smiles"], d["stereo"], report)
             d_canon = canonical(d["smiles"], stereo=True)
             d_flat = canonical(d["smiles"], stereo=False)
             if d_canon in seen_d:
@@ -361,7 +478,7 @@ def validate_question(q: dict, reactions: dict, reagents: dict, tags: set, repor
                         report.error(f"[flaw] {rl}: working route's product is not the target")
                     if not r["works"] and p_canon == target_canon:
                         report.error(f"[flaw] {rl}: failing route's product equals the target")
-                    check_template(rl, rxn, r["start"]["smiles"], r["product"]["smiles"], reagents, report)
+                    check_template(rl, rxn, r["start"]["smiles"], r["product"]["smiles"], reagents, report, r["steps"])
 
     # duplicate facts
     if start and answer and answer_canon:
@@ -375,9 +492,9 @@ def validate_question(q: dict, reactions: dict, reagents: dict, tags: set, repor
 
 def validate_reaction(r: dict, reagents: dict, tags: set, report: Report) -> None:
     label = f"reaction {r['id']}"
-    check_route_reagents(label, r["steps"], reagents, report)
+    check_route_reagents(label, r["steps"], reagents, report, allow_classes=True)
     for alt in r.get("altRoutes", []):
-        check_route_reagents(f"{label}.altRoutes", alt, reagents, report)
+        check_route_reagents(f"{label}.altRoutes", alt, reagents, report, allow_classes=True)
     for rid in r.get("decoys", []):
         if rid not in reagents:
             report.error(f"[ref] {label}: unknown decoy reagent '{rid}'")
@@ -391,7 +508,7 @@ def validate_reaction(r: dict, reagents: dict, tags: set, report: Report) -> Non
         except Exception as exc:
             report.error(f"[smarts] {label}: SMARTS does not parse: {exc}")
         for token in t["reactants"]:
-            if token != "start" and "smiles" not in reagents.get(token, {}):
+            if token != "start" and not token.startswith("step:") and "smiles" not in reagents.get(token, {}):
                 report.error(f"[smarts] {label}: reactant '{token}' is not a reagent with smiles")
 
 

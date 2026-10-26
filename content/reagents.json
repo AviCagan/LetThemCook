@@ -1,35 +1,436 @@
 [
-  { "id": "NaBH4", "label": "NaBH₄", "name": "Sodium borohydride (in MeOH or EtOH)", "shelf": "ch16", "kind": "reagent", "technique": "pour",
-    "card": { "does": "Mild hydride. Aldehyde → 1° alcohol, ketone → 2° alcohol.", "doesNot": "Leaves C=C, esters and carboxylic acids alone." } },
-  { "id": "LiAlH4", "label": "LiAlH₄", "name": "Lithium aluminium hydride (in dry ether or THF)", "shelf": "ch16", "kind": "reagent", "technique": "pour",
-    "card": { "does": "Strong hydride. Aldehydes, ketones, acids and esters → alcohols (an ester gives two).", "doesNot": "Needs a separate H₂O workup step. Does not touch isolated C=C." } },
-  { "id": "H2_Pt", "label": "H₂, Pt", "name": "Hydrogen over platinum (or Pd, Ni)", "shelf": "ch16", "kind": "reagent", "technique": "pressure",
-    "card": { "does": "Reduces C=C to C–C and aldehyde/ketone C=O to the alcohol.", "doesNot": "Not used for esters or acids in this course." } },
-  { "id": "PCC", "label": "PCC", "name": "Pyridinium chlorochromate (CH₂Cl₂)", "shelf": "ch16", "kind": "reagent", "technique": "pour",
-    "card": { "does": "1° alcohol → aldehyde (stops there); 2° alcohol → ketone.", "doesNot": "Leaves C=C alone; does not cleave C–C bonds." } },
-  { "id": "HIO4", "label": "HIO₄", "name": "Periodic acid", "shelf": "ch16", "kind": "reagent", "technique": "pour",
-    "card": { "does": "Cleaves the C–C bond of a vicinal diol; each carbon becomes an aldehyde or ketone.", "doesNot": "Does nothing to an isolated alcohol or a 1,3-diol." } },
-  { "id": "NaNO2_H2SO4", "label": "NaNO₂ / H₂SO₄", "name": "Sodium nitrite in sulfuric (or hydrochloric) acid", "shelf": "phenols", "kind": "reagent", "technique": "temperature",
-    "techniqueParams": { "tempPresets": ["ice", "rt", "reflux"] },
-    "card": { "does": "Makes HONO; at 0–5 °C converts Ar–NH₂ into the aryl diazonium salt Ar–N₂⁺.", "doesNot": "Not a nitrating agent: it never puts NO₂ on a ring." } },
-  { "id": "HNO3_H2SO4", "label": "HNO₃ / H₂SO₄", "name": "Nitric acid with sulfuric acid (nitration)", "shelf": "phenols", "kind": "reagent", "technique": "temperature",
-    "techniqueParams": { "tempPresets": ["ice", "rt", "reflux"] },
-    "card": { "does": "Electrophilic nitration: adds NO₂ to a ring C–H (o/p to OH, NH₂, OR).", "trap": "Looks like NaNO₂ on a tired day. It is not the diazonium route." } },
-  { "id": "H2O", "label": "H₂O", "name": "Water (workup, or hydrolysis with heat)", "shelf": "workup", "kind": "workup", "technique": "temperature",
-    "techniqueParams": { "tempPresets": ["ice", "rt", "reflux"] }, "smiles": "O",
-    "card": { "does": "Quenches hydride/Grignard alkoxides to the alcohol (room temp). With heat, converts Ar–N₂⁺ into Ar–OH.", "doesNot": "Does nothing useful before the hydride or Grignard has reacted." } },
-  { "id": "H3O_plus", "label": "H₃O⁺", "name": "Dilute aqueous acid (workup)", "shelf": "workup", "kind": "workup", "technique": "workup", "smiles": "O",
-    "card": { "does": "Acidic workup: protonates alkoxides and carboxylates; opens epoxides at the more substituted carbon when it is the reagent.", "doesNot": "Kills a Grignard or hydride if added too early." } },
-  { "id": "NaH", "label": "NaH", "name": "Sodium hydride (in THF)", "shelf": "ch17", "kind": "reagent", "technique": "stir",
-    "card": { "does": "Strong base: deprotonates an alcohol completely to the alkoxide (step 1 of a Williamson).", "doesNot": "Not a nucleophile and not a reducing agent." } },
-  { "id": "CH3I", "label": "CH₃I", "name": "Iodomethane", "shelf": "ch17", "kind": "reagent", "technique": "pour", "smiles": "CI",
-    "card": { "does": "Perfect SN2 electrophile: methylates alkoxides, phenoxides, thiolates and sulfides.", "doesNot": "Cannot be eliminated (no β-hydrogens)." } },
-  { "id": "tBuBr", "label": "(CH₃)₃CBr", "name": "2-Bromo-2-methylpropane (tert-butyl bromide)", "shelf": "ch17", "kind": "reagent", "technique": "pour", "smiles": "CC(C)(C)Br",
-    "card": { "does": "3° halide: E2 with alkoxides, SN1/E1 with weak nucleophiles.", "trap": "Never the electrophile in a Williamson ether synthesis." } },
-  { "id": "AlCl3", "label": "AlCl₃", "name": "Aluminium chloride (Lewis acid)", "shelf": "phenols", "kind": "reagent", "technique": "pour",
-    "card": { "does": "Lewis acid catalyst for Friedel–Crafts C-acylation and the Fries rearrangement.", "trap": "Not a base. It cannot make an alkoxide for a Williamson synthesis." } },
-  { "id": "O3", "label": "O₃", "name": "Ozone (then Zn or (CH₃)₂S)", "shelf": "decoy", "kind": "decoy", "technique": "pour",
-    "card": { "does": "Cleaves C=C into two carbonyls.", "trap": "Decoy for OsO₄: OsO₄ keeps the C–C bond and gives a syn diol." } },
-  { "id": "KMnO4", "label": "KMnO₄", "name": "Potassium permanganate (hot, conc.)", "shelf": "decoy", "kind": "decoy", "technique": "pour",
-    "card": { "does": "Strong, unselective oxidant.", "trap": "Decoy for PCC / HIO₄ / Jones. Not in the toolkit as a selective reagent." } }
+  {
+    "id": "NaBH4",
+    "label": "NaBH₄",
+    "name": "Sodium borohydride (in MeOH or EtOH)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Mild hydride. Aldehyde → 1° alcohol, ketone → 2° alcohol.",
+      "doesNot": "Leaves C=C, esters and carboxylic acids alone."
+    }
+  },
+  {
+    "id": "LiAlH4",
+    "label": "LiAlH₄",
+    "name": "Lithium aluminium hydride (in dry ether or THF)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Strong hydride. Aldehydes, ketones, acids and esters → alcohols (an ester gives two).",
+      "doesNot": "Needs a separate H₂O workup step. Does not touch isolated C=C."
+    }
+  },
+  {
+    "id": "H2_Pt",
+    "label": "H₂, Pt",
+    "name": "Hydrogen over platinum (or Pd, Ni)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pressure",
+    "card": {
+      "does": "Reduces C=C to C–C and aldehyde/ketone C=O to the alcohol.",
+      "doesNot": "Not used for esters, acids or benzene rings in this course."
+    }
+  },
+  {
+    "id": "BH3_THF",
+    "label": "BH₃·THF",
+    "name": "Borane–THF complex",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Step 1 of hydroboration: B and H add syn across the C=C, B on the less substituted carbon.",
+      "doesNot": "Gives no alcohol by itself; needs H₂O₂/NaOH."
+    }
+  },
+  {
+    "id": "H2O2_NaOH",
+    "label": "H₂O₂, NaOH",
+    "name": "Basic hydrogen peroxide (oxidative workup)",
+    "shelf": "workup",
+    "kind": "workup",
+    "technique": "pour",
+    "card": {
+      "does": "Step 2 of hydroboration: swaps the C–B bond for C–OH with retention.",
+      "doesNot": "Does nothing to an alkene on its own."
+    }
+  },
+  {
+    "id": "OsO4",
+    "label": "OsO₄",
+    "name": "Osmium tetroxide, then NaHSO₃/H₂O (or cat. OsO₄ + NMO)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Syn dihydroxylation: two OH groups on the same face of the C=C. C–C bond kept.",
+      "doesNot": "Does not cleave the C=C (that is O₃)."
+    }
+  },
+  {
+    "id": "H2CrO4",
+    "label": "Na₂Cr₂O₇ / H₂SO₄",
+    "name": "Chromic acid (Jones reagent)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "1° alcohol → carboxylic acid; 2° alcohol → ketone.",
+      "doesNot": "3° alcohols: no reaction. Never stops at the aldehyde."
+    }
+  },
+  {
+    "id": "PCC",
+    "label": "PCC",
+    "name": "Pyridinium chlorochromate (CH₂Cl₂)",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "1° alcohol → aldehyde (stops there); 2° alcohol → ketone.",
+      "doesNot": "Leaves C=C alone; does not cleave C–C bonds; no acids."
+    }
+  },
+  {
+    "id": "HIO4",
+    "label": "HIO₄",
+    "name": "Periodic acid",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Cleaves the C–C bond of a vicinal diol; each carbon becomes an aldehyde or ketone.",
+      "doesNot": "Does nothing to an isolated alcohol or a 1,3-diol."
+    }
+  },
+  {
+    "id": "SOCl2",
+    "label": "SOCl₂, pyr",
+    "name": "Thionyl chloride with pyridine",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "ROH → RCl.",
+      "doesNot": "Not an oxidant or a reductant."
+    }
+  },
+  {
+    "id": "PBr3",
+    "label": "PBr₃",
+    "name": "Phosphorus tribromide",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "1°/2° ROH → RBr by SN2, no rearrangement.",
+      "doesNot": "Not for 3° alcohols; not an oxidant."
+    }
+  },
+  {
+    "id": "HBr",
+    "label": "HBr",
+    "name": "Hydrobromic acid",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "light",
+    "techniqueParams": {
+      "lightToggle": true
+    },
+    "card": {
+      "does": "ROH → RBr (3° fast, SN1; 1° by SN2).",
+      "trap": "Light does nothing useful here; keep the lamp off."
+    }
+  },
+  {
+    "id": "H2SO4_heat",
+    "label": "H₂SO₄, Δ",
+    "name": "Sulfuric acid with heat",
+    "shelf": "ch16",
+    "kind": "reagent",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "c140",
+        "c180",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Dehydrates alcohols to the Zaitsev alkene (E1); 1° alcohols at 180 °C, ether at 140 °C.",
+      "doesNot": "Not an oxidant."
+    }
+  },
+  {
+    "id": "NaNO2_H2SO4",
+    "label": "NaNO₂ / H₂SO₄",
+    "name": "Sodium nitrite in sulfuric (or hydrochloric) acid",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "ice",
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Makes HONO; at 0–5 °C converts Ar–NH₂ into the aryl diazonium salt Ar–N₂⁺.",
+      "doesNot": "Not a nitrating agent: it never puts NO₂ on a ring."
+    }
+  },
+  {
+    "id": "HNO3_H2SO4",
+    "label": "HNO₃ / H₂SO₄",
+    "name": "Nitric acid with sulfuric acid (nitration)",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "ice",
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Electrophilic nitration: adds NO₂ to a ring C–H (o/p to OH, NH₂, OR).",
+      "trap": "Looks like NaNO₂ on a tired day. It is not the diazonium route."
+    }
+  },
+  {
+    "id": "NaOH",
+    "label": "NaOH",
+    "name": "Sodium hydroxide (aqueous)",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Strong base: deprotonates phenols (pKa ≈ 10) and carboxylic acids.",
+      "doesNot": "Too weak to deprotonate an ordinary alcohol completely; does not replace NH₂ or OH on a ring."
+    }
+  },
+  {
+    "id": "H2O",
+    "label": "H₂O",
+    "name": "Water (workup, or hydrolysis with heat)",
+    "shelf": "workup",
+    "kind": "workup",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "ice",
+        "rt",
+        "reflux"
+      ]
+    },
+    "smiles": "O",
+    "card": {
+      "does": "Quenches hydride/Grignard alkoxides to the alcohol (room temp). With heat, converts Ar–N₂⁺ into Ar–OH.",
+      "doesNot": "Does nothing useful before the hydride or Grignard has reacted."
+    }
+  },
+  {
+    "id": "H3O_plus",
+    "label": "H₃O⁺",
+    "name": "Dilute aqueous acid (workup)",
+    "shelf": "workup",
+    "kind": "workup",
+    "technique": "workup",
+    "smiles": "O",
+    "card": {
+      "does": "Acidic workup: protonates alkoxides and carboxylates. As a reagent on an alkene it gives Markovnikov hydration.",
+      "doesNot": "Kills a Grignard or hydride if added too early."
+    }
+  },
+  {
+    "id": "NaH",
+    "label": "NaH",
+    "name": "Sodium hydride (in THF)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "stir",
+    "card": {
+      "does": "Strong base: deprotonates an alcohol completely to the alkoxide (step 1 of a Williamson).",
+      "doesNot": "Not a nucleophile and not a reducing agent."
+    },
+    "classes": [
+      "base_strong"
+    ]
+  },
+  {
+    "id": "Na",
+    "label": "Na",
+    "name": "Sodium metal",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "stir",
+    "card": {
+      "does": "Deprotonates an alcohol to the alkoxide (with H₂ gas), like NaH.",
+      "doesNot": "Not a nucleophile."
+    },
+    "classes": [
+      "base_strong"
+    ]
+  },
+  {
+    "id": "CH3I",
+    "label": "CH₃I",
+    "name": "Iodomethane",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CI",
+    "card": {
+      "does": "Perfect SN2 electrophile: methylates alkoxides, phenoxides, thiolates and sulfides.",
+      "doesNot": "Cannot be eliminated (no β-hydrogens)."
+    },
+    "classes": [
+      "alkyl_halide_1"
+    ]
+  },
+  {
+    "id": "EtBr",
+    "label": "CH₃CH₂Br",
+    "name": "Bromoethane",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CCBr",
+    "card": {
+      "does": "1° halide: SN2 electrophile for alkoxides (Williamson).",
+      "doesNot": "Elimination is minor with a 1° halide."
+    },
+    "classes": [
+      "alkyl_halide_1"
+    ]
+  },
+  {
+    "id": "BnBr",
+    "label": "PhCH₂Br",
+    "name": "Benzyl bromide",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "BrCc1ccccc1",
+    "card": {
+      "does": "Benzylic 1° halide: excellent SN2 electrophile (Williamson).",
+      "doesNot": "No β-hydrogens on the benzylic carbon's neighbour, so no E2."
+    },
+    "aliases": [
+      "benzyl bromide",
+      "(bromomethyl)benzene"
+    ],
+    "classes": [
+      "alkyl_halide_1"
+    ]
+  },
+  {
+    "id": "AllylBr",
+    "label": "CH₂=CHCH₂Br",
+    "name": "Allyl bromide (3-bromoprop-1-ene)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "C=CCBr",
+    "card": {
+      "does": "Allylic 1° halide: excellent SN2 electrophile (Williamson).",
+      "doesNot": "Does not add across its own C=C under these conditions."
+    },
+    "classes": [
+      "alkyl_halide_1"
+    ]
+  },
+  {
+    "id": "tBuBr",
+    "label": "(CH₃)₃CBr",
+    "name": "2-Bromo-2-methylpropane (tert-butyl bromide)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC(C)(C)Br",
+    "card": {
+      "does": "3° halide: E2 with alkoxides, SN1/E1 with weak nucleophiles.",
+      "trap": "Never the electrophile in a Williamson ether synthesis."
+    },
+    "classes": [
+      "alkyl_halide_3"
+    ]
+  },
+  {
+    "id": "iPrBr",
+    "label": "(CH₃)₂CHBr",
+    "name": "2-Bromopropane (isopropyl bromide)",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "smiles": "CC(C)Br",
+    "card": {
+      "does": "2° halide: mostly E2 with alkoxides.",
+      "trap": "Put the isopropyl group on the alkoxide side instead."
+    },
+    "classes": [
+      "alkyl_halide_2"
+    ]
+  },
+  {
+    "id": "AlCl3",
+    "label": "AlCl₃",
+    "name": "Aluminium chloride (Lewis acid)",
+    "shelf": "phenols",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Lewis acid catalyst for Friedel–Crafts C-acylation and the Fries rearrangement.",
+      "trap": "Not a base. It cannot make an alkoxide for a Williamson synthesis."
+    }
+  },
+  {
+    "id": "mCPBA",
+    "label": "mCPBA",
+    "name": "meta-Chloroperoxybenzoic acid",
+    "shelf": "ch17",
+    "kind": "reagent",
+    "technique": "pour",
+    "card": {
+      "does": "Alkene → epoxide (syn, stereospecific).",
+      "trap": "Not a diol reagent: OsO₄ gives the syn diol."
+    }
+  },
+  {
+    "id": "O3",
+    "label": "O₃",
+    "name": "Ozone, then Zn or (CH₃)₂S",
+    "shelf": "decoy",
+    "kind": "decoy",
+    "technique": "pour",
+    "card": {
+      "does": "Cleaves C=C into two carbonyls.",
+      "trap": "Decoy for OsO₄: OsO₄ keeps the C–C bond and gives a syn diol."
+    }
+  },
+  {
+    "id": "KMnO4",
+    "label": "KMnO₄, hot",
+    "name": "Hot concentrated potassium permanganate",
+    "shelf": "decoy",
+    "kind": "decoy",
+    "technique": "temperature",
+    "techniqueParams": {
+      "tempPresets": [
+        "rt",
+        "reflux"
+      ]
+    },
+    "card": {
+      "does": "Strong, unselective oxidant that cleaves C=C bonds.",
+      "trap": "Not in the toolkit as a selective reagent: use OsO₄ for diols, Jones or PCC for alcohols."
+    }
+  }
 ]

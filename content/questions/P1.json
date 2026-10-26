@@ -1,0 +1,777 @@
+[
+  {
+    "id": "q-P1-ptoluidine-001",
+    "reactionId": "P1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it",
+      "predict_product",
+      "name_it"
+    ],
+    "start": {
+      "smiles": "Cc1ccc(N)cc1",
+      "name": "4-methylaniline (p-toluidine)"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "NaNO2_H2SO4"
+          ],
+          "conditions": {
+            "temp": "ice"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "reflux"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "Cc1ccc(O)cc1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "4-methylphenol",
+          "p-methylphenol",
+          "p-cresol"
+        ],
+        "traps": [
+          {
+            "name": "methylphenol",
+            "tag": "naming_locant",
+            "why": "Which carbon? 4-methylphenol."
+          }
+        ]
+      },
+      "highlightAtoms": [
+        4,
+        5
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "Cc1ccc(N)c([N+](=O)[O-])c1",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "You nitrated the ring. NaNO₂/acid is nitrous acid, which reacts with the NH₂ group itself (diazotisation); it never adds NO₂ to a ring C–H. That needs HNO₃/H₂SO₄."
+      },
+      {
+        "smiles": "Cc1ccc([N+]#N)cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "This is the diazonium salt, the intermediate after step 1. You still need H₂O and heat to replace N₂ with OH."
+      },
+      {
+        "smiles": "Cc1ccc([N+](=O)[O-])cc1",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "NH₂ was swapped for NO₂. Nitrous acid converts NH₂ into N₂⁺, which leaves as N₂ gas; the OH from water takes that carbon. NO₂ is never involved."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "HNO3_H2SO4"
+            ]
+          }
+        ],
+        "tag": "nitrite_vs_nitric",
+        "why": "HNO₃/H₂SO₄ is nitration: it adds NO₂ to the ring and leaves NH₂ where it is. To swap NH₂ for OH you need the diazonium salt: NaNO₂/H₂SO₄ cold, then H₂O and heat."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "rt"
+            }
+          },
+          {
+            "reagents": [
+              "H2O"
+            ],
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Diazotisation must be done at 0–5 °C: aryl diazonium salts decompose as soon as they warm up. Keep the ice bath on for step 1."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "product": {
+          "smiles": "Cc1ccc([N+]#N)cc1",
+          "stereo": "none"
+        },
+        "why": "You made the diazonium salt and stopped. Step 2 (H₂O, heat) replaces N₂ with OH."
+      }
+    ],
+    "explanation": "NaNO₂/H₂SO₄ at 0–5 °C converts the NH₂ into a diazonium group; H₂O and heat then replace N₂ with OH on the same carbon. The methyl group is untouched: 4-methylphenol.",
+    "tip": "Nitrite, not nitric: NaNO₂ talks to the amine, HNO₃ talks to the ring.",
+    "source": "Carey 12e §24 phenol prep via diazonium (toolkit P1); seeded Missed"
+  },
+  {
+    "id": "q-P1-aniline-001",
+    "reactionId": "P1",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "make_it",
+      "predict_product"
+    ],
+    "start": {
+      "smiles": "Nc1ccccc1",
+      "name": "aniline"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "NaNO2_H2SO4"
+          ],
+          "conditions": {
+            "temp": "ice"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "reflux"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "Oc1ccccc1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "phenol",
+          "benzenol"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "O=[N+]([O-])c1ccccc1",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "NH₂ is not swapped for NO₂. Nitrous acid (from NaNO₂) converts NH₂ into N₂⁺, which leaves as N₂ gas; OH from water takes that carbon."
+      },
+      {
+        "smiles": "N#[N+]c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is benzenediazonium, the intermediate after step 1. Water and heat replace N₂ with OH."
+      },
+      {
+        "smiles": "Nc1ccccc1[N+](=O)[O-]",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "You nitrated the ring. NaNO₂/acid reacts with the amine itself; it never adds NO₂ to a ring C–H."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "HNO3_H2SO4"
+            ]
+          }
+        ],
+        "tag": "nitrite_vs_nitric",
+        "why": "HNO₃/H₂SO₄ nitrates the ring and keeps the NH₂. To replace NH₂ by OH you need the diazonium route: NaNO₂/H₂SO₄ cold, then H₂O and heat."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "rt"
+            }
+          },
+          {
+            "reagents": [
+              "H2O"
+            ],
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Diazotisation must be done at 0–5 °C or the diazonium salt decomposes. Keep step 1 in the ice bath."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "product": {
+          "smiles": "N#[N+]c1ccccc1",
+          "stereo": "none"
+        },
+        "why": "You made the diazonium salt and stopped. Step 2 (H₂O, heat) replaces N₂ with OH."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaOH"
+            ]
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "NH₂ is a terrible leaving group; hydroxide cannot displace it from a ring. Convert it to N₂⁺ first."
+      }
+    ],
+    "explanation": "Cold NaNO₂/H₂SO₄ turns the NH₂ into a diazonium group; H₂O and heat then replace N₂ with OH on the same carbon.",
+    "tip": "Nitrite, not nitric: NaNO₂ talks to the amine, HNO₃ talks to the ring."
+  },
+  {
+    "id": "q-P1-chloroaniline-001",
+    "reactionId": "P1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it",
+      "predict_product"
+    ],
+    "start": {
+      "smiles": "Nc1ccc(Cl)cc1",
+      "name": "4-chloroaniline"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "NaNO2_H2SO4"
+          ],
+          "conditions": {
+            "temp": "ice"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "reflux"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "Oc1ccc(Cl)cc1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "4-chlorophenol",
+          "p-chlorophenol"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "Nc1ccc(Cl)cc1[N+](=O)[O-]",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "You nitrated the ring. NaNO₂/acid is not nitration; it converts the amine into a diazonium salt."
+      },
+      {
+        "smiles": "N#[N+]c1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The diazonium salt is only the intermediate; H₂O and heat give the phenol."
+      },
+      {
+        "smiles": "Nc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The chlorine stays. Only the NH₂ carbon is involved: N₂ leaves from it and OH takes its place."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "NH₂ is converted into N₂⁺, then OH, never into NO₂."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "HNO3_H2SO4"
+            ]
+          }
+        ],
+        "tag": "nitrite_vs_nitric",
+        "why": "That is nitration. The phenol comes from NaNO₂/H₂SO₄ at 0–5 °C, then H₂O and heat."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "product": {
+          "smiles": "N#[N+]c1ccc(Cl)cc1",
+          "stereo": "none"
+        },
+        "why": "The diazonium salt needs H₂O and heat to become the phenol."
+      }
+    ],
+    "explanation": "Diazotisation then hydrolysis replaces NH₂ with OH on the same carbon; the para chlorine is untouched.",
+    "tip": "Other ring substituents are spectators in the diazonium route."
+  },
+  {
+    "id": "q-P1-mtoluidine-001",
+    "reactionId": "P1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it",
+      "predict_product"
+    ],
+    "start": {
+      "smiles": "Cc1cccc(N)c1",
+      "name": "3-methylaniline (m-toluidine)"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "NaNO2_H2SO4"
+          ],
+          "conditions": {
+            "temp": "ice"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "reflux"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "Cc1cccc(O)c1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "3-methylphenol",
+          "m-cresol",
+          "m-methylphenol"
+        ]
+      },
+      "highlightAtoms": [
+        5,
+        6
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "N#[N+]c1cccc(C)c1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The diazonium salt is the intermediate; H₂O and heat complete the job."
+      },
+      {
+        "smiles": "Cc1cccc([N+](=O)[O-])c1",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "NaNO₂ is not nitration; NH₂ becomes OH, not NO₂."
+      },
+      {
+        "smiles": "Cc1ccccc1O",
+        "stereo": "none",
+        "tag": "diazonium_site",
+        "why": "Directing effects do not apply: the OH takes exactly the carbon that carried the NH₂ (meta to the methyl), because that is where N₂ leaves."
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "diazonium_site",
+        "why": "No group is added to the ring. OH replaces N₂⁺ on its own carbon, so the OH stays meta to the methyl."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "HNO3_H2SO4"
+            ]
+          }
+        ],
+        "tag": "nitrite_vs_nitric",
+        "why": "Nitration adds NO₂ and keeps NH₂. Use NaNO₂/H₂SO₄ cold, then H₂O/heat."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "rt"
+            }
+          },
+          {
+            "reagents": [
+              "H2O"
+            ],
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 must be cold (0–5 °C)."
+      }
+    ],
+    "explanation": "The OH replaces the NH₂ on its own carbon, so the 1,3 relationship to the methyl is preserved: 3-methylphenol.",
+    "tip": "Same carbon, same pattern: meta in, meta out."
+  },
+  {
+    "id": "q-P1-aminobenzoic-001",
+    "reactionId": "P1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it",
+      "predict_product"
+    ],
+    "start": {
+      "smiles": "Nc1ccc(C(=O)O)cc1",
+      "name": "4-aminobenzoic acid"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "NaNO2_H2SO4"
+          ],
+          "conditions": {
+            "temp": "ice"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "reflux"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "Oc1ccc(C(=O)O)cc1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "4-hydroxybenzoic acid",
+          "p-hydroxybenzoic acid"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "O=C(O)c1ccc([N+](=O)[O-])cc1",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "NH₂ never becomes NO₂ with nitrous acid; it becomes N₂⁺ and then OH."
+      },
+      {
+        "smiles": "N#[N+]c1ccc(C(=O)O)cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "Diazonium salt: the H₂O/heat step is still needed."
+      },
+      {
+        "smiles": "Nc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The COOH stays; only the NH₂ carbon changes."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "HNO3_H2SO4"
+            ]
+          }
+        ],
+        "tag": "nitrite_vs_nitric",
+        "why": "Nitration. For NH₂ → OH use the diazonium route."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "product": {
+          "smiles": "N#[N+]c1ccc(C(=O)O)cc1",
+          "stereo": "none"
+        },
+        "why": "Add H₂O and heat to replace N₂ with OH."
+      }
+    ],
+    "explanation": "NH₂ → N₂⁺ → OH on the same carbon; the carboxylic acid is untouched.",
+    "tip": "COOH survives both the cold acid and the hot water."
+  },
+  {
+    "id": "q-P1-anisidine-001",
+    "reactionId": "P1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it",
+      "predict_product"
+    ],
+    "start": {
+      "smiles": "COc1ccccc1N",
+      "name": "2-methoxyaniline (o-anisidine)"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "NaNO2_H2SO4"
+          ],
+          "conditions": {
+            "temp": "ice"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "reflux"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "COc1ccccc1O",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "2-methoxyphenol",
+          "guaiacol",
+          "o-methoxyphenol"
+        ]
+      },
+      "highlightAtoms": [
+        7,
+        8
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "N#[N+]c1ccccc1OC",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "Diazonium salt: still needs H₂O and heat."
+      },
+      {
+        "smiles": "COc1ccccc1[N+](=O)[O-]",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "NH₂ becomes OH, not NO₂."
+      },
+      {
+        "smiles": "Oc1ccccc1O",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The methoxy group stays: hot dilute acid does not cleave an aryl methyl ether (that needs excess HBr or HI)."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "HNO3_H2SO4"
+            ]
+          }
+        ],
+        "tag": "nitrite_vs_nitric",
+        "why": "Nitration adds NO₂. For the phenol use NaNO₂/H₂SO₄ cold, then H₂O/heat."
+      }
+    ],
+    "explanation": "The amine is diazotised and hydrolysed; the ortho methoxy group is untouched: 2-methoxyphenol.",
+    "tip": "Ethers survive the diazonium route."
+  },
+  {
+    "id": "q-P1-bromomethylaniline-001",
+    "reactionId": "P1",
+    "chapter": 16,
+    "difficulty": 3,
+    "orderTypes": [
+      "make_it",
+      "predict_product"
+    ],
+    "start": {
+      "smiles": "Cc1cc(Br)ccc1N",
+      "name": "4-bromo-2-methylaniline"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "NaNO2_H2SO4"
+          ],
+          "conditions": {
+            "temp": "ice"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "reflux"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "Cc1cc(Br)ccc1O",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "4-bromo-2-methylphenol"
+        ]
+      },
+      "highlightAtoms": [
+        7,
+        8
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "N#[N+]c1ccc(Br)cc1C",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "Diazonium salt: add H₂O and heat."
+      },
+      {
+        "smiles": "Cc1cc(Br)ccc1[N+](=O)[O-]",
+        "stereo": "none",
+        "tag": "nitrite_vs_nitric",
+        "why": "NaNO₂ does not install NO₂."
+      },
+      {
+        "smiles": "Cc1ccccc1O",
+        "stereo": "none",
+        "tag": "substituent_replaced",
+        "why": "The bromine stays on the ring; only the NH₂ carbon changes."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaNO2_H2SO4"
+            ],
+            "conditions": {
+              "temp": "rt"
+            }
+          },
+          {
+            "reagents": [
+              "H2O"
+            ],
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Diazotisation needs the ice bath (0–5 °C)."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "HNO3_H2SO4"
+            ]
+          }
+        ],
+        "tag": "nitrite_vs_nitric",
+        "why": "That is nitration, not the diazonium route."
+      }
+    ],
+    "explanation": "Only the NH₂ carbon changes: 4-bromo-2-methylphenol. Br and CH₃ keep their positions.",
+    "tip": "Two spectators, one swap."
+  }
+]

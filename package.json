@@ -1,0 +1,49 @@
+{
+  "name": "beaker-buddies",
+  "version": "0.1.0",
+  "description": "Cute pixel-art lab game for drilling Organic Chemistry II reactions (Carey 12e, Ch 16–17): scientists bring a starting material, you pick reagents from the shelf in order, run each step as a minigame, identify the product, and the game tracks mastery per reaction and per reagent with spaced repetition.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "rdkit": "node scripts/copy-rdkit.mjs",
+    "predev": "npm run rdkit",
+    "dev": "vite",
+    "prebuild": "npm run rdkit",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "icons": "node scripts/gen-icons.mjs",
+    "validate": "python3 scripts/validate_content.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AviCagan/LetThemCook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AviCagan/LetThemCook/issues"
+  },
+  "homepage": "https://github.com/AviCagan/LetThemCook#readme",
+  "private": "true",
+  "type": "module",
+  "dependencies": {
+    "@preact/signals": "^2.11.3",
+    "@rdkit/rdkit": "^2026.9.1",
+    "idb-keyval": "^6.3.0",
+    "phaser": "^3.90.0",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^22.20.5",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.7",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^3.2.7"
+  }
+}

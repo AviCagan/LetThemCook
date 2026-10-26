@@ -5,31 +5,108 @@
   "description": "One row of the toolkit table (Section 5). Reactions are the unit of mastery tracking. Questions reference reactions by id; the engine never hard-codes chemistry.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "name", "chapter", "section", "phase", "reagentsText", "steps", "rules", "stereoOutcome", "typicalTags"],
+  "required": [
+    "id",
+    "name",
+    "chapter",
+    "section",
+    "phase",
+    "reagentsText",
+    "steps",
+    "rules",
+    "stereoOutcome",
+    "typicalTags"
+  ],
   "properties": {
-    "id": { "type": "string", "pattern": "^(R|P|E)[0-9]+$", "description": "Section 5 id: R1..R28, P1..P10, E1..E13." },
-    "name": { "type": "string" },
-    "chapter": { "type": "integer", "enum": [16, 17], "description": "Chapter toggle: the settings screen can switch chapter 17 off." },
-    "section": { "type": "string", "enum": ["alcohols", "phenols", "ethers"] },
-    "phase": { "type": "integer", "enum": [1, 2], "description": "Build phase in which the reaction ships." },
-    "reagentsText": { "type": "string", "description": "Reagents/conditions exactly as written in the toolkit table." },
-    "steps": { "$ref": "#/definitions/route", "description": "Canonical route: ordered steps, each a set of bottles plus conditions." },
-    "altRoutes": { "type": "array", "items": { "$ref": "#/definitions/route" }, "description": "Other routes graded as fully correct (e.g. H2O vs H3O+ workup)." },
+    "id": {
+      "type": "string",
+      "pattern": "^(R|P|E)[0-9]+$",
+      "description": "Section 5 id: R1..R28, P1..P10, E1..E13."
+    },
+    "name": {
+      "type": "string"
+    },
+    "chapter": {
+      "type": "integer",
+      "enum": [
+        16,
+        17
+      ],
+      "description": "Chapter toggle: the settings screen can switch chapter 17 off."
+    },
+    "section": {
+      "type": "string",
+      "enum": [
+        "alcohols",
+        "phenols",
+        "ethers"
+      ]
+    },
+    "phase": {
+      "type": "integer",
+      "enum": [
+        1,
+        2
+      ],
+      "description": "Build phase in which the reaction ships."
+    },
+    "reagentsText": {
+      "type": "string",
+      "description": "Reagents/conditions exactly as written in the toolkit table."
+    },
+    "steps": {
+      "$ref": "#/definitions/route",
+      "description": "Canonical route: ordered steps, each a set of bottles plus conditions."
+    },
+    "altRoutes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/route"
+      },
+      "description": "Other routes graded as fully correct (e.g. H2O vs H3O+ workup)."
+    },
     "rules": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["summary"],
+      "required": [
+        "summary"
+      ],
       "properties": {
-        "summary": { "type": "string", "description": "The 'what to get right' column." },
-        "regio": { "type": "string" },
-        "stereo": { "type": "string" },
-        "leavesAlone": { "type": "array", "items": { "type": "string" } },
-        "notes": { "type": "array", "items": { "type": "string" } }
+        "summary": {
+          "type": "string",
+          "description": "The 'what to get right' column."
+        },
+        "regio": {
+          "type": "string"
+        },
+        "stereo": {
+          "type": "string"
+        },
+        "leavesAlone": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "stereoOutcome": {
       "type": "string",
-      "enum": ["none", "racemic_if_new_center", "syn_racemic", "syn_meso_or_racemic", "anti", "inversion", "retention"],
+      "enum": [
+        "none",
+        "racemic_if_new_center",
+        "syn_racemic",
+        "syn_meso_or_racemic",
+        "anti",
+        "inversion",
+        "retention"
+      ],
       "description": "What the stereo picker should expect by default when the reaction creates stereocenters."
     },
     "smarts": {
@@ -38,40 +115,99 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["rxn", "reactants", "mode"],
+        "required": [
+          "rxn",
+          "reactants",
+          "mode"
+        ],
         "properties": {
-          "rxn": { "type": "string", "description": "RDKit reaction SMARTS. Ring-opening products must be written as one grouped component: >>([C:1]=O.[C:2]=O)." },
+          "rxn": {
+            "type": "string",
+            "description": "RDKit reaction SMARTS. Ring-opening products must be written as one grouped component: >>([C:1]=O.[C:2]=O)."
+          },
           "reactants": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "string" },
-            "description": "Reactant order for RunReactants: 'start' for the starting material, otherwise a reagent id that has a smiles field."
+            "items": {
+              "type": "string"
+            },
+            "description": "Reactant order for RunReactants: 'start' for the starting material, 'step:N' for the first reagent in route step N that has a smiles field, otherwise a reagent id that has a smiles field."
           },
-          "mode": { "type": "string", "enum": ["single", "exhaustive"], "description": "single: any one product set may match. exhaustive: apply until no site is left (NaBH4 reduces every ketone)." }
+          "mode": {
+            "type": "string",
+            "enum": [
+              "single",
+              "exhaustive"
+            ],
+            "description": "single: any one product set may match. exhaustive: apply until no site is left (NaBH4 reduces every ketone)."
+          }
         }
       }
     },
-    "decoys": { "type": "array", "items": { "type": "string" }, "description": "Reagent ids that should sit on the shelf as decoys when this reaction is asked." },
-    "typicalTags": { "type": "array", "items": { "type": "string" }, "description": "Mistake tags this reaction usually produces; used to pick decoys and to seed the clinic." },
+    "decoys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Reagent ids that should sit on the shelf as decoys when this reaction is asked."
+    },
+    "typicalTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Mistake tags this reaction usually produces; used to pick decoys and to seed the clinic."
+    },
     "minigames": {
       "type": "array",
-      "items": { "type": "string", "enum": ["pour", "temperature", "stir", "light", "workup", "pressure"] },
+      "items": {
+        "type": "string",
+        "enum": [
+          "pour",
+          "temperature",
+          "stir",
+          "light",
+          "workup",
+          "pressure"
+        ]
+      },
       "description": "Technique minigames run for this reaction (defaults come from the bottles; this overrides)."
+    },
+    "smartsMode": {
+      "type": "string",
+      "enum": [
+        "alternatives",
+        "pipeline"
+      ],
+      "description": "alternatives (default): any one template's product set may equal the answer. pipeline: templates are applied in order to the starting material; 'exhaustive' templates apply 0..n times, 'single' templates must apply exactly once; the final product must equal the answer."
     }
   },
   "definitions": {
     "route": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/definitions/step" }
+      "items": {
+        "$ref": "#/definitions/step"
+      }
     },
     "step": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["reagents"],
+      "required": [
+        "reagents"
+      ],
       "properties": {
-        "reagents": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "Bottle ids added in this step. Order within a step does not matter; order of steps does." },
-        "conditions": { "$ref": "#/definitions/conditions" }
+        "reagents": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Bottle ids added in this step, or '#class' tokens matching any reagent that lists that class (reaction definitions only; item routes always name real bottles). Order within a step does not matter; order of steps does."
+        },
+        "conditions": {
+          "$ref": "#/definitions/conditions"
+        }
       }
     },
     "conditions": {
@@ -79,11 +215,32 @@
       "additionalProperties": false,
       "description": "Conditions the player must set in the minigames for this step. Absent means 'not graded'.",
       "properties": {
-        "temp": { "type": "string", "enum": ["ice", "rt", "c140", "c180", "reflux"] },
-        "light": { "type": "boolean", "description": "true: light/peroxide ON is required; false: it must be OFF (plain HBr + alcohol trap)." },
-        "equiv": { "type": "number", "description": "Required equivalents on the pour gauge (1 vs 2 for H2O2)." },
-        "pressure": { "type": "boolean", "description": "Kolbe CO2 gauge must be pumped up." },
-        "solvent": { "type": "string", "description": "Display only (ether, CH2Cl2, H2O...)." }
+        "temp": {
+          "type": "string",
+          "enum": [
+            "ice",
+            "rt",
+            "c140",
+            "c180",
+            "reflux"
+          ]
+        },
+        "light": {
+          "type": "boolean",
+          "description": "true: light/peroxide ON is required; false: it must be OFF (plain HBr + alcohol trap)."
+        },
+        "equiv": {
+          "type": "number",
+          "description": "Required equivalents on the pour gauge (1 vs 2 for H2O2)."
+        },
+        "pressure": {
+          "type": "boolean",
+          "description": "Kolbe CO2 gauge must be pumped up."
+        },
+        "solvent": {
+          "type": "string",
+          "description": "Display only (ether, CH2Cl2, H2O...)."
+        }
       }
     }
   }

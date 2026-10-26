@@ -1,0 +1,557 @@
+[
+  {
+    "id": "q-R1-cyclohexenone-001",
+    "reactionId": "R1",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "O=C1C=CCCC1",
+      "name": "cyclohex-2-en-1-one"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "H2_Pt"
+          ],
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "OC1CCCCC1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "cyclohexanol"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "O=C1CCCCC1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "You reduced the C=C and left the ketone. H₂/Pt reduces both the alkene and the carbonyl; only a hydride would leave the C=C alone, and nothing in the toolkit leaves the ketone while touching the alkene."
+      },
+      {
+        "smiles": "O[C@H]1C=CCCC1",
+        "stereo": "racemic",
+        "tag": "stopped_halfway",
+        "why": "You reduced the ketone and left the C=C. That is the NaBH₄ outcome; H₂ over Pt hydrogenates the alkene as well."
+      },
+      {
+        "smiles": "C1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Hydrogenation never removes the oxygen. The carbonyl becomes a C–OH; only Clemmensen or Wolff–Kishner turn C=O into CH₂."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "O[C@H]1C=CCCC1",
+          "stereo": "racemic"
+        },
+        "why": "NaBH₄ reduces only the carbonyl and leaves the alkene. To saturate the ring as well you need H₂/Pt."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "LiAlH4"
+            ]
+          },
+          {
+            "reagents": [
+              "H2O"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "O[C@H]1C=CCCC1",
+          "stereo": "racemic"
+        },
+        "why": "LiAlH₄ is a hydride: it reduces the C=O and leaves the C=C. H₂/Pt takes both."
+      }
+    ],
+    "explanation": "H₂ over Pt adds across both π bonds: the C=C becomes C–C and the ketone becomes a 2° alcohol. Cyclohexanol has no stereocenter.",
+    "tip": "Hydrogen and a metal reduce everything with a π bond except the benzene ring."
+  },
+  {
+    "id": "q-R1-benzalacetone-001",
+    "reactionId": "R1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(=O)/C=C/c1ccccc1",
+      "name": "(E)-4-phenylbut-3-en-2-one"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "H2_Pt"
+          ],
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "C[C@H](O)CCc1ccccc1",
+      "stereo": "racemic",
+      "names": {
+        "accepted": [
+          "4-phenylbutan-2-ol",
+          "4-phenyl-2-butanol"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "C[C@H](O)/C=C/c1ccccc1",
+        "stereo": "racemic",
+        "tag": "stopped_halfway",
+        "why": "The alkene survived in your answer. H₂/Pt hydrogenates C=C bonds; only the hydrides (NaBH₄, LiAlH₄) leave them alone."
+      },
+      {
+        "smiles": "CC(=O)CCc1ccccc1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "The ketone survived in your answer. Under H₂/Pt the carbonyl is reduced to the alcohol as well as the alkene."
+      },
+      {
+        "smiles": "C[C@H](O)CCC1CCCCC1",
+        "stereo": "racemic",
+        "tag": "reagent_label_unknown",
+        "why": "The benzene ring is not reduced under these conditions: aromatic rings need much harsher hydrogenation than isolated C=C bonds."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "C[C@H](O)/C=C/c1ccccc1",
+          "stereo": "racemic"
+        },
+        "why": "NaBH₄ reduces only the C=O; the alkene would still be there. H₂/Pt reduces both."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "LiAlH4"
+            ]
+          },
+          {
+            "reagents": [
+              "H2O"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "C[C@H](O)/C=C/c1ccccc1",
+          "stereo": "racemic"
+        },
+        "why": "LiAlH₄ reduces the C=O and leaves the alkene. H₂/Pt reduces both."
+      }
+    ],
+    "explanation": "Both the C=C and the ketone are reduced; the ring survives. The carbinol carbon is a new stereocenter formed from an achiral substrate, so the alcohol is racemic.",
+    "tip": "Two π bonds in, two gone. Count what H₂ can reach."
+  },
+  {
+    "id": "q-R1-hexenal-001",
+    "reactionId": "R1",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=CCCCC=O",
+      "name": "hex-5-enal"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "H2_Pt"
+          ],
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CCCCCCO",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "hexan-1-ol",
+          "1-hexanol"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        4,
+        5,
+        6
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "C=CCCCCO",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "The alkene is still there. H₂/Pt hydrogenates C=C; this is what NaBH₄ would give."
+      },
+      {
+        "smiles": "CCCCCC=O",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "The aldehyde is still there. H₂/Pt reduces an aldehyde C=O to the 1° alcohol."
+      },
+      {
+        "smiles": "CCCCCC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "H₂ is a reductant; it can never oxidise an aldehyde to an acid. That needs chromic acid."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "C=CCCCCO",
+          "stereo": "none"
+        },
+        "why": "NaBH₄ reduces only the aldehyde and leaves the alkene. H₂/Pt reduces both."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "LiAlH4"
+            ]
+          },
+          {
+            "reagents": [
+              "H2O"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "C=CCCCCO",
+          "stereo": "none"
+        },
+        "why": "LiAlH₄ leaves the isolated alkene alone. You need H₂/Pt for both."
+      }
+    ],
+    "explanation": "Hydrogenation saturates the alkene and reduces the aldehyde to a 1° alcohol: hexan-1-ol.",
+    "tip": "Alkene plus aldehyde plus H₂/Pt: everything ends up saturated."
+  },
+  {
+    "id": "q-R1-mesityloxide-001",
+    "reactionId": "R1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)=CC(C)=O",
+      "name": "4-methylpent-3-en-2-one"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "H2_Pt"
+          ],
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CC(C)C[C@H](C)O",
+      "stereo": "racemic",
+      "names": {
+        "accepted": [
+          "4-methylpentan-2-ol",
+          "4-methyl-2-pentanol"
+        ]
+      },
+      "highlightAtoms": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CC(C)=C[C@H](C)O",
+        "stereo": "racemic",
+        "tag": "stopped_halfway",
+        "why": "The trisubstituted alkene is still there. H₂/Pt hydrogenates it along with the ketone."
+      },
+      {
+        "smiles": "CC(C)CC(C)=O",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "You left the ketone. Under H₂/Pt the carbonyl is reduced to the 2° alcohol as well."
+      },
+      {
+        "smiles": "CC(C)CCC",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "The oxygen does not disappear: C=O becomes C–OH, never CH₂."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "CC(C)=C[C@H](C)O",
+          "stereo": "racemic"
+        },
+        "why": "NaBH₄ leaves the C=C in place; only the carbonyl is reduced. H₂/Pt reduces both."
+      }
+    ],
+    "explanation": "Both π bonds are hydrogenated. C2 becomes a stereocenter from an achiral ketone, so the product is racemic 4-methylpentan-2-ol.",
+    "tip": "A substituted alkene still goes under H₂/Pt; it just goes a little slower."
+  },
+  {
+    "id": "q-R1-acetylbenzoate-001",
+    "reactionId": "R1",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "COC(=O)c1ccc(C(C)=O)cc1",
+      "name": "methyl 4-acetylbenzoate"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "H2_Pt"
+          ],
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ],
+      "alt": [
+        [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ]
+      ]
+    },
+    "answer": {
+      "smiles": "COC(=O)c1ccc([C@H](C)O)cc1",
+      "stereo": "racemic",
+      "highlightAtoms": [
+        8,
+        10
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "OCc1ccc([C@H](C)O)cc1",
+        "stereo": "racemic",
+        "tag": "over_reduction",
+        "why": "The ester survived: catalytic hydrogenation reduces aldehyde and ketone C=O, not esters. Reducing the ester takes LiAlH₄."
+      },
+      {
+        "smiles": "COC(=O)c1ccc(CC)cc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Hydrogenation keeps the oxygen: C=O becomes CH–OH. Turning C=O into CH₂ is Clemmensen/Wolff–Kishner chemistry."
+      },
+      {
+        "smiles": "COC(=O)c1ccc(C(C)=O)cc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "There is a reaction: H₂/Pt reduces the ketone to the alcohol. Only the ester and the ring are untouched."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "LiAlH4"
+            ]
+          },
+          {
+            "reagents": [
+              "H2O"
+            ]
+          }
+        ],
+        "tag": "over_reduction",
+        "product": {
+          "smiles": "OCc1ccc([C@H](C)O)cc1",
+          "stereo": "racemic"
+        },
+        "why": "LiAlH₄ would reduce the ester as well as the ketone. To touch only the ketone use H₂/Pt or NaBH₄."
+      }
+    ],
+    "explanation": "H₂/Pt reduces the ketone to a racemic 2° alcohol and leaves the ester and the aromatic ring alone. (NaBH₄ would give the same product.)",
+    "tip": "Esters and benzene rings sit out catalytic hydrogenation."
+  },
+  {
+    "id": "q-R1-octenone-001",
+    "reactionId": "R1",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=CC(=O)CCCCC",
+      "name": "oct-1-en-3-one"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "H2_Pt"
+          ],
+          "conditions": {
+            "pressure": true
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CC[C@H](O)CCCCC",
+      "stereo": "racemic",
+      "names": {
+        "accepted": [
+          "octan-3-ol",
+          "3-octanol"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        8
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "C=C[C@H](O)CCCCC",
+        "stereo": "racemic",
+        "tag": "stopped_halfway",
+        "why": "The terminal alkene is still there. H₂/Pt hydrogenates it; a hydride would not."
+      },
+      {
+        "smiles": "CCC(=O)CCCCC",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "The ketone is still there. Hydrogenation reduces it to the 2° alcohol as well as reducing the alkene."
+      },
+      {
+        "smiles": "CCCCCCCC",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "The oxygen stays as an OH. Hydrogenation never strips a carbonyl oxygen off completely."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "stopped_halfway",
+        "product": {
+          "smiles": "C=C[C@H](O)CCCCC",
+          "stereo": "racemic"
+        },
+        "why": "NaBH₄ reduces only the ketone; the alkene stays. H₂/Pt takes both."
+      }
+    ],
+    "explanation": "Both the C=C and the C=O are reduced. C3 becomes a stereocenter from an achiral ketone: racemic octan-3-ol.",
+    "tip": "Vinyl ketone in, saturated racemic alcohol out."
+  }
+]

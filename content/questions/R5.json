@@ -1,0 +1,630 @@
+[
+  {
+    "id": "q-R5-ethylbenzoate-001",
+    "reactionId": "R5",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "make_it",
+      "predict_product"
+    ],
+    "start": {
+      "smiles": "CCOC(=O)c1ccccc1",
+      "name": "ethyl benzoate"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "LiAlH4"
+          ],
+          "conditions": {
+            "solvent": "ether"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ],
+      "alt": [
+        [
+          {
+            "reagents": [
+              "LiAlH4"
+            ],
+            "conditions": {
+              "solvent": "ether"
+            }
+          },
+          {
+            "reagents": [
+              "H3O_plus"
+            ]
+          }
+        ]
+      ]
+    },
+    "answer": {
+      "smiles": "OCc1ccccc1.CCO",
+      "stereo": "none",
+      "highlightAtoms": [
+        0,
+        1,
+        10
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCOCc1ccccc1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "The ester does not stay in one piece. After the first hydride adds, ethoxide is expelled from the tetrahedral intermediate, so the OEt can never end up bonded to the benzylic carbon as an ether."
+      },
+      {
+        "smiles": "CCOC(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "A single hydride does not give a stable hemiacetal. The tetrahedral intermediate expels ethoxide to give benzaldehyde, which LiAlH₄ reduces again."
+      },
+      {
+        "smiles": "O=Cc1ccccc1.CCO",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "Right idea to split the ester, but LiAlH₄ never stops at the aldehyde: benzaldehyde is more reactive than the ester and is reduced to benzyl alcohol straight away."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "over_reduction",
+        "product": {
+          "smiles": "CCOC(=O)c1ccccc1",
+          "stereo": "none"
+        },
+        "why": "NaBH₄ is too mild for an ester: nothing happens. Esters need LiAlH₄, then a water workup."
+      },
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2_Pt"
+            ]
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "product": {
+          "smiles": "CCOC(=O)c1ccccc1",
+          "stereo": "none"
+        },
+        "why": "H₂/Pt reduces C=C and aldehyde/ketone C=O; in this course esters survive hydrogenation. Use the hydride."
+      }
+    ],
+    "explanation": "Two hydrides add to the acyl carbon: the first gives a tetrahedral intermediate that expels ethoxide (benzaldehyde + ethoxide), the second reduces the aldehyde. After the H₂O step you hold benzyl alcohol AND ethanol.",
+    "tip": "An ester always falls apart under LiAlH₄: count two alcohols on your clipboard.",
+    "source": "Carey 12e §16.3 (toolkit R5); seeded weak spot"
+  },
+  {
+    "id": "q-R5-methylpropanoate-001",
+    "reactionId": "R5",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCC(=O)OC",
+      "name": "methyl propanoate"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "LiAlH4"
+          ],
+          "conditions": {
+            "solvent": "ether"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CCCO.CO",
+      "stereo": "none",
+      "highlightAtoms": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCCOC",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "An ester never becomes an ether. After the first hydride adds, methoxide is expelled, so the two halves separate."
+      },
+      {
+        "smiles": "CCC(O)OC",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "A hemiacetal is not the product: the tetrahedral intermediate kicks out methoxide to give propanal, which is reduced again."
+      },
+      {
+        "smiles": "CCC=O.CO",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "Right to split it, but propanal does not survive LiAlH₄: it is reduced to propan-1-ol."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "over_reduction",
+        "product": {
+          "smiles": "CCC(=O)OC",
+          "stereo": "none"
+        },
+        "why": "NaBH₄ is too mild for an ester: nothing happens. Use LiAlH₄ then H₂O."
+      }
+    ],
+    "explanation": "The acyl side (propanoyl) becomes propan-1-ol; the alkoxy side (methoxy) becomes methanol. Two alcohols.",
+    "tip": "Acyl half → CH₂OH; alkoxy half → its own alcohol."
+  },
+  {
+    "id": "q-R5-isopropylacetate-001",
+    "reactionId": "R5",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(=O)OC(C)C",
+      "name": "propan-2-yl acetate (isopropyl acetate)"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "LiAlH4"
+          ],
+          "conditions": {
+            "solvent": "ether"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CCO.CC(C)O",
+      "stereo": "none",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCOC(C)C",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "No ether forms: the alkoxide leaves from the tetrahedral intermediate and the halves separate."
+      },
+      {
+        "smiles": "CC(O)OC(C)C",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "Hemiacetals are not the product; the intermediate collapses to acetaldehyde + isopropoxide, and the aldehyde is reduced again."
+      },
+      {
+        "smiles": "CC=O.CC(C)O",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "Acetaldehyde is reduced faster than the ester was, so it never survives."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2_Pt"
+            ],
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "product": {
+          "smiles": "CC(=O)OC(C)C",
+          "stereo": "none"
+        },
+        "why": "Esters survive catalytic hydrogenation in this course. LiAlH₄ is the ester reductant."
+      }
+    ],
+    "explanation": "The acetyl side gives ethanol; the isopropoxy side gives propan-2-ol.",
+    "tip": "The alkoxy half keeps its own carbon skeleton: isopropoxy → isopropanol."
+  },
+  {
+    "id": "q-R5-methylcyclohexanecarboxylate-001",
+    "reactionId": "R5",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "COC(=O)C1CCCCC1",
+      "name": "methyl cyclohexanecarboxylate"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "LiAlH4"
+          ],
+          "conditions": {
+            "solvent": "ether"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "OCC1CCCCC1.CO",
+      "stereo": "none",
+      "highlightAtoms": [
+        0,
+        1,
+        8,
+        9
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "COCC1CCCCC1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "No ether: the OCH₃ is expelled as methoxide after the first hydride."
+      },
+      {
+        "smiles": "O=CC1CCCCC1.CO",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "The aldehyde is reduced immediately by the excess LiAlH₄."
+      },
+      {
+        "smiles": "COC(O)C1CCCCC1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "Hemiacetal is not a product: the intermediate collapses to the aldehyde + methoxide."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "over_reduction",
+        "product": {
+          "smiles": "COC(=O)C1CCCCC1",
+          "stereo": "none"
+        },
+        "why": "NaBH₄ does not reduce esters."
+      }
+    ],
+    "explanation": "Cyclohexylmethanol from the acyl half, methanol from the methoxy half.",
+    "tip": "Methyl esters always hand you methanol as the second alcohol."
+  },
+  {
+    "id": "q-R5-phenylacetate-001",
+    "reactionId": "R5",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(=O)Oc1ccccc1",
+      "name": "phenyl acetate"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "LiAlH4"
+          ],
+          "conditions": {
+            "solvent": "ether"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CCO.Oc1ccccc1",
+      "stereo": "none",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCOc1ccccc1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "No ether: phenoxide is expelled from the tetrahedral intermediate."
+      },
+      {
+        "smiles": "CC=O.Oc1ccccc1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "Acetaldehyde does not survive the excess hydride."
+      },
+      {
+        "smiles": "CC(O)Oc1ccccc1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "Hemiacetal is not the product; the intermediate collapses and the aldehyde is reduced again."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "over_reduction",
+        "product": {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "stereo": "none"
+        },
+        "why": "NaBH₄ does not reduce esters, aryl esters included."
+      }
+    ],
+    "explanation": "The acetyl side becomes ethanol; the phenoxy side becomes phenol (an aryl 'alcohol').",
+    "tip": "If the alkoxy half is an aryl group, the second product is a phenol."
+  },
+  {
+    "id": "q-R5-butyrolactone-001",
+    "reactionId": "R5",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "O=C1CCCO1",
+      "name": "oxolan-2-one (γ-butyrolactone)"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "LiAlH4"
+          ],
+          "conditions": {
+            "solvent": "ether"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "OCCCCO",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "butane-1,4-diol",
+          "1,4-butanediol"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1,
+        4,
+        5
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "C1CCOC1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "A lactone is a cyclic ester, not a cyclic ether. The C–O bond of the ester is broken on reduction; THF would need the ring to survive intact."
+      },
+      {
+        "smiles": "O=CCCCO",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "The hydroxy aldehyde is reduced on the spot by the excess hydride."
+      },
+      {
+        "smiles": "OC1CCCO1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "The cyclic hemiacetal is only an intermediate: it opens to the hydroxy aldehyde, which is reduced."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "over_reduction",
+        "product": {
+          "smiles": "O=C1CCCO1",
+          "stereo": "none"
+        },
+        "why": "NaBH₄ does not reduce esters, cyclic ones included."
+      }
+    ],
+    "explanation": "The lactone is an ester whose two halves are tied together, so the 'two alcohols' end up in one molecule: butane-1,4-diol.",
+    "tip": "Cyclic ester → one diol. The two OH groups are the two ester oxygens' fates."
+  },
+  {
+    "id": "q-R5-benzylacetate-001",
+    "reactionId": "R5",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(=O)OCc1ccccc1",
+      "name": "benzyl acetate"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "LiAlH4"
+          ],
+          "conditions": {
+            "solvent": "ether"
+          }
+        },
+        {
+          "reagents": [
+            "H2O"
+          ],
+          "conditions": {
+            "temp": "rt"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CCO.OCc1ccccc1",
+      "stereo": "none",
+      "highlightAtoms": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCOCc1ccccc1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "No ether forms: benzyloxide leaves from the tetrahedral intermediate."
+      },
+      {
+        "smiles": "CC=O.OCc1ccccc1",
+        "stereo": "none",
+        "tag": "stopped_halfway",
+        "why": "Acetaldehyde is reduced immediately to ethanol."
+      },
+      {
+        "smiles": "CC(O)OCc1ccccc1",
+        "stereo": "none",
+        "tag": "ester_one_piece",
+        "why": "Hemiacetals are not the end product; the intermediate collapses to the aldehyde + benzyloxide."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2_Pt"
+            ],
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "product": {
+          "smiles": "CC(=O)OCc1ccccc1",
+          "stereo": "none"
+        },
+        "why": "Esters survive hydrogenation in this course. Use LiAlH₄ then H₂O."
+      }
+    ],
+    "explanation": "Compare with ethyl benzoate: here the acetyl half gives ethanol and the benzyloxy half gives benzyl alcohol. Same two alcohols, opposite origins.",
+    "tip": "Ask which oxygen belongs to which half before you draw the products."
+  }
+]

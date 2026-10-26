@@ -1,0 +1,588 @@
+[
+  {
+    "id": "q-R22-hexanol-001",
+    "reactionId": "R22",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CCCCCCO",
+      "name": "hexan-1-ol"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "PCC"
+          ],
+          "conditions": {
+            "solvent": "CH₂Cl₂"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CCCCCC=O",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "hexanal"
+        ]
+      },
+      "highlightAtoms": [
+        5,
+        6
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCCCCC(=O)O",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "PCC in dry CH₂Cl₂ stops at the aldehyde: without water the aldehyde cannot form the hydrate that gets oxidised again. The acid is the chromic-acid (Jones) product."
+      },
+      {
+        "smiles": "CCCCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Oxidation happens at the carbon that carries the OH: C1, giving an aldehyde."
+      },
+      {
+        "smiles": "CCCCCCO",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises 1° and 2° alcohols; there is a reaction."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2CrO4"
+            ]
+          }
+        ],
+        "tag": "over_oxidation",
+        "product": {
+          "smiles": "CCCCCC(=O)O",
+          "stereo": "none"
+        },
+        "why": "Chromic acid goes all the way to the carboxylic acid. To stop at the aldehyde use PCC."
+      }
+    ],
+    "explanation": "PCC oxidises the 1° alcohol to the aldehyde and stops.",
+    "tip": "PCC = aldehyde. Jones = acid."
+  },
+  {
+    "id": "q-R22-hexenol-001",
+    "reactionId": "R22",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC/C=C/CCO",
+      "name": "(E)-hex-3-en-1-ol"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "PCC"
+          ],
+          "conditions": {
+            "solvent": "CH₂Cl₂"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "CC/C=C/CC=O",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "(E)-hex-3-enal",
+          "hex-3-enal"
+        ]
+      },
+      "highlightAtoms": [
+        5,
+        6
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCCCCC=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC does not touch the C=C; it only oxidises the alcohol."
+      },
+      {
+        "smiles": "CC/C=C/CC(=O)O",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "PCC stops at the aldehyde; the acid needs chromic acid."
+      },
+      {
+        "smiles": "CC/C=C/CCO",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "A 1° alcohol is oxidised by PCC; there is a reaction."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2CrO4"
+            ]
+          }
+        ],
+        "tag": "over_oxidation",
+        "product": {
+          "smiles": "CC/C=C/CC(=O)O",
+          "stereo": "none"
+        },
+        "why": "Jones would give the acid. PCC stops at the aldehyde."
+      }
+    ],
+    "explanation": "The 1° alcohol becomes an aldehyde; the alkene keeps its E geometry.",
+    "tip": "PCC ignores alkenes."
+  },
+  {
+    "id": "q-R22-cyclohexanol-001",
+    "reactionId": "R22",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OC1CCCCC1",
+      "name": "cyclohexanol"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "PCC"
+          ],
+          "conditions": {
+            "solvent": "CH₂Cl₂"
+          }
+        }
+      ],
+      "alt": [
+        [
+          {
+            "reagents": [
+              "H2CrO4"
+            ]
+          }
+        ]
+      ]
+    },
+    "answer": {
+      "smiles": "O=C1CCCCC1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "cyclohexanone"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "C1=CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Dehydration needs H₂SO₄ and heat; PCC oxidises."
+      },
+      {
+        "smiles": "OC(=O)CCCCC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "No oxidant in the toolkit cleaves the ring of a 2° alcohol; the ketone is the end."
+      },
+      {
+        "smiles": "OC1CCCCC1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "2° alcohols are oxidised by PCC to ketones."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "NaBH4"
+            ]
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "product": {
+          "smiles": "OC1CCCCC1",
+          "stereo": "none"
+        },
+        "why": "NaBH₄ reduces; you need an oxidant."
+      }
+    ],
+    "explanation": "The 2° alcohol becomes a ketone with PCC (or with chromic acid).",
+    "tip": "For 2° alcohols PCC and Jones agree: ketone."
+  },
+  {
+    "id": "q-R22-benzylalcohol-001",
+    "reactionId": "R22",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCc1ccccc1",
+      "name": "benzyl alcohol"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "PCC"
+          ],
+          "conditions": {
+            "solvent": "CH₂Cl₂"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "O=Cc1ccccc1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "benzaldehyde"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "OC(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "PCC stops at the aldehyde. Benzoic acid is the chromic-acid product."
+      },
+      {
+        "smiles": "Cc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "An oxidant does not remove the oxygen."
+      },
+      {
+        "smiles": "OCc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC oxidises 1° alcohols; there is a reaction."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2CrO4"
+            ]
+          }
+        ],
+        "tag": "over_oxidation",
+        "product": {
+          "smiles": "OC(=O)c1ccccc1",
+          "stereo": "none"
+        },
+        "why": "Chromic acid gives benzoic acid. For benzaldehyde use PCC."
+      }
+    ],
+    "explanation": "PCC oxidises the benzylic 1° alcohol to benzaldehyde and stops.",
+    "tip": "Aldehyde wanted? PCC, dry CH₂Cl₂."
+  },
+  {
+    "id": "q-R22-methylbutanol-001",
+    "reactionId": "R22",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "CC(C)C(C)O",
+      "name": "3-methylbutan-2-ol"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "PCC"
+          ],
+          "conditions": {
+            "solvent": "CH₂Cl₂"
+          }
+        }
+      ],
+      "alt": [
+        [
+          {
+            "reagents": [
+              "H2CrO4"
+            ]
+          }
+        ]
+      ]
+    },
+    "answer": {
+      "smiles": "CC(C)C(C)=O",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "3-methylbutan-2-one",
+          "3-methyl-2-butanone"
+        ]
+      },
+      "highlightAtoms": [
+        3,
+        5
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CC(C)=CC",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Dehydration needs acid and heat; PCC oxidises."
+      },
+      {
+        "smiles": "CC(C)CC(=O)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "A 2° alcohol cannot become a carboxylic acid: the carbinol carbon has only one H to lose and the skeleton does not rearrange."
+      },
+      {
+        "smiles": "CC(C)C(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "2° alcohols are oxidised to ketones by PCC."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "LiAlH4"
+            ]
+          },
+          {
+            "reagents": [
+              "H2O"
+            ]
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "product": {
+          "smiles": "CC(C)C(C)O",
+          "stereo": "none"
+        },
+        "why": "Hydrides reduce; you need an oxidant."
+      }
+    ],
+    "explanation": "The 2° alcohol is oxidised to the ketone.",
+    "tip": "2° alcohol → ketone; the carbinol stereocenter vanishes."
+  },
+  {
+    "id": "q-R22-hexenol2-001",
+    "reactionId": "R22",
+    "chapter": 16,
+    "difficulty": 2,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "C=CCCC(C)O",
+      "name": "hex-5-en-2-ol"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "PCC"
+          ],
+          "conditions": {
+            "solvent": "CH₂Cl₂"
+          }
+        }
+      ],
+      "alt": [
+        [
+          {
+            "reagents": [
+              "H2CrO4"
+            ]
+          }
+        ]
+      ]
+    },
+    "answer": {
+      "smiles": "C=CCCC(C)=O",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "hex-5-en-2-one",
+          "5-hexen-2-one"
+        ]
+      },
+      "highlightAtoms": [
+        4,
+        6
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "CCCCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC does not reduce or otherwise touch the C=C."
+      },
+      {
+        "smiles": "C=CCCC(C)O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "The 2° alcohol is oxidised; there is a reaction."
+      },
+      {
+        "smiles": "O=CCCC(C)=O",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "PCC does not cleave alkenes; that is ozonolysis."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2_Pt"
+            ],
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "product": {
+          "smiles": "CCCCC(C)O",
+          "stereo": "none"
+        },
+        "why": "H₂/Pt reduces the alkene and leaves the alcohol: the opposite of what you want."
+      }
+    ],
+    "explanation": "The 2° alcohol becomes a ketone; the terminal alkene is untouched.",
+    "tip": "Alkenes are spectators under PCC."
+  },
+  {
+    "id": "q-R22-phenylethanol-001",
+    "reactionId": "R22",
+    "chapter": 16,
+    "difficulty": 1,
+    "orderTypes": [
+      "predict_product",
+      "make_it"
+    ],
+    "start": {
+      "smiles": "OCCc1ccccc1",
+      "name": "2-phenylethanol"
+    },
+    "route": {
+      "steps": [
+        {
+          "reagents": [
+            "PCC"
+          ],
+          "conditions": {
+            "solvent": "CH₂Cl₂"
+          }
+        }
+      ]
+    },
+    "answer": {
+      "smiles": "O=CCc1ccccc1",
+      "stereo": "none",
+      "names": {
+        "accepted": [
+          "2-phenylacetaldehyde",
+          "phenylacetaldehyde",
+          "2-phenylethanal"
+        ]
+      },
+      "highlightAtoms": [
+        0,
+        1
+      ]
+    },
+    "productDistractors": [
+      {
+        "smiles": "OC(=O)Cc1ccccc1",
+        "stereo": "none",
+        "tag": "over_oxidation",
+        "why": "PCC stops at the aldehyde; the acid needs chromic acid."
+      },
+      {
+        "smiles": "CC(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Oxidation happens at the carbon bearing the OH (the CH₂OH), not at the benzylic CH₂."
+      },
+      {
+        "smiles": "C=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "reagent_label_unknown",
+        "why": "Dehydration needs acid and heat; PCC oxidises."
+      }
+    ],
+    "routeDistractors": [
+      {
+        "steps": [
+          {
+            "reagents": [
+              "H2CrO4"
+            ]
+          }
+        ],
+        "tag": "over_oxidation",
+        "product": {
+          "smiles": "OC(=O)Cc1ccccc1",
+          "stereo": "none"
+        },
+        "why": "Chromic acid gives phenylacetic acid. PCC stops at the aldehyde."
+      }
+    ],
+    "explanation": "The 1° alcohol is oxidised to the aldehyde and stops.",
+    "tip": "Find the carbon with the OH; that is the only one that changes."
+  }
+]
