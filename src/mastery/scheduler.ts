@@ -69,8 +69,7 @@ export function pickNext(
     { name: 'new', list: fresh.filter((r) => rec(r.id).state === 'new') },
     { name: 'solid', list: fresh.filter((r) => rec(r.id).state === 'solid').sort((a, b) => rec(a.id).dueAt - rec(b.id).dueAt) },
   ];
-  const ordered = opts.weakOnly ? [...buckets.slice(0, 3), ...buckets.slice(3)] : buckets;
-  for (const b of ordered) {
+  const tryBucket = (b: { name: Bucket; list: Reaction[] }): Pick | undefined => {
     // among the top few of a bucket, pick randomly so shifts are not identical day to day
     const top = b.list.slice(0, b.name === 'new' ? b.list.length : 3);
     for (const reaction of shuffleStable(top, opts.rng)) {
@@ -80,6 +79,22 @@ export function pickNext(
       if (!type) continue;
       return { reaction, item, type, bucket: b.name, retest: false };
     }
+    return undefined;
+  };
+  const weakBuckets = buckets.slice(0, 3);
+  for (const b of weakBuckets) {
+    const hit = tryBucket(b);
+    if (hit) return hit;
+  }
+  if (opts.weakOnly) {
+    // clinic: keep cycling weak reactions (with items not yet served) before touching new or solid ones
+    const weakAll = pool.filter((r) => rec(r.id).state === 'missed' || rec(r.id).state === 'shaky' || isOverdue(rec(r.id), opts.now));
+    const hit = tryBucket({ name: 'shaky', list: shuffleStable(weakAll, opts.rng) });
+    if (hit) return hit;
+  }
+  for (const b of buckets.slice(3)) {
+    const hit = tryBucket(b);
+    if (hit) return hit;
   }
   // everything served this session: allow repeats of reactions (but not items) when the shift is long
   for (const reaction of shuffleStable(pool, opts.rng)) {

@@ -76,6 +76,20 @@ describe('scheduler', () => {
     expect(retest.retest).toBe(true);
     expect(retest.item.id).toBe(first.item.id);
   });
+  it('weakness clinic keeps cycling weak reactions before new ones', () => {
+    const mastery = {
+      R5: { ...newRecord(), state: 'shaky' as const, dueAt: now + DAY, lastSeenAt: now, seen: 2, correct: 1 },
+      P1: { ...newRecord(), state: 'missed' as const, dueAt: now, lastSeenAt: now - DAY, seen: 1 },
+    };
+    const session = newSession();
+    const served: string[] = [];
+    for (let i = 0; i < 6; i++) {
+      const p = pickNext(playable, mastery, session, { ...opts, allowedTypes: [...opts.allowedTypes], weakOnly: true })!;
+      served.push(p.reaction.id);
+      noteServed(session, p.reaction.id, p.item.id);
+    }
+    expect(served.every((id) => id === 'R5' || id === 'P1')).toBe(true);
+  });
   it('does not repeat an item within a session', () => {
     const session = newSession();
     const seen = new Set<string>();
