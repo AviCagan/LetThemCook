@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://letthemcook.local/schema/mistake-tag.schema.json",
+  "title": "Mistake tag",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "label", "rule"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]+$" },
+    "label": { "type": "string", "description": "Short name shown in the Lab Notebook." },
+    "rule": { "type": "string", "description": "The general rule the mentor restates after the distractor-specific 'why'. 1-3 sentences." },
+    "auto": { "type": "boolean", "description": "true when the grader assigns this tag itself (missing workup, wrong order, missing stereo) rather than from a distractor." }
+  }
+}

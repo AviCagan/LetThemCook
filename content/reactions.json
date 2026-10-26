@@ -1,0 +1,76 @@
+[
+  {
+    "id": "R2", "name": "NaBH₄ reduction", "chapter": 16, "section": "alcohols", "phase": 1,
+    "reagentsText": "NaBH₄, MeOH/EtOH",
+    "steps": [ { "reagents": ["NaBH4"], "conditions": { "solvent": "MeOH" } } ],
+    "rules": { "summary": "Aldehyde → 1° alcohol, ketone → 2° alcohol. Leaves C=C, esters and COOH alone.",
+               "stereo": "A new stereocenter on an achiral substrate is formed as a racemate.",
+               "leavesAlone": ["C=C", "ester", "carboxylic acid", "aromatic ring"] },
+    "stereoOutcome": "racemic_if_new_center",
+    "smarts": [ { "rxn": "[C;!$(C(=O)[O,N,S,Cl,Br]):1]=[O:2]>>[C:1][O:2]", "reactants": ["start"], "mode": "exhaustive" } ],
+    "decoys": ["LiAlH4", "H2_Pt", "PCC"],
+    "typicalTags": ["over_reduction", "missing_stereo", "reagent_label_unknown"],
+    "minigames": ["pour", "stir"]
+  },
+  {
+    "id": "R5", "name": "LiAlH₄ reduction of an ester", "chapter": 16, "section": "alcohols", "phase": 1,
+    "reagentsText": "1. LiAlH₄, ether/THF; 2. H₂O",
+    "steps": [ { "reagents": ["LiAlH4"], "conditions": { "solvent": "ether" } }, { "reagents": ["H2O"], "conditions": { "temp": "rt" } } ],
+    "altRoutes": [ [ { "reagents": ["LiAlH4"], "conditions": { "solvent": "ether" } }, { "reagents": ["H3O_plus"] } ] ],
+    "rules": { "summary": "Ester → TWO alcohols: the acyl side becomes RCH₂OH (1°), the alkoxy side becomes its own alcohol R′OH.",
+               "leavesAlone": ["C=C", "aromatic ring"],
+               "notes": ["Two hydrides add to the acyl carbon; the alkoxide leaves after the first.", "Workup (H₂O or H₃O⁺) is a separate step."] },
+    "stereoOutcome": "none",
+    "smarts": [ { "rxn": "[C:1](=[O:2])[O:3][C;!$(C=O):4]>>[C:1][O:2].[O:3][C:4]", "reactants": ["start"], "mode": "single" } ],
+    "decoys": ["NaBH4", "H2_Pt", "PCC"],
+    "typicalTags": ["ester_one_piece", "partial_reduction", "missing_workup", "over_reduction"],
+    "minigames": ["pour", "workup"]
+  },
+  {
+    "id": "R23", "name": "HIO₄ cleavage of a vicinal diol", "chapter": 16, "section": "alcohols", "phase": 1,
+    "reagentsText": "HIO₄",
+    "steps": [ { "reagents": ["HIO4"] } ],
+    "rules": { "summary": "Vicinal diol → the C–C bond between the carbinol carbons is cleaved → aldehydes/ketones (correct -al vs -one by substitution).",
+               "notes": ["A carbinol carbon with one carbon neighbour becomes an aldehyde; with two, a ketone.", "A cyclic 1,2-diol opens to one dicarbonyl chain."] },
+    "stereoOutcome": "none",
+    "smarts": [ { "rxn": "[C:1]([OX2H1:3])[C:2]([OX2H1:4])>>([C:1]=[O:3].[C:2]=[O:4])", "reactants": ["start"], "mode": "single" } ],
+    "decoys": ["PCC", "KMnO4", "O3"],
+    "typicalTags": ["diol_to_alcohols", "aldehyde_ketone_mixup", "reagent_label_unknown"],
+    "minigames": ["pour", "stir"]
+  },
+  {
+    "id": "P1", "name": "Diazonium route to a phenol", "chapter": 16, "section": "phenols", "phase": 1,
+    "reagentsText": "1. NaNO₂, H₂SO₄ (or HCl), 0–5 °C; 2. H₂O, heat",
+    "steps": [ { "reagents": ["NaNO2_H2SO4"], "conditions": { "temp": "ice" } }, { "reagents": ["H2O"], "conditions": { "temp": "reflux" } } ],
+    "rules": { "summary": "Ar–NH₂ → Ar–OH on the SAME carbon via the diazonium salt. NaNO₂ is not nitration (HNO₃ is the decoy).",
+               "notes": ["Step 1 must be cold (0–5 °C) or the diazonium salt decomposes.", "Everything else on the ring stays where it is."] },
+    "stereoOutcome": "none",
+    "smarts": [ { "rxn": "[c:1][NX3H2]>>[c:1][OH]", "reactants": ["start"], "mode": "single" } ],
+    "decoys": ["HNO3_H2SO4", "H3O_plus"],
+    "typicalTags": ["nitrite_vs_nitric", "missing_workup", "wrong_temperature"],
+    "minigames": ["temperature", "temperature"]
+  },
+  {
+    "id": "E3", "name": "Williamson ether synthesis", "chapter": 17, "section": "ethers", "phase": 1,
+    "reagentsText": "1. NaH (or Na); 2. CH₃X / 1° RX",
+    "steps": [ { "reagents": ["NaH"] }, { "reagents": ["CH3I"] } ],
+    "rules": { "summary": "Alkoxide + CH₃ or 1° halide → ether (SN2). The alkoxide can be anything; the halide must be CH₃ or 1° (benzyl and allyl are great).",
+               "notes": ["Order matters: base first, then the halide.", "A 2°/3° halide gives E2 instead (see E4)."] },
+    "stereoOutcome": "none",
+    "smarts": [ { "rxn": "[OX2H1:1][#6:2].[CX4;!$(C(C)C):3][Cl,Br,I]>>[#6:2][O:1][C:3]", "reactants": ["start", "CH3I"], "mode": "single" } ],
+    "decoys": ["AlCl3", "tBuBr", "H3O_plus"],
+    "typicalTags": ["williamson_E2", "lewis_acid_as_base", "wrong_reagent_order", "aryl_SN2"],
+    "minigames": ["stir", "pour"]
+  },
+  {
+    "id": "E4", "name": "Alkoxide + 2°/3° halide (E2 trap)", "chapter": 17, "section": "ethers", "phase": 2,
+    "reagentsText": "RO⁻ + 2°/3° RX",
+    "steps": [ { "reagents": ["NaH"] }, { "reagents": ["tBuBr"] } ],
+    "rules": { "summary": "E2 → alkene (Zaitsev), not an ether.", "regio": "Zaitsev: the more substituted alkene is major." },
+    "stereoOutcome": "none",
+    "smarts": [ { "rxn": "[CX4:1]([Br,Cl,I])[CX4;!H0:2]>>[C:1]=[C:2]", "reactants": ["tBuBr"], "mode": "single" } ],
+    "decoys": [],
+    "typicalTags": ["williamson_E2", "zaitsev_flip"],
+    "minigames": ["stir", "pour"]
+  }
+]

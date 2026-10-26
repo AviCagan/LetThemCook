@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://letthemcook.local/schema/reagent.schema.json",
+  "title": "Reagent bottle",
+  "description": "One bottle on the reagent shelf. A bottle may stand for a reagent combination that is always used together (e.g. 'NaNO2 / H2SO4'). Conditions (temperature, light, equivalents) are NOT part of the bottle; they are set in the minigames and graded as part of the route.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "label", "name", "shelf", "kind", "technique", "card"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9_]+$", "description": "Stable ASCII id used by reactions and questions." },
+    "label": { "type": "string", "description": "Short text printed on the pixel bottle (Unicode subscripts OK)." },
+    "name": { "type": "string", "description": "Full name shown on the reagent card." },
+    "smiles": { "type": "string", "description": "Only for reagents that contribute atoms to the product (CH3I, ethylene oxide, an alcohol partner...). Used by the validator to run reaction SMARTS with multiple reactants." },
+    "shelf": { "type": "string", "enum": ["ch16", "phenols", "ch17", "workup", "decoy"], "description": "Which shelf the bottle lives on; shelves unlock by chapter mastery." },
+    "kind": { "type": "string", "enum": ["reagent", "workup", "decoy"] },
+    "technique": {
+      "type": "string",
+      "enum": ["pour", "temperature", "stir", "light", "workup", "pressure", "none"],
+      "description": "Default minigame that runs when this bottle is used in a step."
+    },
+    "techniqueParams": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "equivOptions": { "type": "array", "items": { "type": "number" }, "description": "Equivalents the pour gauge offers (e.g. [1, 2] for H2O2)." },
+        "tempPresets": { "type": "array", "items": { "$ref": "#/definitions/tempPreset" }, "description": "Dial stops the temperature minigame offers for this bottle." },
+        "lightToggle": { "type": "boolean", "description": "Show the light/peroxide toggle for this bottle." }
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["does"],
+      "properties": {
+        "does": { "type": "string", "description": "One line: what this tool does. Used by reagent-card mastery and the mentor." },
+        "doesNot": { "type": "string", "description": "One line: what it leaves alone / cannot do." },
+        "trap": { "type": "string", "description": "Why it is on the shelf as a decoy, if it is one." }
+      }
+    },
+    "aliases": { "type": "array", "items": { "type": "string" }, "description": "Other labels the player might know (for the 'reagent_label_unknown' tag)." }
+  },
+  "definitions": {
+    "tempPreset": { "type": "string", "enum": ["ice", "rt", "c140", "c180", "reflux"] }
+  }
+}
