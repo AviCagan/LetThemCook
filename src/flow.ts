@@ -2,7 +2,7 @@
 // (plus heat / light / equivalents) to the flask and the reaction engine returns the real product
 // each time, until the target is in the flask and handed over. Phaser and Preact observe the signals.
 import { signal, computed } from '@preact/signals';
-import type { Conditions, QuestionItem, Reaction, StereoLabel } from './content/types';
+import type { Conditions, OrderType, QuestionItem, Reaction, StereoLabel } from './content/types';
 import { getReaction, getReagent, getTag, playableReactions } from './content/bank';
 import { ReactionEngine, type Outcome } from './chem/engine';
 import { loadRDKit } from './chem/rdkit';
@@ -16,11 +16,18 @@ import type { HistoryEntry, LabBookEntry, LabBookStep } from './save/types';
 import { save, screen, showToast } from './state';
 import { mulberry32, pick, randomSeed, type Rng } from './util/rng';
 import { CHARACTER_KEYS } from './art/characters';
+import { customerPool } from './shop';
 import { sfx } from './audio/sfx';
 import { stereoLabelText } from './engine/stereo';
+import { buildQuiz, isQuizType, TYPE_LABEL, unlockedTypes, UNLOCKS, type Quiz } from './quiz';
+import { checkName } from './engine/names';
+import { topTags } from './mastery/stats';
 
-export type Mode = 'shift' | 'practice' | 'clinic' | 'synthesis';
-export type Phase = 'idle' | 'arrive' | 'request' | 'bench' | 'stereo' | 'result' | 'mentor' | 'dayend';
+export type Mode = 'shift' | 'practice' | 'clinic' | 'synthesis' | 'rush' | 'exam';
+export type Phase = 'idle' | 'arrive' | 'request' | 'bench' | 'quiz' | 'stereo' | 'result' | 'mentor' | 'dayend';
+export const MODE_LABEL: Record<Mode, string> = {
+  shift: 'Shift', practice: 'Practice', clinic: 'Weakness clinic', synthesis: 'Synthesis shift', rush: 'Rush hour', exam: 'Exam',
+};
 
 export interface Order {
   id: string;
@@ -31,6 +38,11 @@ export interface Order {
   stereoChoices?: StereoLabel[];
   par: number;
   retest?: boolean;
+  /** how this item is served (make_it / synthesis use the bench; the rest are quizzes) */
+  type: OrderType;
+  quiz?: Quiz;
+  /** today's daily special: double coins */
+  daily?: boolean;
 }
 
 export interface StepRecord {
@@ -63,7 +75,12 @@ export interface OrderOutcome {
   hinted: boolean;
   wasted: number;
   seconds: number;
-  stage: 'handover' | 'stereo' | 'gaveup' | 'none';
+  stage: 'handover' | 'stereo' | 'gaveup' | 'quiz' | 'none';
+  /** quiz orders: the answer given (SMILES / name / route index) and whether it was half credit */
+  picked?: string;
+  partial?: boolean;
+  /** rush hour fast-answer bonus and daily-special doubling, already included in coins */
+  bonus?: string[];
   finalFlask: string;
   pickedStereo?: StereoLabel;
   steps: StepRecord[];
@@ -77,6 +94,12 @@ export interface ShiftReport {
   bestCombo: number;
   tags: Record<string, number>;
   reactions: Record<string, { ok: number; total: number }>;
+  mode?: Mode;
+  /** exam / rush: seconds used, and whether the clock ran out */
+  seconds?: number;
+  timeUp?: boolean;
+  /** order types unlocked during this shift */
+  unlocked?: string[];
 }
 
 const INTERMEDIATE_PATTERNS: [RegExp, string][] = [
@@ -102,7 +125,14 @@ class GameFlow {
   shiftReport = signal<ShiftReport | null>(null);
   hintText = signal<string | null>(null);
   busy = signal(false);
+  /** quiz progress: 'answer' -> (spot the flaw) 'reason'; name it: 'type' or 'choices' */
+  quizStage = signal<'answer' | 'reason' | 'choices'>('answer');
+  /** rush hour / exam deadline (ms epoch) */
+  deadline = signal<number | null>(null);
+  private shiftStartedAt = 0;
+  private nameChoicesShown = false;
   practiceOnly: string[] | undefined;
+  practiceReagents: string[] | undefined;
   engine: ReactionEngine | null = null;
   private hinted = false;
   private wasted = 0;
@@ -122,16 +152,21 @@ class GameFlow {
 
   /* ---------- session ---------- */
 
-  startShift(mode: Mode, opts: { customers?: number; only?: string[] } = {}): void {
+  startShift(mode: Mode, opts: { customers?: number; only?: string[]; reagents?: string[] } = {}): void {
     const s = save.value!;
     this.mode.value = mode;
     this.practiceOnly = opts.only;
-    this.customersTotal.value = opts.customers ?? (mode === 'practice' ? 6 : s.profile.settings.shiftLength);
+    this.practiceReagents = opts.reagents;
+    const st = s.profile.settings;
+    this.customersTotal.value = opts.customers ?? (mode === 'practice' ? 6 : mode === 'exam' ? st.examLength ?? 25 : mode === 'rush' ? 99 : st.shiftLength);
     this.customerIndex.value = 0;
+    this.shiftStartedAt = Date.now();
+    const minutes = mode === 'rush' ? st.rushMinutes ?? 5 : mode === 'exam' ? st.examMinutes ?? 50 : 0;
+    this.deadline.value = minutes > 0 ? this.shiftStartedAt + minutes * 60_000 : null;
     this.combo.value = 0;
     this.session = newSession();
     this.rng = mulberry32(randomSeed());
-    this.report = emptyReport();
+    this.report = { ...emptyReport(), mode };
     this.shiftReport.value = null;
     this.ensureSeeds();
     screen.value = 'lab';
@@ -155,21 +190,51 @@ class GameFlow {
 
   nextCustomer(): void {
     const s = save.value!;
-    if (this.customerIndex.value >= this.customersTotal.value) {
+    if (this.customerIndex.value >= this.customersTotal.value || this.timeIsUp()) {
       this.endShift();
       return;
     }
+    const mode = this.mode.value;
     const reactions = playableReactions(s.profile.chapters);
-    const picked = pickNext(reactions, s.mastery.reactions, this.session, {
-      // clinic drills single steps; a synthesis shift is multi-step only; shifts and practice mix them in
-      allowedTypes: this.mode.value === 'clinic' ? ['make_it'] : this.mode.value === 'synthesis' ? ['synthesis'] : ['make_it', 'synthesis'],
-      synthesisChance: this.mode.value === 'shift' ? 0.4 : this.mode.value === 'practice' ? 0.3 : 0,
-      itemFilter: (q) => s.profile.chapters[String(q.chapter)] !== false,
+    const unlocked = unlockedTypes(s.history.length);
+    const ALL: OrderType[] = ['make_it', 'predict_product', 'what_start', 'spot_flaw', 'name_it', 'synthesis'];
+    const allowedTypes: OrderType[] =
+      mode === 'synthesis' ? ['synthesis']
+      : mode === 'exam' ? ALL
+      : mode === 'clinic' ? unlocked.filter((t) => t === 'make_it' || t === 'predict_product' || t === 'spot_flaw')
+      : mode === 'rush' ? ALL.filter((t) => t !== 'synthesis' && (t === 'make_it' || unlocked.includes(t)))
+      : [...unlocked, 'synthesis'];
+    const ci = this.customerIndex.value;
+    const opts = {
+      allowedTypes,
+      synthesisChance: mode === 'shift' ? 0.4 : mode === 'practice' ? 0.3 : mode === 'exam' ? 0.25 : 0,
+      itemFilter: (q: QuestionItem) =>
+        s.profile.chapters[String(q.chapter)] !== false && (!this.practiceReagents || q.route.some((st) => this.practiceReagents!.includes(st.reagent))),
       now: Date.now(),
       rng: this.rng,
       only: this.practiceOnly,
-      weakOnly: this.mode.value === 'clinic',
-    });
+      weakOnly: mode === 'clinic',
+      // a shift starts easy and gets harder; rush hour stays quick
+      maxDifficulty: mode === 'shift' ? 1 + Math.ceil((3 * (ci + 1)) / this.customersTotal.value) : mode === 'rush' ? 2 : undefined,
+      preferTags: mode === 'clinic' ? topTags(s.history, 5).map((t) => t.tag) : undefined,
+      typeWeights: mode === 'rush' ? { make_it: 0.15, predict_product: 0.3, what_start: 0.2, spot_flaw: 0.15, name_it: 0.2 } : undefined,
+    };
+    // once a day, the second customer of a shift is the daily special: the most overdue reaction, double coins
+    const today = new Date().toISOString().slice(0, 10);
+    let daily = false;
+    let picked = undefined as ReturnType<typeof pickNext>;
+    if (mode === 'shift' && ci === 1 && s.profile.lastDailySpecial !== today) {
+      const due = mostDue(reactions, s.mastery.reactions);
+      if (due) {
+        picked = pickNext(reactions, s.mastery.reactions, this.session, { ...opts, only: [due.id], maxDifficulty: undefined });
+        if (picked) {
+          daily = true;
+          s.profile.lastDailySpecial = today;
+          persistSave(s);
+        }
+      }
+    }
+    if (!picked) picked = pickNext(reactions, s.mastery.reactions, this.session, opts);
     if (!picked) {
       showToast('No orders left for that selection.');
       this.endShift();
@@ -177,6 +242,10 @@ class GameFlow {
     }
     const item = picked.item;
     const target = item.target!;
+    let type: OrderType = picked.type;
+    const quiz = isQuizType(type) ? buildQuiz(type, item, this.rng, topTags(s.history, 5).map((t) => t.tag)) : undefined;
+    if (isQuizType(type) && !quiz) type = (item.orderTypes ?? ['make_it']).includes('synthesis') ? 'synthesis' : 'make_it';
+    const PAR: Partial<Record<OrderType, number>> = { predict_product: 45, what_start: 45, spot_flaw: 60, name_it: 40 };
     const order: Order = {
       id: `o${Date.now().toString(36)}`,
       item,
@@ -184,14 +253,18 @@ class GameFlow {
       start: { smiles: item.start!.smiles, name: item.start!.name },
       target: { smiles: target.smiles!, name: target.name, altNames: target.altNames, stereo: target.stereo, highlightAtoms: target.highlightAtoms },
       stereoChoices: target.stereo === 'none' ? undefined : uniq([target.stereo, ...(target.stereoChoices ?? ['racemic', 'single_enantiomer', 'meso']), 'none' as StereoLabel]),
-      par: 60 + 40 * (item.route?.length ?? 1),
+      par: PAR[type] ?? 60 + 40 * (item.route?.length ?? 1),
       retest: picked.retest,
+      type,
+      quiz,
+      daily,
     };
     noteServed(this.session, picked.reaction.id, item.id);
-    let idx = Math.floor(this.rng() * CHARACTER_KEYS.length);
-    if (idx === this.lastCustomer) idx = (idx + 1) % CHARACTER_KEYS.length;
+    const pool = customerPool(s, CHARACTER_KEYS);
+    let idx = Math.floor(this.rng() * pool.length);
+    if (idx === this.lastCustomer) idx = (idx + 1) % pool.length;
     this.lastCustomer = idx;
-    this.customerKey.value = CHARACTER_KEYS[idx];
+    this.customerKey.value = pool[idx];
     this.order.value = order;
     this.flask.value = order.start.smiles;
     this.steps.value = [];
@@ -202,7 +275,19 @@ class GameFlow {
     this.hinted = false;
     this.wasted = 0;
     this.encounteredTags = [];
-    this.phase.value = 'arrive';
+    this.quizStage.value = 'answer';
+    this.nameChoicesShown = false;
+    if (mode === 'exam') {
+      // exam mode: no customers walking in, just the next question
+      this.startedAt = Date.now();
+      this.phase.value = 'request';
+    } else {
+      this.phase.value = 'arrive';
+    }
+  }
+
+  timeIsUp(): boolean {
+    return this.deadline.value !== null && Date.now() >= this.deadline.value;
   }
 
   customerArrived(): void {
@@ -212,7 +297,63 @@ class GameFlow {
   }
 
   acceptOrder(): void {
-    this.phase.value = 'bench';
+    const o = this.order.value;
+    this.phase.value = o && isQuizType(o.type) ? 'quiz' : 'bench';
+  }
+
+  /* ---------- quiz orders ---------- */
+
+  /** What do I get? / What did I start with?: pick one of four structures. */
+  pickOption(i: number): void {
+    const o = this.order.value;
+    if (!o?.quiz || this.phase.value !== 'quiz' || (o.quiz.kind !== 'predict_product' && o.quiz.kind !== 'what_start')) return;
+    const opt = o.quiz.options[i];
+    if (opt.correct) {
+      if (o.quiz.kind === 'predict_product' && o.stereoChoices?.length) {
+        this.phase.value = 'stereo';
+        return;
+      }
+      this.finishOrder(true, 'quiz', [], undefined, { picked: opt.smiles });
+      return;
+    }
+    const why = o.quiz.kind === 'what_start' ? `${opt.why} The starting material was ${o.start.name}.` : opt.why ?? 'That is not the major product.';
+    this.finishOrder(false, 'quiz', [{ tag: opt.tag ?? 'wrong_product', why }], undefined, { picked: opt.smiles });
+  }
+
+  /** Spot the flaw, part 1: which route works? */
+  pickRoute(i: number): void {
+    const o = this.order.value;
+    if (!o?.quiz || o.quiz.kind !== 'spot_flaw' || this.phase.value !== 'quiz') return;
+    if (o.quiz.routes[i].works) {
+      this.quizStage.value = 'reason';
+      sfx.ding();
+      return;
+    }
+    this.finishOrder(false, 'quiz', [{ tag: o.quiz.flaw.tag, why: `That route fails: ${o.quiz.flaw.why}` }], undefined, { picked: `route ${'AB'[i]}` });
+  }
+
+  /** Spot the flaw, part 2: why does the other route fail? Right route + wrong reason = half credit. */
+  pickReason(tag: string): void {
+    const o = this.order.value;
+    if (!o?.quiz || o.quiz.kind !== 'spot_flaw' || this.quizStage.value !== 'reason') return;
+    const flaw = o.quiz.flaw;
+    if (tag === flaw.tag) this.finishOrder(true, 'quiz', [], undefined, { picked: tag });
+    else this.finishOrder(true, 'quiz', [{ tag: flaw.tag, why: `Right route, but the other one fails because: ${flaw.why}` }], undefined, { picked: tag, partial: true });
+  }
+
+  /** Name it: typed answer. */
+  submitName(text: string): void {
+    const o = this.order.value;
+    if (!o?.quiz || o.quiz.kind !== 'name_it' || this.phase.value !== 'quiz') return;
+    const v = checkName(text, o.quiz.accepted, o.quiz.traps);
+    if (v.correct) this.finishOrder(true, 'quiz', [], undefined, { picked: text, partial: this.nameChoicesShown });
+    else this.finishOrder(false, 'quiz', [{ tag: v.tag ?? 'naming_spelling', why: v.why ?? '' }], undefined, { picked: text });
+  }
+
+  /** Name it: give up typing and choose from four (half credit). */
+  showNameChoices(): void {
+    this.nameChoicesShown = true;
+    this.quizStage.value = 'choices';
   }
 
   /* ---------- workbench ---------- */
@@ -286,8 +427,18 @@ class GameFlow {
   /** The mentor's hint: the next step of the intended route from where the flask is now. */
   async askMentor(): Promise<void> {
     const order = this.order.value!;
-    if (this.phase.value !== 'bench' && this.phase.value !== 'stereo') return;
+    if (this.mode.value === 'exam') return; // no hints in the exam
+    if (this.phase.value !== 'bench' && this.phase.value !== 'stereo' && this.phase.value !== 'quiz') return;
     this.hinted = true;
+    if (this.phase.value === 'quiz') {
+      const q = order.quiz!;
+      this.hintText.value =
+        q.kind === 'name_it' ? `${order.item.explanation.split('. ')[0]}.`
+        : q.kind === 'spot_flaw' ? 'Run each route in your head one step at a time: does every step find the group it needs, in the right order, under the right conditions?'
+        : order.reaction.rules.summary;
+      sfx.ding();
+      return;
+    }
     if (this.phase.value === 'stereo') {
       this.hintText.value = order.reaction.rules.stereo ?? order.reaction.rules.summary;
       sfx.ding();
@@ -332,7 +483,7 @@ class GameFlow {
   pickStereo(label: StereoLabel): void {
     const order = this.order.value!;
     if (label === order.target.stereo) {
-      this.finishOrder(true, 'none', [], label);
+      this.finishOrder(true, isQuizType(order.type) ? 'quiz' : 'none', [], label);
       return;
     }
     const tag = label === 'none' ? 'missing_stereo' : 'meso_vs_racemic';
@@ -341,7 +492,9 @@ class GameFlow {
   }
 
   giveUp(): void {
-    this.finishOrder(false, 'gaveup', [{ tag: 'gave_up', why: `The intended route: ${this.routeText()}. ${this.order.value!.item.explanation}` }]);
+    const o = this.order.value!;
+    const why = o.quiz?.kind === 'name_it' ? `It is ${o.target.name}. ${o.item.explanation}` : `The intended route: ${this.routeText()}. ${o.item.explanation}`;
+    this.finishOrder(false, 'gaveup', [{ tag: 'gave_up', why }]);
   }
 
   private diagnoseWrongHandover(): Mistake[] {
@@ -377,19 +530,30 @@ class GameFlow {
 
   /* ---------- result + mastery ---------- */
 
-  private finishOrder(correct: boolean, stage: OrderOutcome['stage'], mistakes: Mistake[], pickedStereo?: StereoLabel): void {
+  private finishOrder(correct: boolean, stage: OrderOutcome['stage'], mistakes: Mistake[], pickedStereo?: StereoLabel, extra: { picked?: string; partial?: boolean } = {}): void {
     const order = this.order.value!;
     const s = save.value!;
+    const unlockedBefore = unlockedTypes(s.history.length);
     const seconds = Math.max(1, Math.round((Date.now() - this.startedAt) / 1000));
+    const quiz = isQuizType(order.type);
     const routeLen = order.item.route?.length ?? 1;
     const usedSteps = this.steps.value.filter((x) => x.kind === 'step' && x.changed).length;
-    const clean = correct && !this.hinted && this.wasted === 0 && usedSteps <= routeLen;
+    const clean = correct && !this.hinted && !extra.partial && (quiz || (this.wasted === 0 && usedSteps <= routeLen));
     const chemistry: 0 | 0.5 | 1 = !correct ? 0 : clean ? 1 : 0.5;
-    const technique = Math.max(0, 1 - 0.15 * this.wasted);
+    const technique = quiz ? (this.nameChoicesShown ? 0.5 : 1) : Math.max(0, 1 - 0.15 * this.wasted);
     const score = scoreOrder({ chemistry, technique, seconds, par: order.par });
     const combo = correct ? this.combo.value + 1 : 0;
     this.combo.value = combo;
-    const coins = correct ? coinsFor(score.stars, combo) : 0;
+    let coins = correct ? coinsFor(score.stars, combo) : 0;
+    const bonus: string[] = [];
+    if (correct && this.mode.value === 'rush' && seconds <= order.par / 2) {
+      coins += 3;
+      bonus.push('fast answer +3');
+    }
+    if (correct && order.daily) {
+      coins *= 2;
+      bonus.push('daily special ×2');
+    }
     const all = dedupe([...mistakes, ...this.encounteredTags]);
     const tags = all.map((m) => m.tag);
     const now = Date.now();
@@ -408,10 +572,12 @@ class GameFlow {
       rr.lastSeenAt = now;
       s.mastery.reagents[st.reagentId] = rr;
     }
-    const entry: HistoryEntry = { t: now, item: order.item.id, type: 'make_it', reaction: order.reaction.id, ok: correct, tags, stars: score.stars, hinted: this.hinted, mode: this.mode.value, seconds, coins };
+    const entry: HistoryEntry = { t: now, item: order.item.id, type: order.type, reaction: order.reaction.id, ok: correct, tags, stars: score.stars, hinted: this.hinted, mode: this.mode.value, seconds, coins };
     s.history.push(entry);
     trimHistory(s, 5000);
     const book: LabBookEntry = {
+      type: order.type,
+      picked: extra.picked ?? pickedStereo,
       t: now,
       item: order.item.id,
       startSmiles: order.start.smiles,
@@ -443,7 +609,13 @@ class GameFlow {
     if (correct) rr.ok += 1;
     this.report.reactions[order.reaction.id] = rr;
 
-    this.outcome.value = { correct, stars: score.stars, total: score.total, coins, mistakes: all, hinted: this.hinted, wasted: this.wasted, seconds, stage, finalFlask: this.flask.value, pickedStereo, steps: this.steps.value };
+    const newly = unlockedTypes(s.history.length).filter((t) => !unlockedBefore.includes(t));
+    for (const t of newly) {
+      const label = UNLOCKS.find((u) => u.type === t)?.label ?? TYPE_LABEL[t];
+      this.report.unlocked = [...(this.report.unlocked ?? []), label];
+      showToast(`New order type unlocked: ${label}${label.endsWith('?') ? '' : '!'}`, 3500);
+    }
+    this.outcome.value = { correct, stars: score.stars, total: score.total, coins, mistakes: all, hinted: this.hinted, wasted: this.wasted, seconds, stage, finalFlask: this.flask.value, pickedStereo, steps: this.steps.value, picked: extra.picked, partial: extra.partial, bonus };
     if (correct) sfx.success(score.stars);
     else sfx.puff();
     this.phase.value = correct ? 'result' : 'mentor';
@@ -464,11 +636,13 @@ class GameFlow {
       persistSave(s, true);
       save.value = { ...s };
     }
-    this.shiftReport.value = { ...this.report };
+    this.shiftReport.value = { ...this.report, seconds: Math.round((Date.now() - this.shiftStartedAt) / 1000), timeUp: this.timeIsUp() };
+    this.deadline.value = null;
     this.phase.value = 'dayend';
   }
 
   abandonShift(): void {
+    this.deadline.value = null;
     this.phase.value = 'idle';
     this.order.value = null;
     screen.value = 'title';
@@ -509,6 +683,16 @@ export function describeStep(step: { reagent: string; conditions?: Conditions })
   if (c.equiv !== undefined) parts.push(`${c.equiv} equiv`);
   if (c.pressure) parts.push('pressure');
   return parts.length ? `${r.label} (${parts.join(', ')})` : r.label;
+}
+
+/** The reaction whose review is most overdue (missed first). */
+function mostDue(reactions: Reaction[], mastery: Record<string, MasteryRecord>): Reaction | undefined {
+  const now = Date.now();
+  const due = reactions
+    .map((r) => ({ r, rec: mastery[r.id] }))
+    .filter((x) => x.rec && x.rec.state !== 'new' && (x.rec.state === 'missed' || x.rec.dueAt <= now));
+  due.sort((a, b) => (a.rec!.state === 'missed' ? -1 : 0) - (b.rec!.state === 'missed' ? -1 : 0) || a.rec!.dueAt - b.rec!.dueAt);
+  return due[0]?.r;
 }
 
 function dedupe(ms: Mistake[]): Mistake[] {

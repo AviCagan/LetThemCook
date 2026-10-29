@@ -5,6 +5,7 @@ import { MoleculeCard } from './MoleculeCard';
 import { getTag, ITEMS } from '../content/bank';
 import { spriteDataUrl } from '../art/textures';
 import { sfx } from '../audio/sfx';
+import { TYPE_LABEL, isQuizType } from '../quiz';
 
 export function LabBook() {
   const s = save.value!;
@@ -26,7 +27,7 @@ export function LabBook() {
             <button class="book-head" type="button" onClick={() => setOpen(isOpen ? null : i)}>
               <span class="book-mark" aria-hidden="true">{e.ok ? '✓' : '✕'}</span>
               <span class="book-title">{e.startName} → <b>{e.targetName}</b></span>
-              <span class="muted small">{new Date(e.t).toLocaleDateString()} · {e.steps.filter((x) => x.kind === 'step').length} steps · {'★'.repeat(e.stars)}{'☆'.repeat(3 - e.stars)}</span>
+              <span class="muted small">{new Date(e.t).toLocaleDateString()} · {e.type && isQuizType(e.type) ? TYPE_LABEL[e.type] : `${e.steps.filter((x) => x.kind === 'step').length} steps`} · {'★'.repeat(e.stars)}{'☆'.repeat(3 - e.stars)}</span>
             </button>
             {isOpen && (
               <div class="book-body">
@@ -34,6 +35,11 @@ export function LabBook() {
                   <MoleculeCard smiles={e.startSmiles} label="Start" size="sm" />
                   <MoleculeCard smiles={e.targetSmiles} label="Target" size="sm" />
                 </div>
+                {e.type && isQuizType(e.type) && e.picked && (
+                  <p class="small">Your answer: {e.type === 'predict_product' || e.type === 'what_start'
+                    ? <span class="book-mol"><MoleculeCard smiles={e.picked} size="sm" /></span>
+                    : <b>{e.type === 'spot_flaw' && !e.picked.startsWith('route') ? getTag(e.picked).label : e.picked}</b>}</p>
+                )}
                 <ol class="book-steps">
                   {e.steps.map((st, j) => (
                     <li key={j} class={st.kind !== 'step' ? 'is-meta' : st.changed ? 'is-ok' : 'is-nope'}>

@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCO",
@@ -39,10 +42,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PCC oxidises; you need a substitution of OH by Cl."
+      },
+      {
+        "smiles": "CCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: SOCl₂, pyr does change butan-1-ol.",
+        "auto": true
       }
     ],
     "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
-    "tip": "SOCl₂ = alcohol to chloride."
+    "tip": "SOCl₂ = alcohol to chloride.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCCl",
+          "why": "With SOCl₂, pyr, 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)O",
+          "name": "butan-2-ol",
+          "gives": "CCC(C)Cl",
+          "why": "With SOCl₂, pyr, butan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethan-1-ol",
+          "gives": "ClCCc1ccccc1",
+          "why": "With SOCl₂, pyr, 2-phenylethan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R12-cyclohexanol-001",
@@ -52,7 +84,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
@@ -84,10 +119,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PCC oxidises; you need a substitution of OH by Cl."
+      },
+      {
+        "smiles": "OC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: SOCl₂, pyr does change cyclohexanol.",
+        "auto": true
       }
     ],
     "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
-    "tip": "SOCl₂ = alcohol to chloride."
+    "tip": "SOCl₂ = alcohol to chloride.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCCl",
+          "why": "With SOCl₂, pyr, butan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCCl",
+          "why": "With SOCl₂, pyr, 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)CCl",
+          "why": "With SOCl₂, pyr, 2-methylpropan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R12-isoamyl-001",
@@ -97,7 +161,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CCO",
@@ -129,10 +196,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PCC oxidises; you need a substitution of OH by Cl."
+      },
+      {
+        "smiles": "CC(C)CCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: SOCl₂, pyr does change 3-methylbutan-1-ol.",
+        "auto": true
       }
     ],
     "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
-    "tip": "SOCl₂ = alcohol to chloride."
+    "tip": "SOCl₂ = alcohol to chloride.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethan-1-ol",
+          "gives": "ClCCc1ccccc1",
+          "why": "With SOCl₂, pyr, 2-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "ClCc1ccccc1",
+          "why": "With SOCl₂, pyr, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCCl",
+          "why": "With SOCl₂, pyr, butan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R12-benzyl-001",
@@ -142,7 +238,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start"
     ],
     "start": {
       "smiles": "OCc1ccccc1",
@@ -174,10 +272,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PCC oxidises; you need a substitution of OH by Cl."
+      },
+      {
+        "smiles": "OCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: SOCl₂, pyr does change benzyl alcohol.",
+        "auto": true
       }
     ],
     "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
-    "tip": "SOCl₂ = alcohol to chloride."
+    "tip": "SOCl₂ = alcohol to chloride.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCCl",
+          "why": "With SOCl₂, pyr, butan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCCl",
+          "why": "With SOCl₂, pyr, 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)O",
+          "name": "butan-2-ol",
+          "gives": "CCC(C)Cl",
+          "why": "With SOCl₂, pyr, butan-2-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R12-butan2ol-001",
@@ -187,7 +314,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start"
     ],
     "start": {
       "smiles": "CCC(C)O",
@@ -219,10 +348,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PCC oxidises; you need a substitution of OH by Cl."
+      },
+      {
+        "smiles": "CCC(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: SOCl₂, pyr does change butan-2-ol.",
+        "auto": true
       }
     ],
     "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
-    "tip": "SOCl₂ = alcohol to chloride."
+    "tip": "SOCl₂ = alcohol to chloride.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCC(C)O",
+          "name": "hexan-2-ol",
+          "gives": "CCCCC(C)Cl",
+          "why": "With SOCl₂, pyr, hexan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)CCl",
+          "why": "With SOCl₂, pyr, 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "ClCc1ccccc1",
+          "why": "With SOCl₂, pyr, benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R12-phenylethanol-001",
@@ -232,7 +390,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start"
     ],
     "start": {
       "smiles": "OCCc1ccccc1",
@@ -264,10 +424,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PCC oxidises; you need a substitution of OH by Cl."
+      },
+      {
+        "smiles": "OCCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: SOCl₂, pyr does change 2-phenylethan-1-ol.",
+        "auto": true
       }
     ],
     "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
-    "tip": "SOCl₂ = alcohol to chloride."
+    "tip": "SOCl₂ = alcohol to chloride.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "ClC1CCCCC1",
+          "why": "With SOCl₂, pyr, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCC(C)O",
+          "name": "hexan-2-ol",
+          "gives": "CCCCC(C)Cl",
+          "why": "With SOCl₂, pyr, hexan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCCl",
+          "why": "With SOCl₂, pyr, 3-methylbutan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R12-hexan2ol-001",
@@ -277,7 +466,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start"
     ],
     "start": {
       "smiles": "CCCCC(C)O",
@@ -309,9 +500,38 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PCC oxidises; you need a substitution of OH by Cl."
+      },
+      {
+        "smiles": "CCCCC(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: SOCl₂, pyr does change hexan-2-ol.",
+        "auto": true
       }
     ],
     "explanation": "SOCl₂ converts the OH into a chlorosulfite leaving group; chloride then displaces it: R–Cl.",
-    "tip": "SOCl₂ = alcohol to chloride."
+    "tip": "SOCl₂ = alcohol to chloride.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)CCl",
+          "why": "With SOCl₂, pyr, 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "ClC1CCCCC1",
+          "why": "With SOCl₂, pyr, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCCl",
+          "why": "With SOCl₂, pyr, butan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

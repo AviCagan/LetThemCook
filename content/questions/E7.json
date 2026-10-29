@@ -7,7 +7,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C1=CCCCC1",
@@ -54,10 +57,51 @@
         "stereo": "none",
         "tag": "ozone_vs_osmium",
         "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      },
+      {
+        "smiles": "C1=CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change cyclohexene.",
+        "auto": true
       }
     ],
     "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
-    "tip": "mCPBA: syn, stereospecific epoxidation."
+    "tip": "mCPBA: syn, stereospecific epoxidation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA).",
+        "gives": "OC1CCCCC1O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCCC",
+          "name": "hex-1-ene",
+          "gives": "CCCCC1CO1",
+          "why": "With mCPBA (1 equiv), hex-1-ene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "c1ccc(C2CO2)cc1",
+          "why": "With mCPBA (1 equiv), styrene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC1(C)CO1",
+          "why": "With mCPBA (1 equiv), 2-methylpropene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E7-transbutene-001",
@@ -67,7 +111,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C/C=C/C",
@@ -113,10 +160,51 @@
         "stereo": "none",
         "tag": "ozone_vs_osmium",
         "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      },
+      {
+        "smiles": "C/C=C/C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change (E)-but-2-ene.",
+        "auto": true
       }
     ],
     "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
-    "tip": "mCPBA: syn, stereospecific epoxidation."
+    "tip": "mCPBA: syn, stereospecific epoxidation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA).",
+        "gives": "CC(O)C(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1=CCCCC1",
+          "name": "cyclohexene",
+          "gives": "C1CCC2OC2C1",
+          "why": "With mCPBA (1 equiv), cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC",
+          "name": "hex-1-ene",
+          "gives": "CCCCC1CO1",
+          "why": "With mCPBA (1 equiv), hex-1-ene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC1(C)CO1",
+          "why": "With mCPBA (1 equiv), 2-methylpropene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E7-cisbutene-001",
@@ -126,7 +214,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C/C=C\\C",
@@ -172,10 +263,51 @@
         "stereo": "none",
         "tag": "ozone_vs_osmium",
         "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      },
+      {
+        "smiles": "C/C=C\\C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change (Z)-but-2-ene.",
+        "auto": true
       }
     ],
     "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
-    "tip": "mCPBA: syn, stereospecific epoxidation."
+    "tip": "mCPBA: syn, stereospecific epoxidation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA).",
+        "gives": "CC(O)C(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "c1ccc(C2CO2)cc1",
+          "why": "With mCPBA (1 equiv), styrene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC1(C)CO1",
+          "why": "With mCPBA (1 equiv), 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1=CCCCC1",
+          "name": "cyclohexene",
+          "gives": "C1CCC2OC2C1",
+          "why": "With mCPBA (1 equiv), cyclohexene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E7-styrene-001",
@@ -185,7 +317,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=Cc1ccccc1",
@@ -225,10 +360,51 @@
         "stereo": "none",
         "tag": "ozone_vs_osmium",
         "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      },
+      {
+        "smiles": "C=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change styrene.",
+        "auto": true
       }
     ],
     "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
-    "tip": "mCPBA: syn, stereospecific epoxidation."
+    "tip": "mCPBA: syn, stereospecific epoxidation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA).",
+        "gives": "OCC(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC1(C)CO1",
+          "why": "With mCPBA (1 equiv), 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C/C=C/C",
+          "name": "(E)-but-2-ene",
+          "gives": "CC1OC1C",
+          "why": "With mCPBA (1 equiv), (E)-but-2-ene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC",
+          "name": "hex-1-ene",
+          "gives": "CCCCC1CO1",
+          "why": "With mCPBA (1 equiv), hex-1-ene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E7-isobutylene-001",
@@ -238,7 +414,11 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)=C",
@@ -278,10 +458,51 @@
         "stereo": "none",
         "tag": "ozone_vs_osmium",
         "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      },
+      {
+        "smiles": "C=C(C)C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change 2-methylpropene.",
+        "auto": true
       }
     ],
     "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
-    "tip": "mCPBA: syn, stereospecific epoxidation."
+    "tip": "mCPBA: syn, stereospecific epoxidation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA).",
+        "gives": "CC(C)(O)CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C/C=C/C",
+          "name": "(E)-but-2-ene",
+          "gives": "CC1OC1C",
+          "why": "With mCPBA (1 equiv), (E)-but-2-ene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "c1ccc(C2CO2)cc1",
+          "why": "With mCPBA (1 equiv), styrene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC",
+          "name": "hex-1-ene",
+          "gives": "CCCCC1CO1",
+          "why": "With mCPBA (1 equiv), hex-1-ene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E7-hexene-001",
@@ -291,7 +512,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=CCCCC",
@@ -331,10 +555,51 @@
         "stereo": "none",
         "tag": "ozone_vs_osmium",
         "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      },
+      {
+        "smiles": "C=CCCCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change hex-1-ene.",
+        "auto": true
       }
     ],
     "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
-    "tip": "mCPBA: syn, stereospecific epoxidation."
+    "tip": "mCPBA: syn, stereospecific epoxidation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA).",
+        "gives": "CCCCC(O)CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC1(C)CO1",
+          "why": "With mCPBA (1 equiv), 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "c1ccc(C2CO2)cc1",
+          "why": "With mCPBA (1 equiv), styrene gives a different product (shown)."
+        },
+        {
+          "smiles": "C/C=C/C",
+          "name": "(E)-but-2-ene",
+          "gives": "CC1OC1C",
+          "why": "With mCPBA (1 equiv), (E)-but-2-ene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E7-transstilbene-001",
@@ -344,7 +609,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "c1ccc(/C=C/c2ccccc2)cc1",
@@ -394,9 +662,50 @@
         "stereo": "none",
         "tag": "ozone_vs_osmium",
         "why": "Ozone cleaves the alkene. mCPBA adds one oxygen across it: the epoxide."
+      },
+      {
+        "smiles": "C(=C\\c1ccccc1)/c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change (E)-stilbene.",
+        "auto": true
       }
     ],
     "explanation": "The peroxy acid transfers its terminal oxygen to the alkene in one concerted step, so the alkene's geometry is kept: cis alkene → cis epoxide, trans → trans.",
-    "tip": "mCPBA: syn, stereospecific epoxidation."
+    "tip": "mCPBA: syn, stereospecific epoxidation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "OsO₄ gives the syn diol. The epoxide comes from a peroxy acid (mCPBA).",
+        "gives": "OC(c1ccccc1)C(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCC(=O)c1ccccc1",
+          "name": "1-phenylpent-4-en-1-one",
+          "gives": "O=C(CCC1CO1)c1ccccc1",
+          "why": "With mCPBA (1 equiv), 1-phenylpent-4-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CCC/C(C)=C/CO",
+          "name": "(2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol)",
+          "gives": "CC1(C)OC1CCC1(C)OC1CO",
+          "why": "With mCPBA (1 equiv), (2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)/C=C/c1ccccc1",
+          "name": "(E)-4-phenylbut-3-en-2-one",
+          "gives": "CC(=O)C1OC1c1ccccc1",
+          "why": "With mCPBA (1 equiv), (E)-4-phenylbut-3-en-2-one gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

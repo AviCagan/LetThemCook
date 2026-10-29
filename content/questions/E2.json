@@ -7,7 +7,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCBr",
@@ -34,10 +36,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      },
+      {
+        "smiles": "CCCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: KCN, 18-crown-6 does change 1-bromobutane.",
+        "auto": true
       }
     ],
     "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
-    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+    "tip": "Crown ether frees the anion; the product is just the SN2 product.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCC#N",
+          "why": "With KCN, 18-crown-6, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "N#CCc1ccccc1",
+          "why": "With KCN, 18-crown-6, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CC(C)C#N",
+          "why": "With KCN, 18-crown-6, 2-bromopropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E2-bromopropane-kf-001",
@@ -47,7 +78,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCBr",
@@ -73,10 +106,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      },
+      {
+        "smiles": "CCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: KF, 18-crown-6 does change 1-bromopropane.",
+        "auto": true
       }
     ],
     "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
-    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+    "tip": "Crown ether frees the anion; the product is just the SN2 product.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "FCc1ccccc1",
+          "why": "With KF, 18-crown-6, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCF",
+          "why": "With KF, 18-crown-6, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCBr",
+          "name": "1-bromohexane",
+          "gives": "CCCCCCF",
+          "why": "With KF, 18-crown-6, 1-bromohexane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E2-benzylbromide-koac-001",
@@ -86,7 +148,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "BrCc1ccccc1",
@@ -115,10 +179,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      },
+      {
+        "smiles": "BrCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃CO₂K, 18-crown-6 does change (bromomethyl)benzene.",
+        "auto": true
       }
     ],
     "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
-    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+    "tip": "Crown ether frees the anion; the product is just the SN2 product.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCOC(C)=O",
+          "why": "With CH₃CO₂K, 18-crown-6, 1-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCBr",
+          "name": "1-bromohexane",
+          "gives": "CCCCCCOC(C)=O",
+          "why": "With CH₃CO₂K, 18-crown-6, 1-bromohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCOC(C)=O",
+          "why": "With CH₃CO₂K, 18-crown-6, 1-bromobutane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E2-isopropylbromide-kcn-001",
@@ -128,7 +221,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)Br",
@@ -158,10 +253,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      },
+      {
+        "smiles": "CC(C)Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: KCN, 18-crown-6 does change 2-bromopropane.",
+        "auto": true
       }
     ],
     "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
-    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+    "tip": "Crown ether frees the anion; the product is just the SN2 product.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "N#CCc1ccccc1",
+          "why": "With KCN, 18-crown-6, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCC#N",
+          "why": "With KCN, 18-crown-6, 1-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCC#N",
+          "why": "With KCN, 18-crown-6, bromoethane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E2-bromohexane-kf-001",
@@ -171,7 +295,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCCCBr",
@@ -197,10 +323,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      },
+      {
+        "smiles": "CCCCCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: KF, 18-crown-6 does change 1-bromohexane.",
+        "auto": true
       }
     ],
     "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
-    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+    "tip": "Crown ether frees the anion; the product is just the SN2 product.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "FCc1ccccc1",
+          "why": "With KF, 18-crown-6, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CC(C)F",
+          "why": "With KF, 18-crown-6, 2-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCF",
+          "why": "With KF, 18-crown-6, bromoethane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E2-bromoethane-koac-001",
@@ -210,7 +365,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCBr",
@@ -242,9 +399,38 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is the thiol. The crown-ether reagent delivers a different 'naked' anion (F⁻, CN⁻ or acetate)."
+      },
+      {
+        "smiles": "CCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃CO₂K, 18-crown-6 does change bromoethane.",
+        "auto": true
       }
     ],
     "explanation": "18-Crown-6 wraps the K⁺ and leaves the anion bare and highly nucleophilic in the organic solvent: a clean SN2 on the alkyl halide.",
-    "tip": "Crown ether frees the anion; the product is just the SN2 product."
+    "tip": "Crown ether frees the anion; the product is just the SN2 product.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCOC(C)=O",
+          "why": "With CH₃CO₂K, 18-crown-6, 1-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCOC(C)=O",
+          "why": "With CH₃CO₂K, 18-crown-6, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CC(=O)OC(C)C",
+          "why": "With CH₃CO₂K, 18-crown-6, 2-bromopropane gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

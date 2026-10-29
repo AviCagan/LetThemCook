@@ -7,7 +7,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C1CCC2OC2C1",
@@ -39,7 +40,38 @@
       }
     ],
     "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
-    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "c1ccc(C2CO2)cc1",
+          "name": "2-phenyloxirane",
+          "gives": "OCC(O)c1ccccc1",
+          "why": "With H₃O⁺, 2-phenyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CC(C)(O)CO",
+          "why": "With H₃O⁺, 2,2-dimethyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CC2OC2C1",
+          "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)",
+          "gives": "OC1CCCC1O",
+          "why": "With H₃O⁺, 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide) gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C1CCC2OC2C1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₃O⁺ does change 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E10-methyloxirane-meoh-001",
@@ -49,7 +81,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC1CO1",
@@ -79,10 +113,51 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Under acid the nucleophile goes to the MORE substituted carbon (the one that best supports positive charge). The less-substituted product is what methoxide gives."
+      },
+      {
+        "smiles": "CC1CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃OH, H₂SO₄ cat. does change 2-methyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
-    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOMe"
+          }
+        ],
+        "tag": "epoxide_wrong_carbon",
+        "why": "Under acid the nucleophile goes to the MORE substituted carbon (the one that best supports positive charge). The less-substituted product is what methoxide gives.",
+        "gives": "COCC(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CC2OC2C1",
+          "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)",
+          "gives": "COC1CCCC1O",
+          "why": "With CH₃OH, H₂SO₄ cat., 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "COC(C)(C)C",
+          "why": "With CH₃OH, H₂SO₄ cat., 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "COC1CCCCC1O",
+          "why": "With CH₃OH, H₂SO₄ cat., 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E10-dimethyloxirane-h3o-001",
@@ -92,7 +167,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(C)CO1",
@@ -115,7 +192,38 @@
       }
     ],
     "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
-    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC(C)(C)O",
+          "why": "With H₃O⁺, 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "OC1CCCCC1O",
+          "why": "With H₃O⁺, 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CC2OC2C1",
+          "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)",
+          "gives": "OC1CCCC1O",
+          "why": "With H₃O⁺, 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide) gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC1(C)CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₃O⁺ does change 2,2-dimethyloxirane.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E10-dimethyloxirane-meoh-001",
@@ -125,7 +233,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(C)CO1",
@@ -155,10 +266,51 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Acid: methanol attacks the 3° carbon. Methoxide (base) would attack the CH₂ instead."
+      },
+      {
+        "smiles": "CC1(C)CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃OH, H₂SO₄ cat. does change 2,2-dimethyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
-    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOMe"
+          }
+        ],
+        "tag": "epoxide_wrong_carbon",
+        "why": "Acid: methanol attacks the 3° carbon. Methoxide (base) would attack the CH₂ instead.",
+        "gives": "COCC(C)(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CC2OC2C1",
+          "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)",
+          "gives": "COC1CCCC1O",
+          "why": "With CH₃OH, H₂SO₄ cat., 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CO1",
+          "name": "2-methyloxirane",
+          "gives": "COC(C)CO",
+          "why": "With CH₃OH, H₂SO₄ cat., 2-methyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "COC(C)(C)C",
+          "why": "With CH₃OH, H₂SO₄ cat., 2-methylpropene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E10-methyloxirane-hbr-001",
@@ -168,7 +320,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CC1CO1",
@@ -200,10 +353,39 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "A different nucleophile, and the wrong carbon: HBr puts Br on the more substituted carbon."
+      },
+      {
+        "smiles": "CC1CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HBr does change 2-methyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
-    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC(C)(Br)CBr",
+          "why": "With HBr, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CC2OC2C1",
+          "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)",
+          "gives": "OC1CCCC1Br",
+          "why": "With HBr, 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CC(C)(Br)CO",
+          "why": "With HBr, 2,2-dimethyloxirane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E10-styreneoxide-etoh-001",
@@ -213,7 +395,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "c1ccc(C2CO2)cc1",
@@ -244,10 +428,51 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Under acid ethanol attacks the benzylic carbon (best cation character). Ethoxide would attack the CH₂."
+      },
+      {
+        "smiles": "c1ccc(C2CO2)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃CH₂OH, H₂SO₄ cat. does change 2-phenyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
-    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOEt"
+          }
+        ],
+        "tag": "epoxide_wrong_carbon",
+        "why": "Under acid ethanol attacks the benzylic carbon (best cation character). Ethoxide would attack the CH₂.",
+        "gives": "CCOCC(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CC2OC2C1",
+          "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)",
+          "gives": "CCOC1CCCC1O",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat., 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "CCOC1CCCCC1O",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat., 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CCOC(C)(C)CO",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat., 2,2-dimethyloxirane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E10-cyclopenteneoxide-h3o-001",
@@ -257,7 +482,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C1CC2OC2C1",
@@ -289,6 +515,37 @@
       }
     ],
     "explanation": "Acid protonates the epoxide oxygen; the nucleophile attacks the carbon that best bears positive charge (more substituted / benzylic), from the back side. On a ring that makes the two groups trans.",
-    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol."
+    "tip": "Acid → more substituted carbon; ring epoxide + H₃O⁺ → trans diol.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC(C)(C)O",
+          "why": "With H₃O⁺, 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CC(C)(O)CO",
+          "why": "With H₃O⁺, 2,2-dimethyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "OC1CCCCC1O",
+          "why": "With H₃O⁺, 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C1CC2OC2C1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₃O⁺ does change 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide).",
+        "auto": true
+      }
+    ]
   }
 ]

@@ -8,7 +8,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCCCO",
@@ -61,7 +64,41 @@
           "reagent": "Swern"
         }
       ]
-    ]
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "PCC in dry CH₂Cl₂ stops at the aldehyde: without water the aldehyde cannot form the hydrate that gets oxidised again. The acid is the chromic-acid (Jones) product.",
+        "gives": "CCCCCC(=O)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With PCC, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)C(C)O",
+          "name": "3-methylbutan-2-ol",
+          "gives": "CC(=O)C(C)C",
+          "why": "With PCC, 3-methylbutan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethanol",
+          "gives": "O=CCc1ccccc1",
+          "why": "With PCC, 2-phenylethanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R22-hexenol-001",
@@ -72,7 +109,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC/C=C/CCO",
@@ -128,7 +167,41 @@
           "reagent": "Swern"
         }
       ]
-    ]
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "PCC stops at the aldehyde; the acid needs chromic acid.",
+        "gives": "CC/C=C/CC(=O)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCC(C)O",
+          "name": "hex-5-en-2-ol",
+          "gives": "C=CCCC(C)=O",
+          "why": "With PCC, hex-5-en-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With PCC, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethanol",
+          "gives": "O=CCc1ccccc1",
+          "why": "With PCC, 2-phenylethanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R22-benzylalcohol-001",
@@ -139,7 +212,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCc1ccccc1",
@@ -192,7 +268,41 @@
           "reagent": "Swern"
         }
       ]
-    ]
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "PCC stops at the aldehyde. Benzoic acid is the chromic-acid product.",
+        "gives": "O=C(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethanol",
+          "gives": "O=CCc1ccccc1",
+          "why": "With PCC, 2-phenylethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC/C=C/CCO",
+          "name": "(E)-hex-3-en-1-ol",
+          "gives": "CC/C=C/CC=O",
+          "why": "With PCC, (E)-hex-3-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCC(C)O",
+          "name": "hex-5-en-2-ol",
+          "gives": "C=CCCC(C)=O",
+          "why": "With PCC, hex-5-en-2-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R22-methylbutanol-001",
@@ -203,7 +313,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)C(C)O",
@@ -264,7 +376,29 @@
       }
     ],
     "explanation": "The 2° alcohol is oxidised to the ketone.",
-    "tip": "2° alcohol → ketone; the carbinol stereocenter vanishes."
+    "tip": "2° alcohol → ketone; the carbinol stereocenter vanishes.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCCO",
+          "name": "hexan-1-ol",
+          "gives": "CCCCCC=O",
+          "why": "With PCC, hexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCC(C)O",
+          "name": "hex-5-en-2-ol",
+          "gives": "C=CCCC(C)=O",
+          "why": "With PCC, hex-5-en-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethanol",
+          "gives": "O=CCc1ccccc1",
+          "why": "With PCC, 2-phenylethanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R22-hexenol2-001",
@@ -275,7 +409,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "C=CCCC(C)O",
@@ -336,7 +472,29 @@
       }
     ],
     "explanation": "The 2° alcohol becomes a ketone; the terminal alkene is untouched.",
-    "tip": "Alkenes are spectators under PCC."
+    "tip": "Alkenes are spectators under PCC.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)C(C)O",
+          "name": "3-methylbutan-2-ol",
+          "gives": "CC(=O)C(C)C",
+          "why": "With PCC, 3-methylbutan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With PCC, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethanol",
+          "gives": "O=CCc1ccccc1",
+          "why": "With PCC, 2-phenylethanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R22-phenylethanol-001",
@@ -347,7 +505,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCCc1ccccc1",
@@ -389,6 +550,13 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Dehydration needs acid and heat; PCC oxidises."
+      },
+      {
+        "smiles": "OCCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: PCC does change 2-phenylethanol.",
+        "auto": true
       }
     ],
     "explanation": "The 1° alcohol is oxidised to the aldehyde and stops.",
@@ -404,6 +572,40 @@
           "reagent": "Swern"
         }
       ]
-    ]
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "PCC stops at the aldehyde; the acid needs chromic acid.",
+        "gives": "O=C(O)Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCC(C)O",
+          "name": "hex-5-en-2-ol",
+          "gives": "C=CCCC(C)=O",
+          "why": "With PCC, hex-5-en-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With PCC, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)C(C)O",
+          "name": "3-methylbutan-2-ol",
+          "gives": "CC(=O)C(C)C",
+          "why": "With PCC, 3-methylbutan-2-ol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

@@ -7,7 +7,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -49,10 +53,51 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is an ether. An ester needs an acyl chloride or anhydride, not an alkyl halide."
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, pyr does change phenol.",
+        "auto": true
       }
     ],
     "explanation": "Without a Lewis acid the phenol oxygen is the nucleophile: it attacks the acyl chloride / anhydride to give an aryl ester.",
-    "tip": "No AlCl₃ → O-acylation → aryl ester."
+    "tip": "No AlCl₃ → O-acylation → aryl ester.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_AlCl3"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "With AlCl₃ the acyl group goes on the ring (ketone). Without it, the phenol oxygen is acylated: an ester.",
+        "gives": "CC(=O)c1ccc(O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "CC(=O)Oc1ccc([N+](=O)[O-])cc1",
+          "why": "With CH₃COCl, pyr, 4-nitrophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "CC(=O)Oc1ccccc1C",
+          "why": "With CH₃COCl, pyr, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "CC(=O)Oc1ccc(Cl)cc1",
+          "why": "With CH₃COCl, pyr, 4-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P7-pcresol-ac2o-001",
@@ -62,7 +107,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(O)cc1",
@@ -107,10 +155,39 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is an ether. An ester needs an acyl chloride or anhydride, not an alkyl halide."
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: (CH₃CO)₂O does change 4-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Without a Lewis acid the phenol oxygen is the nucleophile: it attacks the acyl chloride / anhydride to give an aryl ester.",
-    "tip": "No AlCl₃ → O-acylation → aryl ester."
+    "tip": "No AlCl₃ → O-acylation → aryl ester.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "CC(=O)Oc1ccccc1C",
+          "why": "With (CH₃CO)₂O, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "CC(=O)Oc1ccc([N+](=O)[O-])cc1",
+          "why": "With (CH₃CO)₂O, 4-nitrophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CC(=O)Oc1cccc(C)c1",
+          "why": "With (CH₃CO)₂O, 3-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P7-phenol-bzcl-001",
@@ -120,7 +197,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -160,10 +240,39 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is an ether. An ester needs an acyl chloride or anhydride, not an alkyl halide."
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: PhCOCl, pyr does change phenol.",
+        "auto": true
       }
     ],
     "explanation": "Without a Lewis acid the phenol oxygen is the nucleophile: it attacks the acyl chloride / anhydride to give an aryl ester.",
-    "tip": "No AlCl₃ → O-acylation → aryl ester."
+    "tip": "No AlCl₃ → O-acylation → aryl ester.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "O=C(Oc1ccc(Cl)cc1)c1ccccc1",
+          "why": "With PhCOCl, pyr, 4-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "Cc1cccc(OC(=O)c2ccccc2)c1",
+          "why": "With PhCOCl, pyr, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(OC(=O)c2ccccc2)cc1",
+          "why": "With PhCOCl, pyr, 4-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P7-chlorophenol-accl-001",
@@ -173,7 +282,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Cl)cc1",
@@ -215,10 +328,51 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is an ether. An ester needs an acyl chloride or anhydride, not an alkyl halide."
+      },
+      {
+        "smiles": "Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, pyr does change 4-chlorophenol.",
+        "auto": true
       }
     ],
     "explanation": "Without a Lewis acid the phenol oxygen is the nucleophile: it attacks the acyl chloride / anhydride to give an aryl ester.",
-    "tip": "No AlCl₃ → O-acylation → aryl ester."
+    "tip": "No AlCl₃ → O-acylation → aryl ester.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_AlCl3"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "With AlCl₃ the acyl group goes on the ring (ketone). Without it, the phenol oxygen is acylated: an ester.",
+        "gives": "CC(=O)c1cc(Cl)ccc1O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CC(=O)Oc1cccc(C)c1",
+          "why": "With CH₃COCl, pyr, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CC(=O)Oc1ccccc1",
+          "why": "With CH₃COCl, pyr, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "CC(=O)Oc1ccccc1C",
+          "why": "With CH₃COCl, pyr, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P7-ocresol-ac2o-001",
@@ -228,7 +382,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccccc1O",
@@ -273,10 +430,39 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is an ether. An ester needs an acyl chloride or anhydride, not an alkyl halide."
+      },
+      {
+        "smiles": "Cc1ccccc1O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: (CH₃CO)₂O does change 2-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Without a Lewis acid the phenol oxygen is the nucleophile: it attacks the acyl chloride / anhydride to give an aryl ester.",
-    "tip": "No AlCl₃ → O-acylation → aryl ester."
+    "tip": "No AlCl₃ → O-acylation → aryl ester.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CC(=O)Oc1ccccc1",
+          "why": "With (CH₃CO)₂O, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "CC(=O)Oc1ccc(Cl)cc1",
+          "why": "With (CH₃CO)₂O, 4-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CC(=O)Oc1cccc(C)c1",
+          "why": "With (CH₃CO)₂O, 3-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P7-nitrophenol-accl-001",
@@ -286,7 +472,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc([N+](=O)[O-])cc1",
@@ -328,10 +518,51 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is an ether. An ester needs an acyl chloride or anhydride, not an alkyl halide."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, pyr does change 4-nitrophenol.",
+        "auto": true
       }
     ],
     "explanation": "Without a Lewis acid the phenol oxygen is the nucleophile: it attacks the acyl chloride / anhydride to give an aryl ester.",
-    "tip": "No AlCl₃ → O-acylation → aryl ester."
+    "tip": "No AlCl₃ → O-acylation → aryl ester.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_AlCl3"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "With AlCl₃ the acyl group goes on the ring (ketone). Without it, the phenol oxygen is acylated: an ester.",
+        "gives": "CC(=O)c1cc([N+](=O)[O-])ccc1O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CC(=O)Oc1ccccc1",
+          "why": "With CH₃COCl, pyr, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "CC(=O)Oc1ccc(C)cc1",
+          "why": "With CH₃COCl, pyr, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CC(=O)Oc1cccc(C)c1",
+          "why": "With CH₃COCl, pyr, 3-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P7-mcresol-bzcl-001",
@@ -341,7 +572,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cccc(O)c1",
@@ -384,9 +618,38 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is an ether. An ester needs an acyl chloride or anhydride, not an alkyl halide."
+      },
+      {
+        "smiles": "Cc1cccc(O)c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: PhCOCl, pyr does change 3-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Without a Lewis acid the phenol oxygen is the nucleophile: it attacks the acyl chloride / anhydride to give an aryl ester.",
-    "tip": "No AlCl₃ → O-acylation → aryl ester."
+    "tip": "No AlCl₃ → O-acylation → aryl ester.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=C(Oc1ccccc1)c1ccccc1",
+          "why": "With PhCOCl, pyr, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1ccccc1OC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "O=C(Oc1ccc(Cl)cc1)c1ccccc1",
+          "why": "With PhCOCl, pyr, 4-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

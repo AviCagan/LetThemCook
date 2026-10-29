@@ -275,3 +275,38 @@ ul.plain li { margin: 0.25em 0; }
 .cloud-panel { background: var(--paper); border: 2px solid var(--outline); border-radius: var(--radius); padding: 10px 12px; margin: 14px 0; }
 .sync-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; background: var(--well); border: 2px dashed var(--outline); border-radius: var(--radius); padding: 8px 10px; word-break: break-all; user-select: all; }
 .code-input { min-height: 44px; padding: 6px 10px; border: 2px solid var(--outline); border-radius: var(--radius); background: var(--well); color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+
+/* quiz orders */
+.quiz { display: flex; flex-direction: column; gap: 10px; }
+.quiz-q { display: grid; grid-template-columns: minmax(130px, 1fr) minmax(120px, 1fr); gap: 10px; align-items: center; }
+.quiz-route { background: var(--cream); border: 2px solid var(--outline); border-radius: var(--radius); padding: 8px 10px; }
+.quiz-route-title { font-weight: 700; font-size: 0.9rem; }
+.route-list { margin: 4px 0 0; padding-left: 1.4em; }
+.route-list li { margin: 2px 0; }
+.route-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 420px) { .route-options { grid-template-columns: 1fr; } }
+.route-options .btn-option .route-list { font-weight: 400; }
+.molcard-badge { position: absolute; top: 4px; left: 6px; font-family: var(--font-pixel); font-size: 0.6rem; background: var(--gold); color: var(--on-accent); border: 2px solid var(--outline); border-radius: 3px; padding: 2px 4px; z-index: 1; }
+.molcard.is-button:hover { outline: 3px solid var(--mint); }
+.route-review { display: grid; gap: 8px; margin: 8px 0; }
+.route-card { border: 2px solid var(--outline); border-radius: var(--radius); padding: 6px 10px; }
+.route-card.is-ok { background: var(--solid-bg); }
+.route-card.is-nope { background: var(--missed-bg); }
+.name-form { display: flex; flex-direction: column; gap: 8px; }
+.name-input { min-height: 48px; padding: 8px 12px; border: 3px solid var(--outline); border-radius: var(--radius); background: var(--well); color: var(--ink); font: inherit; font-size: 1.05rem; }
+.name-review p { margin: 4px 0; }
+.chips.inline { display: inline-flex; margin: 0 4px 0 0; vertical-align: middle; }
+.exam-score { font-size: 1.1rem; }
+.mode-row > .btn { flex: 1; }
+
+/* shop */
+.shop-section { margin: 12px 0; }
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
+.shop-card { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; min-height: 120px; background: var(--paper); color: var(--ink); border: 3px solid var(--outline); border-radius: var(--radius); box-shadow: 0 3px 0 var(--outline); cursor: pointer; font: inherit; }
+.shop-card > img { width: 64px; height: 64px; }
+.shop-price .icon { width: 16px; height: 16px; }
+.shop-card:disabled { cursor: default; }
+.shop-card:not(.is-owned):disabled { opacity: 0.5; }
+.shop-card.is-on { background: var(--mint); color: var(--on-accent); }
+.shop-name { font-weight: 700; font-size: 0.85rem; text-align: center; }
+.shop-price { font-size: 0.8rem; display: inline-flex; align-items: center; gap: 2px; }

@@ -7,7 +7,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -53,10 +57,102 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Kolbe–Schmitt carboxylates ORTHO to the phenoxide oxygen (the sodium ion holds CO₂ next to it), not para."
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "auto": true
+      },
+      {
+        "smiles": "[O-]c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. CO₂, pressure (pressure); 2. H₃O⁺.",
+        "auto": true
       }
     ],
     "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
-    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid.",
+        "gives": "O=C([O-])c1ccccc1[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Oc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "gives": "Oc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccc(O)cc1",
+          "name": "4-methoxyphenol",
+          "gives": "COc1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-methoxyphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "O=C(O)c1cc(Cl)ccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P9-pcresol-001",
@@ -66,7 +162,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(O)cc1",
@@ -109,10 +209,102 @@
         "stereo": "none",
         "tag": "acyl_group_identity",
         "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "auto": true
+      },
+      {
+        "smiles": "Cc1ccc([O-])cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. CO₂, pressure (pressure); 2. H₃O⁺.",
+        "auto": true
       }
     ],
     "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
-    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid.",
+        "gives": "Cc1ccc([O-])c(C(=O)[O-])c1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Cc1ccc(O)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "gives": "Cc1ccc(O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(C)(C)c1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccc(O)cc1",
+          "name": "4-methoxyphenol",
+          "gives": "COc1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-methoxyphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=C(O)c1ccccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, phenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P9-chlorophenol-001",
@@ -122,7 +314,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Cl)cc1",
@@ -165,10 +361,102 @@
         "stereo": "none",
         "tag": "acyl_group_identity",
         "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      },
+      {
+        "smiles": "Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "auto": true
+      },
+      {
+        "smiles": "[O-]c1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. CO₂, pressure (pressure); 2. H₃O⁺.",
+        "auto": true
       }
     ],
     "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
-    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid.",
+        "gives": "O=C([O-])c1cc(Cl)ccc1[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Oc1ccc(Cl)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "gives": "Oc1ccc(Cl)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "COc1ccc(O)cc1",
+          "name": "4-methoxyphenol",
+          "gives": "COc1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-methoxyphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=C(O)c1ccccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(C)(C)c1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-tert-butylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P9-bromophenol-001",
@@ -178,7 +466,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Br)cc1",
@@ -221,10 +513,102 @@
         "stereo": "none",
         "tag": "acyl_group_identity",
         "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      },
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "auto": true
+      },
+      {
+        "smiles": "[O-]c1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. CO₂, pressure (pressure); 2. H₃O⁺.",
+        "auto": true
       }
     ],
     "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
-    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid.",
+        "gives": "O=C([O-])c1cc(Br)ccc1[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Oc1ccc(Br)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "gives": "Oc1ccc(Br)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(C)(C)c1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccc(O)cc1",
+          "name": "4-methoxyphenol",
+          "gives": "COc1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-methoxyphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P9-tbutylphenol-001",
@@ -234,7 +618,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(C)c1ccc(O)cc1",
@@ -277,10 +665,102 @@
         "stereo": "none",
         "tag": "acyl_group_identity",
         "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      },
+      {
+        "smiles": "CC(C)(C)c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "auto": true
+      },
+      {
+        "smiles": "CC(C)(C)c1ccc([O-])cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. CO₂, pressure (pressure); 2. H₃O⁺.",
+        "auto": true
       }
     ],
     "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
-    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "CC(C)(C)c1ccc(O)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid.",
+        "gives": "CC(C)(C)c1ccc([O-])c(C(=O)[O-])c1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "gives": "CC(C)(C)c1ccc(O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "O=C(O)c1cc(Cl)ccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=C(O)c1ccccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Br)cc1",
+          "name": "4-bromophenol",
+          "gives": "O=C(O)c1cc(Br)ccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-bromophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P9-methoxyphenol-001",
@@ -290,7 +770,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "COc1ccc(O)cc1",
@@ -333,9 +817,101 @@
         "stereo": "none",
         "tag": "acyl_group_identity",
         "why": "Kolbe–Schmitt installs a carboxylic acid (COOH) ortho to the OH, not an acetyl or formyl group."
+      },
+      {
+        "smiles": "COc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "auto": true
+      },
+      {
+        "smiles": "COc1ccc([O-])cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. CO₂, pressure (pressure); 2. H₃O⁺.",
+        "auto": true
       }
     ],
     "explanation": "NaOH makes the phenoxide; CO₂ under pressure is attacked ortho to the O⁻ (the Na⁺ directs it); H₃O⁺ gives the 2-hydroxybenzoic acid.",
-    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid."
+    "tip": "Kolbe–Schmitt = COOH ortho to OH. Three steps, don't skip the acid.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "COc1ccc(O)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the carboxylate / phenoxide salt. H₃O⁺ protonates both oxygens to give the free acid.",
+        "gives": "COc1ccc([O-])c(C(=O)[O-])c1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CO2",
+            "conditions": {
+              "pressure": true
+            }
+          },
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CO₂, pressure (pressure)) does nothing here: Kolbe–Schmitt needs the phenoxide: add NaOH first, then CO₂ under pressure.",
+        "gives": "COc1ccc(O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccc(Br)cc1",
+          "name": "4-bromophenol",
+          "gives": "O=C(O)c1cc(Br)ccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-bromophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=C(O)c1ccccc1O",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c(C(=O)O)c1",
+          "why": "With 1. NaOH; 2. CO₂, pressure (pressure); 3. H₃O⁺, 4-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

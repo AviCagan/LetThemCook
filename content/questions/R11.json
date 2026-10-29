@@ -8,7 +8,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C1=CCCCC1",
@@ -57,10 +59,64 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "An epoxide comes from a peroxy acid (mCPBA). OsO₄ gives the diol directly."
+      },
+      {
+        "smiles": "C1=CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: OsO₄ does change cyclohexene.",
+        "auto": true
       }
     ],
     "explanation": "Syn addition of two OH groups to the ring gives the cis-1,2-diol. It has an internal mirror plane, so it is meso.",
-    "tip": "cis-1,2-diol on a symmetric ring: meso, every time."
+    "tip": "cis-1,2-diol on a symmetric ring: meso, every time.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "mCPBA",
+            "conditions": {
+              "equiv": 1
+            }
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "An epoxide comes from a peroxy acid (mCPBA). OsO₄ gives the diol directly.",
+        "gives": "C1CCC2OC2C1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "O3"
+          }
+        ],
+        "tag": "ozone_vs_osmium",
+        "why": "Cleavage to two carbonyls is ozonolysis (O₃). OsO₄ keeps the C–C bond and adds two OH groups.",
+        "gives": "O=CCCCCC=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1=CCCCC1",
+          "name": "1-methylcyclohexene",
+          "gives": "CC1(O)CCCCC1O",
+          "why": "With OsO₄, 1-methylcyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCC(O)C1O",
+          "why": "With OsO₄, cyclohex-2-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "OCC(O)c1ccccc1",
+          "why": "With OsO₄, styrene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R11-cisbutene-001",
@@ -71,7 +127,9 @@
     "difficulty": 3,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C/C=C\\C",
@@ -121,10 +179,51 @@
         "stereo": "racemic",
         "tag": "reagent_label_unknown",
         "why": "One OH is hydration; OsO₄ adds two."
+      },
+      {
+        "smiles": "C/C=C\\C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: OsO₄ does change (Z)-but-2-ene (cis-2-butene).",
+        "auto": true
       }
     ],
     "explanation": "Both OH groups add to the same face of the cis alkene. The product has a mirror plane: meso-2,3-butanediol.",
-    "tip": "cis-alkene + syn addition = meso (for a symmetric alkene)."
+    "tip": "cis-alkene + syn addition = meso (for a symmetric alkene).",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "O3"
+          }
+        ],
+        "tag": "ozone_vs_osmium",
+        "why": "That is ozonolysis. OsO₄ keeps the C–C bond.",
+        "gives": "CC=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "OCC(O)c1ccccc1",
+          "why": "With OsO₄, styrene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1=CCCCC1",
+          "name": "1-methylcyclohexene",
+          "gives": "CC1(O)CCCCC1O",
+          "why": "With OsO₄, 1-methylcyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1=CCCCC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1O",
+          "why": "With OsO₄, cyclohexene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R11-transbutene-001",
@@ -135,7 +234,9 @@
     "difficulty": 3,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C/C=C/C",
@@ -185,10 +286,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "OsO₄ stops at the diol; it does not oxidise the alcohols to ketones."
+      },
+      {
+        "smiles": "C/C=C/C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: OsO₄ does change (E)-but-2-ene (trans-2-butene).",
+        "auto": true
       }
     ],
     "explanation": "Syn addition to the trans alkene gives the (2R,3R) and (2S,3S) diols in equal amounts: a racemic mixture, not meso.",
-    "tip": "trans-alkene + syn addition = racemic pair."
+    "tip": "trans-alkene + syn addition = racemic pair.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "O3"
+          }
+        ],
+        "tag": "ozone_vs_osmium",
+        "why": "Cleavage is ozonolysis, not OsO₄.",
+        "gives": "CC=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1=CCCCC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1O",
+          "why": "With OsO₄, cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "OCC(O)c1ccccc1",
+          "why": "With OsO₄, styrene gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCC(O)C1O",
+          "why": "With OsO₄, cyclohex-2-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R11-methylcyclohexene-001",
@@ -199,7 +341,9 @@
     "difficulty": 3,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC1=CCCCC1",
@@ -245,10 +389,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "One OH is acid-catalysed hydration. OsO₄ adds two."
+      },
+      {
+        "smiles": "CC1=CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: OsO₄ does change 1-methylcyclohexene.",
+        "auto": true
       }
     ],
     "explanation": "The two OH groups add syn, so they are cis. The product has no mirror plane (the methyl breaks the symmetry), so it is chiral and forms as a racemate.",
-    "tip": "cis diol, but no mirror plane: racemic, not meso."
+    "tip": "cis diol, but no mirror plane: racemic, not meso.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "O3"
+          }
+        ],
+        "tag": "ozone_vs_osmium",
+        "why": "Cleaving the ring to a keto-aldehyde is ozonolysis. OsO₄ keeps the ring.",
+        "gives": "CC(=O)CCCCC=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C/C=C/C",
+          "name": "(E)-but-2-ene (trans-2-butene)",
+          "gives": "CC(O)C(C)O",
+          "why": "With OsO₄, (E)-but-2-ene (trans-2-butene) gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "OCC(O)c1ccccc1",
+          "why": "With OsO₄, styrene gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCC(O)C1O",
+          "why": "With OsO₄, cyclohex-2-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R11-styrene-001",
@@ -259,7 +444,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=Cc1ccccc1",
@@ -299,10 +486,51 @@
         "stereo": "racemic",
         "tag": "reagent_label_unknown",
         "why": "One OH on the benzylic carbon is acid-catalysed hydration. OsO₄ adds two."
+      },
+      {
+        "smiles": "C=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: OsO₄ does change styrene.",
+        "auto": true
       }
     ],
     "explanation": "Two OH groups add syn; only the benzylic carbon becomes a stereocenter, so the diol is racemic.",
-    "tip": "One new stereocenter: racemic. Two on a symmetric alkene: think meso."
+    "tip": "One new stereocenter: racemic. Two on a symmetric alkene: think meso.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "O3"
+          }
+        ],
+        "tag": "ozone_vs_osmium",
+        "why": "Benzaldehyde + formaldehyde is ozonolysis. OsO₄ keeps the C–C bond.",
+        "gives": "O=Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C/C=C\\C",
+          "name": "(Z)-but-2-ene (cis-2-butene)",
+          "gives": "CC(O)C(C)O",
+          "why": "With OsO₄, (Z)-but-2-ene (cis-2-butene) gives a different product (shown)."
+        },
+        {
+          "smiles": "C1=CCCCC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1O",
+          "why": "With OsO₄, cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCC(O)C1O",
+          "why": "With OsO₄, cyclohex-2-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R11-transstilbene-001",
@@ -313,7 +541,9 @@
     "difficulty": 3,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "c1ccc(/C=C/c2ccccc2)cc1",
@@ -368,10 +598,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "OsO₄ stops at the diol; it does not oxidise it on to the diketone."
+      },
+      {
+        "smiles": "C(=C\\c1ccccc1)/c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: OsO₄ does change (E)-stilbene.",
+        "auto": true
       }
     ],
     "explanation": "Syn dihydroxylation of the trans alkene gives the chiral (R,R)/(S,S) diol as a racemate.",
-    "tip": "E-alkene → racemic diol; Z-alkene → meso diol."
+    "tip": "E-alkene → racemic diol; Z-alkene → meso diol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "O3"
+          }
+        ],
+        "tag": "ozone_vs_osmium",
+        "why": "Two benzaldehydes is ozonolysis. OsO₄ keeps the C–C bond.",
+        "gives": "O=Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=CCC/C(C)=C/CO",
+          "name": "(2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol)",
+          "gives": "CC(C)(O)C(O)CCC(C)(O)C(O)CO",
+          "why": "With OsO₄, (2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol) gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C/C=C/c1ccccc1",
+          "name": "(E)-3-phenylprop-2-enal (cinnamaldehyde)",
+          "gives": "O=CC(O)C(O)c1ccccc1",
+          "why": "With OsO₄, (E)-3-phenylprop-2-enal (cinnamaldehyde) gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCC(=O)c1ccccc1",
+          "name": "1-phenylpent-4-en-1-one",
+          "gives": "O=C(CCC(O)CO)c1ccccc1",
+          "why": "With OsO₄, 1-phenylpent-4-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R11-cisstilbene-001",
@@ -382,7 +653,9 @@
     "difficulty": 3,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "c1ccc(/C=C\\c2ccccc2)cc1",
@@ -437,9 +710,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "OsO₄ gives the diol and stops there."
+      },
+      {
+        "smiles": "C(=C/c1ccccc1)/c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: OsO₄ does change (Z)-stilbene.",
+        "auto": true
       }
     ],
     "explanation": "Syn dihydroxylation of the cis alkene gives the meso diol.",
-    "tip": "Z-alkene, syn addition, mirror plane: meso."
+    "tip": "Z-alkene, syn addition, mirror plane: meso.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "O3"
+          }
+        ],
+        "tag": "ozone_vs_osmium",
+        "why": "Cleavage is ozonolysis, not OsO₄.",
+        "gives": "O=Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=CCC/C(C)=C/CO",
+          "name": "(2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol)",
+          "gives": "CC(C)(O)C(O)CCC(C)(O)C(O)CO",
+          "why": "With OsO₄, (2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)/C=C/c1ccccc1",
+          "name": "(E)-4-phenylbut-3-en-2-one",
+          "gives": "CC(=O)C(O)C(O)c1ccccc1",
+          "why": "With OsO₄, (E)-4-phenylbut-3-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccc(C(C)=O)cc1",
+          "name": "1-(4-methoxyphenyl)ethan-1-one",
+          "gives": "COc1ccc(C(C)=O)cc1",
+          "why": "OsO₄ does nothing to 1-(4-methoxyphenyl)ethan-1-one."
+        }
+      ]
+    }
   }
 ]

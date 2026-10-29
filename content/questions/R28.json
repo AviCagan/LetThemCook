@@ -7,7 +7,8 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "Cc1ccccc1",
@@ -39,10 +40,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NBS with light brominates the benzylic C–H by a radical path, not the ring. Ring bromination needs Br₂/FeBr₃."
+      },
+      {
+        "smiles": "Cc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NBS (light) does change toluene.",
+        "auto": true
       }
     ],
     "explanation": "Light (or peroxide/heat) starts a radical chain; the weak allylic/benzylic C–H is abstracted and the resonance-stabilised radical picks up Br from NBS.",
-    "tip": "NBS + hν = allylic / benzylic C–H → C–Br."
+    "tip": "NBS + hν = allylic / benzylic C–H → C–Br.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCc1ccccc1",
+          "name": "propylbenzene",
+          "gives": "CCC(Br)c1ccccc1",
+          "why": "With NBS (light), propylbenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(C)cc1",
+          "name": "1,4-dimethylbenzene",
+          "gives": "Cc1ccc(CBr)cc1",
+          "why": "With NBS (light), 1,4-dimethylbenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCc1ccccc1",
+          "name": "ethylbenzene",
+          "gives": "CC(Br)c1ccccc1",
+          "why": "With NBS (light), ethylbenzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R28-ethylbenzene-001",
@@ -52,7 +82,8 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CCc1ccccc1",
@@ -76,7 +107,38 @@
       }
     ],
     "explanation": "Light (or peroxide/heat) starts a radical chain; the weak allylic/benzylic C–H is abstracted and the resonance-stabilised radical picks up Br from NBS.",
-    "tip": "NBS + hν = allylic / benzylic C–H → C–Br."
+    "tip": "NBS + hν = allylic / benzylic C–H → C–Br.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccccc1",
+          "name": "toluene",
+          "gives": "BrCc1ccccc1",
+          "why": "With NBS (light), toluene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1=CCCCC1",
+          "name": "cyclohexene",
+          "gives": "BrC1C=CCCC1",
+          "why": "With NBS (light), cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(C)cc1",
+          "name": "1,4-dimethylbenzene",
+          "gives": "Cc1ccc(CBr)cc1",
+          "why": "With NBS (light), 1,4-dimethylbenzene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NBS (light) does change ethylbenzene.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R28-cyclohexene-001",
@@ -86,7 +148,8 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C1=CCCCC1",
@@ -113,7 +176,38 @@
       }
     ],
     "explanation": "Light (or peroxide/heat) starts a radical chain; the weak allylic/benzylic C–H is abstracted and the resonance-stabilised radical picks up Br from NBS.",
-    "tip": "NBS + hν = allylic / benzylic C–H → C–Br."
+    "tip": "NBS + hν = allylic / benzylic C–H → C–Br.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccccc1",
+          "name": "toluene",
+          "gives": "BrCc1ccccc1",
+          "why": "With NBS (light), toluene gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1C=CC(Br)CC1",
+          "why": "With NBS (light), cyclohex-2-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(C)cc1",
+          "name": "1,4-dimethylbenzene",
+          "gives": "Cc1ccc(CBr)cc1",
+          "why": "With NBS (light), 1,4-dimethylbenzene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C1=CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NBS (light) does change cyclohexene.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R28-pxylene-001",
@@ -123,7 +217,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(C)cc1",
@@ -150,7 +246,38 @@
       }
     ],
     "explanation": "Light (or peroxide/heat) starts a radical chain; the weak allylic/benzylic C–H is abstracted and the resonance-stabilised radical picks up Br from NBS.",
-    "tip": "NBS + hν = allylic / benzylic C–H → C–Br."
+    "tip": "NBS + hν = allylic / benzylic C–H → C–Br.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCc1ccccc1",
+          "name": "propylbenzene",
+          "gives": "CCC(Br)c1ccccc1",
+          "why": "With NBS (light), propylbenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1",
+          "name": "toluene",
+          "gives": "BrCc1ccccc1",
+          "why": "With NBS (light), toluene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1=CCCCC1",
+          "name": "cyclohexene",
+          "gives": "BrC1C=CCCC1",
+          "why": "With NBS (light), cyclohexene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "Cc1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NBS (light) does change 1,4-dimethylbenzene.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R28-tbutyltoluene-001",
@@ -160,7 +287,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(C(C)(C)C)cc1",
@@ -184,7 +313,38 @@
       }
     ],
     "explanation": "Light (or peroxide/heat) starts a radical chain; the weak allylic/benzylic C–H is abstracted and the resonance-stabilised radical picks up Br from NBS.",
-    "tip": "NBS + hν = allylic / benzylic C–H → C–Br."
+    "tip": "NBS + hν = allylic / benzylic C–H → C–Br.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(C)cc1",
+          "name": "1,4-dimethylbenzene",
+          "gives": "Cc1ccc(CBr)cc1",
+          "why": "With NBS (light), 1,4-dimethylbenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1",
+          "name": "toluene",
+          "gives": "BrCc1ccccc1",
+          "why": "With NBS (light), toluene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCc1ccccc1",
+          "name": "propylbenzene",
+          "gives": "CCC(Br)c1ccccc1",
+          "why": "With NBS (light), propylbenzene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "Cc1ccc(C(C)(C)C)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NBS (light) does change 1-tert-butyl-4-methylbenzene.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R28-propylbenzene-001",
@@ -194,7 +354,8 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CCCc1ccccc1",
@@ -218,7 +379,38 @@
       }
     ],
     "explanation": "Light (or peroxide/heat) starts a radical chain; the weak allylic/benzylic C–H is abstracted and the resonance-stabilised radical picks up Br from NBS.",
-    "tip": "NBS + hν = allylic / benzylic C–H → C–Br."
+    "tip": "NBS + hν = allylic / benzylic C–H → C–Br.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccccc1",
+          "name": "toluene",
+          "gives": "BrCc1ccccc1",
+          "why": "With NBS (light), toluene gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1C=CC(Br)CC1",
+          "why": "With NBS (light), cyclohex-2-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(C(C)(C)C)cc1",
+          "name": "1-tert-butyl-4-methylbenzene",
+          "gives": "CC(C)(C)c1ccc(CBr)cc1",
+          "why": "With NBS (light), 1-tert-butyl-4-methylbenzene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NBS (light) does change propylbenzene.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R28-butene-001",
@@ -228,7 +420,8 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C=CCC",
@@ -252,6 +445,37 @@
       }
     ],
     "explanation": "Light (or peroxide/heat) starts a radical chain; the weak allylic/benzylic C–H is abstracted and the resonance-stabilised radical picks up Br from NBS.",
-    "tip": "NBS + hν = allylic / benzylic C–H → C–Br."
+    "tip": "NBS + hν = allylic / benzylic C–H → C–Br.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCc1ccccc1",
+          "name": "ethylbenzene",
+          "gives": "CC(Br)c1ccccc1",
+          "why": "With NBS (light), ethylbenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1",
+          "name": "toluene",
+          "gives": "BrCc1ccccc1",
+          "why": "With NBS (light), toluene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(C)cc1",
+          "name": "1,4-dimethylbenzene",
+          "gives": "Cc1ccc(CBr)cc1",
+          "why": "With NBS (light), 1,4-dimethylbenzene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C=CCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NBS (light) does change but-1-ene.",
+        "auto": true
+      }
+    ]
   }
 ]

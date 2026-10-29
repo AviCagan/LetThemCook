@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCCCCO",
@@ -36,7 +39,53 @@
       }
     ],
     "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
-    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane).",
+    "traps": [
+      {
+        "smiles": "OCCCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "OCCCCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "C1CC2OC2C1",
+          "why": "With H₂SO₄, Δ (heat), cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCC(C)CCO",
+          "name": "2-methylbutane-1,4-diol",
+          "gives": "CC1CCOC1",
+          "why": "With H₂SO₄, Δ (heat), 2-methylbutane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)CCCCO",
+          "name": "hexane-1,5-diol",
+          "gives": "CC1CCCCO1",
+          "why": "With H₂SO₄, Δ (heat), hexane-1,5-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R17-pentanediol-001",
@@ -46,7 +95,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCCCCCO",
@@ -75,7 +127,53 @@
       }
     ],
     "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
-    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane).",
+    "traps": [
+      {
+        "smiles": "OCCCCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "OCCCCCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "C1CC2OC2C1",
+          "why": "With H₂SO₄, Δ (heat), cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCCCO",
+          "name": "butane-1,4-diol",
+          "gives": "C1CCOC1",
+          "why": "With H₂SO₄, Δ (heat), butane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)CCCCO",
+          "name": "hexane-1,5-diol",
+          "gives": "CC1CCCCO1",
+          "why": "With H₂SO₄, Δ (heat), hexane-1,5-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R17-pentane14diol-001",
@@ -85,7 +183,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(O)CCCO",
@@ -113,7 +213,53 @@
       }
     ],
     "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
-    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane).",
+    "traps": [
+      {
+        "smiles": "CC(O)CCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CC(O)CCCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCC(C)CCO",
+          "name": "2-methylbutane-1,4-diol",
+          "gives": "CC1CCOC1",
+          "why": "With H₂SO₄, Δ (heat), 2-methylbutane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCCCO",
+          "name": "butane-1,4-diol",
+          "gives": "C1CCOC1",
+          "why": "With H₂SO₄, Δ (heat), butane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCCCCO",
+          "name": "pentane-1,5-diol",
+          "gives": "C1CCOCC1",
+          "why": "With H₂SO₄, Δ (heat), pentane-1,5-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R17-hexane15diol-001",
@@ -123,7 +269,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(O)CCCCO",
@@ -151,7 +299,53 @@
       }
     ],
     "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
-    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane).",
+    "traps": [
+      {
+        "smiles": "CC(O)CCCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CC(O)CCCCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCCCCO",
+          "name": "butane-1,4-diol",
+          "gives": "C1CCOC1",
+          "why": "With H₂SO₄, Δ (heat), butane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCC(C)(C)CCO",
+          "name": "2,2-dimethylbutane-1,4-diol",
+          "gives": "CC1(C)CCOC1",
+          "why": "With H₂SO₄, Δ (heat), 2,2-dimethylbutane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "C1CC2OC2C1",
+          "why": "With H₂SO₄, Δ (heat), cyclopentane-1,2-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R17-methylbutanediol-001",
@@ -161,7 +355,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "OCC(C)CCO",
@@ -189,7 +385,53 @@
       }
     ],
     "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
-    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane).",
+    "traps": [
+      {
+        "smiles": "CC(CO)CCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CC(CO)CCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCCCCCO",
+          "name": "pentane-1,5-diol",
+          "gives": "C1CCOCC1",
+          "why": "With H₂SO₄, Δ (heat), pentane-1,5-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCC(C)(C)CCO",
+          "name": "2,2-dimethylbutane-1,4-diol",
+          "gives": "CC1(C)CCOC1",
+          "why": "With H₂SO₄, Δ (heat), 2,2-dimethylbutane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCCCO",
+          "name": "butane-1,4-diol",
+          "gives": "C1CCOC1",
+          "why": "With H₂SO₄, Δ (heat), butane-1,4-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R17-dimethylbutanediol-001",
@@ -199,7 +441,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCC(C)(C)CCO",
@@ -227,6 +472,52 @@
       }
     ],
     "explanation": "One OH is protonated and leaves; the other OH attacks the carbon intramolecularly (SN2): a five- or six-membered cyclic ether.",
-    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane)."
+    "tip": "1,4-diol → 5-ring (oxolane); 1,5-diol → 6-ring (oxane).",
+    "traps": [
+      {
+        "smiles": "CC(C)(CO)CCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CC(C)(CO)CCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCCCCO",
+          "name": "butane-1,4-diol",
+          "gives": "C1CCOC1",
+          "why": "With H₂SO₄, Δ (heat), butane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)CCCO",
+          "name": "pentane-1,4-diol",
+          "gives": "CC1CCCO1",
+          "why": "With H₂SO₄, Δ (heat), pentane-1,4-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCCCCO",
+          "name": "pentane-1,5-diol",
+          "gives": "C1CCOCC1",
+          "why": "With H₂SO₄, Δ (heat), pentane-1,5-diol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

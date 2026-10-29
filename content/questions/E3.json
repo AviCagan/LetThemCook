@@ -8,7 +8,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
@@ -79,7 +82,70 @@
       }
     ],
     "explanation": "NaH deprotonates cyclohexanol to the alkoxide, which displaces iodide from CH₃I by SN2: methoxycyclohexane.",
-    "tip": "Base first to make the alkoxide, then the methyl halide."
+    "tip": "Base first to make the alkoxide, then the methyl halide.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NaOH is too weak to deprotonate an ordinary alcohol fully; use NaH or Na to make the alkoxide.",
+        "gives": "OC1CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "AlCl3"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "lewis_acid_as_base",
+        "why": "Step 1 (AlCl₃) does nothing here: AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms. Use NaH (or Na).",
+        "gives": "OC1CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CH3I"
+          },
+          {
+            "reagent": "NaH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "gives": "[O-]C1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "COCc1ccccc1",
+          "why": "With 1. NaH; 2. CH₃I, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "COC(C)C(OC)c1ccccc1",
+          "why": "With 1. NaH; 2. CH₃I, 1-phenylpropane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCc1ccccc1",
+          "name": "2-phenylethanol",
+          "gives": "COCCc1ccccc1",
+          "why": "With 1. NaH; 2. CH₃I, 2-phenylethanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E3-tbutanol-benzyl-001",
@@ -90,7 +156,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(C)O",
@@ -152,10 +221,80 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "No C–C bond forms in a Williamson synthesis: the nucleophile is the oxygen."
+      },
+      {
+        "smiles": "CC(C)(C)[O-]",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (PhCH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "auto": true
       }
     ],
     "explanation": "tert-Butoxide (made with NaH) attacks benzyl bromide by SN2. The bulky group is on the oxygen side, where it does no harm.",
-    "tip": "Hindered alkoxide + unhindered halide: the right way round."
+    "tip": "Hindered alkoxide + unhindered halide: the right way round.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AlCl3"
+          },
+          {
+            "reagent": "BnBr"
+          }
+        ],
+        "tag": "lewis_acid_as_base",
+        "why": "Step 1 (AlCl₃) does nothing here: AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms. Use NaH (or Na).",
+        "gives": "CC(C)(C)O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "BnBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NaOH is too weak to deprotonate an ordinary alcohol fully; use NaH or Na to make the alkoxide.",
+        "gives": "CC(C)(C)O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "BnBr"
+          },
+          {
+            "reagent": "NaH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (PhCH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "gives": "CC(C)(C)[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "c1ccc(COCc2ccccc2)cc1",
+          "why": "With 1. NaH; 2. PhCH₂Br, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCOCc1ccccc1",
+          "why": "With 1. NaH; 2. PhCH₂Br, 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "c1ccc(COC2CCCCC2)cc1",
+          "why": "With 1. NaH; 2. PhCH₂Br, cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E3-benzylalcohol-ethyl-001",
@@ -166,7 +305,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCc1ccccc1",
@@ -223,10 +365,80 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The alkoxide oxygen is the nucleophile; no C–C bond forms and the benzylic oxygen is kept."
+      },
+      {
+        "smiles": "[O-]Cc1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "auto": true
       }
     ],
     "explanation": "Benzyloxide (from NaH) displaces bromide from bromoethane: benzyl ethyl ether.",
-    "tip": "1° halide: SN2 is safe."
+    "tip": "1° halide: SN2 is safe.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "EtBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NaOH is too weak to deprotonate an ordinary alcohol fully; use NaH or Na to make the alkoxide.",
+        "gives": "OCc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "AlCl3"
+          },
+          {
+            "reagent": "EtBr"
+          }
+        ],
+        "tag": "lewis_acid_as_base",
+        "why": "Step 1 (AlCl₃) does nothing here: AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms. Use NaH (or Na).",
+        "gives": "OCc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "EtBr"
+          },
+          {
+            "reagent": "NaH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "gives": "[O-]Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CCOCCC(C)C",
+          "why": "With 1. NaH; 2. CH₃CH₂Br, 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)O",
+          "name": "propan-2-ol",
+          "gives": "CCOC(C)C",
+          "why": "With 1. NaH; 2. CH₃CH₂Br, propan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "CCOC(C)C(OCC)c1ccccc1",
+          "why": "With 1. NaH; 2. CH₃CH₂Br, 1-phenylpropane-1,2-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E3-isoamyl-allyl-001",
@@ -237,7 +449,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CCO",
@@ -295,10 +510,80 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaH is a base, not an oxidant."
+      },
+      {
+        "smiles": "CC(C)CC[O-]",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₂=CHCH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "auto": true
       }
     ],
     "explanation": "The alkoxide attacks the allylic CH₂ of allyl bromide by SN2 to give the allyl ether.",
-    "tip": "Allyl and benzyl halides are the best SN2 partners in the box."
+    "tip": "Allyl and benzyl halides are the best SN2 partners in the box.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "AllylBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NaOH is too weak to deprotonate an ordinary alcohol fully; use NaH or Na to make the alkoxide.",
+        "gives": "CC(C)CCO"
+      },
+      {
+        "route": [
+          {
+            "reagent": "AlCl3"
+          },
+          {
+            "reagent": "AllylBr"
+          }
+        ],
+        "tag": "lewis_acid_as_base",
+        "why": "Step 1 (AlCl₃) does nothing here: AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms. Use NaH (or Na).",
+        "gives": "CC(C)CCO"
+      },
+      {
+        "route": [
+          {
+            "reagent": "AllylBr"
+          },
+          {
+            "reagent": "NaH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₂=CHCH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "gives": "CC(C)CC[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C=CCOC1CCCCC1",
+          "why": "With 1. NaH; 2. CH₂=CHCH₂Br, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)O",
+          "name": "propan-2-ol",
+          "gives": "C=CCOC(C)C",
+          "why": "With 1. NaH; 2. CH₂=CHCH₂Br, propan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "C=CCOCc1ccccc1",
+          "why": "With 1. NaH; 2. CH₂=CHCH₂Br, benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E3-isopropanol-ethyl-001",
@@ -309,7 +594,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)O",
@@ -366,6 +654,13 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The alkoxide is an O-nucleophile; no C–C bond forms."
+      },
+      {
+        "smiles": "CC(C)[O-]",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "auto": true
       }
     ],
     "nameTraps": [
@@ -376,7 +671,70 @@
       }
     ],
     "explanation": "Put the 2° group on the alkoxide (isopropoxide) and use the 1° halide (bromoethane): SN2 gives ethyl isopropyl ether.",
-    "tip": "Disconnect so the halide side is CH₃ or 1°."
+    "tip": "Disconnect so the halide side is CH₃ or 1°.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AlCl3"
+          },
+          {
+            "reagent": "EtBr"
+          }
+        ],
+        "tag": "lewis_acid_as_base",
+        "why": "Step 1 (AlCl₃) does nothing here: AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms. Use NaH (or Na).",
+        "gives": "CC(C)O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "EtBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NaOH is too weak to deprotonate an ordinary alcohol fully; use NaH or Na to make the alkoxide.",
+        "gives": "CC(C)O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "EtBr"
+          },
+          {
+            "reagent": "NaH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "gives": "CC(C)[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "CCOCc1ccccc1",
+          "why": "With 1. NaH; 2. CH₃CH₂Br, benzyl alcohol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)O",
+          "name": "2-methylpropan-2-ol (tert-butanol)",
+          "gives": "CCOC(C)(C)C",
+          "why": "With 1. NaH; 2. CH₃CH₂Br, 2-methylpropan-2-ol (tert-butanol) gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "CCOC1CCCCC1",
+          "why": "With 1. NaH; 2. CH₃CH₂Br, cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E3-phenylethanol-methyl-001",
@@ -387,7 +745,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "OCCc1ccccc1",
@@ -443,9 +803,79 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen attacks CH₃I; the product keeps the oxygen as an ether."
+      },
+      {
+        "smiles": "[O-]CCc1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "auto": true
       }
     ],
     "explanation": "NaH makes the alkoxide; CH₃I is methylated by SN2: the methyl ether.",
-    "tip": "Methyl halide + any alkoxide = clean ether."
+    "tip": "Methyl halide + any alkoxide = clean ether.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NaOH is too weak to deprotonate an ordinary alcohol fully; use NaH or Na to make the alkoxide.",
+        "gives": "OCCc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "AlCl3"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "lewis_acid_as_base",
+        "why": "Step 1 (AlCl₃) does nothing here: AlCl₃ is a Lewis acid; it cannot remove the O–H proton, so no alkoxide forms. Use NaH (or Na).",
+        "gives": "OCCc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "tBuBr"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 ((CH₃)₃CBr) does nothing here: A neutral alcohol does not attack an alkyl halide; make the alkoxide first (NaH or Na), then add the halide.",
+        "gives": "OCCc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "COC1CCCCC1",
+          "why": "With 1. NaH; 2. CH₃I, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "COC(C)C(OC)c1ccccc1",
+          "why": "With 1. NaH; 2. CH₃I, 1-phenylpropane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "COCc1ccccc1",
+          "why": "With 1. NaH; 2. CH₃I, benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

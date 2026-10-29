@@ -71,6 +71,20 @@ export function Settings() {
         <span>Customers per shift</span>
         <input type="number" min={4} max={16} value={s.profile.settings.shiftLength} onChange={(e) => update((d) => { d.profile.settings.shiftLength = Math.max(4, Math.min(16, Number((e.target as HTMLInputElement).value) || 10)); })} />
       </label>
+      <div class="row gap wrap">
+        <label class="field">
+          <span>Exam questions</span>
+          <input type="number" min={5} max={60} value={s.profile.settings.examLength ?? 25} onChange={(e) => update((d) => { d.profile.settings.examLength = Math.max(5, Math.min(60, Number((e.target as HTMLInputElement).value) || 25)); })} />
+        </label>
+        <label class="field">
+          <span>Exam timer (min, 0 = off)</span>
+          <input type="number" min={0} max={180} value={s.profile.settings.examMinutes ?? 50} onChange={(e) => update((d) => { d.profile.settings.examMinutes = Math.max(0, Math.min(180, Number((e.target as HTMLInputElement).value) || 0)); })} />
+        </label>
+        <label class="field">
+          <span>Rush hour (min)</span>
+          <input type="number" min={1} max={30} value={s.profile.settings.rushMinutes ?? 5} onChange={(e) => update((d) => { d.profile.settings.rushMinutes = Math.max(1, Math.min(30, Number((e.target as HTMLInputElement).value) || 5)); })} />
+        </label>
+      </div>
       <label class="field check">
         <input type="checkbox" checked={s.profile.chapters['17'] !== false} onChange={(e) => update((d) => { d.profile.chapters['17'] = (e.target as HTMLInputElement).checked; })} />
         <span>Include chapter 17 (ethers, epoxides, sulfides)</span>

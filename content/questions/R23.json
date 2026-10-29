@@ -8,7 +8,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(O)CCCCC1O",
@@ -75,7 +78,51 @@
     ],
     "explanation": "HIO₄ breaks the C1–C2 bond of the diol. C1 (bearing CH₃) has two carbon substituents → ketone; C2 (bearing H) has one → aldehyde. The ring opens into a single seven-carbon chain: 6-oxoheptanal.",
     "tip": "Cut between the two OHs, then count carbons on each cut end: two C's → -one, one C → -al.",
-    "source": "Carey 12e §16.11 (toolkit R23); seeded weak spot"
+    "source": "Carey 12e §16.11 (toolkit R23); seeded weak spot",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "gives": "CC1(O)CCCCC1O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "That is what PCC would do to the 2° alcohol. HIO₄ does not oxidise an alcohol in place; it cleaves the C–C bond between the two OH-bearing carbons.",
+        "gives": "CC1(O)CCCCC1=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)C(O)CC",
+          "name": "2-methylpentane-2,3-diol",
+          "gives": "CC(C)=O",
+          "why": "With HIO₄, 2-methylpentane-2,3-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "O=CCCCC=O",
+          "why": "With HIO₄, cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With HIO₄, 1-phenylpropane-1,2-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R23-butanediol-001",
@@ -86,7 +133,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(O)C(O)C",
@@ -127,6 +177,13 @@
         "stereo": "none",
         "tag": "diol_to_alcohols",
         "why": "Cleavage is oxidative: each carbinol carbon becomes a carbonyl, not an alcohol."
+      },
+      {
+        "smiles": "CC(O)C(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "auto": true
       }
     ],
     "nameTraps": [
@@ -137,7 +194,51 @@
       }
     ],
     "explanation": "The C2–C3 bond is cleaved; each CH(OH)CH₃ becomes CH₃CHO. Two molecules of acetaldehyde.",
-    "tip": "Symmetric diol, two identical carbonyls."
+    "tip": "Symmetric diol, two identical carbonyls.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "HIO₄ cleaves the C2–C3 bond; it does not oxidise the alcohols in place to a diketone.",
+        "gives": "CC(=O)C(C)=O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "gives": "CC(O)C(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "O=CCCCC=O",
+          "why": "With HIO₄, cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(O)CCCCC1O",
+          "name": "1-methylcyclohexane-1,2-diol",
+          "gives": "CC(=O)CCCCC=O",
+          "why": "With HIO₄, 1-methylcyclohexane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)C(C)(C)O",
+          "name": "2,3-dimethylbutane-2,3-diol (pinacol)",
+          "gives": "CC(C)=O",
+          "why": "With HIO₄, 2,3-dimethylbutane-2,3-diol (pinacol) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R23-hydrobenzoin-001",
@@ -148,7 +249,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC(c1ccccc1)C(O)c1ccccc1",
@@ -186,10 +290,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Benzil would keep the C–C bond; HIO₄ breaks it."
+      },
+      {
+        "smiles": "OC(c1ccccc1)C(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "auto": true
       }
     ],
     "explanation": "Cleavage between the two carbinol carbons gives two benzaldehydes.",
-    "tip": "Each half keeps its aryl group and gains a C=O."
+    "tip": "Each half keeps its aryl group and gains a C=O.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Benzil would keep the C–C bond; HIO₄ breaks it.",
+        "gives": "O=C(C(=O)c1ccccc1)c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "gives": "OC(c1ccccc1)C(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "c1ccc(/C=C\\c2ccccc2)cc1",
+          "name": "(Z)-stilbene",
+          "gives": "C(=C/c1ccccc1)/c1ccccc1",
+          "why": "HIO₄ does nothing to (Z)-stilbene."
+        },
+        {
+          "smiles": "CC(C)(C)c1cc(O)ccc1O",
+          "name": "2-tert-butylbenzene-1,4-diol",
+          "gives": "CC(C)(C)c1cc(O)ccc1O",
+          "why": "HIO₄ does nothing to 2-tert-butylbenzene-1,4-diol."
+        },
+        {
+          "smiles": "C=CCCC(=O)c1ccccc1",
+          "name": "1-phenylpent-4-en-1-one",
+          "gives": "C=CCCC(=O)c1ccccc1",
+          "why": "HIO₄ does nothing to 1-phenylpent-4-en-1-one."
+        }
+      ]
+    }
   },
   {
     "id": "q-R23-cyclopentanediol-001",
@@ -200,7 +355,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCC1O",
@@ -243,6 +401,13 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A diketone keeps the ring; HIO₄ opens it."
+      },
+      {
+        "smiles": "OC1CCCC1O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "auto": true
       }
     ],
     "nameTraps": [
@@ -258,7 +423,51 @@
       }
     ],
     "explanation": "The ring opens at the C1–C2 bond; both carbons had one H, so both become aldehydes: pentanedial.",
-    "tip": "Cyclic diol → one chain with a carbonyl at each end."
+    "tip": "Cyclic diol → one chain with a carbonyl at each end.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "gives": "OC1CCCC1O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A diketone keeps the ring; HIO₄ opens it.",
+        "gives": "O=C1CCCC1=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With HIO₄, 1-phenylpropane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)C(O)CC",
+          "name": "2-methylpentane-2,3-diol",
+          "gives": "CC(C)=O",
+          "why": "With HIO₄, 2-methylpentane-2,3-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)C(C)(C)O",
+          "name": "2,3-dimethylbutane-2,3-diol (pinacol)",
+          "gives": "CC(C)=O",
+          "why": "With HIO₄, 2,3-dimethylbutane-2,3-diol (pinacol) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R23-methylpentanediol-001",
@@ -269,7 +478,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(O)C(O)CC",
@@ -278,9 +490,10 @@
     "target": {
       "name": "propanal",
       "stereo": "none",
-      "smiles": "CC(C)=O",
+      "smiles": "CCC=O",
       "highlightAtoms": [
         1,
+        2,
         3
       ]
     },
@@ -307,10 +520,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is PCC chemistry (oxidising the 2° OH in place). HIO₄ breaks the C2–C3 bond."
+      },
+      {
+        "smiles": "CCC(O)C(C)(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "auto": true
       }
     ],
     "explanation": "C2 (two methyls) becomes acetone; C3 (ethyl + H) becomes propanal.",
-    "tip": "Two carbons on the cut carbon → ketone; one carbon → aldehyde."
+    "tip": "Two carbons on the cut carbon → ketone; one carbon → aldehyde.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "That is PCC chemistry (oxidising the 2° OH in place). HIO₄ breaks the C2–C3 bond.",
+        "gives": "CCC(=O)C(C)(C)O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "gives": "CCC(O)C(C)(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With HIO₄, 1-phenylpropane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "O=CCCCC=O",
+          "why": "With HIO₄, cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)C(C)(C)O",
+          "name": "2,3-dimethylbutane-2,3-diol (pinacol)",
+          "gives": "CC(C)=O",
+          "why": "With HIO₄, 2,3-dimethylbutane-2,3-diol (pinacol) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R23-phenylpropanediol-001",
@@ -321,7 +585,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC(c1ccccc1)C(C)O",
@@ -359,10 +626,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A diketone keeps the C–C bond; HIO₄ breaks it."
+      },
+      {
+        "smiles": "CC(O)C(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "auto": true
       }
     ],
     "explanation": "The C1–C2 bond breaks: C1 (phenyl + H) becomes benzaldehyde, C2 (methyl + H) becomes acetaldehyde.",
-    "tip": "Each cut carbon keeps its own substituents and gains a C=O."
+    "tip": "Each cut carbon keeps its own substituents and gains a C=O.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "gives": "CC(O)C(O)c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A diketone keeps the C–C bond; HIO₄ breaks it.",
+        "gives": "CC(=O)C(=O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "O=CCCCC=O",
+          "why": "With HIO₄, cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(O)CCCCC1O",
+          "name": "1-methylcyclohexane-1,2-diol",
+          "gives": "CC(=O)CCCCC=O",
+          "why": "With HIO₄, 1-methylcyclohexane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)C(O)CC",
+          "name": "2-methylpentane-2,3-diol",
+          "gives": "CC(C)=O",
+          "why": "With HIO₄, 2-methylpentane-2,3-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R23-pinacol-001",
@@ -373,7 +691,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(O)C(C)(C)O",
@@ -425,6 +746,40 @@
       }
     ],
     "explanation": "Both carbinol carbons carry two methyls, so cleavage gives two molecules of acetone.",
-    "tip": "Two 3° carbinols, two ketones."
+    "tip": "Two 3° carbinols, two ketones.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "OsO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (OsO₄) does nothing here: The diol is already made; OsO₄ needs a C=C.",
+        "gives": "CC(C)(O)C(C)(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "O=CCCCC=O",
+          "why": "With HIO₄, cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)C(O)C",
+          "name": "butane-2,3-diol",
+          "gives": "CC=O",
+          "why": "With HIO₄, butane-2,3-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With HIO₄, 1-phenylpropane-1,2-diol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

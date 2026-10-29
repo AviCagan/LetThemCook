@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCO",
@@ -41,10 +44,54 @@
         "stereo": "none",
         "tag": "wrong_temperature",
         "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      },
+      {
+        "smiles": "CCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
       }
     ],
     "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
-    "tip": "140 °C ether, 180 °C alkene."
+    "tip": "140 °C ether, 180 °C alkene.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)COCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCOCCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCO",
+          "name": "propan-1-ol",
+          "gives": "CCCOCCC",
+          "why": "With H₂SO₄, Δ (140 °C), propan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R16-propanol-001",
@@ -54,7 +101,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCO",
@@ -89,10 +139,54 @@
         "stereo": "none",
         "tag": "wrong_temperature",
         "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      },
+      {
+        "smiles": "CCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
       }
     ],
     "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
-    "tip": "140 °C ether, 180 °C alkene."
+    "tip": "140 °C ether, 180 °C alkene.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "c180"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C.",
+        "gives": "C=CC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CO",
+          "name": "methanol",
+          "gives": "COC",
+          "why": "With H₂SO₄, Δ (140 °C), methanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOCC",
+          "why": "With H₂SO₄, Δ (140 °C), ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)COCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 2-methylpropan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R16-butanol-001",
@@ -102,7 +196,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCO",
@@ -138,10 +235,54 @@
         "stereo": "none",
         "tag": "wrong_temperature",
         "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      },
+      {
+        "smiles": "CCCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
       }
     ],
     "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
-    "tip": "140 °C ether, 180 °C alkene."
+    "tip": "140 °C ether, 180 °C alkene.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CCCCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOCC",
+          "why": "With H₂SO₄, Δ (140 °C), ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)COCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCOCCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 3-methylbutan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R16-methanol-001",
@@ -151,7 +292,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CO",
@@ -179,7 +323,53 @@
       }
     ],
     "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
-    "tip": "140 °C ether, 180 °C alkene."
+    "tip": "140 °C ether, 180 °C alkene.",
+    "traps": [
+      {
+        "smiles": "CO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOCC",
+          "why": "With H₂SO₄, Δ (140 °C), ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCOCCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCO",
+          "name": "propan-1-ol",
+          "gives": "CCCOCCC",
+          "why": "With H₂SO₄, Δ (140 °C), propan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R16-isobutanol-001",
@@ -189,7 +379,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CO",
@@ -226,10 +419,54 @@
         "stereo": "none",
         "tag": "wrong_temperature",
         "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      },
+      {
+        "smiles": "CC(C)CO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
       }
     ],
     "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
-    "tip": "140 °C ether, 180 °C alkene."
+    "tip": "140 °C ether, 180 °C alkene.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CC(C)CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "CC(C)CCOCCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 3-methylbutan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOCC",
+          "why": "With H₂SO₄, Δ (140 °C), ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCO",
+          "name": "propan-1-ol",
+          "gives": "CCCOCCC",
+          "why": "With H₂SO₄, Δ (140 °C), propan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R16-isoamyl-001",
@@ -239,7 +476,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CCO",
@@ -277,9 +517,53 @@
         "stereo": "none",
         "tag": "wrong_temperature",
         "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C."
+      },
+      {
+        "smiles": "CC(C)CCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
       }
     ],
     "explanation": "At 140 °C a second molecule of the alcohol displaces water from the protonated alcohol (SN2): a symmetric ether. At 180 °C elimination wins.",
-    "tip": "140 °C ether, 180 °C alkene."
+    "tip": "140 °C ether, 180 °C alkene.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "c180"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "At 180 °C the 1° alcohol dehydrates to the alkene. The ether forms at 140 °C.",
+        "gives": "C=CC(C)C"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)COCC(C)C",
+          "why": "With H₂SO₄, Δ (140 °C), 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOCC",
+          "why": "With H₂SO₄, Δ (140 °C), ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCO",
+          "name": "propan-1-ol",
+          "gives": "CCCOCCC",
+          "why": "With H₂SO₄, Δ (140 °C), propan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCO",
@@ -46,10 +48,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      },
+      {
+        "smiles": "CCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, pyr does change ethanol.",
+        "auto": true
       }
     ],
     "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
-    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CO",
+          "name": "methanol",
+          "gives": "COC(C)=O",
+          "why": "With CH₃COCl, pyr, methanol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "CC(=O)OC1CCCCC1",
+          "why": "With CH₃COCl, pyr, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)CBr",
+          "name": "1-bromopropan-2-ol",
+          "gives": "CC(=O)OC(C)CBr",
+          "why": "With CH₃COCl, pyr, 1-bromopropan-2-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R18-isopropanol-accl-001",
@@ -59,7 +90,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)O",
@@ -98,10 +131,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      },
+      {
+        "smiles": "CC(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, pyr does change propan-2-ol.",
+        "auto": true
       }
     ],
     "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
-    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOC(C)=O",
+          "why": "With CH₃COCl, pyr, ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCOC(C)=O",
+          "why": "With CH₃COCl, pyr, butan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CO",
+          "name": "methanol",
+          "gives": "COC(C)=O",
+          "why": "With CH₃COCl, pyr, methanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R18-benzyl-accl-001",
@@ -111,7 +173,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OCc1ccccc1",
@@ -147,10 +211,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      },
+      {
+        "smiles": "OCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, pyr does change benzyl alcohol.",
+        "auto": true
       }
     ],
     "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
-    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)O",
+          "name": "propan-2-ol",
+          "gives": "CC(=O)OC(C)C",
+          "why": "With CH₃COCl, pyr, propan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)O",
+          "name": "2-methylpropan-2-ol",
+          "gives": "CC(=O)OC(C)(C)C",
+          "why": "With CH₃COCl, pyr, 2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "CC(=O)OC1CCCCC1",
+          "why": "With CH₃COCl, pyr, cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R18-cyclohexanol-bzcl-001",
@@ -160,7 +253,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
@@ -194,10 +289,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      },
+      {
+        "smiles": "OC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: PhCOCl, pyr does change cyclohexanol.",
+        "auto": true
       }
     ],
     "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
-    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)O",
+          "name": "propan-2-ol",
+          "gives": "CC(C)OC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, propan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "O=C(OCc1ccccc1)c1ccccc1",
+          "why": "With PhCOCl, pyr, benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R18-methanol-bzcl-001",
@@ -207,7 +331,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CO",
@@ -236,7 +362,38 @@
       }
     ],
     "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
-    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)O",
+          "name": "propan-2-ol",
+          "gives": "CC(C)OC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, propan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)CBr",
+          "name": "1-bromopropan-2-ol",
+          "gives": "CC(CBr)OC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, 1-bromopropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)O",
+          "name": "2-methylpropan-2-ol",
+          "gives": "CC(C)(C)OC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, 2-methylpropan-2-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: PhCOCl, pyr does change methanol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R18-tbuoh-accl-001",
@@ -246,7 +403,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(C)O",
@@ -280,7 +439,38 @@
       ]
     ],
     "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
-    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCOC(C)=O",
+          "why": "With CH₃COCl, pyr, butan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCOC(C)=O",
+          "why": "With CH₃COCl, pyr, ethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CO",
+          "name": "methanol",
+          "gives": "COC(C)=O",
+          "why": "With CH₃COCl, pyr, methanol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(C)(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, pyr does change 2-methylpropan-2-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R18-butanol-bzcl-001",
@@ -290,7 +480,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCO",
@@ -324,9 +516,38 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Oxidation, not acylation. The alcohol oxygen must attack an acyl chloride or anhydride."
+      },
+      {
+        "smiles": "CCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: PhCOCl, pyr does change butan-1-ol.",
+        "auto": true
       }
     ],
     "explanation": "The alcohol oxygen attacks the acid chloride carbonyl; chloride leaves and pyridine takes the HCl. The alcohol's oxygen is the ester oxygen.",
-    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible."
+    "tip": "RCOCl + R'OH + pyridine = ester, fast and irreversible.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "O=C(OC1CCCCC1)c1ccccc1",
+          "why": "With PhCOCl, pyr, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)O",
+          "name": "propan-2-ol",
+          "gives": "CC(C)OC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, propan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CO",
+          "name": "methanol",
+          "gives": "COC(=O)c1ccccc1",
+          "why": "With PhCOCl, pyr, methanol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

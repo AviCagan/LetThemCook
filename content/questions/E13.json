@@ -7,7 +7,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CSC",
@@ -38,10 +40,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      },
+      {
+        "smiles": "CSC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃I does change dimethyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
-    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CC[S+](C)CC",
+          "why": "With CH₃I, diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane",
+          "gives": "C[S+]1CCCC1",
+          "why": "With CH₃I, thiolane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCO",
+          "why": "CH₃I does nothing to butan-1-ol."
+        }
+      ]
+    }
   },
   {
     "id": "q-E13-des-mei-001",
@@ -51,7 +82,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCSCC",
@@ -82,10 +115,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      },
+      {
+        "smiles": "CCSCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃I does change diethyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
-    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CSc1ccccc1",
+          "name": "methyl phenyl sulfide",
+          "gives": "C[S+](C)c1ccccc1",
+          "why": "With CH₃I, methyl phenyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CSC",
+          "name": "dimethyl sulfide",
+          "gives": "C[S+](C)C",
+          "why": "With CH₃I, dimethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane",
+          "gives": "C[S+]1CCCC1",
+          "why": "With CH₃I, thiolane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E13-thioanisole-mei-001",
@@ -95,7 +157,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CSc1ccccc1",
@@ -126,10 +190,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      },
+      {
+        "smiles": "CSc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃I does change methyl phenyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
-    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCSCCCC",
+          "name": "dibutyl sulfide",
+          "gives": "CCCC[S+](C)CCCC",
+          "why": "With CH₃I, dibutyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CC[S+](C)CC",
+          "why": "With CH₃I, diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane",
+          "gives": "C[S+]1CCCC1",
+          "why": "With CH₃I, thiolane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E13-thiolane-mei-001",
@@ -139,7 +232,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "C1CCSC1",
@@ -170,10 +265,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      },
+      {
+        "smiles": "C1CCSC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃I does change thiolane.",
+        "auto": true
       }
     ],
     "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
-    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CSC",
+          "name": "dimethyl sulfide",
+          "gives": "C[S+](C)C",
+          "why": "With CH₃I, dimethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CSc1ccccc1",
+          "name": "methyl phenyl sulfide",
+          "gives": "C[S+](C)c1ccccc1",
+          "why": "With CH₃I, methyl phenyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CC[S+](C)CC",
+          "why": "With CH₃I, diethyl sulfide gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E13-dms-etbr-001",
@@ -183,7 +307,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CSC",
@@ -215,10 +341,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      },
+      {
+        "smiles": "CSC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃CH₂Br does change dimethyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
-    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane",
+          "gives": "CC[S+]1CCCC1",
+          "why": "With CH₃CH₂Br, thiolane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CC[S+](CC)CC",
+          "why": "With CH₃CH₂Br, diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1",
+          "name": "toluene",
+          "gives": "Cc1ccccc1",
+          "why": "CH₃CH₂Br does nothing to toluene."
+        }
+      ]
+    }
   },
   {
     "id": "q-E13-dibutyl-mei-001",
@@ -228,7 +383,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCSCCCC",
@@ -259,9 +416,38 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "H₂O₂ oxidises sulfur (sulfoxide). An alkyl halide alkylates it: the sulfonium salt."
+      },
+      {
+        "smiles": "CCCCSCCCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃I does change dibutyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "The sulfur lone pair attacks the alkyl halide (SN2): a trialkylsulfonium ion with the halide as the counter-ion.",
-    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻."
+    "tip": "R₂S + CH₃I = R₂S⁺–CH₃ I⁻.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CC[S+](C)CC",
+          "why": "With CH₃I, diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CSc1ccccc1",
+          "name": "methyl phenyl sulfide",
+          "gives": "C[S+](C)c1ccccc1",
+          "why": "With CH₃I, methyl phenyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane",
+          "gives": "C[S+]1CCCC1",
+          "why": "With CH₃I, thiolane gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

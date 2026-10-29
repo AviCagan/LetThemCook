@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
@@ -36,10 +39,64 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      },
+      {
+        "smiles": "OC1CCCCC1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat.",
+        "gives": "O=C1CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "OC1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(O)CCCCC1",
+          "name": "1-methylcyclohexan-1-ol",
+          "gives": "CC1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), 1-methylcyclohexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CCCCC1O",
+          "name": "2-methylcyclohexan-1-ol",
+          "gives": "CC1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), 2-methylcyclohexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethan-1-ol",
+          "gives": "C=Cc1ccccc1",
+          "why": "With H₂SO₄, Δ (heat), 1-phenylethan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R15-methylbutanol-001",
@@ -49,7 +106,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCC(C)(C)O",
@@ -83,10 +143,64 @@
         "stereo": "none",
         "tag": "zaitsev_flip",
         "why": "That is the Hofmann (less substituted) alkene. E1 dehydration gives the Zaitsev product, the more substituted alkene."
+      },
+      {
+        "smiles": "CCC(C)(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (Na₂Cr₂O₇ / H₂SO₄) does nothing here: A 3° alcohol has no H on the carbinol carbon: chromic acid gives no reaction.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (Na₂Cr₂O₇ / H₂SO₄) does nothing here: A 3° alcohol has no H on the carbinol carbon: chromic acid gives no reaction.",
+        "gives": "CCC(C)(C)O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "CCC(C)(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(O)CCCCC1",
+          "name": "1-methylcyclohexan-1-ol",
+          "gives": "CC1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), 1-methylcyclohexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethan-1-ol",
+          "gives": "C=Cc1ccccc1",
+          "why": "With H₂SO₄, Δ (heat), 1-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R15-methylcyclohexanol-001",
@@ -96,7 +210,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(O)CCCCC1",
@@ -128,10 +245,64 @@
         "stereo": "none",
         "tag": "zaitsev_flip",
         "why": "The exocyclic alkene is less substituted. Zaitsev: the trisubstituted ring alkene is major."
+      },
+      {
+        "smiles": "CC1(O)CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (Na₂Cr₂O₇ / H₂SO₄) does nothing here: A 3° alcohol has no H on the carbinol carbon: chromic acid gives no reaction.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (Na₂Cr₂O₇ / H₂SO₄) does nothing here: A 3° alcohol has no H on the carbinol carbon: chromic acid gives no reaction.",
+        "gives": "CC1(O)CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "CC1(O)CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)c1ccccc1",
+          "name": "2-phenylpropan-2-ol",
+          "gives": "C=C(C)c1ccccc1",
+          "why": "With H₂SO₄, Δ (heat), 2-phenylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethan-1-ol",
+          "gives": "C=Cc1ccccc1",
+          "why": "With H₂SO₄, Δ (heat), 1-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R15-butan2ol-001",
@@ -141,7 +312,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCC(C)O",
@@ -180,10 +355,64 @@
         "stereo": "none",
         "tag": "zaitsev_flip",
         "why": "But-1-ene is the less substituted alkene; Zaitsev favours but-2-ene."
+      },
+      {
+        "smiles": "CCC(C)O",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat.",
+        "gives": "CCC(C)=O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "CCC(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC(C)(C)O",
+          "name": "2-methylbutan-2-ol",
+          "gives": "CC=C(C)C",
+          "why": "With H₂SO₄, Δ (heat), 2-methylbutan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CCCCC1O",
+          "name": "2-methylcyclohexan-1-ol",
+          "gives": "CC1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), 2-methylcyclohexan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R15-phenylethanol-001",
@@ -193,7 +422,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(O)c1ccccc1",
@@ -226,10 +458,64 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      },
+      {
+        "smiles": "CC(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat.",
+        "gives": "CC(=O)c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "CC(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CCCCC1O",
+          "name": "2-methylcyclohexan-1-ol",
+          "gives": "CC1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), 2-methylcyclohexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)(C)O",
+          "name": "2-methylbutan-2-ol",
+          "gives": "CC=C(C)C",
+          "why": "With H₂SO₄, Δ (heat), 2-methylbutan-2-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R15-2methylcyclohexanol-001",
@@ -239,7 +525,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1CCCCC1O",
@@ -277,10 +567,64 @@
         "stereo": "none",
         "tag": "zaitsev_flip",
         "why": "The exocyclic alkene is less substituted. Zaitsev: the trisubstituted ring alkene is major."
+      },
+      {
+        "smiles": "CC1CCCCC1O",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat.",
+        "gives": "CC1CCCCC1=O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "CC1CCCCC1O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethan-1-ol",
+          "gives": "C=Cc1ccccc1",
+          "why": "With H₂SO₄, Δ (heat), 1-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)(C)O",
+          "name": "2-methylbutan-2-ol",
+          "gives": "CC=C(C)C",
+          "why": "With H₂SO₄, Δ (heat), 2-methylbutan-2-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R15-cumyl-001",
@@ -290,7 +634,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(C)(O)c1ccccc1",
@@ -318,7 +664,63 @@
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "traps": [
+      {
+        "smiles": "CC(C)(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (Na₂Cr₂O₇ / H₂SO₄) does nothing here: A 3° alcohol has no H on the carbinol carbon: chromic acid gives no reaction.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (Na₂Cr₂O₇ / H₂SO₄) does nothing here: A 3° alcohol has no H on the carbinol carbon: chromic acid gives no reaction.",
+        "gives": "CC(C)(O)c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: Dehydration needs heat: turn the dial up.",
+        "gives": "CC(C)(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethan-1-ol",
+          "gives": "C=Cc1ccccc1",
+          "why": "With H₂SO₄, Δ (heat), 1-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CCCCC1O",
+          "name": "2-methylcyclohexan-1-ol",
+          "gives": "CC1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), 2-methylcyclohexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C1=CCCCC1",
+          "why": "With H₂SO₄, Δ (heat), cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R15-butanol-180-001",
@@ -328,7 +730,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCO",
@@ -361,9 +766,63 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat."
+      },
+      {
+        "smiles": "CCCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "auto": true
       }
     ],
     "explanation": "Acid protonates the OH, water leaves (E1), and a β-H is lost to give the more substituted (Zaitsev) alkene. 1° alcohols need ~180 °C.",
-    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C."
+    "tip": "Heat + H₂SO₄ = Zaitsev alkene. 1° alcohols: 180 °C.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Chromic acid oxidises the alcohol instead of removing it. Dehydration is H₂SO₄ and heat.",
+        "gives": "CCCC(=O)O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2SO4_heat",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂SO₄, Δ) does nothing here: A 1° alcohol only dehydrates at ~180 °C (at 140 °C it gives the ether); plain heat is not enough.",
+        "gives": "CCCCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethan-1-ol",
+          "gives": "C=Cc1ccccc1",
+          "why": "With H₂SO₄, Δ (180 °C), 1-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CCCCC1O",
+          "name": "2-methylcyclohexan-1-ol",
+          "gives": "CC1=CCCCC1",
+          "why": "With H₂SO₄, Δ (180 °C), 2-methylcyclohexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "C1=CCCCC1",
+          "why": "With H₂SO₄, Δ (180 °C), cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

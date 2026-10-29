@@ -56,7 +56,20 @@ export function Workbench({ order }: { order: Order }) {
   const reached = flow.targetReached.value;
   const busy = flow.busy.value;
   const hint = flow.hintText.value;
-  const list = REAGENTS.filter(SHELF_TABS.find((t) => t.id === tab)!.filter).filter((r) => matches(r, query));
+  // exact formula/name matches first ("NaH" before NaHCO₃, "H2O" before H₂O₂), then prefixes, then the rest
+  const rank = (r: Reagent) => {
+    const q = norm(query);
+    if (!q) return 0;
+    const keys = [r.id, r.label, ...(r.aliases ?? [])].map(norm);
+    if (keys.some((k) => k === q || k.replace(/[,+].*$/, '') === q)) return 0;
+    if (keys.some((k) => k.startsWith(q))) return 1;
+    return 2;
+  };
+  const list = REAGENTS.filter(SHELF_TABS.find((t) => t.id === tab)!.filter)
+    .filter((r) => matches(r, query))
+    .map((r, i) => ({ r, k: rank(r) * 1000 + i }))
+    .sort((a, b) => a.k - b.k)
+    .map((x) => x.r);
   const frags = flask.split('.');
 
   const choose = (r: Reagent) => {

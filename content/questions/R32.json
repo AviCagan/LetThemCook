@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(C)=CCCC(C)CCO",
@@ -48,9 +50,50 @@
         "stereo": "none",
         "tag": "over_oxidation",
         "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      },
+      {
+        "smiles": "CC(C)=CCCC(C)CCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Swern does change 3,7-dimethyloct-6-en-1-ol (citronellol).",
+        "auto": true
       }
     ],
-    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. The C=C is untouched. (Carey 16.9 example, 83%.)"
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. The C=C is untouched. (Carey 16.9 example, 83%.)",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde.",
+        "gives": "CC(C)=CCCC(C)CC(=O)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCCCc1ccccc1",
+          "name": "3-phenylpropan-1-ol",
+          "gives": "O=CCCc1ccccc1",
+          "why": "With Swern, 3-phenylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCC(C)O",
+          "name": "octan-2-ol",
+          "gives": "CCCCCCC(C)=O",
+          "why": "With Swern, octan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With Swern, benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R32-heptanol-001",
@@ -60,7 +103,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCCCCO",
@@ -98,9 +144,50 @@
         "stereo": "none",
         "tag": "over_oxidation",
         "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      },
+      {
+        "smiles": "CCCCCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Swern does change heptan-1-ol.",
+        "auto": true
       }
     ],
-    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde.",
+        "gives": "CCCCCCC(=O)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "C=CCCCC=O",
+          "why": "With Swern, hex-5-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCC(C)O",
+          "name": "octan-2-ol",
+          "gives": "CCCCCCC(C)=O",
+          "why": "With Swern, octan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)C=O",
+          "why": "With Swern, 2-methylpropan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R32-cyclopentanol-001",
@@ -110,7 +197,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCC1",
@@ -147,7 +236,38 @@
         }
       ]
     ],
-    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. A 2° alcohol gives the ketone with any of these oxidants."
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. A 2° alcohol gives the ketone with any of these oxidants.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)C=O",
+          "why": "With Swern, 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "C=CCCCC=O",
+          "why": "With Swern, hex-5-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCCO",
+          "name": "heptan-1-ol",
+          "gives": "CCCCCCC=O",
+          "why": "With Swern, heptan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "OC1CCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Swern does change cyclopentanol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R32-phenylpropanol-001",
@@ -157,7 +277,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCCCc1ccccc1",
@@ -195,9 +318,50 @@
         "stereo": "none",
         "tag": "over_oxidation",
         "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      },
+      {
+        "smiles": "OCCCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Swern does change 3-phenylpropan-1-ol.",
+        "auto": true
       }
     ],
-    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde.",
+        "gives": "O=C(O)CCc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCCCO",
+          "name": "heptan-1-ol",
+          "gives": "CCCCCCC=O",
+          "why": "With Swern, heptan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CCCC(C)CCO",
+          "name": "3,7-dimethyloct-6-en-1-ol (citronellol)",
+          "gives": "CC(C)=CCCC(C)CC=O",
+          "why": "With Swern, 3,7-dimethyloct-6-en-1-ol (citronellol) gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "C=CCCCC=O",
+          "why": "With Swern, hex-5-en-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R32-octanol2-001",
@@ -207,7 +371,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCCCC(C)O",
@@ -244,7 +410,38 @@
         }
       ]
     ],
-    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "C=CCCCC=O",
+          "why": "With Swern, hex-5-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CCCC(C)CCO",
+          "name": "3,7-dimethyloct-6-en-1-ol (citronellol)",
+          "gives": "CC(C)=CCCC(C)CC=O",
+          "why": "With Swern, 3,7-dimethyloct-6-en-1-ol (citronellol) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCCO",
+          "name": "heptan-1-ol",
+          "gives": "CCCCCCC=O",
+          "why": "With Swern, heptan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCCCCCC(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Swern does change octan-2-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R32-isobutanol-001",
@@ -254,7 +451,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CO",
@@ -292,9 +492,50 @@
         "stereo": "none",
         "tag": "over_oxidation",
         "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde."
+      },
+      {
+        "smiles": "CC(C)CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Swern does change 2-methylpropan-1-ol.",
+        "auto": true
       }
     ],
-    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde."
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde.",
+        "gives": "CC(C)C(=O)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCCCO",
+          "name": "heptan-1-ol",
+          "gives": "CCCCCCC=O",
+          "why": "With Swern, heptan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCC(C)O",
+          "name": "octan-2-ol",
+          "gives": "CCCCCCC(C)=O",
+          "why": "With Swern, octan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "O=Cc1ccccc1",
+          "why": "With Swern, benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R32-hexenol-001",
@@ -304,7 +545,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "C=CCCCCO",
@@ -348,8 +593,49 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The C=C was hydrogenated first. Swern leaves alkenes alone, so hex-5-enal keeps its double bond."
+      },
+      {
+        "smiles": "C=CCCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Swern does change hex-5-en-1-ol.",
+        "auto": true
       }
     ],
-    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. Alkenes survive."
+    "explanation": "Swern oxidation (DMSO activated by oxalyl chloride, then Et₃N) oxidises 1° alcohols to aldehydes and 2° alcohols to ketones under mild, chromium-free conditions. Like PCC it stops at the aldehyde. Alkenes survive.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2CrO4"
+          }
+        ],
+        "tag": "over_oxidation",
+        "why": "Aqueous chromic acid takes a 1° alcohol all the way to the carboxylic acid. Swern (like PCC/PDC) stops at the aldehyde.",
+        "gives": "C=CCCCC(=O)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCCC(C)O",
+          "name": "octan-2-ol",
+          "gives": "CCCCCCC(C)=O",
+          "why": "With Swern, octan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)C=O",
+          "why": "With Swern, 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCCc1ccccc1",
+          "name": "3-phenylpropan-1-ol",
+          "gives": "O=CCCc1ccccc1",
+          "why": "With Swern, 3-phenylpropan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

@@ -7,7 +7,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC1CO1",
@@ -37,10 +39,54 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Methoxide (anionic) attacks the LESS substituted carbon by SN2. The more-substituted product is the acid-catalysed outcome."
+      },
+      {
+        "smiles": "CC1CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 2-methyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "MeOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "epoxide_wrong_carbon",
+        "why": "Methoxide (anionic) attacks the LESS substituted carbon by SN2. The more-substituted product is the acid-catalysed outcome.",
+        "gives": "COC(C)CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "COCC(C)(C)O",
+          "why": "With NaOCH₃ / CH₃OH, 2,2-dimethyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "COCC(C)(C)O",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)Br",
+          "name": "2-bromo-2-methylpropane",
+          "gives": "C=C(C)C",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromo-2-methylpropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E9-methyloxirane-nacn-001",
@@ -50,7 +96,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CC1CO1",
@@ -79,10 +126,39 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Cyanide attacks the less substituted CH₂, so the OH ends up on the CH(CH₃) carbon."
+      },
+      {
+        "smiles": "CC1CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaCN does change 2-methyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CC(C)(O)CC#N",
+          "why": "With NaCN, 2,2-dimethyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC(C)(O)CC#N",
+          "why": "With NaCN, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "N#CC1CCCCC1O",
+          "why": "With NaCN, 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E9-dimethyloxirane-nan3-001",
@@ -92,7 +168,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(C)CO1",
@@ -122,10 +200,39 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Azide attacks the less hindered CH₂; the OH stays on the quaternary carbon."
+      },
+      {
+        "smiles": "CC1(C)CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaN₃ does change 2,2-dimethyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1CO1",
+          "name": "2-methyloxirane",
+          "gives": "CC(O)CN=[N+]=[N-]",
+          "why": "With NaN₃, 2-methyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)CBr",
+          "name": "1-bromopropan-2-ol",
+          "gives": "CC(O)CN=[N+]=[N-]",
+          "why": "With NaN₃, 1-bromopropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "c1ccc(C2CO2)cc1",
+          "name": "2-phenyloxirane",
+          "gives": "[N-]=[N+]=NCC(O)c1ccccc1",
+          "why": "With NaN₃, 2-phenyloxirane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E9-styreneoxide-nasme-001",
@@ -135,7 +242,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "c1ccc(C2CO2)cc1",
@@ -164,10 +272,39 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Thiolate (anionic, SN2) attacks the CH₂, not the benzylic carbon."
+      },
+      {
+        "smiles": "c1ccc(C2CO2)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSCH₃ does change 2-phenyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(O)CBr",
+          "name": "1-bromopropan-2-ol",
+          "gives": "CSCC(C)O",
+          "why": "With NaSCH₃, 1-bromopropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "CSC1CCCCC1O",
+          "why": "With NaSCH₃, 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CSCC(C)(C)O",
+          "why": "With NaSCH₃, 2,2-dimethyloxirane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E9-methyloxirane-nh3-001",
@@ -177,7 +314,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CC1CO1",
@@ -205,10 +343,39 @@
         "stereo": "none",
         "tag": "epoxide_wrong_carbon",
         "why": "Ammonia attacks the less substituted carbon."
+      },
+      {
+        "smiles": "CC1CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NH₃ does change 2-methyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CC(C)(O)CN",
+          "why": "With NH₃, 2,2-dimethyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "NC1CCCCC1O",
+          "why": "With NH₃, 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CC2OC2C1",
+          "name": "6-oxabicyclo[3.1.0]hexane (cyclopentene oxide)",
+          "gives": "NC1CCCC1O",
+          "why": "With NH₃, 6-oxabicyclo[3.1.0]hexane (cyclopentene oxide) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E9-cyclohexeneoxide-naome-001",
@@ -218,7 +385,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C1CCC2OC2C1",
@@ -243,7 +411,38 @@
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1CO1",
+          "name": "2-methyloxirane",
+          "gives": "COCC(C)O",
+          "why": "With NaOCH₃ / CH₃OH, 2-methyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(CCl)c1ccccc1",
+          "name": "2-chloro-1-phenylethan-1-ol",
+          "gives": "COCC(O)c1ccccc1",
+          "why": "With NaOCH₃ / CH₃OH, 2-chloro-1-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "COCC(C)(C)O",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C1CCC2OC2C1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E9-dimethyloxirane-memgbr-001",
@@ -253,7 +452,11 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(C)CO1",
@@ -288,10 +491,71 @@
         "stereo": "none",
         "tag": "missing_workup",
         "why": "You handed over the magnesium alkoxide; add H₃O⁺."
+      },
+      {
+        "smiles": "CC(C)(O)CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 2 (CH₃MgBr) does nothing here: OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first.",
+        "auto": true
+      },
+      {
+        "smiles": "CC1(C)CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. CH₃MgBr; 2. H₃O⁺ does change 2,2-dimethyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H3O_plus"
+          },
+          {
+            "reagent": "MeMgBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 2 (CH₃MgBr) does nothing here: OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first.",
+        "gives": "CC(C)(O)CO"
+      },
+      {
+        "route": [
+          {
+            "reagent": "MeMgBr"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide; add H₃O⁺.",
+        "gives": "CCC(C)(C)[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC(C)(C)O",
+          "why": "With 1. CH₃MgBr; 2. H₃O⁺, 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "CC1CCCCC1O",
+          "why": "With 1. CH₃MgBr; 2. H₃O⁺, 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CO1",
+          "name": "2-methyloxirane",
+          "gives": "CCC(C)O",
+          "why": "With 1. CH₃MgBr; 2. H₃O⁺, 2-methyloxirane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E9-methyloxirane-lialh4-001",
@@ -301,7 +565,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1CO1",
@@ -338,9 +605,50 @@
         "stereo": "none",
         "tag": "missing_workup",
         "why": "Still the alkoxide: add water."
+      },
+      {
+        "smiles": "CC1CO1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. LiAlH₄; 2. H₂O does change 2-methyloxirane.",
+        "auto": true
       }
     ],
     "explanation": "Anionic nucleophiles open the strained ring by SN2 at the less substituted (less hindered) carbon, inverting it; the alkoxide is protonated by the solvent or the workup.",
-    "tip": "Anionic nucleophile → less substituted carbon, inversion there."
+    "tip": "Anionic nucleophile → less substituted carbon, inversion there.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "Still the alkoxide: add water.",
+        "gives": "CC(C)[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(C)CO1",
+          "name": "2,2-dimethyloxirane",
+          "gives": "CC(C)(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, 2,2-dimethyloxirane gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC2OC2C1",
+          "name": "7-oxabicyclo[4.1.0]heptane (cyclohexene oxide)",
+          "gives": "OC1CCCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, 7-oxabicyclo[4.1.0]heptane (cyclohexene oxide) gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, benzaldehyde gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

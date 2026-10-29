@@ -7,7 +7,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -45,10 +49,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, AlCl₃ does change phenol.",
+        "auto": true
       }
     ],
     "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
-    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester).",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_pyr"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester).",
+        "gives": "CC(=O)Oc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(=O)c1cc(C(C)(C)C)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "CC(=O)c1cc(C)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "CC(=O)c1cc(Cl)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P8-pcresol-accl-001",
@@ -58,7 +103,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(O)cc1",
@@ -95,10 +144,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, AlCl₃ does change 4-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
-    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester).",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_pyr"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester).",
+        "gives": "CC(=O)Oc1ccc(C)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CC(=O)c1ccc(O)cc1C",
+          "why": "With CH₃COCl, AlCl₃, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(=O)c1cc(C(C)(C)C)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CC(=O)c1ccc(O)cc1",
+          "why": "With CH₃COCl, AlCl₃, phenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P8-phenylacetate-fries-001",
@@ -108,7 +198,9 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(=O)Oc1ccccc1",
@@ -141,10 +233,39 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      },
+      {
+        "smiles": "CC(=O)Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: AlCl₃ does change phenyl acetate.",
+        "auto": true
       }
     ],
     "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
-    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)Oc1ccc(C)cc1",
+          "name": "4-methylphenyl acetate",
+          "gives": "CC(=O)c1cc(C)ccc1O",
+          "why": "With AlCl₃, 4-methylphenyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(N)c1",
+          "name": "3-methylaniline (m-toluidine)",
+          "gives": "Cc1cccc(N)c1",
+          "why": "AlCl₃ does nothing to 3-methylaniline (m-toluidine)."
+        },
+        {
+          "smiles": "CCOc1ccc(C)cc1",
+          "name": "1-ethoxy-4-methylbenzene",
+          "gives": "CCOc1ccc(C)cc1",
+          "why": "AlCl₃ does nothing to 1-ethoxy-4-methylbenzene."
+        }
+      ]
+    }
   },
   {
     "id": "q-P8-tolylacetate-fries-001",
@@ -154,7 +275,9 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(=O)Oc1ccc(C)cc1",
@@ -187,10 +310,39 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      },
+      {
+        "smiles": "CC(=O)Oc1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: AlCl₃ does change 4-methylphenyl acetate.",
+        "auto": true
       }
     ],
     "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
-    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "name": "phenyl acetate",
+          "gives": "CC(=O)c1ccc(O)cc1",
+          "why": "With AlCl₃, phenyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1ccccc1",
+          "why": "AlCl₃ does nothing to phenol."
+        },
+        {
+          "smiles": "Nc1ccccc1",
+          "name": "aniline",
+          "gives": "Nc1ccccc1",
+          "why": "AlCl₃ does nothing to aniline."
+        }
+      ]
+    }
   },
   {
     "id": "q-P8-mcresol-accl-001",
@@ -200,7 +352,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cccc(O)c1",
@@ -237,10 +393,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      },
+      {
+        "smiles": "Cc1cccc(O)c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, AlCl₃ does change 3-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
-    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester).",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_pyr"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester).",
+        "gives": "CC(=O)Oc1cccc(C)c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "CC(=O)c1cc(C)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CC(=O)c1ccc(O)cc1",
+          "why": "With CH₃COCl, AlCl₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(=O)c1cc(C(C)(C)C)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-tert-butylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P8-chlorophenol-accl-001",
@@ -250,7 +447,11 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Cl)cc1",
@@ -287,10 +488,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      },
+      {
+        "smiles": "Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, AlCl₃ does change 4-chlorophenol.",
+        "auto": true
       }
     ],
     "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
-    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester).",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_pyr"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester).",
+        "gives": "CC(=O)Oc1ccc(Cl)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CC(=O)c1ccc(O)cc1",
+          "why": "With CH₃COCl, AlCl₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(=O)c1cc(C(C)(C)C)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CC(=O)c1ccc(O)cc1C",
+          "why": "With CH₃COCl, AlCl₃, 3-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P8-tbutylphenol-accl-001",
@@ -300,7 +542,10 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(C)(C)c1ccc(O)cc1",
@@ -334,9 +579,50 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The OH (or the ester oxygen) is never lost: the acyl group adds to a ring C–H ortho/para to the oxygen and the OH stays on the ring."
+      },
+      {
+        "smiles": "CC(C)(C)c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: CH₃COCl, AlCl₃ does change 4-tert-butylphenol.",
+        "auto": true
       }
     ],
     "explanation": "With AlCl₃ the acylium ion attacks the ring para (or ortho when para is blocked) to the OH: a hydroxyaryl ketone. The Fries rearrangement of an aryl ester gives the same product.",
-    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester)."
+    "tip": "AlCl₃ → C-acylation (ketone), OH kept. Pyridine → O-acylation (ester).",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcCl_pyr"
+          }
+        ],
+        "tag": "acyl_wrong_site",
+        "why": "Without AlCl₃ the OXYGEN is acylated (an ester). The ring ketone needs AlCl₃ (or the Fries rearrangement of the ester).",
+        "gives": "CC(=O)Oc1ccc(C(C)(C)C)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "CC(=O)c1cc(C)ccc1O",
+          "why": "With CH₃COCl, AlCl₃, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CC(=O)c1ccc(O)cc1",
+          "why": "With CH₃COCl, AlCl₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CC(=O)c1ccc(O)cc1C",
+          "why": "With CH₃COCl, AlCl₃, 3-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

@@ -7,7 +7,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CSC",
@@ -52,10 +55,54 @@
         "stereo": "none",
         "tag": "sulfoxide_vs_sulfone",
         "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide."
+      },
+      {
+        "smiles": "CSC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂O₂ (1 equiv) does change dimethyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "Each equivalent of peroxide (or peroxy acid) adds one oxygen to sulfur: sulfide → sulfoxide → sulfone. NaIO₄ is selective for the first step only.",
-    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only."
+    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2O2",
+            "conditions": {
+              "equiv": 2
+            }
+          }
+        ],
+        "tag": "sulfoxide_vs_sulfone",
+        "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide.",
+        "gives": "CS(C)(=O)=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane (tetrahydrothiophene)",
+          "gives": "O=S1CCCC1",
+          "why": "With H₂O₂ (1 equiv), thiolane (tetrahydrothiophene) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CCS(=O)CC",
+          "why": "With H₂O₂ (1 equiv), diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CC(C)Br",
+          "why": "H₂O₂ (1 equiv) does nothing to 2-bromopropane."
+        }
+      ]
+    }
   },
   {
     "id": "q-E12-dms-sulfone-001",
@@ -65,7 +112,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CSC",
@@ -110,10 +160,54 @@
         "stereo": "none",
         "tag": "sulfoxide_vs_sulfone",
         "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide."
+      },
+      {
+        "smiles": "CSC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂O₂ (2 equiv) does change dimethyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "Each equivalent of peroxide (or peroxy acid) adds one oxygen to sulfur: sulfide → sulfoxide → sulfone. NaIO₄ is selective for the first step only.",
-    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only."
+    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2O2",
+            "conditions": {
+              "equiv": 1
+            }
+          }
+        ],
+        "tag": "sulfoxide_vs_sulfone",
+        "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide.",
+        "gives": "CS(C)=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CCS(=O)(=O)CC",
+          "why": "With H₂O₂ (2 equiv), diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane (tetrahydrothiophene)",
+          "gives": "O=S1(=O)CCCC1",
+          "why": "With H₂O₂ (2 equiv), thiolane (tetrahydrothiophene) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCO",
+          "why": "H₂O₂ (2 equiv) does nothing to butan-1-ol."
+        }
+      ]
+    }
   },
   {
     "id": "q-E12-des-naio4-001",
@@ -123,7 +217,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCSCC",
@@ -164,10 +260,39 @@
         "stereo": "none",
         "tag": "sulfoxide_vs_sulfone",
         "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide."
+      },
+      {
+        "smiles": "CCSCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaIO₄ does change diethyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "Each equivalent of peroxide (or peroxy acid) adds one oxygen to sulfur: sulfide → sulfoxide → sulfone. NaIO₄ is selective for the first step only.",
-    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only."
+    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CSc1ccccc1",
+          "name": "methyl phenyl sulfide (thioanisole)",
+          "gives": "CS(=O)c1ccccc1",
+          "why": "With NaIO₄, methyl phenyl sulfide (thioanisole) gives a different product (shown)."
+        },
+        {
+          "smiles": "CSC",
+          "name": "dimethyl sulfide",
+          "gives": "CS(C)=O",
+          "why": "With NaIO₄, dimethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCSCCCC",
+          "name": "dibutyl sulfide",
+          "gives": "CCCCS(=O)CCCC",
+          "why": "With NaIO₄, dibutyl sulfide gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E12-thioanisole-sulfoxide-001",
@@ -177,7 +302,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CSc1ccccc1",
@@ -221,10 +349,54 @@
         "stereo": "none",
         "tag": "sulfoxide_vs_sulfone",
         "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide."
+      },
+      {
+        "smiles": "CSc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (1 equiv) does change methyl phenyl sulfide (thioanisole).",
+        "auto": true
       }
     ],
     "explanation": "Each equivalent of peroxide (or peroxy acid) adds one oxygen to sulfur: sulfide → sulfoxide → sulfone. NaIO₄ is selective for the first step only.",
-    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only."
+    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "mCPBA",
+            "conditions": {
+              "equiv": 2
+            }
+          }
+        ],
+        "tag": "sulfoxide_vs_sulfone",
+        "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide.",
+        "gives": "CS(=O)(=O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane (tetrahydrothiophene)",
+          "gives": "O=S1CCCC1",
+          "why": "With mCPBA (1 equiv), thiolane (tetrahydrothiophene) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CCS(=O)CC",
+          "why": "With mCPBA (1 equiv), diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCSCCCC",
+          "name": "dibutyl sulfide",
+          "gives": "CCCCS(=O)CCCC",
+          "why": "With mCPBA (1 equiv), dibutyl sulfide gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E12-thioanisole-sulfone-001",
@@ -234,7 +406,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CSc1ccccc1",
@@ -279,10 +454,54 @@
         "stereo": "none",
         "tag": "sulfoxide_vs_sulfone",
         "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide."
+      },
+      {
+        "smiles": "CSc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: mCPBA (2 equiv) does change methyl phenyl sulfide (thioanisole).",
+        "auto": true
       }
     ],
     "explanation": "Each equivalent of peroxide (or peroxy acid) adds one oxygen to sulfur: sulfide → sulfoxide → sulfone. NaIO₄ is selective for the first step only.",
-    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only."
+    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "mCPBA",
+            "conditions": {
+              "equiv": 1
+            }
+          }
+        ],
+        "tag": "sulfoxide_vs_sulfone",
+        "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide.",
+        "gives": "CS(=O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCSCCCC",
+          "name": "dibutyl sulfide",
+          "gives": "CCCCS(=O)(=O)CCCC",
+          "why": "With mCPBA (2 equiv), dibutyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CCS(=O)(=O)CC",
+          "why": "With mCPBA (2 equiv), diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane (tetrahydrothiophene)",
+          "gives": "O=S1(=O)CCCC1",
+          "why": "With mCPBA (2 equiv), thiolane (tetrahydrothiophene) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E12-thiolane-sulfolane-001",
@@ -292,7 +511,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "C1CCSC1",
@@ -338,10 +560,54 @@
         "stereo": "none",
         "tag": "sulfoxide_vs_sulfone",
         "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide."
+      },
+      {
+        "smiles": "C1CCSC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂O₂ (2 equiv) does change thiolane (tetrahydrothiophene).",
+        "auto": true
       }
     ],
     "explanation": "Each equivalent of peroxide (or peroxy acid) adds one oxygen to sulfur: sulfide → sulfoxide → sulfone. NaIO₄ is selective for the first step only.",
-    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only."
+    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "H2O2",
+            "conditions": {
+              "equiv": 1
+            }
+          }
+        ],
+        "tag": "sulfoxide_vs_sulfone",
+        "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide.",
+        "gives": "O=S1CCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCSCCCC",
+          "name": "dibutyl sulfide",
+          "gives": "CCCCS(=O)(=O)CCCC",
+          "why": "With H₂O₂ (2 equiv), dibutyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "CSc1ccccc1",
+          "name": "methyl phenyl sulfide (thioanisole)",
+          "gives": "CS(=O)(=O)c1ccccc1",
+          "why": "With H₂O₂ (2 equiv), methyl phenyl sulfide (thioanisole) gives a different product (shown)."
+        },
+        {
+          "smiles": "CSC",
+          "name": "dimethyl sulfide",
+          "gives": "CS(C)(=O)=O",
+          "why": "With H₂O₂ (2 equiv), dimethyl sulfide gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E12-dibutyl-naio4-001",
@@ -351,7 +617,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCSCCCC",
@@ -392,9 +660,38 @@
         "stereo": "none",
         "tag": "sulfoxide_vs_sulfone",
         "why": "Wrong oxidation level: 1 equivalent gives the sulfoxide (S=O), 2 give the sulfone (O=S=O); NaIO₄ always stops at the sulfoxide."
+      },
+      {
+        "smiles": "CCCCSCCCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaIO₄ does change dibutyl sulfide.",
+        "auto": true
       }
     ],
     "explanation": "Each equivalent of peroxide (or peroxy acid) adds one oxygen to sulfur: sulfide → sulfoxide → sulfone. NaIO₄ is selective for the first step only.",
-    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only."
+    "tip": "Count equivalents: 1 → sulfoxide, 2 → sulfone. NaIO₄ = sulfoxide only.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CSc1ccccc1",
+          "name": "methyl phenyl sulfide (thioanisole)",
+          "gives": "CS(=O)c1ccccc1",
+          "why": "With NaIO₄, methyl phenyl sulfide (thioanisole) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCSCC",
+          "name": "diethyl sulfide",
+          "gives": "CCS(=O)CC",
+          "why": "With NaIO₄, diethyl sulfide gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCSC1",
+          "name": "thiolane (tetrahydrothiophene)",
+          "gives": "O=S1CCCC1",
+          "why": "With NaIO₄, thiolane (tetrahydrothiophene) gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

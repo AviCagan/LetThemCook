@@ -5,74 +5,299 @@
   "description": "One synthesis order: a starting material, a target the customer names, and the intended route (one bottle per step). The runtime engine (content/rules.json) turns the player's bottle choices into real products, so wrong routes need no authoring; `traps` tag the common wrong hand-overs. target.smiles and target.highlightAtoms are filled by scripts/validate_content.py --fill from the engine, never by hand.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "reactionIds", "chapter", "difficulty", "start", "target", "route", "explanation"],
+  "required": [
+    "id",
+    "reactionIds",
+    "chapter",
+    "difficulty",
+    "start",
+    "target",
+    "route",
+    "explanation"
+  ],
   "properties": {
-    "id": { "type": "string", "pattern": "^q-[A-Za-z0-9]+-[a-z0-9-]+-[0-9]{3}$" },
-    "reactionIds": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "Toolkit reactions the intended route exercises (first = primary, for scheduling)." },
-    "chapter": { "type": "integer", "enum": [16, 17] },
-    "difficulty": { "type": "integer", "minimum": 1, "maximum": 4 },
-    "orderTypes": { "type": "array", "items": { "type": "string", "enum": ["make_it", "predict_product", "synthesis"] }, "description": "Defaults to [make_it]. synthesis = multi-step order built by scripts/gen_synthesis.py. predict_product (quiz: pick the product) also needs >= 3 traps." },
-    "start": { "$ref": "#/definitions/molecule" },
+    "id": {
+      "type": "string",
+      "pattern": "^q-[A-Za-z0-9]+-[a-z0-9-]+-[0-9]{3}$"
+    },
+    "reactionIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Toolkit reactions the intended route exercises (first = primary, for scheduling)."
+    },
+    "chapter": {
+      "type": "integer",
+      "enum": [
+        16,
+        17
+      ]
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+    },
+    "orderTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "make_it",
+          "predict_product",
+          "what_start",
+          "spot_flaw",
+          "name_it",
+          "synthesis"
+        ]
+      },
+      "description": "Defaults to [make_it]. predict_product needs >= 3 non-stereo traps; what_start needs reverse.distractors; spot_flaw needs flaws; name_it needs an OPSIN-checked target name. Filled by scripts/gen_quiz.py."
+    },
+    "start": {
+      "$ref": "#/definitions/molecule"
+    },
     "target": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name", "stereo"],
+      "required": [
+        "name",
+        "stereo"
+      ],
       "properties": {
-        "name": { "type": "string", "description": "The IUPAC (or accepted common) name the customer says first." },
-        "altNames": { "type": "array", "items": { "type": "string" } },
-        "stereo": { "$ref": "#/definitions/stereoLabel" },
-        "stereoChoices": { "type": "array", "items": { "$ref": "#/definitions/stereoLabel" } },
-        "smiles": { "type": "string", "description": "Filled by the validator from start + route." },
-        "highlightAtoms": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "description": "Filled by the validator (changed atoms, SMILES order of target.smiles)." }
+        "name": {
+          "type": "string",
+          "description": "The IUPAC (or accepted common) name the customer says first."
+        },
+        "altNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stereo": {
+          "$ref": "#/definitions/stereoLabel"
+        },
+        "stereoChoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/stereoLabel"
+          }
+        },
+        "smiles": {
+          "type": "string",
+          "description": "Filled by the validator from start + route."
+        },
+        "highlightAtoms": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": "Filled by the validator (changed atoms, SMILES order of target.smiles)."
+        }
       }
     },
-    "route": { "$ref": "#/definitions/route", "description": "Intended route: one bottle per step with the conditions that step needs." },
-    "altRoutes": { "type": "array", "items": { "$ref": "#/definitions/route" }, "description": "Other routes the validator checks also reach the target (graded as optimal)." },
+    "route": {
+      "$ref": "#/definitions/route",
+      "description": "Intended route: one bottle per step with the conditions that step needs."
+    },
+    "altRoutes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/route"
+      },
+      "description": "Other routes the validator checks also reach the target (graded as optimal)."
+    },
     "traps": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["smiles", "tag", "why"],
+        "required": [
+          "smiles",
+          "tag",
+          "why"
+        ],
         "properties": {
-          "smiles": { "type": "string" },
-          "stereo": { "$ref": "#/definitions/stereoLabel" },
-          "tag": { "type": "string" },
-          "why": { "type": "string" },
-          "stereoOnly": { "type": "boolean" }
+          "smiles": {
+            "type": "string"
+          },
+          "stereo": {
+            "$ref": "#/definitions/stereoLabel"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string"
+          },
+          "stereoOnly": {
+            "type": "boolean"
+          },
+          "auto": {
+            "type": "boolean",
+            "description": "added by scripts/gen_quiz.py (replaced on every run)"
+          }
         }
       },
       "description": "Wrong products a student plausibly hands over, with the mistake tag and the mentor's specific why. Also the distractors for the predict_product quiz."
     },
     "nameTraps": {
       "type": "array",
-      "items": { "type": "object", "additionalProperties": false, "required": ["name", "tag"], "properties": { "name": { "type": "string" }, "tag": { "type": "string" }, "why": { "type": "string" } } }
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "tag"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string"
+          }
+        }
+      }
     },
-    "explanation": { "type": "string" },
-    "tip": { "type": "string" },
-    "source": { "type": "string" },
-    "review": { "type": "string" }
-  },
-  "definitions": {
-    "stereoLabel": { "type": "string", "enum": ["none", "single_enantiomer", "racemic", "meso", "cis", "trans", "syn", "anti"] },
-    "molecule": {
+    "explanation": {
+      "type": "string"
+    },
+    "tip": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "review": {
+      "type": "string"
+    },
+    "reverse": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["smiles", "name"],
-      "properties": { "smiles": { "type": "string" }, "name": { "type": "string" }, "stereo": { "$ref": "#/definitions/stereoLabel" } }
+      "required": [
+        "distractors"
+      ],
+      "properties": {
+        "distractors": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "smiles",
+              "name",
+              "gives",
+              "why"
+            ],
+            "properties": {
+              "smiles": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "gives": {
+                "type": "string",
+                "description": "what the route turns this distractor into (shown after answering)"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "description": "What did I start with?: starting materials the route does NOT turn into the target."
     },
-    "route": {
+    "flaws": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["reagent"],
+        "required": [
+          "route",
+          "tag",
+          "why",
+          "gives"
+        ],
         "properties": {
-          "reagent": { "type": "string" },
-          "conditions": { "$ref": "reaction.schema.json#/definitions/conditions" }
+          "route": {
+            "$ref": "#/definitions/route"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string"
+          },
+          "gives": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Spot the flaw: wrong routes, each with the reason it fails."
+    }
+  },
+  "definitions": {
+    "stereoLabel": {
+      "type": "string",
+      "enum": [
+        "none",
+        "single_enantiomer",
+        "racemic",
+        "meso",
+        "cis",
+        "trans",
+        "syn",
+        "anti"
+      ]
+    },
+    "molecule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "smiles",
+        "name"
+      ],
+      "properties": {
+        "smiles": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "stereo": {
+          "$ref": "#/definitions/stereoLabel"
         }
       }
+    },
+    "route": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reagent"
+        ],
+        "properties": {
+          "reagent": {
+            "type": "string"
+          },
+          "conditions": {
+            "$ref": "reaction.schema.json#/definitions/conditions"
+          }
+        }
+      },
+      "description": "Empty only for name_it-only orders (the start is the molecule to name)."
     }
   }
 }

@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -37,10 +40,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, H₂O does change phenol.",
+        "auto": true
       }
     ],
     "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
-    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_CHCl3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position.",
+        "gives": "Oc1ccc(Br)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "Oc1c(Cl)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, 2-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "Cc1c(Br)cc(Br)c(O)c1Br",
+          "why": "With Br₂, H₂O, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "Oc1c(Br)cc(Cl)cc1Br",
+          "why": "With Br₂, H₂O, 4-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P2-pcresol-001",
@@ -50,7 +94,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(O)cc1",
@@ -84,10 +132,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The group already on the ring does not leave. EAS only replaces ring hydrogens: count the open ortho/para positions."
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, H₂O does change 4-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
-    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_CHCl3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position.",
+        "gives": "Cc1ccc(O)c(Br)c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)cc(Br)c1O",
+          "why": "With Br₂, H₂O, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1c(Br)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "Oc1c(Cl)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, 2-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P2-ocresol-001",
@@ -97,7 +186,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccccc1O",
@@ -125,10 +217,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      },
+      {
+        "smiles": "Cc1ccccc1O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, H₂O does change 2-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
-    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_CHCl3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position.",
+        "gives": "Cc1cc(Br)ccc1O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1cc(Br)c(O)c(Br)c1",
+          "why": "With Br₂, H₂O, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "O=[N+]([O-])c1cc(Br)c(O)c(Br)c1",
+          "why": "With Br₂, H₂O, 4-nitrophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1c(Br)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, phenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P2-mcresol-001",
@@ -138,7 +271,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cccc(O)c1",
@@ -168,10 +304,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      },
+      {
+        "smiles": "Cc1cccc(O)c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, H₂O does change 3-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
-    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_CHCl3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position.",
+        "gives": "Cc1cc(O)ccc1Br"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1c(Br)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)cc(Br)c1O",
+          "why": "With Br₂, H₂O, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "Oc1c(Cl)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, 2-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P2-chlorophenol-001",
@@ -181,7 +358,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Cl)cc1",
@@ -215,10 +396,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The group already on the ring does not leave. EAS only replaces ring hydrogens: count the open ortho/para positions."
+      },
+      {
+        "smiles": "Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, H₂O does change 4-chlorophenol.",
+        "auto": true
       }
     ],
     "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
-    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_CHCl3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position.",
+        "gives": "Oc1ccc(Cl)cc1Br"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1cc(Br)c(O)c(Br)c1",
+          "why": "With Br₂, H₂O, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "Oc1c(Cl)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, 2-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)cc(Br)c1O",
+          "why": "With Br₂, H₂O, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P2-nitrophenol-001",
@@ -228,7 +450,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc([N+](=O)[O-])cc1",
@@ -262,10 +488,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The group already on the ring does not leave. EAS only replaces ring hydrogens: count the open ortho/para positions."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, H₂O does change 4-nitrophenol.",
+        "auto": true
       }
     ],
     "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
-    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_CHCl3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position.",
+        "gives": "O=[N+]([O-])c1ccc(O)c(Br)c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1cc(Br)c(O)c(Br)c1",
+          "why": "With Br₂, H₂O, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)cc(Br)c1O",
+          "why": "With Br₂, H₂O, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1c(Br)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, phenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P2-ochlorophenol-001",
@@ -275,7 +542,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1Cl",
@@ -303,9 +573,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position."
+      },
+      {
+        "smiles": "Oc1ccccc1Cl",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, H₂O does change 2-chlorophenol.",
+        "auto": true
       }
     ],
     "explanation": "Phenol is so activated that bromine water brominates every open ortho and para position. Nothing already on the ring is replaced.",
-    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one."
+    "tip": "Br₂/H₂O: all open o/p spots. Br₂/CHCl₃ cold: just one.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_CHCl3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Cold Br₂/CHCl₃ stops after one bromine. Bromine water brominates every open ortho and para position.",
+        "gives": "Oc1ccc(Br)cc1Cl"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1c(Br)cc(Br)cc1Br",
+          "why": "With Br₂, H₂O, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "Cc1c(Br)cc(Br)c(O)c1Br",
+          "why": "With Br₂, H₂O, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)cc(Br)c1O",
+          "why": "With Br₂, H₂O, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

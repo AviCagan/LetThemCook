@@ -7,7 +7,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OCCBr",
@@ -39,7 +41,38 @@
       ]
     ],
     "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
-    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC1(C)CO1",
+          "why": "With NaOH, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1Br",
+          "name": "2-bromocyclohexan-1-ol (trans)",
+          "gives": "C1CCC2OC2C1",
+          "why": "With NaOH, 2-bromocyclohexan-1-ol (trans) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCC(O)CCl",
+          "name": "1-chlorohexan-2-ol",
+          "gives": "CCCCC1CO1",
+          "why": "With NaOH, 1-chlorohexan-2-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "OCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 2-bromoethan-1-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E8-bromopropanol-001",
@@ -49,7 +82,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CC(O)CBr",
@@ -82,7 +116,38 @@
       ]
     ],
     "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
-    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC1(C)CO1",
+          "why": "With NaOH, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCBr",
+          "name": "2-bromoethan-1-ol",
+          "gives": "C1CO1",
+          "why": "With NaOH, 2-bromoethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1Br",
+          "name": "2-bromocyclohexan-1-ol (trans)",
+          "gives": "C1CCC2OC2C1",
+          "why": "With NaOH, 2-bromocyclohexan-1-ol (trans) gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(O)CBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 1-bromopropan-2-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E8-bromocyclohexanol-001",
@@ -92,7 +157,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "OC1CCCCC1Br",
@@ -124,7 +190,38 @@
       ]
     ],
     "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
-    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC1(C)CO1",
+          "why": "With NaOH, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)CBr",
+          "name": "1-bromopropan-2-ol",
+          "gives": "CC1CO1",
+          "why": "With NaOH, 1-bromopropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(CCl)c1ccccc1",
+          "name": "2-chloro-1-phenylethan-1-ol",
+          "gives": "c1ccc(C2CO2)cc1",
+          "why": "With NaOH, 2-chloro-1-phenylethan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "OC1CCCCC1Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 2-bromocyclohexan-1-ol (trans).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E8-chlorophenylethanol-001",
@@ -134,7 +231,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "OC(CCl)c1ccccc1",
@@ -166,7 +264,38 @@
       ]
     ],
     "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
-    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC1(C)CO1",
+          "why": "With NaOH, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1Br",
+          "name": "2-bromocyclohexan-1-ol (trans)",
+          "gives": "C1CCC2OC2C1",
+          "why": "With NaOH, 2-bromocyclohexan-1-ol (trans) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCC(O)CCl",
+          "name": "1-chlorohexan-2-ol",
+          "gives": "CCCCC1CO1",
+          "why": "With NaOH, 1-chlorohexan-2-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "OC(CCl)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 2-chloro-1-phenylethan-1-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E8-bromomethylpropanol-001",
@@ -176,7 +305,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(O)CBr",
@@ -208,7 +339,38 @@
       ]
     ],
     "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
-    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(O)CBr",
+          "name": "1-bromopropan-2-ol",
+          "gives": "CC1CO1",
+          "why": "With NaOH, 1-bromopropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(CCl)c1ccccc1",
+          "name": "2-chloro-1-phenylethan-1-ol",
+          "gives": "c1ccc(C2CO2)cc1",
+          "why": "With NaOH, 2-chloro-1-phenylethan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCC(O)CCl",
+          "name": "1-chlorohexan-2-ol",
+          "gives": "CCCCC1CO1",
+          "why": "With NaOH, 1-chlorohexan-2-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(C)(O)CBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 1-bromo-2-methylpropan-2-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E8-chlorohexanol-001",
@@ -218,7 +380,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CCCCC(O)CCl",
@@ -250,6 +413,37 @@
       ]
     ],
     "explanation": "NaOH deprotonates the OH; the alkoxide displaces the halide on the adjacent carbon from the back side (intramolecular SN2): a three-membered epoxide.",
-    "tip": "Halohydrin + base = epoxide (intramolecular Williamson)."
+    "tip": "Halohydrin + base = epoxide (intramolecular Williamson).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(O)CBr",
+          "name": "1-bromopropan-2-ol",
+          "gives": "CC1CO1",
+          "why": "With NaOH, 1-bromopropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC1(C)CO1",
+          "why": "With NaOH, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(CCl)c1ccccc1",
+          "name": "2-chloro-1-phenylethan-1-ol",
+          "gives": "c1ccc(C2CO2)cc1",
+          "why": "With NaOH, 2-chloro-1-phenylethan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCCCC(O)CCl",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 1-chlorohexan-2-ol.",
+        "auto": true
+      }
+    ]
   }
 ]

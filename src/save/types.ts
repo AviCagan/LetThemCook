@@ -34,6 +34,10 @@ export interface LabBookStep {
 }
 
 export interface LabBookEntry {
+  /** order type (absent = make_it) */
+  type?: import('../content/types').OrderType;
+  /** quiz answer the player gave (SMILES, name, or "route A") */
+  picked?: string;
   t: number;
   item: string;
   startSmiles: string;
@@ -55,6 +59,11 @@ export interface Settings {
   shiftLength: number;
   /** 'auto' follows the OS setting */
   theme: 'auto' | 'light' | 'dark';
+  /** exam mode: number of orders and time limit (0 = untimed) */
+  examLength?: number;
+  examMinutes?: number;
+  /** rush hour length in minutes */
+  rushMinutes?: number;
 }
 
 export interface SaveData {
@@ -68,6 +77,8 @@ export interface SaveData {
     chapters: Record<string, boolean>;
     settings: Settings;
     seededReactions: string[];
+    /** YYYY-MM-DD of the last daily-special customer */
+    lastDailySpecial?: string;
   };
   mastery: {
     reactions: Record<string, MasteryRecord>;
@@ -105,7 +116,7 @@ export function emptySave(now = Date.now()): SaveData {
     profile: {
       name: 'Avi',
       chapters: { '16': true, '17': true },
-      settings: { mute: false, reducedMotion: false, hintsEnabled: true, shiftLength: 10, theme: 'auto' },
+      settings: { mute: false, reducedMotion: false, hintsEnabled: true, shiftLength: 10, theme: 'auto', examLength: 25, examMinutes: 50, rushMinutes: 5 },
       seededReactions: [],
     },
     mastery: { reactions: {}, reagents: {} },

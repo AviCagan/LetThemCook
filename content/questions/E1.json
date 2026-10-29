@@ -1,0 +1,849 @@
+[
+  {
+    "id": "q-E1-dimethylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "COC",
+      "name": "methoxymethane"
+    },
+    "target": {
+      "name": "methoxymethane",
+      "stereo": "none",
+      "altNames": [
+        "dimethyl ether"
+      ],
+      "smiles": "COC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "methyl methoxide",
+        "tag": "naming_alkoxide",
+        "why": "An '-oxide' (methoxide, ethoxide, phenoxide) is the anion RO⁻. A neutral ether is named with 'alkoxy' + parent, or the two groups + 'ether'."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-diethylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CCOCC",
+      "name": "ethoxyethane"
+    },
+    "target": {
+      "name": "ethoxyethane",
+      "stereo": "none",
+      "altNames": [
+        "diethyl ether"
+      ],
+      "smiles": "CCOCC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "ethyl ethoxide",
+        "tag": "naming_alkoxide",
+        "why": "An '-oxide' (methoxide, ethoxide, phenoxide) is the anion RO⁻. A neutral ether is named with 'alkoxy' + parent, or the two groups + 'ether'."
+      }
+    ],
+    "tip": "'Ether' in the lab means diethyl ether."
+  },
+  {
+    "id": "q-E1-ethylmethylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CCOC",
+      "name": "methoxyethane"
+    },
+    "target": {
+      "name": "methoxyethane",
+      "stereo": "none",
+      "altNames": [
+        "ethyl methyl ether"
+      ],
+      "smiles": "CCOC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "methyl ethyl ether",
+        "tag": "naming_alpha_order",
+        "why": "Alphabetical order: ethyl before methyl, so 'ethyl methyl ether'."
+      },
+      {
+        "name": "ethoxymethane",
+        "tag": "naming_parent",
+        "why": "The parent is the larger group (ethane); the smaller one is the substituent (methoxy)."
+      },
+      {
+        "name": "ethyl methoxide",
+        "tag": "naming_alkoxide",
+        "why": "An '-oxide' (methoxide, ethoxide, phenoxide) is the anion RO⁻. A neutral ether is named with 'alkoxy' + parent, or the two groups + 'ether'."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-methylpropylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CCCOC",
+      "name": "1-methoxypropane"
+    },
+    "target": {
+      "name": "1-methoxypropane",
+      "stereo": "none",
+      "altNames": [
+        "methyl propyl ether"
+      ],
+      "smiles": "CCCOC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "methoxypropane",
+        "tag": "naming_locant",
+        "why": "Give the locant: the methoxy group is on C1 of propane (2-methoxypropane is a different compound)."
+      },
+      {
+        "name": "propyl methyl ether",
+        "tag": "naming_alpha_order",
+        "why": "Alphabetical order: methyl before propyl."
+      },
+      {
+        "name": "propoxymethane",
+        "tag": "naming_parent",
+        "why": "Propane is the larger group, so it is the parent: 1-methoxypropane."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-isopropylmethylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CC(C)OC",
+      "name": "2-methoxypropane"
+    },
+    "target": {
+      "name": "2-methoxypropane",
+      "stereo": "none",
+      "altNames": [
+        "isopropyl methyl ether"
+      ],
+      "smiles": "COC(C)C",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "1-methoxypropane",
+        "tag": "naming_locant",
+        "why": "The oxygen is on the middle carbon of propane: C2."
+      },
+      {
+        "name": "methyl isopropyl ether",
+        "tag": "naming_alpha_order",
+        "why": "Alphabetical order: isopropyl before methyl."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-mtbe-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "COC(C)(C)C",
+      "name": "2-methoxy-2-methylpropane"
+    },
+    "target": {
+      "name": "2-methoxy-2-methylpropane",
+      "stereo": "none",
+      "altNames": [
+        "tert-butyl methyl ether",
+        "methyl tert-butyl ether"
+      ],
+      "smiles": "COC(C)(C)C",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "2-methyl-2-methoxypropane",
+        "tag": "naming_alpha_order",
+        "why": "Substituent prefixes go in alphabetical order: methoxy before methyl."
+      },
+      {
+        "name": "tert-butyl methoxide",
+        "tag": "naming_alkoxide",
+        "why": "An '-oxide' (methoxide, ethoxide, phenoxide) is the anion RO⁻. A neutral ether is named with 'alkoxy' + parent, or the two groups + 'ether'."
+      }
+    ],
+    "tip": "'tert-' is ignored when alphabetising: butyl, then methyl."
+  },
+  {
+    "id": "q-E1-anisole-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "COc1ccccc1",
+      "name": "methoxybenzene"
+    },
+    "target": {
+      "name": "methoxybenzene",
+      "stereo": "none",
+      "altNames": [
+        "anisole",
+        "methyl phenyl ether"
+      ],
+      "smiles": "COc1ccccc1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Anisole is the retained common name.",
+    "nameTraps": [
+      {
+        "name": "phenoxymethane",
+        "tag": "naming_parent",
+        "why": "The ring is the parent: methoxybenzene."
+      },
+      {
+        "name": "phenyl methyl ether",
+        "tag": "naming_alpha_order",
+        "why": "Alphabetical order: methyl before phenyl."
+      },
+      {
+        "name": "methyl phenoxide",
+        "tag": "naming_alkoxide",
+        "why": "An '-oxide' (methoxide, ethoxide, phenoxide) is the anion RO⁻. A neutral ether is named with 'alkoxy' + parent, or the two groups + 'ether'."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-phenetole-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CCOc1ccccc1",
+      "name": "ethoxybenzene"
+    },
+    "target": {
+      "name": "ethoxybenzene",
+      "stereo": "none",
+      "altNames": [
+        "ethyl phenyl ether",
+        "phenetole"
+      ],
+      "smiles": "CCOc1ccccc1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant.",
+    "nameTraps": [
+      {
+        "name": "phenoxyethane",
+        "tag": "naming_parent",
+        "why": "The benzene ring is the parent: ethoxybenzene."
+      },
+      {
+        "name": "ethyl phenoxide",
+        "tag": "naming_alkoxide",
+        "why": "An '-oxide' (methoxide, ethoxide, phenoxide) is the anion RO⁻. A neutral ether is named with 'alkoxy' + parent, or the two groups + 'ether'."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-cyclohexylmethylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "COC1CCCCC1",
+      "name": "methoxycyclohexane"
+    },
+    "target": {
+      "name": "methoxycyclohexane",
+      "stereo": "none",
+      "altNames": [
+        "cyclohexyl methyl ether"
+      ],
+      "smiles": "COC1CCCCC1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "methyl cyclohexyl ether",
+        "tag": "naming_alpha_order",
+        "why": "Alphabetical order: cyclohexyl before methyl."
+      },
+      {
+        "name": "cyclohexyloxymethane",
+        "tag": "naming_parent",
+        "why": "The ring is the larger part, so it is the parent: methoxycyclohexane."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-ethylisobutylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CCOCC(C)C",
+      "name": "1-ethoxy-2-methylpropane"
+    },
+    "target": {
+      "name": "1-ethoxy-2-methylpropane",
+      "stereo": "none",
+      "altNames": [
+        "ethyl isobutyl ether"
+      ],
+      "smiles": "CCOCC(C)C",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. (Carey's Williamson example: ethyl isobutyl ether.)",
+    "nameTraps": [
+      {
+        "name": "2-methyl-1-ethoxypropane",
+        "tag": "naming_alpha_order",
+        "why": "Prefixes in alphabetical order: ethoxy before methyl."
+      },
+      {
+        "name": "isobutyl ethyl ether",
+        "tag": "naming_alpha_order",
+        "why": "Alphabetical order: ethyl before isobutyl."
+      },
+      {
+        "name": "1-ethoxy-2-methylbutane",
+        "tag": "naming_locant",
+        "why": "Count the parent chain again: CH₂–CH(CH₃)–CH₃ is three carbons, propane."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-secbutylethylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CCOC(C)CC",
+      "name": "2-ethoxybutane"
+    },
+    "target": {
+      "name": "2-ethoxybutane",
+      "stereo": "racemic",
+      "altNames": [
+        "sec-butyl ethyl ether"
+      ],
+      "smiles": "CCOC(C)CC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "ethyl sec-butyl ether",
+        "tag": "naming_alpha_order",
+        "why": "'sec-' is ignored when alphabetising: butyl comes before ethyl."
+      },
+      {
+        "name": "1-ethoxybutane",
+        "tag": "naming_locant",
+        "why": "The oxygen is on C2 of the butane chain."
+      },
+      {
+        "name": "2-butoxyethane",
+        "tag": "naming_parent",
+        "why": "Butane is the larger group, so it is the parent."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-diisopropylether-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CC(C)OC(C)C",
+      "name": "2-isopropoxypropane"
+    },
+    "target": {
+      "name": "2-isopropoxypropane",
+      "stereo": "none",
+      "altNames": [
+        "diisopropyl ether",
+        "2-(propan-2-yloxy)propane"
+      ],
+      "smiles": "CC(C)OC(C)C",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant. Functional-class name: name both groups in alphabetical order, then the word 'ether' (or 'sulfide').",
+    "nameTraps": [
+      {
+        "name": "isopropyl isopropoxide",
+        "tag": "naming_alkoxide",
+        "why": "An '-oxide' (methoxide, ethoxide, phenoxide) is the anion RO⁻. A neutral ether is named with 'alkoxy' + parent, or the two groups + 'ether'."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-dme-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "COCCOC",
+      "name": "1,2-dimethoxyethane"
+    },
+    "target": {
+      "name": "1,2-dimethoxyethane",
+      "stereo": "none",
+      "altNames": [
+        "ethylene glycol dimethyl ether"
+      ],
+      "smiles": "COCCOC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Substitutive name: the larger (or ring) part is the parent; the smaller part becomes an alkoxy substituent, numbered for the lowest locant.",
+    "nameTraps": [
+      {
+        "name": "dimethoxyethane",
+        "tag": "naming_locant",
+        "why": "Give both locants: 1,2-dimethoxyethane (1,1- is a different compound)."
+      },
+      {
+        "name": "1,2-methoxyethane",
+        "tag": "naming_locant",
+        "why": "Two methoxy groups need the multiplier: 1,2-dimethoxyethane."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-oxirane-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "C1CO1",
+      "name": "oxirane"
+    },
+    "target": {
+      "name": "oxirane",
+      "stereo": "none",
+      "altNames": [
+        "ethylene oxide",
+        "epoxyethane",
+        "1,2-epoxyethane"
+      ],
+      "smiles": "C1CO1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Epoxides are named as oxiranes (O is position 1, so substituents get 2 and 3), or by adding 'epoxy' to the alkane, or as the 'alkene oxide'."
+  },
+  {
+    "id": "q-E1-propyleneoxide-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CC1CO1",
+      "name": "2-methyloxirane"
+    },
+    "target": {
+      "name": "2-methyloxirane",
+      "stereo": "racemic",
+      "altNames": [
+        "methyloxirane",
+        "propylene oxide",
+        "1,2-epoxypropane"
+      ],
+      "smiles": "CC1CO1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Epoxides are named as oxiranes (O is position 1, so substituents get 2 and 3), or by adding 'epoxy' to the alkane, or as the 'alkene oxide'.",
+    "nameTraps": [
+      {
+        "name": "3-methyloxirane",
+        "tag": "naming_locant",
+        "why": "Number from the oxygen (1) towards the substituent: the methyl is on C2."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-isobutyleneoxide-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CC1(C)CO1",
+      "name": "2,2-dimethyloxirane"
+    },
+    "target": {
+      "name": "2,2-dimethyloxirane",
+      "stereo": "none",
+      "altNames": [
+        "1,2-epoxy-2-methylpropane"
+      ],
+      "smiles": "CC1(C)CO1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Epoxides are named as oxiranes (O is position 1, so substituents get 2 and 3), or by adding 'epoxy' to the alkane, or as the 'alkene oxide'.",
+    "nameTraps": [
+      {
+        "name": "2,3-dimethyloxirane",
+        "tag": "naming_locant",
+        "why": "Both methyls are on the same carbon: 2,2-dimethyl."
+      },
+      {
+        "name": "dimethyloxirane",
+        "tag": "naming_locant",
+        "why": "Give the locants: 2,2-dimethyloxirane."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-cyclohexeneoxide-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 3,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "C1CCC2OC2C1",
+      "name": "7-oxabicyclo[4.1.0]heptane"
+    },
+    "target": {
+      "name": "7-oxabicyclo[4.1.0]heptane",
+      "stereo": "meso",
+      "altNames": [
+        "cyclohexene oxide",
+        "1,2-epoxycyclohexane"
+      ],
+      "smiles": "C1CCC2OC2C1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Epoxides are named as oxiranes (O is position 1, so substituents get 2 and 3), or by adding 'epoxy' to the alkane, or as the 'alkene oxide'. The fused ring system is 7-oxabicyclo[4.1.0]heptane.",
+    "tip": "'1,2-epoxycyclohexane' is the easiest correct name to remember."
+  },
+  {
+    "id": "q-E1-oxetane-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "C1COC1",
+      "name": "oxetane"
+    },
+    "target": {
+      "name": "oxetane",
+      "stereo": "none",
+      "smiles": "C1COC1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Saturated oxygen rings have retained names: oxirane (3), oxetane (4), oxolane (5, tetrahydrofuran), oxane (6, tetrahydropyran)."
+  },
+  {
+    "id": "q-E1-thf-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "C1CCOC1",
+      "name": "oxolane"
+    },
+    "target": {
+      "name": "oxolane",
+      "stereo": "none",
+      "altNames": [
+        "tetrahydrofuran",
+        "THF"
+      ],
+      "smiles": "C1CCOC1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Saturated oxygen rings have retained names: oxirane (3), oxetane (4), oxolane (5, tetrahydrofuran), oxane (6, tetrahydropyran)."
+  },
+  {
+    "id": "q-E1-thp-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "C1CCOCC1",
+      "name": "oxane"
+    },
+    "target": {
+      "name": "oxane",
+      "stereo": "none",
+      "altNames": [
+        "tetrahydropyran",
+        "tetrahydro-2H-pyran"
+      ],
+      "smiles": "C1CCOCC1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Saturated oxygen rings have retained names: oxirane (3), oxetane (4), oxolane (5, tetrahydrofuran), oxane (6, tetrahydropyran)."
+  },
+  {
+    "id": "q-E1-dioxane-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 1,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "C1COCCO1",
+      "name": "1,4-dioxane"
+    },
+    "target": {
+      "name": "1,4-dioxane",
+      "stereo": "none",
+      "smiles": "C1COCCO1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Saturated oxygen rings have retained names: oxirane (3), oxetane (4), oxolane (5, tetrahydrofuran), oxane (6, tetrahydropyran). Two oxygens: 1,4-dioxane.",
+    "nameTraps": [
+      {
+        "name": "dioxane",
+        "tag": "naming_locant",
+        "why": "Give the positions of the two oxygens: 1,4-dioxane."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-dimethylsulfide-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CSC",
+      "name": "(methylsulfanyl)methane"
+    },
+    "target": {
+      "name": "(methylsulfanyl)methane",
+      "stereo": "none",
+      "altNames": [
+        "dimethyl sulfide",
+        "methylsulfanylmethane"
+      ],
+      "smiles": "CSC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Sulfides are named like ethers: alkylsulfanyl + parent, or the two groups + 'sulfide'.",
+    "nameTraps": [
+      {
+        "name": "dimethyl sulfoxide",
+        "tag": "sulfoxide_vs_sulfone",
+        "why": "A sulfoxide has S=O. This is the sulfide R–S–R."
+      },
+      {
+        "name": "methyl methanethiolate",
+        "tag": "naming_alkoxide",
+        "why": "A thiolate is the anion RS⁻; a neutral R–S–R is a sulfide."
+      }
+    ]
+  },
+  {
+    "id": "q-E1-diethylsulfide-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CCSCC",
+      "name": "(ethylsulfanyl)ethane"
+    },
+    "target": {
+      "name": "(ethylsulfanyl)ethane",
+      "stereo": "none",
+      "altNames": [
+        "diethyl sulfide",
+        "ethylsulfanylethane"
+      ],
+      "smiles": "CCSCC",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "Sulfides are named like ethers: alkylsulfanyl + parent, or the two groups + 'sulfide'."
+  },
+  {
+    "id": "q-E1-thioanisole-001",
+    "reactionIds": [
+      "E1"
+    ],
+    "chapter": 17,
+    "difficulty": 2,
+    "orderTypes": [
+      "name_it"
+    ],
+    "start": {
+      "smiles": "CSc1ccccc1",
+      "name": "(methylsulfanyl)benzene"
+    },
+    "target": {
+      "name": "(methylsulfanyl)benzene",
+      "stereo": "none",
+      "altNames": [
+        "methyl phenyl sulfide",
+        "thioanisole",
+        "methylsulfanylbenzene"
+      ],
+      "smiles": "CSc1ccccc1",
+      "highlightAtoms": []
+    },
+    "route": [],
+    "explanation": "The ring is the parent: (methylsulfanyl)benzene. Functional class: methyl phenyl sulfide.",
+    "nameTraps": [
+      {
+        "name": "phenyl methyl sulfide",
+        "tag": "naming_alpha_order",
+        "why": "Alphabetical order: methyl before phenyl."
+      }
+    ]
+  }
+]

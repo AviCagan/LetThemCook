@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -168,7 +169,7 @@ def validate_item(q: dict, engine: Engine, reactions: dict, reagents: dict, tags
     target_smiles = tgt["smiles"]
     if contains_target(flask, target_smiles):
         report.ok()
-    if strip_stereo(target_smiles) == strip_stereo(q["start"]["smiles"]):
+    if strip_stereo(target_smiles) == strip_stereo(q["start"]["smiles"]) and q.get("orderTypes") != ["name_it"]:
         report.error(f"[target] {label}: target equals the starting material")
     # alt routes
     for i, alt in enumerate(q.get("altRoutes", [])):
@@ -213,8 +214,48 @@ def validate_item(q: dict, engine: Engine, reactions: dict, reagents: dict, tags
             report.ok()
     if "synthesis" in q.get("orderTypes", []) and len(q.get("route", [])) < 2:
         report.error(f"[type] {label}: a synthesis order needs a route of >= 2 steps")
-    if "predict_product" in q.get("orderTypes", []) and len(q.get("traps", [])) < 3:
-        report.error(f"[type] {label}: predict_product needs >= 3 traps")
+    types = q.get("orderTypes", [])
+    target_smiles = q["target"].get("smiles")
+    if not q["route"] and types != ["name_it"]:
+        report.error(f"[route] {label}: an empty route is only allowed for name_it-only orders")
+    if "predict_product" in types:
+        options = {strip_stereo(t["smiles"].split(".")[0] if "." not in t["smiles"] else max(t["smiles"].split("."), key=len))
+                   for t in q.get("traps", []) if not t.get("stereoOnly")}
+        options.discard(strip_stereo(target_smiles) if target_smiles else None)
+        if len(options) < 3:
+            report.error(f"[type] {label}: predict_product needs >= 3 distinct wrong products")
+    for t in q.get("traps", []):
+        if t["tag"] not in tags:
+            report.error(f"[tag] {label}: trap tag '{t['tag']}' unknown")
+    if "what_start" in types:
+        ds = q.get("reverse", {}).get("distractors", [])
+        if len(ds) < 3:
+            report.error(f"[type] {label}: what_start needs 3 reverse.distractors")
+        start_flat = strip_stereo(q["start"]["smiles"])
+        for d in ds:
+            if Chem.MolFromSmiles(d["smiles"]) is None:
+                report.error(f"[reverse] {label}: bad SMILES {d['smiles']}")
+                continue
+            if strip_stereo(d["smiles"]) == start_flat:
+                report.error(f"[reverse] {label}: distractor {d['name']} is the real starting material")
+            final, _ = engine.run_route(d["smiles"], q["route"])
+            if target_smiles and contains_target(final, target_smiles):
+                report.error(f"[reverse] {label}: the route turns distractor {d['name']} into the target too")
+            else:
+                report.ok()
+    if "spot_flaw" in types and not q.get("flaws"):
+        report.error(f"[type] {label}: spot_flaw needs flaws")
+    for i, f in enumerate(q.get("flaws", [])):
+        if f["tag"] not in tags:
+            report.error(f"[flaw] {label}: flaw {i} tag '{f['tag']}' unknown")
+        if any(s["reagent"] not in reagents for s in f["route"]):
+            report.error(f"[flaw] {label}: flaw {i} uses an unknown bottle")
+            continue
+        final, _ = engine.run_route(q["start"]["smiles"], f["route"])
+        if target_smiles and contains_target(final, target_smiles):
+            report.error(f"[flaw] {label}: flaw {i} route actually reaches the target")
+        else:
+            report.ok()
     for nt in q.get("nameTraps", []):
         if nt["tag"] not in tags:
             report.error(f"[tag] {label}: nameTrap tag '{nt['tag']}' unknown")
@@ -339,6 +380,8 @@ def main() -> int:
         if file_changed and args.fill:
             qf.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    check_names(questions, report)
+
     n_items = sum(len(v) for v in questions.values())
     print(f"content: {len(reagents)} bottles, {len(reactions)} reactions, {len(rules_data['rules'])} rules, {len(tags)} tags, {n_items} items")
     for rid in sorted(reactions, key=lambda x: (x[0], int(x[1:]))):
@@ -346,6 +389,71 @@ def main() -> int:
         if reactions[rid].get("steps"):
             print(f"  {rid:4s} {n:3d} items{'' if n >= 6 else '  (< 6)'}")
     return finish(report, args.strict)
+
+
+def _organic(smiles: str) -> str | None:
+    """Largest fragment, stereo stripped: names of salts carry a counter-ion the game does not draw."""
+    if not smiles:
+        return None
+    frags = smiles.split(".")
+    best = max(frags, key=lambda f: (Chem.MolFromSmiles(f).GetNumHeavyAtoms() if Chem.MolFromSmiles(f) else -1))
+    return strip_stereo(best)
+
+
+def _name_variants(name: str) -> list[str]:
+    """The name as written, the parts in/out of a trailing '(common name)', and without rac-/meso- style prefixes."""
+    out = [name]
+    m = re.match(r"^(.*?)\s*\(([^()]*)\)\s*$", name)
+    if m and not re.match(r"^[\dRSEZ,]+$", m.group(2)):
+        out += [m.group(1), m.group(2)]
+    stripped = []
+    for n in out:
+        n2 = re.sub(r"^(rac|meso|cis|trans)-", "", n)
+        n2 = re.sub(r"^\([\dRS,]+\)/\([\dRS,]+\)-", "", n2)
+        if n2 != n:
+            stripped.append(n2)
+    return out + stripped
+
+
+def check_names(questions: dict, report: Report) -> None:
+    """Every start/target name and alternative name must parse (OPSIN) to the drawn structure.
+    Names OPSIN cannot read (acronyms, trade names) are skipped; a name that parses to a different
+    molecule is an error. Needs py2opsin (Java); without it the check is skipped with a warning."""
+    try:
+        import warnings as _w
+        _w.filterwarnings("ignore")
+        from py2opsin import py2opsin  # type: ignore
+    except Exception:
+        report.warn("[names] py2opsin not installed: IUPAC names were not checked against structures")
+        return
+    jobs = []  # (label, kind, name, smiles)
+    for items in questions.values():
+        for q in items:
+            jobs.append((q["id"], "start", q["start"]["name"], q["start"]["smiles"]))
+            t = q["target"]
+            if t.get("smiles"):
+                jobs.append((q["id"], "target", t["name"], t["smiles"]))
+                for a in t.get("altNames", []):
+                    jobs.append((q["id"], "altName", a, t["smiles"]))
+    names = sorted({v for _, _, n, _ in jobs for v in _name_variants(n)})
+    try:
+        parsed = dict(zip(names, py2opsin(names)))
+    except Exception as exc:  # Java missing etc.
+        report.warn(f"[names] OPSIN failed to run ({exc}); names not checked")
+        return
+    name_it = {q["id"] for items in questions.values() for q in items if "name_it" in q.get("orderTypes", [])}
+    for label, kind, name, smiles in jobs:
+        want = _organic(smiles)
+        got = [parsed.get(v) or "" for v in _name_variants(name)]
+        got = [g for g in got if g]
+        if not got:
+            if kind == "target" and label in name_it:
+                report.error(f"[name] {label}: name_it target '{name}' cannot be checked by OPSIN")
+            continue
+        if any(_organic(g) == want for g in got):
+            report.ok()
+        else:
+            report.error(f"[name] {label}: {kind} '{name}' is {_organic(got[0])} by OPSIN, but the structure is {want}")
 
 
 def finish(report: Report, strict: bool) -> int:

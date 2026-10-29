@@ -7,7 +7,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Clc1ccc([N+](=O)[O-])cc1",
@@ -37,10 +39,39 @@
         "stereo": "none",
         "tag": "aryl_SN2",
         "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 1-chloro-4-nitrobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
-    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cc([N+](=O)[O-])ccc1Cl",
+          "name": "1-chloro-2-methyl-4-nitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1C",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2-methyl-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Clc1ccccc1[N+](=O)[O-]",
+          "name": "1-chloro-2-nitrobenzene",
+          "gives": "COc1ccccc1[N+](=O)[O-]",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Clc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "name": "1-chloro-2,4-dinitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2,4-dinitrobenzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E5-ochloronitro-naoet-001",
@@ -50,7 +81,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Clc1ccccc1[N+](=O)[O-]",
@@ -81,10 +114,39 @@
         "stereo": "none",
         "tag": "aryl_SN2",
         "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccccc1Cl",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₂CH₃ / EtOH does change 1-chloro-2-nitrobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
-    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Clc1ccc([N+](=O)[O-])cc1",
+          "name": "1-chloro-4-nitrobenzene",
+          "gives": "CCOc1ccc([N+](=O)[O-])cc1",
+          "why": "With NaOCH₂CH₃ / EtOH, 1-chloro-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cc([N+](=O)[O-])ccc1Cl",
+          "name": "1-chloro-2-methyl-4-nitrobenzene",
+          "gives": "CCOc1ccc([N+](=O)[O-])cc1C",
+          "why": "With NaOCH₂CH₃ / EtOH, 1-chloro-2-methyl-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Brc1ccc([N+](=O)[O-])cc1",
+          "name": "1-bromo-4-nitrobenzene",
+          "gives": "CCOc1ccc([N+](=O)[O-])cc1",
+          "why": "With NaOCH₂CH₃ / EtOH, 1-bromo-4-nitrobenzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E5-pfluoronitro-naome-001",
@@ -94,7 +156,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Fc1ccc([N+](=O)[O-])cc1",
@@ -124,10 +188,39 @@
         "stereo": "none",
         "tag": "aryl_SN2",
         "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(F)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 1-fluoro-4-nitrobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
-    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cc([N+](=O)[O-])ccc1Cl",
+          "name": "1-chloro-2-methyl-4-nitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1C",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2-methyl-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Clc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "name": "1-chloro-2,4-dinitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2,4-dinitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Clc1ccccc1[N+](=O)[O-]",
+          "name": "1-chloro-2-nitrobenzene",
+          "gives": "COc1ccccc1[N+](=O)[O-]",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2-nitrobenzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E5-dinitrochloro-naome-001",
@@ -137,7 +230,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Clc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
@@ -167,10 +262,39 @@
         "stereo": "none",
         "tag": "aryl_SN2",
         "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(Cl)c([N+](=O)[O-])c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 1-chloro-2,4-dinitrobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
-    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Fc1ccc([N+](=O)[O-])cc1",
+          "name": "1-fluoro-4-nitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1",
+          "why": "With NaOCH₃ / CH₃OH, 1-fluoro-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Brc1ccc([N+](=O)[O-])cc1",
+          "name": "1-bromo-4-nitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Clc1ccc([N+](=O)[O-])cc1",
+          "name": "1-chloro-4-nitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-4-nitrobenzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E5-pbromonitro-naoet-001",
@@ -180,7 +304,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Brc1ccc([N+](=O)[O-])cc1",
@@ -211,10 +337,39 @@
         "stereo": "none",
         "tag": "aryl_SN2",
         "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₂CH₃ / EtOH does change 1-bromo-4-nitrobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
-    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Clc1ccccc1[N+](=O)[O-]",
+          "name": "1-chloro-2-nitrobenzene",
+          "gives": "CCOc1ccccc1[N+](=O)[O-]",
+          "why": "With NaOCH₂CH₃ / EtOH, 1-chloro-2-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cc([N+](=O)[O-])ccc1Cl",
+          "name": "1-chloro-2-methyl-4-nitrobenzene",
+          "gives": "CCOc1ccc([N+](=O)[O-])cc1C",
+          "why": "With NaOCH₂CH₃ / EtOH, 1-chloro-2-methyl-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Clc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "name": "1-chloro-2,4-dinitrobenzene",
+          "gives": "CCOc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "why": "With NaOCH₂CH₃ / EtOH, 1-chloro-2,4-dinitrobenzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E5-chloromethylnitro-naome-001",
@@ -224,7 +379,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cc([N+](=O)[O-])ccc1Cl",
@@ -251,9 +408,38 @@
         "stereo": "none",
         "tag": "aryl_SN2",
         "why": "The alkoxide must attack the RING carbon (SNAr); NaOH does nothing to an aryl halide and there is no OH to alkylate."
+      },
+      {
+        "smiles": "Cc1cc([N+](=O)[O-])ccc1Cl",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 1-chloro-2-methyl-4-nitrobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The alkoxide adds to the carbon bearing the halide; the ortho/para NO₂ stabilises the negative charge (Meisenheimer complex); the halide then leaves. Addition–elimination, not SN2.",
-    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction."
+    "tip": "SNAr needs NO₂ ortho or para to the leaving group. Meta: no reaction.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Clc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "name": "1-chloro-2,4-dinitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1[N+](=O)[O-]",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2,4-dinitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Brc1ccc([N+](=O)[O-])cc1",
+          "name": "1-bromo-4-nitrobenzene",
+          "gives": "COc1ccc([N+](=O)[O-])cc1",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-4-nitrobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "Clc1ccccc1[N+](=O)[O-]",
+          "name": "1-chloro-2-nitrobenzene",
+          "gives": "COc1ccccc1[N+](=O)[O-]",
+          "why": "With NaOCH₃ / CH₃OH, 1-chloro-2-nitrobenzene gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

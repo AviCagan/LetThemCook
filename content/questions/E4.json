@@ -7,7 +7,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(C)Br",
@@ -37,10 +39,39 @@
         "stereo": "none",
         "tag": "williamson_E2",
         "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      },
+      {
+        "smiles": "CC(C)(C)Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 2-bromo-2-methylpropane.",
+        "auto": true
       }
     ],
     "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
-    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(Br)CCCCC1",
+          "name": "1-bromo-1-methylcyclohexane",
+          "gives": "CC1=CCCCC1",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-1-methylcyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "C1=CCCCC1",
+          "why": "With NaOCH₃ / CH₃OH, bromocyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)(C)Br",
+          "name": "2-bromo-2-methylbutane",
+          "gives": "CC=C(C)C",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromo-2-methylbutane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E4-iprbr-001",
@@ -50,7 +81,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)Br",
@@ -77,10 +110,39 @@
         "stereo": "none",
         "tag": "williamson_E2",
         "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      },
+      {
+        "smiles": "CC(C)Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₂CH₃ / EtOH does change 2-bromopropane.",
+        "auto": true
       }
     ],
     "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
-    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC(C)(C)Br",
+          "name": "2-bromo-2-methylbutane",
+          "gives": "CC=C(C)C",
+          "why": "With NaOCH₂CH₃ / EtOH, 2-bromo-2-methylbutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)Br",
+          "name": "2-bromo-2-methylpropane",
+          "gives": "C=C(C)C",
+          "why": "With NaOCH₂CH₃ / EtOH, 2-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(Br)CCCCC1",
+          "name": "1-bromo-1-methylcyclohexane",
+          "gives": "CC1=CCCCC1",
+          "why": "With NaOCH₂CH₃ / EtOH, 1-bromo-1-methylcyclohexane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E4-bromocyclohexane-001",
@@ -90,7 +152,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "BrC1CCCCC1",
@@ -116,10 +180,39 @@
         "stereo": "none",
         "tag": "williamson_E2",
         "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      },
+      {
+        "smiles": "BrC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change bromocyclohexane.",
+        "auto": true
       }
     ],
     "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
-    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(Br)CCCCC1",
+          "name": "1-bromo-1-methylcyclohexane",
+          "gives": "CC1=CCCCC1",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-1-methylcyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)Br",
+          "name": "2-bromo-2-methylpropane",
+          "gives": "C=C(C)C",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)(C)Br",
+          "name": "2-bromo-2-methylbutane",
+          "gives": "CC=C(C)C",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromo-2-methylbutane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E4-2bromobutane-001",
@@ -129,7 +222,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCC(C)Br",
@@ -159,10 +254,39 @@
         "stereo": "none",
         "tag": "williamson_E2",
         "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      },
+      {
+        "smiles": "CCC(C)Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 2-bromobutane.",
+        "auto": true
       }
     ],
     "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
-    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC(C)(C)Br",
+          "name": "2-bromo-2-methylbutane",
+          "gives": "CC=C(C)C",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromo-2-methylbutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(Br)CCCCC1",
+          "name": "1-bromo-1-methylcyclohexane",
+          "gives": "CC1=CCCCC1",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-1-methylcyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)Br",
+          "name": "2-bromo-2-methylpropane",
+          "gives": "C=C(C)C",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromo-2-methylpropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E4-methylcyclohexylbromide-001",
@@ -172,7 +296,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(Br)CCCCC1",
@@ -198,10 +324,39 @@
         "stereo": "none",
         "tag": "williamson_E2",
         "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      },
+      {
+        "smiles": "CC1(Br)CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₂CH₃ / EtOH does change 1-bromo-1-methylcyclohexane.",
+        "auto": true
       }
     ],
     "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
-    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "C1=CCCCC1",
+          "why": "With NaOCH₂CH₃ / EtOH, bromocyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)Br",
+          "name": "2-bromo-2-methylpropane",
+          "gives": "C=C(C)C",
+          "why": "With NaOCH₂CH₃ / EtOH, 2-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)(C)Br",
+          "name": "2-bromo-2-methylbutane",
+          "gives": "CC=C(C)C",
+          "why": "With NaOCH₂CH₃ / EtOH, 2-bromo-2-methylbutane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E4-bromomethylbutane-001",
@@ -211,7 +366,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCC(C)(C)Br",
@@ -242,9 +399,38 @@
         "stereo": "none",
         "tag": "williamson_E2",
         "why": "An alkoxide with a 2°/3° halide does E2, not SN2: you get the alkene, never this ether. To make the ether, put the hindered group on the alkoxide and use a CH₃/1° halide."
+      },
+      {
+        "smiles": "CCC(C)(C)Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOCH₃ / CH₃OH does change 2-bromo-2-methylbutane.",
+        "auto": true
       }
     ],
     "explanation": "Methoxide/ethoxide is a strong base; with a 2° or 3° halide it removes a β-hydrogen (E2) to give the Zaitsev alkene. No ether forms.",
-    "tip": "RO⁻ + 2°/3° RX = alkene (E2)."
+    "tip": "RO⁻ + 2°/3° RX = alkene (E2).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(Br)CCCCC1",
+          "name": "1-bromo-1-methylcyclohexane",
+          "gives": "CC1=CCCCC1",
+          "why": "With NaOCH₃ / CH₃OH, 1-bromo-1-methylcyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)Br",
+          "name": "2-bromo-2-methylpropane",
+          "gives": "C=C(C)C",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(C)Br",
+          "name": "2-bromobutane",
+          "gives": "CC=CC",
+          "why": "With NaOCH₃ / CH₃OH, 2-bromobutane gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

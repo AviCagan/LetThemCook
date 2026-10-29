@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CO",
@@ -37,7 +40,53 @@
       }
     ],
     "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
-    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester.",
+    "traps": [
+      {
+        "smiles": "CO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃COOH, H₂SO₄ cat., Δ) does nothing here: Fischer esterification needs heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃COOH, H₂SO₄ cat., Δ) does nothing here: Fischer esterification needs heat.",
+        "gives": "CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCOC(C)=O",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), butan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(=O)OCC(C)C",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)O",
+          "name": "propan-2-ol",
+          "gives": "CC(=O)OC(C)C",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), propan-2-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R20-benzoic-meoh-001",
@@ -47,7 +96,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC(=O)c1ccccc1",
@@ -72,7 +124,53 @@
       }
     ],
     "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
-    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester.",
+    "traps": [
+      {
+        "smiles": "O=C(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "MeOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "gives": "O=C(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC(=O)C1CCCCC1",
+          "name": "cyclohexanecarboxylic acid",
+          "gives": "COC(=O)C1CCCCC1",
+          "why": "With CH₃OH, H₂SO₄ cat. (heat), cyclohexanecarboxylic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(=O)CCc1ccccc1",
+          "name": "3-phenylpropanoic acid",
+          "gives": "COC(=O)CCc1ccccc1",
+          "why": "With CH₃OH, H₂SO₄ cat. (heat), 3-phenylpropanoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "styrene",
+          "gives": "COC(C)c1ccccc1",
+          "why": "With CH₃OH, H₂SO₄ cat. (heat), styrene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R20-acetic-etoh-001",
@@ -82,7 +180,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(=O)O",
@@ -111,7 +212,53 @@
       }
     ],
     "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
-    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester.",
+    "traps": [
+      {
+        "smiles": "CC(=O)O",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃CH₂OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "EtOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃CH₂OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "gives": "CC(=O)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CCOC(C)(C)C",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat. (heat), 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1=CCCCC1",
+          "name": "1-methylcyclohexene",
+          "gives": "CCOC1(C)CCCCC1",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat. (heat), 1-methylcyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "CCOC(C)CCCCO",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat. (heat), hex-5-en-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R20-butanol-acoh-001",
@@ -121,7 +268,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCO",
@@ -151,7 +301,53 @@
       }
     ],
     "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
-    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester.",
+    "traps": [
+      {
+        "smiles": "CCCCO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃COOH, H₂SO₄ cat., Δ) does nothing here: Fischer esterification needs heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃COOH, H₂SO₄ cat., Δ) does nothing here: Fischer esterification needs heat.",
+        "gives": "CCCCO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(=O)OCC(C)C",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CO",
+          "name": "methanol",
+          "gives": "COC(C)=O",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), methanol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "CC(=O)OCc1ccccc1",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R20-cyclohexanecarboxylic-etoh-001",
@@ -161,7 +357,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC(=O)C1CCCCC1",
@@ -187,7 +386,53 @@
       }
     ],
     "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
-    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester.",
+    "traps": [
+      {
+        "smiles": "O=C(O)C1CCCCC1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃CH₂OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "EtOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃CH₂OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "gives": "O=C(O)C1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC(=O)CCc1ccccc1",
+          "name": "3-phenylpropanoic acid",
+          "gives": "CCOC(=O)CCc1ccccc1",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat. (heat), 3-phenylpropanoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(=O)c1ccccc1",
+          "name": "benzoic acid",
+          "gives": "CCOC(=O)c1ccccc1",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat. (heat), benzoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCC(=O)O",
+          "name": "hexanoic acid",
+          "gives": "CCCCCC(=O)OCC",
+          "why": "With CH₃CH₂OH, H₂SO₄ cat. (heat), hexanoic acid gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R20-hydrocinnamic-meoh-001",
@@ -197,7 +442,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OC(=O)CCc1ccccc1",
@@ -222,7 +470,53 @@
       }
     ],
     "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
-    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester.",
+    "traps": [
+      {
+        "smiles": "O=C(O)CCc1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "MeOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃OH, H₂SO₄ cat.) does nothing here: Fischer esterification needs heat.",
+        "gives": "O=C(O)CCc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC(=O)c1ccccc1",
+          "name": "benzoic acid",
+          "gives": "COC(=O)c1ccccc1",
+          "why": "With CH₃OH, H₂SO₄ cat. (heat), benzoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(=O)C1CCCCC1",
+          "name": "cyclohexanecarboxylic acid",
+          "gives": "COC(=O)C1CCCCC1",
+          "why": "With CH₃OH, H₂SO₄ cat. (heat), cyclohexanecarboxylic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CC(C)=O",
+          "name": "4-methylpent-3-en-2-one",
+          "gives": "COC(C)(C)CC(C)=O",
+          "why": "With CH₃OH, H₂SO₄ cat. (heat), 4-methylpent-3-en-2-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R20-isobutanol-acoh-001",
@@ -232,7 +526,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CO",
@@ -262,6 +559,52 @@
       }
     ],
     "explanation": "Acid protonates the carboxylic acid carbonyl; the alcohol oxygen attacks; water leaves (from the acid's OH). The alcohol's oxygen ends up in the ester. Reversible.",
-    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester."
+    "tip": "Fischer: alcohol is the nucleophile; its O stays in the ester.",
+    "traps": [
+      {
+        "smiles": "CC(C)CO",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃COOH, H₂SO₄ cat., Δ) does nothing here: Fischer esterification needs heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "AcOH_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (CH₃COOH, H₂SO₄ cat., Δ) does nothing here: Fischer esterification needs heat.",
+        "gives": "CC(C)CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CO",
+          "name": "methanol",
+          "gives": "COC(C)=O",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), methanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCOC(C)=O",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), butan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCc1ccccc1",
+          "name": "benzyl alcohol",
+          "gives": "CC(=O)OCc1ccccc1",
+          "why": "With CH₃COOH, H₂SO₄ cat., Δ (heat), benzyl alcohol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

@@ -7,7 +7,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCOCC",
@@ -32,7 +35,54 @@
       }
     ],
     "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
-    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH.",
+    "traps": [
+      {
+        "smiles": "CCOCC",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "HBr",
+            "conditions": {
+              "temp": "rt",
+              "light": false
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "gives": "CCOCC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCOC",
+          "name": "1-methoxypropane",
+          "gives": "CCCBr",
+          "why": "With HBr (heat), 1-methoxypropane gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccccc1",
+          "name": "methoxybenzene (anisole)",
+          "gives": "Oc1ccccc1",
+          "why": "With HBr (heat), methoxybenzene (anisole) gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCOC1",
+          "name": "oxolane (THF)",
+          "gives": "BrCCCCBr",
+          "why": "With HBr (heat), oxolane (THF) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E6-anisole-hbr-001",
@@ -42,7 +92,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "COc1ccccc1",
@@ -72,10 +125,55 @@
         "stereo": "none",
         "tag": "ether_cleavage_aryl",
         "why": "The aryl–O bond never breaks: SN2 cannot happen on an sp² ring carbon. The aryl side ends up as the phenol; only the alkyl side becomes the halide."
+      },
+      {
+        "smiles": "COc1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "auto": true
       }
     ],
     "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
-    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "HBr",
+            "conditions": {
+              "temp": "rt",
+              "light": false
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "gives": "COc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCOCC",
+          "name": "ethoxyethane (diethyl ether)",
+          "gives": "CCBr",
+          "why": "With HBr (heat), ethoxyethane (diethyl ether) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCOC",
+          "name": "1-methoxypropane",
+          "gives": "CCCBr",
+          "why": "With HBr (heat), 1-methoxypropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCOc1ccc(C)cc1",
+          "name": "1-ethoxy-4-methylbenzene",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With HBr (heat), 1-ethoxy-4-methylbenzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E6-ethyltolylether-hi-001",
@@ -85,7 +183,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCOc1ccc(C)cc1",
@@ -118,10 +219,55 @@
         "stereo": "none",
         "tag": "ether_cleavage_aryl",
         "why": "The aryl–O bond never breaks: SN2 cannot happen on an sp² ring carbon. The aryl side ends up as the phenol; only the alkyl side becomes the halide."
+      },
+      {
+        "smiles": "CCOc1ccc(C)cc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HI) does nothing here: Ether cleavage needs excess HI AND heat.",
+        "auto": true
       }
     ],
     "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
-    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "HI",
+            "conditions": {
+              "temp": "rt",
+              "light": false
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HI) does nothing here: Ether cleavage needs excess HI AND heat.",
+        "gives": "CCOc1ccc(C)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "COc1ccccc1",
+          "name": "methoxybenzene (anisole)",
+          "gives": "Oc1ccccc1",
+          "why": "With HI (heat), methoxybenzene (anisole) gives a different product (shown)."
+        },
+        {
+          "smiles": "c1ccc(OCc2ccccc2)cc1",
+          "name": "(benzyloxy)benzene",
+          "gives": "ICc1ccccc1",
+          "why": "With HI (heat), (benzyloxy)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "COC(C)(C)C",
+          "name": "2-methoxy-2-methylpropane (MTBE)",
+          "gives": "CC(C)(C)I",
+          "why": "With HI (heat), 2-methoxy-2-methylpropane (MTBE) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E6-thf-hbr-001",
@@ -131,7 +277,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "C1CCOC1",
@@ -158,7 +307,54 @@
       }
     ],
     "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
-    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH.",
+    "traps": [
+      {
+        "smiles": "C1CCOC1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "HBr",
+            "conditions": {
+              "temp": "rt",
+              "light": false
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "gives": "C1CCOC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCOCC",
+          "name": "ethoxyethane (diethyl ether)",
+          "gives": "CCBr",
+          "why": "With HBr (heat), ethoxyethane (diethyl ether) gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccccc1",
+          "name": "methoxybenzene (anisole)",
+          "gives": "Oc1ccccc1",
+          "why": "With HBr (heat), methoxybenzene (anisole) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCO",
+          "name": "ethanol",
+          "gives": "CCBr",
+          "why": "With HBr (heat), ethanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E6-mtbe-hbr-001",
@@ -168,7 +364,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "COC(C)(C)C",
@@ -196,7 +395,54 @@
       }
     ],
     "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
-    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH.",
+    "traps": [
+      {
+        "smiles": "COC(C)(C)C",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "HBr",
+            "conditions": {
+              "temp": "rt",
+              "light": false
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "gives": "COC(C)(C)C"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCOc1ccc(C)cc1",
+          "name": "1-ethoxy-4-methylbenzene",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With HBr (heat), 1-ethoxy-4-methylbenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCOCC",
+          "name": "ethoxyethane (diethyl ether)",
+          "gives": "CCBr",
+          "why": "With HBr (heat), ethoxyethane (diethyl ether) gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccccc1",
+          "name": "methoxybenzene (anisole)",
+          "gives": "Oc1ccccc1",
+          "why": "With HBr (heat), methoxybenzene (anisole) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E6-methoxypropane-hi-001",
@@ -206,7 +452,10 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCOC",
@@ -231,7 +480,54 @@
       }
     ],
     "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
-    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH.",
+    "traps": [
+      {
+        "smiles": "CCCOC",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HI) does nothing here: Ether cleavage needs excess HI AND heat.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "HI",
+            "conditions": {
+              "temp": "rt",
+              "light": false
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HI) does nothing here: Ether cleavage needs excess HI AND heat.",
+        "gives": "CCCOC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCOCC",
+          "name": "ethoxyethane (diethyl ether)",
+          "gives": "CCI",
+          "why": "With HI (heat), ethoxyethane (diethyl ether) gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccccc1",
+          "name": "methoxybenzene (anisole)",
+          "gives": "Oc1ccccc1",
+          "why": "With HI (heat), methoxybenzene (anisole) gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCOC1",
+          "name": "oxolane (THF)",
+          "gives": "ICCCCI",
+          "why": "With HI (heat), oxolane (THF) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E6-benzylphenylether-hbr-001",
@@ -241,7 +537,9 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "c1ccc(OCc2ccccc2)cc1",
@@ -274,9 +572,54 @@
         "stereo": "none",
         "tag": "ether_cleavage_aryl",
         "why": "The aryl–O bond never breaks: SN2 cannot happen on an sp² ring carbon. The aryl side ends up as the phenol; only the alkyl side becomes the halide."
+      },
+      {
+        "smiles": "c1ccc(COc2ccccc2)cc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "auto": true
       }
     ],
     "explanation": "The protonated ether is attacked by the halide at the less hindered sp³ carbon (SN2) or ionises at a 3° carbon (SN1); with excess HX both alkyl groups end as halides. An aryl–O bond survives as the phenol.",
-    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH."
+    "tip": "Excess HBr/HI + heat: alkyl–O → alkyl–X; aryl–O stays as Ar–OH.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "HBr",
+            "conditions": {
+              "temp": "rt",
+              "light": false
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (HBr) does nothing here: Ether cleavage needs excess HBr AND heat.",
+        "gives": "c1ccc(COc2ccccc2)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCOc1ccc(C)cc1",
+          "name": "1-ethoxy-4-methylbenzene",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With HBr (heat), 1-ethoxy-4-methylbenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CCCC(C)CCO",
+          "name": "3,7-dimethyloct-6-en-1-ol (citronellol)",
+          "gives": "CC(C)=CCCC(C)CCBr",
+          "why": "With HBr (heat), 3,7-dimethyloct-6-en-1-ol (citronellol) gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(c1ccccc1)C(C)O",
+          "name": "1-phenylpropane-1,2-diol",
+          "gives": "CC(Br)C(Br)c1ccccc1",
+          "why": "With HBr (heat), 1-phenylpropane-1,2-diol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

@@ -8,7 +8,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCCCO",
@@ -46,10 +49,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Dehydration needs H₂SO₄ and heat without a chromium oxidant. Jones oxidises the alcohol instead."
+      },
+      {
+        "smiles": "CCCCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Na₂Cr₂O₇ / H₂SO₄ does change hexan-1-ol.",
+        "auto": true
       }
     ],
     "explanation": "A 1° alcohol is oxidised past the aldehyde to the carboxylic acid by chromic acid.",
-    "tip": "Jones on a 1° alcohol: all the way to COOH."
+    "tip": "Jones on a 1° alcohol: all the way to COOH.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "Chromic acid does not stop at the aldehyde: in water the aldehyde hydrates and is oxidised again to the acid. PCC is the reagent that stops.",
+        "gives": "CCCCCC=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethanol",
+          "gives": "CC(=O)c1ccccc1",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, 1-phenylethanol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC=O",
+          "name": "hex-5-enal",
+          "gives": "C=CCCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, hex-5-enal gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "O=C1CCCC1=O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, cyclopentane-1,2-diol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R21-cyclohexanol-001",
@@ -60,7 +104,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
@@ -108,7 +154,29 @@
       }
     ],
     "explanation": "A 2° alcohol is oxidised to the ketone and stops there. PCC would give the same product.",
-    "tip": "2° alcohol → ketone, with either oxidant."
+    "tip": "2° alcohol → ketone, with either oxidant.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCC1O",
+          "name": "cyclopentane-1,2-diol",
+          "gives": "O=C1CCCC1=O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, cyclopentane-1,2-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC=O",
+          "name": "hex-5-enal",
+          "gives": "C=CCCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, hex-5-enal gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCCO",
+          "name": "hexan-1-ol",
+          "gives": "CCCCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, hexan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R21-phenylethanol-001",
@@ -119,7 +187,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(O)c1ccccc1",
@@ -168,10 +238,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Styrene is the dehydration product (H₂SO₄/heat). Chromic acid oxidises instead."
+      },
+      {
+        "smiles": "CC(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Na₂Cr₂O₇ / H₂SO₄ does change 1-phenylethanol.",
+        "auto": true
       }
     ],
     "explanation": "The 2° benzylic alcohol is oxidised to acetophenone.",
-    "tip": "A 2° alcohol has exactly one H to lose: ketone."
+    "tip": "A 2° alcohol has exactly one H to lose: ketone.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OCCCCCO",
+          "name": "pentane-1,5-diol",
+          "gives": "O=C(O)CCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, pentane-1,5-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "O=CCCCC=O",
+          "name": "pentanedial",
+          "gives": "O=C(O)CCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, pentanedial gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "O=C1CCCCC1",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R21-methylbenzylalcohol-001",
@@ -182,7 +281,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(CO)cc1",
@@ -223,10 +325,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "An oxidant never removes an oxygen."
+      },
+      {
+        "smiles": "Cc1ccc(CO)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Na₂Cr₂O₇ / H₂SO₄ does change (4-methylphenyl)methanol.",
+        "auto": true
       }
     ],
     "explanation": "The benzylic 1° alcohol is oxidised to the carboxylic acid; the ring methyl is not an alcohol and is left alone.",
-    "tip": "Only carbons bearing OH get oxidised."
+    "tip": "Only carbons bearing OH get oxidised.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "Chromic acid takes the 1° alcohol past the aldehyde to the acid. PCC would stop here.",
+        "gives": "Cc1ccc(C=O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCCO",
+          "name": "hexan-1-ol",
+          "gives": "CCCCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, hexan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCCCCCO",
+          "name": "pentane-1,5-diol",
+          "gives": "O=C(O)CCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, pentane-1,5-diol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "O=C1CCCCC1",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, cyclohexanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R21-pentanediol-001",
@@ -237,7 +380,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "OCCCCCO",
@@ -280,10 +426,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A lactone would need an ester-forming step; Jones simply oxidises each CH₂OH to COOH."
+      },
+      {
+        "smiles": "OCCCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Na₂Cr₂O₇ / H₂SO₄ does change pentane-1,5-diol.",
+        "auto": true
       }
     ],
     "explanation": "Both 1° alcohols are oxidised to carboxylic acids: pentanedioic acid.",
-    "tip": "Two CH₂OH groups, two COOH groups."
+    "tip": "Two CH₂OH groups, two COOH groups.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PCC"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "Jones does not stop at aldehydes. That would be PCC.",
+        "gives": "O=CCCCC=O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(CO)cc1",
+          "name": "(4-methylphenyl)methanol",
+          "gives": "Cc1ccc(C(=O)O)cc1",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, (4-methylphenyl)methanol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "C=CCCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, hex-5-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethanol",
+          "gives": "CC(=O)c1ccccc1",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, 1-phenylethanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R21-methylcyclohexanol-001",
@@ -294,7 +481,8 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start"
     ],
     "start": {
       "smiles": "CC1CCCCC1O",
@@ -345,6 +533,28 @@
       }
     ],
     "explanation": "The 2° alcohol becomes a ketone. C2 keeps its stereocenter; from a racemic starting material the ketone is racemic.",
-    "tip": "The carbinol stereocenter disappears, the other one stays."
+    "tip": "The carbinol stereocenter disappears, the other one stays.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCCC=O",
+          "name": "hex-5-enal",
+          "gives": "C=CCCCC(=O)O",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, hex-5-enal gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(CO)cc1",
+          "name": "(4-methylphenyl)methanol",
+          "gives": "Cc1ccc(C(=O)O)cc1",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, (4-methylphenyl)methanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(O)c1ccccc1",
+          "name": "1-phenylethanol",
+          "gives": "CC(=O)c1ccccc1",
+          "why": "With Na₂Cr₂O₇ / H₂SO₄, 1-phenylethanol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

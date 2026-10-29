@@ -177,5 +177,25 @@
     "id": "wrong_product",
     "label": "Handed over the wrong molecule",
     "rule": "Compare your flask with the target before handing over: count carbons, find the functional groups, then check stereochemistry."
+  },
+  {
+    "id": "wrong_start",
+    "label": "Picked the wrong starting material",
+    "rule": "Work backwards: undo the bond the reagents make or break on the product, then check that the candidate would really react that way with those reagents."
+  },
+  {
+    "id": "naming_parent",
+    "label": "Wrong parent in a substitutive name",
+    "rule": "For an ether, the larger (or ring) part is the parent and the smaller part is the alkoxy substituent: methoxyethane, not ethoxymethane."
+  },
+  {
+    "id": "naming_spelling",
+    "label": "Name not recognised",
+    "rule": "Check the parent chain, the suffix, every locant and the alphabetical order of the substituents."
+  },
+  {
+    "id": "no_reaction",
+    "label": "That reagent doesn't react with this molecule",
+    "rule": "Each reagent attacks particular groups. Check that the flask has the group the reagent needs at that step (and nothing that destroys the reagent first)."
   }
 ]

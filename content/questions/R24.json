@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(=O)c1ccccc1",
@@ -42,10 +45,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat)."
+      },
+      {
+        "smiles": "CC(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Zn(Hg), HCl does change acetophenone.",
+        "auto": true
       }
     ],
     "explanation": "Clemmensen (acid) and Wolff–Kishner (base, heat) both convert an aldehyde/ketone C=O into CH₂.",
-    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base."
+    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat).",
+        "gives": "CC(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCC(C)=O",
+          "name": "heptan-2-one",
+          "gives": "CCCCCCC",
+          "why": "With Zn(Hg), HCl, heptan-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1CCCCC1",
+          "name": "cyclohexanone",
+          "gives": "C1CCCCC1",
+          "why": "With Zn(Hg), HCl, cyclohexanone gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(=O)c1ccccc1",
+          "name": "1-phenylpropan-1-one",
+          "gives": "CCCc1ccccc1",
+          "why": "With Zn(Hg), HCl, 1-phenylpropan-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R24-cyclohexanone-001",
@@ -55,7 +99,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=C1CCCCC1",
@@ -90,10 +137,64 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat)."
+      },
+      {
+        "smiles": "O=C1CCCCC1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂NNH₂, KOH, Δ) does nothing here: Wolff–Kishner needs heat to lose N₂ from the hydrazone.",
+        "auto": true
       }
     ],
     "explanation": "Clemmensen (acid) and Wolff–Kishner (base, heat) both convert an aldehyde/ketone C=O into CH₂.",
-    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base."
+    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat).",
+        "gives": "OC1CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2NNH2_KOH",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂NNH₂, KOH, Δ) does nothing here: Wolff–Kishner needs heat to lose N₂ from the hydrazone.",
+        "gives": "O=C1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC(=O)c1ccccc1",
+          "name": "1-phenylpropan-1-one",
+          "gives": "CCCc1ccccc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), 1-phenylpropan-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "Cc1ccccc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone",
+          "gives": "CCc1ccccc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), acetophenone gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R24-benzaldehyde-001",
@@ -103,7 +204,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=Cc1ccccc1",
@@ -141,10 +245,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat)."
+      },
+      {
+        "smiles": "O=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Zn(Hg), HCl does change benzaldehyde.",
+        "auto": true
       }
     ],
     "explanation": "Clemmensen (acid) and Wolff–Kishner (base, heat) both convert an aldehyde/ketone C=O into CH₂.",
-    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base."
+    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat).",
+        "gives": "OCc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone",
+          "gives": "CCc1ccccc1",
+          "why": "With Zn(Hg), HCl, acetophenone gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccc(C(C)=O)cc1",
+          "name": "1-(4-methoxyphenyl)ethan-1-one",
+          "gives": "CCc1ccc(OC)cc1",
+          "why": "With Zn(Hg), HCl, 1-(4-methoxyphenyl)ethan-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCC(C)=O",
+          "name": "heptan-2-one",
+          "gives": "CCCCCCC",
+          "why": "With Zn(Hg), HCl, heptan-2-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R24-methoxyacetophenone-001",
@@ -154,7 +299,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "COc1ccc(C(C)=O)cc1",
@@ -192,10 +340,64 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat)."
+      },
+      {
+        "smiles": "COc1ccc(C(C)=O)cc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂NNH₂, KOH, Δ) does nothing here: Wolff–Kishner needs heat to lose N₂ from the hydrazone.",
+        "auto": true
       }
     ],
     "explanation": "Clemmensen (acid) and Wolff–Kishner (base, heat) both convert an aldehyde/ketone C=O into CH₂.",
-    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base."
+    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat).",
+        "gives": "COc1ccc(C(C)O)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2NNH2_KOH",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂NNH₂, KOH, Δ) does nothing here: Wolff–Kishner needs heat to lose N₂ from the hydrazone.",
+        "gives": "COc1ccc(C(C)=O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "Cc1ccccc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(=O)c1ccccc1",
+          "name": "1-phenylpropan-1-one",
+          "gives": "CCCc1ccccc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), 1-phenylpropan-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone",
+          "gives": "CCc1ccccc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), acetophenone gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R24-heptanone-001",
@@ -205,7 +407,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCCC(C)=O",
@@ -240,10 +445,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat)."
+      },
+      {
+        "smiles": "CCCCCC(C)=O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Zn(Hg), HCl does change heptan-2-one.",
+        "auto": true
       }
     ],
     "explanation": "Clemmensen (acid) and Wolff–Kishner (base, heat) both convert an aldehyde/ketone C=O into CH₂.",
-    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base."
+    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat).",
+        "gives": "CCCCCC(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone",
+          "gives": "CCc1ccccc1",
+          "why": "With Zn(Hg), HCl, acetophenone gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "Cc1ccccc1",
+          "why": "With Zn(Hg), HCl, benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(=O)c1ccccc1",
+          "name": "1-phenylpropan-1-one",
+          "gives": "CCCc1ccccc1",
+          "why": "With Zn(Hg), HCl, 1-phenylpropan-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R24-propiophenone-001",
@@ -253,7 +499,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCC(=O)c1ccccc1",
@@ -288,10 +537,64 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat)."
+      },
+      {
+        "smiles": "CCC(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂NNH₂, KOH, Δ) does nothing here: Wolff–Kishner needs heat to lose N₂ from the hydrazone.",
+        "auto": true
       }
     ],
     "explanation": "Clemmensen (acid) and Wolff–Kishner (base, heat) both convert an aldehyde/ketone C=O into CH₂.",
-    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base."
+    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat).",
+        "gives": "CCC(O)c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2NNH2_KOH",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (H₂NNH₂, KOH, Δ) does nothing here: Wolff–Kishner needs heat to lose N₂ from the hydrazone.",
+        "gives": "CCC(=O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=C1CCCCC1",
+          "name": "cyclohexanone",
+          "gives": "C1CCCCC1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), cyclohexanone gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccc(C(C)=O)cc1",
+          "name": "1-(4-methoxyphenyl)ethan-1-one",
+          "gives": "CCc1ccc(OC)cc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), 1-(4-methoxyphenyl)ethan-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone",
+          "gives": "CCc1ccccc1",
+          "why": "With H₂NNH₂, KOH, Δ (heat), acetophenone gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R24-benzophenone-001",
@@ -301,7 +604,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=C(c1ccccc1)c1ccccc1",
@@ -336,9 +642,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat)."
+      },
+      {
+        "smiles": "O=C(c1ccccc1)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Zn(Hg), HCl does change benzophenone.",
+        "auto": true
       }
     ],
     "explanation": "Clemmensen (acid) and Wolff–Kishner (base, heat) both convert an aldehyde/ketone C=O into CH₂.",
-    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base."
+    "tip": "C=O → CH₂: Clemmensen in acid, Wolff–Kishner in base.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "A hydride stops at the alcohol. To remove the oxygen completely use Clemmensen (Zn(Hg)/HCl) or Wolff–Kishner (H₂NNH₂/KOH, heat).",
+        "gives": "OC(c1ccccc1)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "COc1ccc(C(C)=O)cc1",
+          "name": "1-(4-methoxyphenyl)ethan-1-one",
+          "gives": "CCc1ccc(OC)cc1",
+          "why": "With Zn(Hg), HCl, 1-(4-methoxyphenyl)ethan-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(=O)c1ccccc1",
+          "name": "1-phenylpropan-1-one",
+          "gives": "CCCc1ccccc1",
+          "why": "With Zn(Hg), HCl, 1-phenylpropan-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCC(=O)c1ccccc1",
+          "name": "1-phenylpent-4-en-1-one",
+          "gives": "C=CCCCc1ccccc1",
+          "why": "With Zn(Hg), HCl, 1-phenylpent-4-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

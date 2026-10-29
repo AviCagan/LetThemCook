@@ -12,11 +12,14 @@ const SINGLE_TILES = [
   't_counter_l', 't_counter_m', 't_counter_r', 't_counter_front_l', 't_counter_front_m', 't_counter_front_r',
   't_bench', 't_bench_flask', 't_bench_icebath', 't_bench_books',
   't_fumehood_tl', 't_fumehood_tr', 't_fumehood_bl', 't_fumehood_br', 't_bookshelf', 't_plant', 't_trash', 't_sink',
+  't_plant_cactus', 't_plant_fern', 't_plant_flower', 't_plant_bonsai', 't_poster_periodic', 't_poster_molecule', 't_beanbag',
 ];
 const SINGLE_ICONS = [
   'ic_bottle_tall', 'ic_bottle_round', 'ic_bottle_flask', 'ic_bottle_dropper', 'ic_gas_tank', 'ic_flame', 'ic_ice', 'ic_lamp',
   'ic_water', 'ic_check', 'ic_cross', 'ic_lock', 'ic_notepad', 'ic_book', 'ic_help', 'ic_arrow', 'ic_undo',
+  'ic_shop', 'ic_paw', 'ic_timer', 'ic_exam', 'ic_cloud',
 ];
+const PETS = ['pet_hamster', 'pet_slime', 'pet_axo', 'pet_robot'];
 
 /** key -> [w, h, frameCount, anchor] */
 const REQUIRED: Record<string, [number, number, number, [number, number]]> = {};
@@ -27,6 +30,9 @@ REQUIRED.t_window = [16, 16, 3, [0, 0]];
 REQUIRED.t_door = [16, 16, 2, [0, 0]];
 REQUIRED.t_bench_hotplate = [16, 16, 2, [0, 0]];
 REQUIRED.t_bench_computer = [16, 16, 2, [0, 0]];
+REQUIRED.t_aquarium = [16, 16, 2, [0, 0]];
+REQUIRED.t_lamp = [16, 16, 2, [0, 0]];
+for (const k of PETS) REQUIRED[k] = [16, 16, 6, [0.5, 1]];
 for (const k of SINGLE_ICONS) REQUIRED[k] = [16, 16, 1, [0.5, 0.5]];
 REQUIRED.ic_star = [16, 16, 2, [0.5, 0.5]];
 REQUIRED.ic_coin = [16, 16, 3, [0.5, 0.5]];
@@ -162,7 +168,7 @@ describe('SPRITES', () => {
 
   describe('tiles', () => {
     it('floor, wall and counter tiles have no transparent pixels so they tile seamlessly', () => {
-      const solid = ['t_floor_a', 't_floor_b', 't_floor_dark', 't_rug', 't_rug_edge_top', 't_rug_edge_left', 't_rug_tl', 't_wall_top', 't_wall', 't_wall_shelf', 't_wall_poster', 't_wall_cabinet', 't_window', 't_counter_m', 't_counter_front_m', 't_bench', 't_door'];
+      const solid = ['t_floor_a', 't_floor_b', 't_floor_dark', 't_rug', 't_rug_edge_top', 't_rug_edge_left', 't_rug_tl', 't_wall_top', 't_wall', 't_wall_shelf', 't_wall_poster', 't_wall_cabinet', 't_window', 't_counter_m', 't_counter_front_m', 't_bench', 't_door', 't_poster_periodic', 't_poster_molecule'];
       for (const key of solid) {
         for (const frame of SPRITES[key].frames) expect(frame.join('').includes('.'), `${key} has transparent pixels`).toBe(false);
       }

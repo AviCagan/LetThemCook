@@ -8,7 +8,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=CCCC(=O)c1ccccc1",
@@ -76,7 +78,51 @@
     ],
     "explanation": "NaBH₄ reduces the ketone to a 2° alcohol and leaves the isolated C=C alone. The carbinol carbon is a new stereocenter made from an achiral ketone, so the product is racemic.",
     "tip": "Mild hydride, one job: carbonyls only. The alkene is just along for the ride.",
-    "source": "Carey 12e §16.2 (toolkit R2)"
+    "source": "Carey 12e §16.2 (toolkit R2)",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "C=CCCC([O-])c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2_Pt"
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "You reduced the C=C as well. NaBH₄ only delivers hydride to the polarised C=O; an isolated C=C is untouched. Getting both needs H₂/Pt.",
+        "gives": "CCCCC(O)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "O=CCC(C)CC=O",
+          "name": "3-methylpentanedial",
+          "gives": "CC(CCO)CCO",
+          "why": "With NaBH₄, 3-methylpentanedial gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)CC(=O)OCC",
+          "name": "ethyl 3-oxobutanoate",
+          "gives": "CCOC(=O)CC(C)O",
+          "why": "With NaBH₄, ethyl 3-oxobutanoate gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-acetoacetate-001",
@@ -87,7 +133,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(=O)CC(=O)OCC",
@@ -135,10 +183,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "There is a reaction: the ketone is reduced. 'No reaction' would only be right if the molecule had no aldehyde or ketone."
+      },
+      {
+        "smiles": "CC([O-])CC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "NaBH₄ reduces the ketone to a 2° alcohol and leaves the ester alone. C3 becomes a new stereocenter, so the product is racemic.",
-    "tip": "Mild hydride: ketone yes, ester no."
+    "tip": "Mild hydride: ketone yes, ester no.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CC([O-])CC[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "COC(=O)c1ccc(C=O)cc1",
+          "name": "methyl 4-formylbenzoate",
+          "gives": "COC(=O)c1ccc(CO)cc1",
+          "why": "With NaBH₄, methyl 4-formylbenzoate gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCC(C)=O",
+          "name": "hex-5-en-2-one",
+          "gives": "C=CCCC(C)O",
+          "why": "With NaBH₄, hex-5-en-2-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-benzaldehyde-001",
@@ -149,7 +238,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=Cc1ccccc1",
@@ -216,10 +308,51 @@
         "stereo": "none",
         "tag": "over_reduction",
         "why": "The aromatic ring is untouched by NaBH₄ (and by ordinary hydrogenation)."
+      },
+      {
+        "smiles": "[O-]Cc1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "NaBH₄ reduces the aldehyde to a 1° alcohol. No stereocenter is created.",
-    "tip": "Aldehyde to 1° alcohol: the simplest hydride job there is."
+    "tip": "Aldehyde to 1° alcohol: the simplest hydride job there is.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=CCC(C)CC=O",
+          "name": "3-methylpentanedial",
+          "gives": "CC(CCO)CCO",
+          "why": "With NaBH₄, 3-methylpentanedial gives a different product (shown)."
+        },
+        {
+          "smiles": "O=CCCCC=O",
+          "name": "pentanedial",
+          "gives": "OCCCCCO",
+          "why": "With NaBH₄, pentanedial gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCC(=O)c1ccccc1",
+          "name": "1-phenylpent-4-en-1-one",
+          "gives": "C=CCCC(O)c1ccccc1",
+          "why": "With NaBH₄, 1-phenylpent-4-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-acetylbenzoicacid-001",
@@ -230,7 +363,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(=O)c1ccc(C(=O)O)cc1",
@@ -278,10 +413,51 @@
         "stereo": "none",
         "tag": "over_reduction",
         "why": "Backwards: the acid is the group NaBH₄ never touches, and the ketone is the one it reduces."
+      },
+      {
+        "smiles": "CC([O-])c1ccc(C[O-])cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "The ketone is reduced to a racemic 2° alcohol; the carboxylic acid (deprotonated under the conditions, then re-protonated on workup) is untouched.",
-    "tip": "COOH is safe with NaBH₄. Ketone is not."
+    "tip": "COOH is safe with NaBH₄. Ketone is not.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CC([O-])c1ccc(C[O-])cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=CCC(C)CC=O",
+          "name": "3-methylpentanedial",
+          "gives": "CC(CCO)CCO",
+          "why": "With NaBH₄, 3-methylpentanedial gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)CC(=O)OCC",
+          "name": "ethyl 3-oxobutanoate",
+          "gives": "CCOC(=O)CC(C)O",
+          "why": "With NaBH₄, ethyl 3-oxobutanoate gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-hexenone-001",
@@ -292,7 +468,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=CCCC(C)=O",
@@ -351,10 +529,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen stays as an OH; a hydride never deoxygenates a ketone."
+      },
+      {
+        "smiles": "C=CCCC(C)[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "The ketone becomes a racemic 2° alcohol; the terminal alkene is untouched.",
-    "tip": "Alkene rides along, ketone gets reduced."
+    "tip": "Alkene rides along, ketone gets reduced.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "C=CCCC(C)[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2_Pt"
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "NaBH₄ leaves an isolated C=C alone. Reducing the alkene too is the H₂/Pt outcome.",
+        "gives": "CCCCC(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "O=CCC(C)CC=O",
+          "name": "3-methylpentanedial",
+          "gives": "CC(CCO)CCO",
+          "why": "With NaBH₄, 3-methylpentanedial gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C/C=C/c1ccccc1",
+          "name": "(E)-3-phenylprop-2-enal (cinnamaldehyde)",
+          "gives": "OC/C=C/c1ccccc1",
+          "why": "With NaBH₄, (E)-3-phenylprop-2-enal (cinnamaldehyde) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-formylbenzoate-001",
@@ -365,7 +594,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "COC(=O)c1ccc(C=O)cc1",
@@ -413,10 +645,51 @@
         "stereo": "none",
         "tag": "over_reduction",
         "why": "Backwards: NaBH₄ reduces the aldehyde and leaves the ester. You did the opposite."
+      },
+      {
+        "smiles": "[O-]Cc1ccc(C[O-])cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "NaBH₄ reduces the aldehyde to a 1° alcohol and leaves the methyl ester intact.",
-    "tip": "Aldehyde beats ester every time with NaBH₄, because the ester never reacts."
+    "tip": "Aldehyde beats ester every time with NaBH₄, because the ester never reacts.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]Cc1ccc(C[O-])cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCC(=O)c1ccccc1",
+          "name": "1-phenylpent-4-en-1-one",
+          "gives": "C=CCCC(O)c1ccccc1",
+          "why": "With NaBH₄, 1-phenylpent-4-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccc(C(=O)O)cc1",
+          "name": "4-acetylbenzoic acid",
+          "gives": "CC(O)c1ccc(C(=O)O)cc1",
+          "why": "With NaBH₄, 4-acetylbenzoic acid gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-cinnamaldehyde-001",
@@ -427,7 +700,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "O=C/C=C/c1ccccc1",
@@ -487,10 +762,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaBH₄ reduces; it never oxidises an aldehyde to an acid."
+      },
+      {
+        "smiles": "[O-]C/C=C/c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "NaBH₄ reduces the aldehyde to the allylic 1° alcohol; the C=C keeps its E geometry.",
-    "tip": "Conjugated or not, the C=C stays with NaBH₄ in this course."
+    "tip": "Conjugated or not, the C=C stays with NaBH₄ in this course.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]C/C=C/c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "H2_Pt"
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "The C=C is not reduced by NaBH₄. Saturating it as well is what H₂/Pt does.",
+        "gives": "OCCCc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)c1ccc(C(=O)O)cc1",
+          "name": "4-acetylbenzoic acid",
+          "gives": "CC(O)c1ccc(C(=O)O)cc1",
+          "why": "With NaBH₄, 4-acetylbenzoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCC(C)=O",
+          "name": "hex-5-en-2-one",
+          "gives": "C=CCCC(C)O",
+          "why": "With NaBH₄, hex-5-en-2-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-pentanedial-001",
@@ -500,7 +826,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=CCCCC=O",
@@ -540,7 +869,57 @@
         }
       ]
     ],
-    "explanation": "Both aldehydes are reduced: NaBH₄ (or LiAlH₄, or H₂/catalyst) gives the 1,5-diol. Carey 16.5: diols by reduction of dicarbonyl compounds."
+    "explanation": "Both aldehydes are reduced: NaBH₄ (or LiAlH₄, or H₂/catalyst) gives the 1,5-diol. Carey 16.5: diols by reduction of dicarbonyl compounds.",
+    "traps": [
+      {
+        "smiles": "[O-]CCCCC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
+      },
+      {
+        "smiles": "O=CCCCC=O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaBH₄ does change pentanedial.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]CCCCC[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        },
+        {
+          "smiles": "O=CCC(C)CC=O",
+          "name": "3-methylpentanedial",
+          "gives": "CC(CCO)CCO",
+          "why": "With NaBH₄, 3-methylpentanedial gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)CC(=O)OCC",
+          "name": "ethyl 3-oxobutanoate",
+          "gives": "CCOC(=O)CC(C)O",
+          "why": "With NaBH₄, ethyl 3-oxobutanoate gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R2-methylpentanedial-001",
@@ -550,7 +929,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=CCC(C)CC=O",
@@ -590,6 +972,56 @@
         }
       ]
     ],
-    "explanation": "Two aldehydes, two reductions, one diol. Carey 16.5 runs this with H₂/Ni (100 atm, 125 °C, 81–83%); NaBH₄ and LiAlH₄ work as well. C3 carries two identical CH₂CH₂OH arms, so it is not a stereocentre."
+    "explanation": "Two aldehydes, two reductions, one diol. Carey 16.5 runs this with H₂/Ni (100 atm, 125 °C, 81–83%); NaBH₄ and LiAlH₄ work as well. C3 carries two identical CH₂CH₂OH arms, so it is not a stereocentre.",
+    "traps": [
+      {
+        "smiles": "CC(CC[O-])CC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
+      },
+      {
+        "smiles": "CC(CC=O)CC=O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaBH₄ does change 3-methylpentanedial.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CC(CC[O-])CC[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCC(C)=O",
+          "name": "hex-5-en-2-one",
+          "gives": "C=CCCC(C)O",
+          "why": "With NaBH₄, hex-5-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "COC(=O)c1ccc(C=O)cc1",
+          "name": "methyl 4-formylbenzoate",
+          "gives": "COC(=O)c1ccc(CO)cc1",
+          "why": "With NaBH₄, methyl 4-formylbenzoate gives a different product (shown)."
+        },
+        {
+          "smiles": "O=Cc1ccccc1",
+          "name": "benzaldehyde",
+          "gives": "OCc1ccccc1",
+          "why": "With NaBH₄, benzaldehyde gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

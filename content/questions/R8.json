@@ -7,7 +7,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCBr",
@@ -51,10 +55,77 @@
         "stereo": "none",
         "tag": "wrong_reagent_order",
         "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      },
+      {
+        "smiles": "C[CH2][Mg][Br]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. (CH₃)₂C=O; 2. H₃O⁺.",
+        "auto": true
+      },
+      {
+        "smiles": "CCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺ does change bromoethane.",
+        "auto": true
       }
     ],
     "explanation": "The Grignard adds to the ketone carbonyl; H₃O⁺ gives the 3° alcohol.",
-    "tip": "Ketone partner → 3° alcohol."
+    "tip": "Ketone partner → 3° alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "acetone"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol.",
+        "gives": "CCC(C)(C)[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "acetone"
+          },
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 ((CH₃)₂C=O) does nothing here: Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner.",
+        "gives": "CC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Brc1ccccc1",
+          "name": "bromobenzene",
+          "gives": "CC(C)(O)c1ccccc1",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, bromobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCC(C)(C)O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, 1-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCCC1O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, cyclohex-2-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R8-phenyl-acetone-001",
@@ -64,7 +135,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Brc1ccccc1",
@@ -105,10 +180,77 @@
         "stereo": "none",
         "tag": "wrong_reagent_order",
         "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      },
+      {
+        "smiles": "[Br][Mg][c]1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. (CH₃)₂C=O; 2. H₃O⁺.",
+        "auto": true
+      },
+      {
+        "smiles": "Brc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺ does change bromobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The Grignard adds to the ketone carbonyl; H₃O⁺ gives the 3° alcohol.",
-    "tip": "Ketone partner → 3° alcohol."
+    "tip": "Ketone partner → 3° alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "acetone"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol.",
+        "gives": "CC(C)([O-])c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "acetone"
+          },
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 ((CH₃)₂C=O) does nothing here: Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner.",
+        "gives": "c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "CC(C)(O)C1CCCCC1",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, bromocyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCC(C)(C)O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCC(C)(C)O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, 1-bromopropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R8-ethyl-cyclohexanone-001",
@@ -118,7 +260,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCBr",
@@ -165,10 +311,77 @@
         "stereo": "none",
         "tag": "wrong_reagent_order",
         "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      },
+      {
+        "smiles": "C[CH2][Mg][Br]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. cyclohexanone; 2. H₃O⁺.",
+        "auto": true
+      },
+      {
+        "smiles": "CCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺ does change bromoethane.",
+        "auto": true
       }
     ],
     "explanation": "The Grignard adds to the ketone carbonyl; H₃O⁺ gives the 3° alcohol.",
-    "tip": "Ketone partner → 3° alcohol."
+    "tip": "Ketone partner → 3° alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "cyclohexanone"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol.",
+        "gives": "CCC1([O-])CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "cyclohexanone"
+          },
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (cyclohexanone) does nothing here: Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner.",
+        "gives": "CC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Brc1ccccc1",
+          "name": "bromobenzene",
+          "gives": "OC1(c2ccccc2)CCCCC1",
+          "why": "With 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺, bromobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "OC1(C2CCCCC2)CCCCC1",
+          "why": "With 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺, bromocyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCCC1O",
+          "why": "With 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺, cyclohex-2-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R8-phenyl-cyclohexanone-001",
@@ -178,7 +391,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Brc1ccccc1",
@@ -225,10 +442,77 @@
         "stereo": "none",
         "tag": "wrong_reagent_order",
         "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      },
+      {
+        "smiles": "[Br][Mg][c]1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. cyclohexanone; 2. H₃O⁺.",
+        "auto": true
+      },
+      {
+        "smiles": "Brc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺ does change bromobenzene.",
+        "auto": true
       }
     ],
     "explanation": "The Grignard adds to the ketone carbonyl; H₃O⁺ gives the 3° alcohol.",
-    "tip": "Ketone partner → 3° alcohol."
+    "tip": "Ketone partner → 3° alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "cyclohexanone"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol.",
+        "gives": "[O-]C1(c2ccccc2)CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "cyclohexanone"
+          },
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (cyclohexanone) does nothing here: Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner.",
+        "gives": "c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "OC1(C2CCCCC2)CCCCC1",
+          "why": "With 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺, bromocyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "OC1(Cc2ccccc2)CCCCC1",
+          "why": "With 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With 1. Mg, ether; 2. cyclohexanone; 3. H₃O⁺, cyclohexene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R8-propyl-acetone-001",
@@ -238,7 +522,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCBr",
@@ -282,10 +570,77 @@
         "stereo": "none",
         "tag": "wrong_reagent_order",
         "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      },
+      {
+        "smiles": "CC[CH2][Mg][Br]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. (CH₃)₂C=O; 2. H₃O⁺.",
+        "auto": true
+      },
+      {
+        "smiles": "CCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺ does change 1-bromopropane.",
+        "auto": true
       }
     ],
     "explanation": "The Grignard adds to the ketone carbonyl; H₃O⁺ gives the 3° alcohol.",
-    "tip": "Ketone partner → 3° alcohol."
+    "tip": "Ketone partner → 3° alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "acetone"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol.",
+        "gives": "CCCC(C)(C)[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "acetone"
+          },
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 ((CH₃)₂C=O) does nothing here: Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner.",
+        "gives": "CCC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "CC(C)(O)Cc1ccccc1",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCC(C)(C)O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, cyclohexene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R8-benzyl-acetone-001",
@@ -295,7 +650,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "BrCc1ccccc1",
@@ -336,10 +695,77 @@
         "stereo": "none",
         "tag": "wrong_reagent_order",
         "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      },
+      {
+        "smiles": "[Br][Mg][CH2]c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. (CH₃)₂C=O; 2. H₃O⁺.",
+        "auto": true
+      },
+      {
+        "smiles": "BrCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺ does change (bromomethyl)benzene.",
+        "auto": true
       }
     ],
     "explanation": "The Grignard adds to the ketone carbonyl; H₃O⁺ gives the 3° alcohol.",
-    "tip": "Ketone partner → 3° alcohol."
+    "tip": "Ketone partner → 3° alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "acetone"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol.",
+        "gives": "CC(C)([O-])Cc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "acetone"
+          },
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 ((CH₃)₂C=O) does nothing here: Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner.",
+        "gives": "Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCCC1O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, cyclohex-2-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "Brc1ccccc1",
+          "name": "bromobenzene",
+          "gives": "CC(C)(O)c1ccccc1",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, bromobenzene gives a different product (shown)."
+        },
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "CC(C)(O)C1CCCCC1",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, bromocyclohexane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R8-cyclohexyl-acetone-001",
@@ -349,7 +775,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "BrC1CCCCC1",
@@ -390,9 +820,76 @@
         "stereo": "none",
         "tag": "wrong_reagent_order",
         "why": "Acid before the carbonyl partner just protonates the Grignard: you get the alkane and no new C–C bond. Partner first, then H₃O⁺."
+      },
+      {
+        "smiles": "[Br][Mg][CH]1CCCCC1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "That is only the product after step 1; it still needs 1. (CH₃)₂C=O; 2. H₃O⁺.",
+        "auto": true
+      },
+      {
+        "smiles": "BrC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺ does change bromocyclohexane.",
+        "auto": true
       }
     ],
     "explanation": "The Grignard adds to the ketone carbonyl; H₃O⁺ gives the 3° alcohol.",
-    "tip": "Ketone partner → 3° alcohol."
+    "tip": "Ketone partner → 3° alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "acetone"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "You handed over the magnesium alkoxide. Add H₃O⁺ to protonate it to the alcohol.",
+        "gives": "CC(C)([O-])C1CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "acetone"
+          },
+          {
+            "reagent": "Mg_ether"
+          },
+          {
+            "reagent": "H3O_plus"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 ((CH₃)₂C=O) does nothing here: Make the Grignard first (Mg, dry ether), then add the carbonyl / epoxide partner.",
+        "gives": "C1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCC(C)(C)O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "CC(C)(O)Cc1ccccc1",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "O=C1CCCCC1O",
+          "why": "With 1. Mg, ether; 2. (CH₃)₂C=O; 3. H₃O⁺, cyclohex-2-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

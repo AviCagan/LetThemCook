@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
@@ -47,9 +49,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is bromocyclohexane: PBr₃ replaced the OH with Br. The order asks for the tosylate, which keeps the C–O bond."
+      },
+      {
+        "smiles": "OC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: TsCl, pyr does change cyclohexanol.",
+        "auto": true
       }
     ],
-    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2."
+    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PBr3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "That is bromocyclohexane: PBr₃ replaced the OH with Br. The order asks for the tosylate, which keeps the C–O bond.",
+        "gives": "BrC1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C[C@H](O)CC",
+          "name": "(S)-butan-2-ol",
+          "gives": "CC[C@H](C)OS(=O)(=O)c1ccc(C)cc1",
+          "why": "With TsCl, pyr, (S)-butan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "Cc1ccc(S(=O)(=O)OCC(C)C)cc1",
+          "why": "With TsCl, pyr, 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCO",
+          "name": "3-methylbutan-1-ol",
+          "gives": "Cc1ccc(S(=O)(=O)OCCC(C)C)cc1",
+          "why": "With TsCl, pyr, 3-methylbutan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R31-butanol-001",
@@ -59,7 +102,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCO",
@@ -98,9 +144,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "SOCl₂ gives the chloride. TsCl/pyridine gives the tosylate (OTs), keeping the oxygen."
+      },
+      {
+        "smiles": "CCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: TsCl, pyr does change butan-1-ol.",
+        "auto": true
       }
     ],
-    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2."
+    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "SOCl2"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "SOCl₂ gives the chloride. TsCl/pyridine gives the tosylate (OTs), keeping the oxygen.",
+        "gives": "CCCCCl"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C[C@H](O)CC",
+          "name": "(S)-butan-2-ol",
+          "gives": "CC[C@H](C)OS(=O)(=O)c1ccc(C)cc1",
+          "why": "With TsCl, pyr, (S)-butan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCO",
+          "name": "pentan-1-ol",
+          "gives": "CCCCCOS(=O)(=O)c1ccc(C)cc1",
+          "why": "With TsCl, pyr, pentan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "Cc1ccc(S(=O)(=O)OCC(C)C)cc1",
+          "why": "With TsCl, pyr, 2-methylpropan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R31-cycloheptanol-001",
@@ -110,7 +197,8 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "OC1CCCCCC1",
@@ -144,7 +232,38 @@
         "reagent": "TsCl_pyr"
       }
     ],
-    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2. (Carey Table 16.2 example, 83%.)"
+    "explanation": "TsCl/pyridine converts the OH into a p-toluenesulfonate (tosylate) WITHOUT breaking the C–O bond, so the carbon keeps its configuration. A tosylate is a halide-like leaving group: the next step is SN2 (inversion) or E2. (Carey Table 16.2 example, 83%.)",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCO",
+          "name": "pentan-1-ol",
+          "gives": "CCCCCOS(=O)(=O)c1ccc(C)cc1",
+          "why": "With TsCl, pyr, pentan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "Cc1ccc(S(=O)(=O)OCC(C)C)cc1",
+          "why": "With TsCl, pyr, 2-methylpropan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C[C@H](O)CC",
+          "name": "(S)-butan-2-ol",
+          "gives": "CC[C@H](C)OS(=O)(=O)c1ccc(C)cc1",
+          "why": "With TsCl, pyr, (S)-butan-2-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "OC1CCCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: TsCl, pyr does change cycloheptanol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R31-pentanol-nitrile-001",
@@ -154,7 +273,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCCO",
@@ -202,10 +324,54 @@
         "stereo": "none",
         "tag": "stopped_halfway",
         "why": "That is still the tosylate. Cyanide has to displace it (SN2) to give the nitrile."
+      },
+      {
+        "smiles": "CCCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. TsCl, pyr; 2. NaCN does change pentan-1-ol.",
+        "auto": true
       }
     ],
     "explanation": "Two steps: TsCl makes the OH a leaving group (retention), then cyanide does SN2 on the tosylate → one extra carbon as a nitrile. PBr₃ then NaCN works the same way.",
-    "tip": "OH is a terrible leaving group. Tosylate or bromide first, then the nucleophile."
+    "tip": "OH is a terrible leaving group. Tosylate or bromide first, then the nucleophile.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaCN"
+          },
+          {
+            "reagent": "TsCl_pyr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaCN) does nothing here: OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first.",
+        "gives": "CCCCCOS(=O)(=O)c1ccc(C)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCC#N",
+          "why": "With 1. TsCl, pyr; 2. NaCN, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCC#N",
+          "why": "With 1. TsCl, pyr; 2. NaCN, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CC#N",
+          "why": "With 1. TsCl, pyr; 2. NaCN, 1-bromo-2-methylpropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R31-s-butanol-tosylate-001",
@@ -215,7 +381,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C[C@H](O)CC",
@@ -259,10 +427,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PBr₃ gives 2-bromobutane, and with inversion. The tosylate keeps both the oxygen and the configuration."
+      },
+      {
+        "smiles": "CC[C@H](C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: TsCl, pyr does change (S)-butan-2-ol.",
+        "auto": true
       }
     ],
     "explanation": "Tosylation does not touch the stereocentre: the O–H bond breaks, not the C–O bond, so (S) stays (S).",
-    "tip": "Retention at the carbon: only the O–H is involved."
+    "tip": "Retention at the carbon: only the O–H is involved.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "PBr3"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "PBr₃ gives 2-bromobutane, and with inversion. The tosylate keeps both the oxygen and the configuration.",
+        "gives": "CC[C@H](C)Br"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "Cc1ccc(S(=O)(=O)OC2CCCCC2)cc1",
+          "why": "With TsCl, pyr, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCCO",
+          "name": "pentan-1-ol",
+          "gives": "CCCCCOS(=O)(=O)c1ccc(C)cc1",
+          "why": "With TsCl, pyr, pentan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCCC1",
+          "name": "cycloheptanol",
+          "gives": "Cc1ccc(S(=O)(=O)OC2CCCCCC2)cc1",
+          "why": "With TsCl, pyr, cycloheptanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R31-s-butanol-azide-001",
@@ -272,7 +481,9 @@
     "chapter": 16,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C[C@H](O)CC",
@@ -308,10 +519,54 @@
         "stereo": "none",
         "tag": "stopped_halfway",
         "why": "That is the tosylate, the intermediate. Azide still has to displace it."
+      },
+      {
+        "smiles": "CC[C@H](C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. TsCl, pyr; 2. NaN₃ does change (S)-butan-2-ol.",
+        "auto": true
       }
     ],
     "explanation": "Step 1 (TsCl) keeps the configuration; step 2 (N₃⁻, SN2) inverts it. The priorities (N₃ > ethyl > methyl) rank the same way OH did, so (S) becomes (R).",
-    "tip": "Tosylate = retention; SN2 on it = inversion. Net inversion."
+    "tip": "Tosylate = retention; SN2 on it = inversion. Net inversion.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaN3"
+          },
+          {
+            "reagent": "TsCl_pyr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaN₃) does nothing here: OH is a terrible leaving group; a nucleophile cannot displace it. Make the halide (PBr₃/SOCl₂) or an epoxide first.",
+        "gives": "CC[C@H](C)OS(=O)(=O)c1ccc(C)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCO",
+          "name": "pentan-1-ol",
+          "gives": "CCCCCN=[N+]=[N-]",
+          "why": "With 1. TsCl, pyr; 2. NaN₃, pentan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCO",
+          "name": "butan-1-ol",
+          "gives": "CCCCN=[N+]=[N-]",
+          "why": "With 1. TsCl, pyr; 2. NaN₃, butan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)CN=[N+]=[N-]",
+          "why": "With 1. TsCl, pyr; 2. NaN₃, 2-methylpropan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R31-isobutanol-thiol-001",
@@ -321,7 +576,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CO",
@@ -360,9 +618,53 @@
         "stereo": "none",
         "tag": "stopped_halfway",
         "why": "Still the tosylate: hydrosulfide has to displace it to give the thiol."
+      },
+      {
+        "smiles": "CC(C)CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. TsCl, pyr; 2. NaSH does change 2-methylpropan-1-ol.",
+        "auto": true
       }
     ],
-    "explanation": "Activate the alcohol as its tosylate, then SH⁻ does SN2 → thiol (Carey 16.12: thiols from alkyl halides or tosylates)."
+    "explanation": "Activate the alcohol as its tosylate, then SH⁻ does SN2 → thiol (Carey 16.12: thiols from alkyl halides or tosylates).",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaSH"
+          },
+          {
+            "reagent": "TsCl_pyr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaSH) does nothing here: NaSH cannot displace OH; convert the alcohol to the bromide first (PBr₃), then NaSH.",
+        "gives": "Cc1ccc(S(=O)(=O)OCC(C)C)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCCC1",
+          "name": "cycloheptanol",
+          "gives": "SC1CCCCCC1",
+          "why": "With 1. TsCl, pyr; 2. NaSH, cycloheptanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCS",
+          "why": "With 1. TsCl, pyr; 2. NaSH, 1-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "SC1CCCCC1",
+          "why": "With 1. TsCl, pyr; 2. NaSH, bromocyclohexane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R31-isoamyl-ether-001",
@@ -372,7 +674,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CCO",
@@ -421,8 +725,37 @@
         "stereo": "none",
         "tag": "stopped_halfway",
         "why": "That is the tosylate. Ethoxide must still displace it to make the ether."
+      },
+      {
+        "smiles": "CC(C)CCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. TsCl, pyr; 2. NaOCH₂CH₃ / EtOH does change 3-methylbutan-1-ol.",
+        "auto": true
       }
     ],
-    "explanation": "Williamson synthesis with a tosylate as the electrophile: ethoxide displaces OTs on the 1° carbon. (Or deprotonate the alcohol and alkylate it with ethyl bromide.)"
+    "explanation": "Williamson synthesis with a tosylate as the electrophile: ethoxide displaces OTs on the 1° carbon. (Or deprotonate the alcohol and alkylate it with ethyl bromide.)",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CCOCC(C)C",
+          "why": "With 1. TsCl, pyr; 2. NaOCH₂CH₃ / EtOH, 1-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCOCC",
+          "why": "With 1. TsCl, pyr; 2. NaOCH₂CH₃ / EtOH, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "C=CC",
+          "why": "With 1. TsCl, pyr; 2. NaOCH₂CH₃ / EtOH, 2-bromopropane gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

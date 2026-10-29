@@ -39,6 +39,25 @@ export interface SchedulerOptions {
   synthesisChance?: number;
   /** extra per-item filter (e.g. drop multi-step orders that touch a switched-off chapter) */
   itemFilter?: (q: QuestionItem) => boolean;
+  /** relative weights when an item supports several order types */
+  typeWeights?: Partial<Record<OrderType, number>>;
+  /** prefer items at or below this difficulty (the rising curve of a shift) */
+  maxDifficulty?: number;
+  /** prefer items whose traps / flaws carry these mistake tags (weakness clinic) */
+  preferTags?: string[];
+}
+
+export const DEFAULT_TYPE_WEIGHTS: Record<OrderType, number> = {
+  make_it: 0.45,
+  synthesis: 0.45,
+  predict_product: 0.18,
+  what_start: 0.12,
+  spot_flaw: 0.13,
+  name_it: 0.12,
+};
+
+function itemTags(q: QuestionItem): string[] {
+  return [...(q.traps ?? []).map((t) => t.tag), ...(q.flaws ?? []).map((f) => f.tag)];
 }
 
 export function pickNext(
@@ -116,18 +135,38 @@ function pickItem(reaction: Reaction, session: SessionState, opts: SchedulerOpti
   );
   if (!candidates.length) return undefined;
   const isSyn = (q: QuestionItem) => (q.orderTypes ?? ['make_it']).includes('synthesis');
+  const prefer = (list: QuestionItem[]): QuestionItem => {
+    let pool = list;
+    if (opts.maxDifficulty !== undefined) {
+      const easy = pool.filter((q) => q.difficulty <= opts.maxDifficulty!);
+      if (easy.length) pool = easy;
+    }
+    if (opts.preferTags?.length && opts.rng() < 0.7) {
+      const hit = pool.filter((q) => itemTags(q).some((t) => opts.preferTags!.includes(t)));
+      if (hit.length) pool = hit;
+    }
+    return pick(opts.rng, pool);
+  };
   const singles = candidates.filter((q) => !isSyn(q));
   const multis = candidates.filter(isSyn);
-  if (!singles.length) return pick(opts.rng, multis);
-  if (!multis.length) return pick(opts.rng, singles);
+  if (!singles.length) return prefer(multis);
+  if (!multis.length) return prefer(singles);
   // multi-step orders once the reaction is past 'new' / 'missed' (singles first), then by chance
   const wantMulti = (state === 'shaky' || state === 'solid') && opts.rng() < (opts.synthesisChance ?? 0);
-  return pick(opts.rng, wantMulti ? multis : singles);
+  return prefer(wantMulti ? multis : singles);
 }
 
 function pickType(item: QuestionItem, opts: SchedulerOptions): OrderType | undefined {
   const types = (item.orderTypes ?? ['make_it']).filter((t) => opts.allowedTypes.includes(t));
-  return types.length ? pick(opts.rng, types) : undefined;
+  if (!types.length) return undefined;
+  const w = { ...DEFAULT_TYPE_WEIGHTS, ...opts.typeWeights };
+  const total = types.reduce((n, t) => n + (w[t] ?? 0.1), 0);
+  let r = opts.rng() * total;
+  for (const t of types) {
+    r -= w[t] ?? 0.1;
+    if (r <= 0) return t;
+  }
+  return types[types.length - 1];
 }
 
 function shuffleStable<T>(arr: T[], rng: Rng): T[] {

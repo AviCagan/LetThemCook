@@ -7,7 +7,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCBr",
@@ -37,10 +39,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      },
+      {
+        "smiles": "CCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSCH₃ does change 1-bromopropane.",
+        "auto": true
       }
     ],
     "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
-    "tip": "RS⁻ + R'X = sulfide."
+    "tip": "RS⁻ + R'X = sulfide.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "ClCc1ccccc1",
+          "name": "(chloromethyl)benzene (benzyl chloride)",
+          "gives": "CSCc1ccccc1",
+          "why": "With NaSCH₃, (chloromethyl)benzene (benzyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCSC",
+          "why": "With NaSCH₃, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "CSCc1ccccc1",
+          "why": "With NaSCH₃, (bromomethyl)benzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E11-benzylbromide-001",
@@ -50,7 +81,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "BrCc1ccccc1",
@@ -80,10 +113,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      },
+      {
+        "smiles": "BrCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSCH₃ does change (bromomethyl)benzene.",
+        "auto": true
       }
     ],
     "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
-    "tip": "RS⁻ + R'X = sulfide."
+    "tip": "RS⁻ + R'X = sulfide.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CSC(C)C",
+          "why": "With NaSCH₃, 2-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCSC",
+          "why": "With NaSCH₃, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCSC",
+          "why": "With NaSCH₃, 1-bromopropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E11-bromoethane-001",
@@ -93,7 +155,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCBr",
@@ -123,10 +187,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      },
+      {
+        "smiles": "CCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSCH₃ does change bromoethane.",
+        "auto": true
       }
     ],
     "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
-    "tip": "RS⁻ + R'X = sulfide."
+    "tip": "RS⁻ + R'X = sulfide.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCSC",
+          "why": "With NaSCH₃, 1-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCSC",
+          "why": "With NaSCH₃, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrC1CCCCC1",
+          "name": "bromocyclohexane",
+          "gives": "CSC1CCCCC1",
+          "why": "With NaSCH₃, bromocyclohexane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E11-bromobutane-001",
@@ -136,7 +229,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCBr",
@@ -166,10 +261,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      },
+      {
+        "smiles": "CCCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSCH₃ does change 1-bromobutane.",
+        "auto": true
       }
     ],
     "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
-    "tip": "RS⁻ + R'X = sulfide."
+    "tip": "RS⁻ + R'X = sulfide.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "ClCc1ccccc1",
+          "name": "(chloromethyl)benzene (benzyl chloride)",
+          "gives": "CSCc1ccccc1",
+          "why": "With NaSCH₃, (chloromethyl)benzene (benzyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCBr",
+          "name": "1-bromopropane",
+          "gives": "CCCSC",
+          "why": "With NaSCH₃, 1-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCSC",
+          "why": "With NaSCH₃, bromoethane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E11-isopropylbromide-001",
@@ -179,7 +303,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)Br",
@@ -209,10 +335,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      },
+      {
+        "smiles": "CC(C)Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSCH₃ does change 2-bromopropane.",
+        "auto": true
       }
     ],
     "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
-    "tip": "RS⁻ + R'X = sulfide."
+    "tip": "RS⁻ + R'X = sulfide.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "ClCc1ccccc1",
+          "name": "(chloromethyl)benzene (benzyl chloride)",
+          "gives": "CSCc1ccccc1",
+          "why": "With NaSCH₃, (chloromethyl)benzene (benzyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCSC",
+          "why": "With NaSCH₃, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "CSCc1ccccc1",
+          "why": "With NaSCH₃, (bromomethyl)benzene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E11-bromocyclohexane-001",
@@ -222,7 +377,9 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "BrC1CCCCC1",
@@ -252,9 +409,38 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "NaSH gives the thiol (R–SH). For the methyl sulfide you need the methanethiolate CH₃S⁻."
+      },
+      {
+        "smiles": "BrC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSCH₃ does change bromocyclohexane.",
+        "auto": true
       }
     ],
     "explanation": "The thiolate is an excellent nucleophile: SN2 on the alkyl halide gives the sulfide (thioether).",
-    "tip": "RS⁻ + R'X = sulfide."
+    "tip": "RS⁻ + R'X = sulfide.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "CSCc1ccccc1",
+          "why": "With NaSCH₃, (bromomethyl)benzene gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCSC",
+          "why": "With NaSCH₃, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CSC(C)C",
+          "why": "With NaSCH₃, 2-bromopropane gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

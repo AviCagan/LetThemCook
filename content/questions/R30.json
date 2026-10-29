@@ -7,7 +7,11 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCBr",
@@ -39,9 +43,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Hydrosulfide gives the thiol (SH), not the alcohol."
+      },
+      {
+        "smiles": "CCCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 1-bromobutane.",
+        "auto": true
       }
     ],
-    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily."
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOMe"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Methoxide gives the methyl ether (Williamson). To get the alcohol the nucleophile has to be hydroxide.",
+        "gives": "CCCCOC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCl",
+          "name": "3-chloroprop-1-ene (allyl chloride)",
+          "gives": "C=CCO",
+          "why": "With NaOH, 3-chloroprop-1-ene (allyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CO",
+          "why": "With NaOH, 1-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCI",
+          "name": "1-iodopropane",
+          "gives": "CCCO",
+          "why": "With NaOH, 1-iodopropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R30-benzylchloride-001",
@@ -51,7 +96,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "ClCc1ccccc1",
@@ -80,9 +128,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "That is benzyl methyl ether: methoxide was the nucleophile. Use hydroxide for the alcohol."
+      },
+      {
+        "smiles": "ClCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change (chloromethyl)benzene (benzyl chloride).",
+        "auto": true
       }
     ],
-    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. Benzylic halides are excellent SN2 substrates."
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. Benzylic halides are excellent SN2 substrates.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOMe"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "That is benzyl methyl ether: methoxide was the nucleophile. Use hydroxide for the alcohol.",
+        "gives": "COCc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCl",
+          "name": "3-chloroprop-1-ene (allyl chloride)",
+          "gives": "C=CCO",
+          "why": "With NaOH, 3-chloroprop-1-ene (allyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCI",
+          "name": "1-iodopropane",
+          "gives": "CCCO",
+          "why": "With NaOH, 1-iodopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With NaOH, 1-bromobutane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R30-mesitylmethylchloride-001",
@@ -92,7 +181,8 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "Cc1cc(C)c(CCl)c(C)c1",
@@ -115,7 +205,38 @@
         "reagent": "NaOH"
       }
     ],
-    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. (Carey Table 16.1 example: H₂O, Ca(OH)₂, heat, 78%.)"
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. (Carey Table 16.1 example: H₂O, Ca(OH)₂, heat, 78%.)",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "ClCc1ccccc1",
+          "name": "(chloromethyl)benzene (benzyl chloride)",
+          "gives": "OCc1ccccc1",
+          "why": "With NaOH, (chloromethyl)benzene (benzyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "BrCC1CCCCC1",
+          "name": "(bromomethyl)cyclohexane",
+          "gives": "OCC1CCCCC1",
+          "why": "With NaOH, (bromomethyl)cyclohexane gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "O=[N+]([O-])c1ccc([O-])cc1",
+          "why": "With NaOH, 4-nitrophenol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "Cc1cc(C)c(CCl)c(C)c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 1-(chloromethyl)-2,4,6-trimethylbenzene (2,4,6-trimethylbenzyl chloride).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R30-iodopropane-001",
@@ -125,7 +246,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCI",
@@ -151,9 +274,38 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Cyanide gave the nitrile. The alcohol needs hydroxide as the nucleophile."
+      },
+      {
+        "smiles": "CCCI",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 1-iodopropane.",
+        "auto": true
       }
     ],
-    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily."
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "ClCc1ccccc1",
+          "name": "(chloromethyl)benzene (benzyl chloride)",
+          "gives": "OCc1ccccc1",
+          "why": "With NaOH, (chloromethyl)benzene (benzyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With NaOH, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CO",
+          "why": "With NaOH, 1-bromo-2-methylpropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R30-isobutylbromide-001",
@@ -163,7 +315,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CBr",
@@ -189,9 +343,38 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Ethoxide gave the ethyl ether (and, with a hindered 1° halide, some E2). Hydroxide gives the alcohol."
+      },
+      {
+        "smiles": "CC(C)CBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 1-bromo-2-methylpropane.",
+        "auto": true
       }
     ],
-    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. A 1° halide, even a β-branched one, still substitutes."
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. A 1° halide, even a β-branched one, still substitutes.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCI",
+          "name": "1-iodopropane",
+          "gives": "CCCO",
+          "why": "With NaOH, 1-iodopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With NaOH, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "ClCc1ccccc1",
+          "name": "(chloromethyl)benzene (benzyl chloride)",
+          "gives": "OCc1ccccc1",
+          "why": "With NaOH, (chloromethyl)benzene (benzyl chloride) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R30-allylchloride-001",
@@ -201,7 +384,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "C=CCCl",
@@ -224,7 +409,38 @@
         "reagent": "NaOH"
       }
     ],
-    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. Allylic halides are very reactive in SN2."
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily. Allylic halides are very reactive in SN2.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCI",
+          "name": "1-iodopropane",
+          "gives": "CCCO",
+          "why": "With NaOH, 1-iodopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "ClCc1ccccc1",
+          "name": "(chloromethyl)benzene (benzyl chloride)",
+          "gives": "OCc1ccccc1",
+          "why": "With NaOH, (chloromethyl)benzene (benzyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With NaOH, 1-bromobutane gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C=CCCl",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change 3-chloroprop-1-ene (allyl chloride).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R30-bromomethylcyclohexane-001",
@@ -234,7 +450,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "BrCC1CCCCC1",
@@ -260,8 +478,37 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Methanethiolate gave the methyl sulfide, not the alcohol."
+      },
+      {
+        "smiles": "BrCC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaOH does change (bromomethyl)cyclohexane.",
+        "auto": true
       }
     ],
-    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily."
+    "explanation": "Hydroxide displaces the halide in one step (SN2) on a methyl or 1° carbon. Carey Table 16.1: useful only for halides that do not undergo E2 readily.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cc(C)c(CCl)c(C)c1",
+          "name": "1-(chloromethyl)-2,4,6-trimethylbenzene (2,4,6-trimethylbenzyl chloride)",
+          "gives": "Cc1cc(C)c(CO)c(C)c1",
+          "why": "With NaOH, 1-(chloromethyl)-2,4,6-trimethylbenzene (2,4,6-trimethylbenzyl chloride) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCI",
+          "name": "1-iodopropane",
+          "gives": "CCCO",
+          "why": "With NaOH, 1-iodopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With NaOH, 1-bromobutane gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

@@ -8,7 +8,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=C1CCCC1",
@@ -70,7 +73,41 @@
       }
     ],
     "explanation": "LiAlH₄ delivers hydride to the carbonyl carbon to give the aluminium alkoxide; water then protonates it to cyclopentanol.",
-    "tip": "Hydride first, water second. Never the other way round."
+    "tip": "Hydride first, water second. Never the other way round.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "After LiAlH₄ you hold the metal alkoxide. The alcohol only appears when water (or dilute acid) protonates it: that is the second step.",
+        "gives": "[O-]C1CCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CC=O",
+          "name": "3-methylbutanal",
+          "gives": "CC(C)CCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, 3-methylbutanal gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone (1-phenylethan-1-one)",
+          "gives": "CC(O)c1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, acetophenone (1-phenylethan-1-one) gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC(C)=O",
+          "name": "hept-6-en-2-one",
+          "gives": "C=CCCCC(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, hept-6-en-2-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R3-isovaleraldehyde-001",
@@ -81,7 +118,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CC=O",
@@ -144,10 +184,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen stays as OH. Full deoxygenation is not a hydride reaction."
+      },
+      {
+        "smiles": "CC(C)CC=O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. LiAlH₄; 2. H₂O does change 3-methylbutanal.",
+        "auto": true
       }
     ],
     "explanation": "The aldehyde is reduced to the 1° alcohol; water protonates the alkoxide. No stereocenter is formed.",
-    "tip": "Aldehyde → 1° alcohol, then don't forget to add water."
+    "tip": "Aldehyde → 1° alcohol, then don't forget to add water.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "This is the alkoxide you have before the workup. Add H₂O (step 2) to get the alcohol.",
+        "gives": "CC(C)CC[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=C1CCCC1",
+          "name": "cyclopentanone",
+          "gives": "OC1CCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, cyclopentanone gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC(C)=O",
+          "name": "hept-6-en-2-one",
+          "gives": "C=CCCCC(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, hept-6-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)C=O",
+          "name": "2,2-dimethylpropanal",
+          "gives": "CC(C)(C)CO",
+          "why": "With 1. LiAlH₄; 2. H₂O, 2,2-dimethylpropanal gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R3-acetophenone-001",
@@ -158,7 +239,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(=O)c1ccccc1",
@@ -220,10 +303,51 @@
         "stereo": "racemic",
         "tag": "over_reduction",
         "why": "LiAlH₄ does not reduce aromatic rings."
+      },
+      {
+        "smiles": "CC(=O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. LiAlH₄; 2. H₂O does change acetophenone (1-phenylethan-1-one).",
+        "auto": true
       }
     ],
     "explanation": "Hydride adds to the ketone carbon from either face, so the 2° alcohol forms as a racemate; water protonates the alkoxide.",
-    "tip": "Flat carbonyl, two faces, racemic alcohol."
+    "tip": "Flat carbonyl, two faces, racemic alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "This is the alkoxide before the workup. The H₂O step turns it into the alcohol.",
+        "gives": "CC([O-])c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CC=O",
+          "name": "3-methylbutanal",
+          "gives": "CC(C)CCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, 3-methylbutanal gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1CCCC1",
+          "name": "cyclopentanone",
+          "gives": "OC1CCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, cyclopentanone gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC(C)=O",
+          "name": "hept-6-en-2-one",
+          "gives": "C=CCCCC(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, hept-6-en-2-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R3-heptenone-001",
@@ -234,7 +358,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=CCCCC(C)=O",
@@ -291,7 +417,41 @@
       }
     ],
     "explanation": "LiAlH₄ reduces the ketone and leaves the isolated alkene; the new stereocenter makes the alcohol racemic.",
-    "tip": "Hydrides ignore isolated alkenes."
+    "tip": "Hydrides ignore isolated alkenes.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "This is the alkoxide. You still need the H₂O step.",
+        "gives": "C=CCCCC(C)[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CC=O",
+          "name": "3-methylbutanal",
+          "gives": "CC(C)CCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, 3-methylbutanal gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone (1-phenylethan-1-one)",
+          "gives": "CC(O)c1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, acetophenone (1-phenylethan-1-one) gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1CCCC1",
+          "name": "cyclopentanone",
+          "gives": "OC1CCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, cyclopentanone gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R3-benzophenone-001",
@@ -302,7 +462,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=C(c1ccccc1)c1ccccc1",
@@ -364,10 +527,51 @@
         "stereo": "racemic",
         "tag": "over_reduction",
         "why": "Aromatic rings survive LiAlH₄."
+      },
+      {
+        "smiles": "O=C(c1ccccc1)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. LiAlH₄; 2. H₂O does change benzophenone (diphenylmethanone).",
+        "auto": true
       }
     ],
     "explanation": "The ketone is reduced to the 2° alcohol. Two identical phenyl groups mean the carbinol carbon is not a stereocenter.",
-    "tip": "Two identical groups on the carbinol carbon: no stereo to report."
+    "tip": "Two identical groups on the carbinol carbon: no stereo to report.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The alkoxide needs the water step to become the alcohol.",
+        "gives": "[O-]C(c1ccccc1)c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCOC(=O)c1ccccc1",
+          "name": "ethyl benzoate",
+          "gives": "OCc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, ethyl benzoate gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "name": "phenyl acetate",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, phenyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "COC(=O)C1CCCCC1",
+          "name": "methyl cyclohexanecarboxylate",
+          "gives": "OCC1CCCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, methyl cyclohexanecarboxylate gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R3-pivaldehyde-001",
@@ -378,7 +582,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(C)C=O",
@@ -440,9 +647,50 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen stays as an OH after a hydride reduction."
+      },
+      {
+        "smiles": "CC(C)(C)C=O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. LiAlH₄; 2. H₂O does change 2,2-dimethylpropanal.",
+        "auto": true
       }
     ],
     "explanation": "Even a hindered aldehyde is reduced cleanly by LiAlH₄; water then gives the 1° alcohol.",
-    "tip": "Steric bulk next to an aldehyde does not stop a hydride."
+    "tip": "Steric bulk next to an aldehyde does not stop a hydride.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "Still the alkoxide: add the H₂O step.",
+        "gives": "CC(C)(C)C[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=C1CCCC1",
+          "name": "cyclopentanone",
+          "gives": "OC1CCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, cyclopentanone gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC(C)=O",
+          "name": "hept-6-en-2-one",
+          "gives": "C=CCCCC(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, hept-6-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone (1-phenylethan-1-one)",
+          "gives": "CC(O)c1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, acetophenone (1-phenylethan-1-one) gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

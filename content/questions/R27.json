@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCS",
@@ -50,10 +53,54 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      },
+      {
+        "smiles": "CCS",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. NaOH; 2. CH₃I does change ethanethiol.",
+        "auto": true
       }
     ],
     "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
-    "tip": "Thiol + base, then RX = sulfide."
+    "tip": "Thiol + base, then RX = sulfide.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "CH3I"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt).",
+        "gives": "CC[S-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With 1. NaOH; 2. CH₃I, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSC",
+          "why": "With 1. NaOH; 2. CH₃I, propane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "SC1CCCCC1",
+          "name": "cyclohexanethiol",
+          "gives": "CSC1CCCCC1",
+          "why": "With 1. NaOH; 2. CH₃I, cyclohexanethiol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R27-propanethiol-etbr-001",
@@ -63,7 +110,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCS",
@@ -107,10 +157,54 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      },
+      {
+        "smiles": "CCCS",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. NaOH; 2. CH₃CH₂Br does change propane-1-thiol.",
+        "auto": true
       }
     ],
     "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
-    "tip": "Thiol + base, then RX = sulfide."
+    "tip": "Thiol + base, then RX = sulfide.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "EtBr"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt).",
+        "gives": "CCC[S-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCO",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCS",
+          "name": "ethanethiol",
+          "gives": "CCSCC",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, ethanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCS",
+          "name": "butane-1-thiol",
+          "gives": "CCCCSCC",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, butane-1-thiol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R27-benzylthiol-mei-001",
@@ -120,7 +214,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "SCc1ccccc1",
@@ -163,10 +260,54 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      },
+      {
+        "smiles": "SCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. NaOH; 2. CH₃I does change phenylmethanethiol.",
+        "auto": true
       }
     ],
     "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
-    "tip": "Thiol + base, then RX = sulfide."
+    "tip": "Thiol + base, then RX = sulfide.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "CH3I"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt).",
+        "gives": "[S-]Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCS",
+          "name": "butane-1-thiol",
+          "gives": "CCCCSC",
+          "why": "With 1. NaOH; 2. CH₃I, butane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSC",
+          "why": "With 1. NaOH; 2. CH₃I, propane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "SC1CCCCC1",
+          "name": "cyclohexanethiol",
+          "gives": "CSC1CCCCC1",
+          "why": "With 1. NaOH; 2. CH₃I, cyclohexanethiol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R27-thiophenol-etbr-001",
@@ -176,7 +317,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Sc1ccccc1",
@@ -220,10 +364,54 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      },
+      {
+        "smiles": "Sc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. NaOH; 2. CH₃CH₂Br does change benzenethiol.",
+        "auto": true
       }
     ],
     "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
-    "tip": "Thiol + base, then RX = sulfide."
+    "tip": "Thiol + base, then RX = sulfide.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "EtBr"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt).",
+        "gives": "[S-]c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCS",
+          "name": "ethanethiol",
+          "gives": "CCSCC",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, ethanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSCC",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, propane-1-thiol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R27-butanethiol-bnbr-001",
@@ -233,7 +421,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCS",
@@ -282,10 +473,54 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      },
+      {
+        "smiles": "CCCCS",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. NaOH; 2. PhCH₂Br does change butane-1-thiol.",
+        "auto": true
       }
     ],
     "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
-    "tip": "Thiol + base, then RX = sulfide."
+    "tip": "Thiol + base, then RX = sulfide.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "BnBr"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (PhCH₂Br) does nothing here: A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt).",
+        "gives": "CCCC[S-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Sc1ccccc1",
+          "name": "benzenethiol",
+          "gives": "c1ccc(CSc2ccccc2)cc1",
+          "why": "With 1. NaOH; 2. PhCH₂Br, benzenethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSCc1ccccc1",
+          "why": "With 1. NaOH; 2. PhCH₂Br, propane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCO",
+          "why": "With 1. NaOH; 2. PhCH₂Br, 1-bromobutane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R27-cyclohexanethiol-mei-001",
@@ -295,7 +530,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "SC1CCCCC1",
@@ -338,9 +576,53 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "I₂ couples two thiols into a disulfide; for a sulfide you need the thiolate plus an alkyl halide."
+      },
+      {
+        "smiles": "SC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. NaOH; 2. CH₃I does change cyclohexanethiol.",
+        "auto": true
       }
     ],
     "explanation": "NaOH deprotonates the thiol (pKa ≈ 10) to the thiolate, which does SN2 on the CH₃/1° halide: a sulfide (thioether).",
-    "tip": "Thiol + base, then RX = sulfide."
+    "tip": "Thiol + base, then RX = sulfide.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "CH3I"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral thiol is a poor nucleophile here; make the thiolate first (NaOH or NaOEt).",
+        "gives": "[S-]C1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCS",
+          "name": "ethanethiol",
+          "gives": "CCSC",
+          "why": "With 1. NaOH; 2. CH₃I, ethanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCS",
+          "name": "butane-1-thiol",
+          "gives": "CCCCSC",
+          "why": "With 1. NaOH; 2. CH₃I, butane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "SCc1ccccc1",
+          "name": "phenylmethanethiol",
+          "gives": "CSCc1ccccc1",
+          "why": "With 1. NaOH; 2. CH₃I, phenylmethanethiol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

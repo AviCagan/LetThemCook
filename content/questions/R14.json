@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(C)O",
@@ -34,7 +36,38 @@
       }
     ],
     "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
-    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "BrC1CCCCC1",
+          "why": "With HBr, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(O)CCCC1",
+          "name": "1-methylcyclopentan-1-ol",
+          "gives": "CC1(Br)CCCC1",
+          "why": "With HBr, 1-methylcyclopentan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CCCCC1O",
+          "name": "2-methylcyclohexan-1-ol",
+          "gives": "CC1CCCCC1Br",
+          "why": "With HBr, 2-methylcyclohexan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(C)(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HBr does change 2-methylpropan-2-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R14-methylcyclohexanol-hcl-001",
@@ -44,7 +77,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(O)CCCCC1",
@@ -65,7 +100,38 @@
       }
     ],
     "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
-    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC(C)(Cl)CBr",
+          "why": "With HCl, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)O",
+          "name": "2-methylpropan-2-ol",
+          "gives": "CC(C)(C)Cl",
+          "why": "With HCl, 2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)c1ccccc1",
+          "name": "2-phenylpropan-2-ol",
+          "gives": "CC(C)(Cl)c1ccccc1",
+          "why": "With HCl, 2-phenylpropan-2-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC1(O)CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HCl does change 1-methylcyclohexan-1-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R14-methylbutanol-hbr-001",
@@ -75,7 +141,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCC(C)(C)O",
@@ -99,7 +167,38 @@
       }
     ],
     "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
-    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)c1ccccc1",
+          "name": "2-phenylpropan-2-ol",
+          "gives": "CC(C)(Br)c1ccccc1",
+          "why": "With HBr, 2-phenylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "BrC1CCCCC1",
+          "why": "With HBr, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(O)CCCC1",
+          "name": "1-methylcyclopentan-1-ol",
+          "gives": "CC1(Br)CCCC1",
+          "why": "With HBr, 1-methylcyclopentan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCC(C)(C)O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HBr does change 2-methylbutan-2-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R14-cyclohexanol-hbr-001",
@@ -109,7 +208,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OC1CCCCC1",
@@ -133,7 +234,38 @@
       }
     ],
     "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
-    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC(C)(Br)CBr",
+          "why": "With HBr, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(C)O",
+          "name": "2-methylpropan-2-ol",
+          "gives": "CC(C)(C)Br",
+          "why": "With HBr, 2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1CCCCC1O",
+          "name": "2-methylcyclohexan-1-ol",
+          "gives": "CC1CCCCC1Br",
+          "why": "With HBr, 2-methylcyclohexan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "OC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HBr does change cyclohexanol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R14-cumyl-hcl-001",
@@ -143,7 +275,8 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CC(C)(O)c1ccccc1",
@@ -164,7 +297,38 @@
       }
     ],
     "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
-    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1(O)CCCC1",
+          "name": "1-methylcyclopentan-1-ol",
+          "gives": "CC1(Cl)CCCC1",
+          "why": "With HCl, 1-methylcyclopentan-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)CBr",
+          "name": "1-bromo-2-methylpropan-2-ol",
+          "gives": "CC(C)(Cl)CBr",
+          "why": "With HCl, 1-bromo-2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(O)CCCCC1",
+          "name": "1-methylcyclohexan-1-ol",
+          "gives": "CC1(Cl)CCCCC1",
+          "why": "With HCl, 1-methylcyclohexan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(C)(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HCl does change 2-phenylpropan-2-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R14-propanol-lucas-001",
@@ -174,7 +338,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCO",
@@ -200,10 +366,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "PBr₃ fails on 3° alcohols and gives the wrong halogen for a chloride target; HX works by SN1 on 3° alcohols."
+      },
+      {
+        "smiles": "CCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HCl / ZnCl₂ does change propan-1-ol.",
+        "auto": true
       }
     ],
     "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
-    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)O",
+          "name": "2-methylpropan-2-ol",
+          "gives": "CC(C)(C)Cl",
+          "why": "With HCl / ZnCl₂, 2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC1CCCCC1",
+          "name": "cyclohexanol",
+          "gives": "ClC1CCCCC1",
+          "why": "With HCl / ZnCl₂, cyclohexanol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(O)CCCC1",
+          "name": "1-methylcyclopentan-1-ol",
+          "gives": "CC1(Cl)CCCC1",
+          "why": "With HCl / ZnCl₂, 1-methylcyclopentan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R14-methylcyclopentanol-hbr-001",
@@ -213,7 +408,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1(O)CCCC1",
@@ -237,6 +434,37 @@
       }
     ],
     "explanation": "The protonated alcohol loses water; the halide captures the carbocation (3°, SN1) or displaces it directly (1°, SN2).",
-    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂."
+    "tip": "3° alcohol + HX: fast SN1. 1° + HCl needs ZnCl₂.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)O",
+          "name": "2-methylpropan-2-ol",
+          "gives": "CC(C)(C)Br",
+          "why": "With HBr, 2-methylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)(O)c1ccccc1",
+          "name": "2-phenylpropan-2-ol",
+          "gives": "CC(C)(Br)c1ccccc1",
+          "why": "With HBr, 2-phenylpropan-2-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1(O)CCCCC1",
+          "name": "1-methylcyclohexan-1-ol",
+          "gives": "CC1(Br)CCCCC1",
+          "why": "With HBr, 1-methylcyclohexan-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC1(O)CCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: HBr does change 1-methylcyclopentan-1-ol.",
+        "auto": true
+      }
+    ]
   }
 ]

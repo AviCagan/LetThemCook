@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCS",
@@ -34,7 +36,38 @@
       }
     ],
     "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
-    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol').",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Sc1ccccc1",
+          "name": "benzenethiol",
+          "gives": "c1ccc(SSc2ccccc2)cc1",
+          "why": "With I₂, benzenethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCS",
+          "name": "butane-1-thiol",
+          "gives": "CCCCSSCCCC",
+          "why": "With I₂, butane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSSCCC",
+          "why": "With I₂, propane-1-thiol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCS",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: I₂ does change ethanethiol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R26-propanethiol-001",
@@ -44,7 +77,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCS",
@@ -72,7 +107,38 @@
       }
     ],
     "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
-    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol').",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCS",
+          "name": "ethanethiol",
+          "gives": "CCSSCC",
+          "why": "With I₂, ethanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CS",
+          "name": "methanethiol",
+          "gives": "CSSC",
+          "why": "With I₂, methanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "Sc1ccccc1",
+          "name": "benzenethiol",
+          "gives": "c1ccc(SSc2ccccc2)cc1",
+          "why": "With I₂, benzenethiol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCCS",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: I₂ does change propane-1-thiol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R26-benzylthiol-001",
@@ -82,7 +148,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "SCc1ccccc1",
@@ -114,7 +182,38 @@
       }
     ],
     "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
-    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol').",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSSCCC",
+          "why": "With I₂, propane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCS",
+          "name": "butane-1-thiol",
+          "gives": "CCCCSSCCCC",
+          "why": "With I₂, butane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "Sc1ccccc1",
+          "name": "benzenethiol",
+          "gives": "c1ccc(SSc2ccccc2)cc1",
+          "why": "With I₂, benzenethiol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "SCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: I₂ does change phenylmethanethiol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R26-butanethiol-001",
@@ -124,7 +223,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCS",
@@ -153,7 +254,38 @@
       }
     ],
     "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
-    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol').",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Sc1ccccc1",
+          "name": "benzenethiol",
+          "gives": "c1ccc(SSc2ccccc2)cc1",
+          "why": "With I₂, benzenethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "SCc1ccccc1",
+          "name": "phenylmethanethiol",
+          "gives": "c1ccc(CSSCc2ccccc2)cc1",
+          "why": "With I₂, phenylmethanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSSCCC",
+          "why": "With I₂, propane-1-thiol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCCCS",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: I₂ does change butane-1-thiol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R26-thiophenol-001",
@@ -163,7 +295,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Sc1ccccc1",
@@ -194,7 +328,38 @@
       }
     ],
     "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
-    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol').",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCS",
+          "name": "ethanethiol",
+          "gives": "CCSSCC",
+          "why": "With I₂, ethanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSSCCC",
+          "why": "With I₂, propane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCCS",
+          "name": "butane-1-thiol",
+          "gives": "CCCCSSCCCC",
+          "why": "With I₂, butane-1-thiol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "Sc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: I₂ does change benzenethiol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R26-methanethiol-001",
@@ -204,7 +369,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CS",
@@ -230,6 +397,37 @@
       }
     ],
     "explanation": "I₂ oxidises two S–H groups into an S–S bond: a disulfide (RS–SR), the same link that holds proteins together. Reduction gives the thiols back.",
-    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol')."
+    "tip": "2 RSH + I₂ = RSSR, a disulfide (not a 'dithiol').",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCS",
+          "name": "butane-1-thiol",
+          "gives": "CCCCSSCCCC",
+          "why": "With I₂, butane-1-thiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCS",
+          "name": "ethanethiol",
+          "gives": "CCSSCC",
+          "why": "With I₂, ethanethiol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCS",
+          "name": "propane-1-thiol",
+          "gives": "CCCSSCCC",
+          "why": "With I₂, propane-1-thiol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CS",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: I₂ does change methanethiol.",
+        "auto": true
+      }
+    ]
   }
 ]

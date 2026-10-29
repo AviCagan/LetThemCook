@@ -7,7 +7,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -65,10 +69,74 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      },
+      {
+        "smiles": "[O-]c1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "auto": true
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
       }
     ],
     "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
-    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Oc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CH3I"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "gives": "[O-]c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "COc1cccc(C)c1",
+          "why": "With 1. NaOH; 2. CH₃I, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "COc1ccc(Cl)cc1",
+          "why": "With 1. NaOH; 2. CH₃I, 4-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "COc1ccccc1C",
+          "why": "With 1. NaOH; 2. CH₃I, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P6-pcresol-etbr-001",
@@ -78,7 +146,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(O)cc1",
@@ -137,10 +209,74 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      },
+      {
+        "smiles": "Cc1ccc([O-])cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "auto": true
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
       }
     ],
     "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
-    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "EtBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Cc1ccc(O)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "EtBr"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "gives": "Cc1ccc([O-])cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "CCOc1cccc(C)c1",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CCOc1ccccc1",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "CCOc1ccc(Cl)cc1",
+          "why": "With 1. NaOH; 2. CH₃CH₂Br, 4-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P6-chlorophenol-mei-001",
@@ -150,7 +286,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Cl)cc1",
@@ -207,10 +347,74 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      },
+      {
+        "smiles": "[O-]c1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "auto": true
+      },
+      {
+        "smiles": "Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
       }
     ],
     "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
-    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Oc1ccc(Cl)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CH3I"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "gives": "[O-]c1ccc(Cl)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "COc1ccc(C)cc1",
+          "why": "With 1. NaOH; 2. CH₃I, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "COc1ccccc1",
+          "why": "With 1. NaOH; 2. CH₃I, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "COc1cccc(C)c1",
+          "why": "With 1. NaOH; 2. CH₃I, 3-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P6-phenol-bnbr-001",
@@ -220,7 +424,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -283,10 +490,74 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      },
+      {
+        "smiles": "[O-]c1ccccc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (PhCH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "auto": true
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
       }
     ],
     "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
-    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "BnBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Oc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "BnBr"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (PhCH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "gives": "[O-]c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "Clc1ccc(OCc2ccccc2)cc1",
+          "why": "With 1. NaOH; 2. PhCH₂Br, 4-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "O=[N+]([O-])c1ccc(OCc2ccccc2)cc1",
+          "why": "With 1. NaOH; 2. PhCH₂Br, 4-nitrophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1ccccc1OCc1ccccc1",
+          "why": "With 1. NaOH; 2. PhCH₂Br, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P6-nitrophenol-mei-001",
@@ -296,7 +567,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc([N+](=O)[O-])cc1",
@@ -353,10 +628,74 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc([O-])cc1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "auto": true
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
       }
     ],
     "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
-    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "CH3I"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "O=[N+]([O-])c1ccc(O)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "CH3I"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃I) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "gives": "O=[N+]([O-])c1ccc([O-])cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "COc1ccccc1",
+          "why": "With 1. NaOH; 2. CH₃I, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "COc1ccc(C)cc1",
+          "why": "With 1. NaOH; 2. CH₃I, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "COc1cccc(C)c1",
+          "why": "With 1. NaOH; 2. CH₃I, 3-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P6-mcresol-prbr-001",
@@ -366,7 +705,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cccc(O)c1",
@@ -425,10 +768,74 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      },
+      {
+        "smiles": "Cc1cccc([O-])c1",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂CH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "auto": true
+      },
+      {
+        "smiles": "Cc1cccc(O)c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
       }
     ],
     "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
-    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "nPrBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Cc1cccc(O)c1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "nPrBr"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₃CH₂CH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "gives": "Cc1cccc([O-])c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "CCCOc1ccc(C)cc1",
+          "why": "With 1. NaOH; 2. CH₃CH₂CH₂Br, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "CCCOc1ccccc1C",
+          "why": "With 1. NaOH; 2. CH₃CH₂CH₂Br, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "CCCOc1ccccc1",
+          "why": "With 1. NaOH; 2. CH₃CH₂CH₂Br, phenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P6-ocresol-allyl-001",
@@ -438,7 +845,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccccc1O",
@@ -497,9 +908,73 @@
         "stereo": "none",
         "tag": "acyl_wrong_site",
         "why": "That is Friedel–Crafts C-acylation (a hydroxyaryl ketone). The ether comes from phenoxide + alkyl halide."
+      },
+      {
+        "smiles": "Cc1ccccc1[O-]",
+        "stereo": "none",
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₂=CHCH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "auto": true
+      },
+      {
+        "smiles": "Cc1ccccc1O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
       }
     ],
     "explanation": "NaOH (or K₂CO₃) deprotonates the phenol; the phenoxide does SN2 on the CH₃/1° halide. The ring brings the oxygen.",
-    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol."
+    "tip": "Phenol + base + RX = aryl alkyl ether. The O comes from the phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          },
+          {
+            "reagent": "AllylBr"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Cc1ccccc1O"
+      },
+      {
+        "route": [
+          {
+            "reagent": "AllylBr"
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "wrong_reagent_order",
+        "why": "Step 1 (CH₂=CHCH₂Br) does nothing here: A neutral phenol does not attack an alkyl halide; make the phenoxide first (NaOH or K₂CO₃).",
+        "gives": "Cc1ccccc1[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "C=CCOc1cccc(C)c1",
+          "why": "With 1. NaOH; 2. CH₂=CHCH₂Br, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "C=CCOc1ccccc1",
+          "why": "With 1. NaOH; 2. CH₂=CHCH₂Br, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "C=CCOc1ccc([N+](=O)[O-])cc1",
+          "why": "With 1. NaOH; 2. CH₂=CHCH₂Br, 4-nitrophenol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

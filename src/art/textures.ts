@@ -1,12 +1,22 @@
 // Turns code-defined sprites (palette + char grids) into canvases, Phaser textures and data URLs.
 import { SPRITES, type SpriteDef } from './sprites';
+import { VARIANTS, variantBase, variantDef } from './variants';
 
 const dataUrlCache = new Map<string, string>();
 
+const variantCache = new Map<string, SpriteDef>();
+
 export function spriteDef(key: string): SpriteDef {
   const def = SPRITES[key];
-  if (!def) throw new Error(`unknown sprite ${key}`);
-  return def;
+  if (def) return def;
+  let v = variantCache.get(key);
+  if (!v) {
+    const base = variantBase(key);
+    v = base ? variantDef(key, SPRITES[base]) : undefined;
+    if (v) variantCache.set(key, v);
+  }
+  if (!v) throw new Error(`unknown sprite ${key}`);
+  return v;
 }
 
 export function drawSpriteToCanvas(def: SpriteDef, frame = 0, scale = 1, ctxIn?: CanvasRenderingContext2D, ox = 0, oy = 0): HTMLCanvasElement {
@@ -50,7 +60,8 @@ export interface TextureRegistrar {
 
 /** Register every sprite as a Phaser texture with one frame per animation frame (frame names "0", "1", ...). */
 export function registerAllTextures(scene: TextureRegistrar): void {
-  for (const [key, def] of Object.entries(SPRITES)) {
+  const all: [string, SpriteDef][] = [...Object.entries(SPRITES), ...VARIANTS.map((v) => [v.key, spriteDef(v.key)] as [string, SpriteDef])];
+  for (const [key, def] of all) {
     if (scene.textures.exists(key)) continue;
     const canvas = document.createElement('canvas');
     canvas.width = def.w * def.frames.length;

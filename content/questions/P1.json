@@ -8,7 +8,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(N)cc1",
@@ -59,6 +62,13 @@
         "stereo": "none",
         "tag": "nitrite_vs_nitric",
         "why": "NH₂ was swapped for NO₂. Nitrous acid converts NH₂ into N₂⁺, which leaves as N₂ gas; the OH from water takes that carbon. NO₂ is never involved."
+      },
+      {
+        "smiles": "Cc1ccc(N)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "auto": true
       }
     ],
     "nameTraps": [
@@ -70,7 +80,79 @@
     ],
     "explanation": "NaNO₂/H₂SO₄ at 0–5 °C converts the NH₂ into a diazonium group; H₂O and heat then replace N₂ with OH on the same carbon. The methyl group is untouched: 4-methylphenol.",
     "tip": "Nitrite, not nitric: NaNO₂ talks to the amine, HNO₃ talks to the ring.",
-    "source": "Carey 12e §24 phenol prep via diazonium (toolkit P1); seeded Missed"
+    "source": "Carey 12e §24 phenol prep via diazonium (toolkit P1); seeded Missed",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "gives": "Cc1ccc(N)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "This is the diazonium salt, the intermediate after step 1. You still need H₂O and heat to replace N₂ with OH.",
+        "gives": "Cc1ccc([N+]#N)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 2 (H₂O (0–5 °C)) does nothing here: Cold water leaves the diazonium salt alone; heat it (reflux) to replace N₂ with OH.",
+        "gives": "Cc1ccc([N+]#N)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Nc1ccc(Cl)cc1",
+          "name": "4-chloroaniline",
+          "gives": "Oc1ccc(Cl)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-chloroaniline gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(N)c1",
+          "name": "3-methylaniline (m-toluidine)",
+          "gives": "Cc1cccc(O)c1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 3-methylaniline (m-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Nc1ccccc1",
+          "name": "aniline",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), aniline gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P1-aniline-001",
@@ -81,7 +163,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Nc1ccccc1",
@@ -131,10 +216,89 @@
         "stereo": "none",
         "tag": "nitrite_vs_nitric",
         "why": "You nitrated the ring. NaNO₂/acid reacts with the amine itself; it never adds NO₂ to a ring C–H."
+      },
+      {
+        "smiles": "Nc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "auto": true
       }
     ],
     "explanation": "Cold NaNO₂/H₂SO₄ turns the NH₂ into a diazonium group; H₂O and heat then replace N₂ with OH on the same carbon.",
-    "tip": "Nitrite, not nitric: NaNO₂ talks to the amine, HNO₃ talks to the ring."
+    "tip": "Nitrite, not nitric: NaNO₂ talks to the amine, HNO₃ talks to the ring.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "That is benzenediazonium, the intermediate after step 1. Water and heat replace N₂ with OH.",
+        "gives": "N#[N+]c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "gives": "Nc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 2 (H₂O (0–5 °C)) does nothing here: Cold water leaves the diazonium salt alone; heat it (reflux) to replace N₂ with OH.",
+        "gives": "N#[N+]c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(N)c1",
+          "name": "3-methylaniline (m-toluidine)",
+          "gives": "Cc1cccc(O)c1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 3-methylaniline (m-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(N)cc1",
+          "name": "4-methylaniline (p-toluidine)",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-methylaniline (p-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cc(Br)ccc1N",
+          "name": "4-bromo-2-methylaniline",
+          "gives": "Cc1cc(Br)ccc1O",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-bromo-2-methylaniline gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P1-chloroaniline-001",
@@ -145,7 +309,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Nc1ccc(Cl)cc1",
@@ -204,7 +371,79 @@
       }
     ],
     "explanation": "Diazotisation then hydrolysis replaces NH₂ with OH on the same carbon; the para chlorine is untouched.",
-    "tip": "Other ring substituents are spectators in the diazonium route."
+    "tip": "Other ring substituents are spectators in the diazonium route.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "gives": "Nc1ccc(Cl)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The diazonium salt is only the intermediate; H₂O and heat give the phenol.",
+        "gives": "N#[N+]c1ccc(Cl)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (NaNO₂ / H₂SO₄) does nothing here: Diazotisation must be done at 0–5 °C; warmer, the diazonium salt decomposes as soon as it forms. Use the ice bath.",
+        "gives": "Nc1ccc(Cl)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(N)cc1",
+          "name": "4-methylaniline (p-toluidine)",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-methylaniline (p-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(N)c1",
+          "name": "3-methylaniline (m-toluidine)",
+          "gives": "Cc1cccc(O)c1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 3-methylaniline (m-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Nc1ccccc1",
+          "name": "aniline",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), aniline gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P1-mtoluidine-001",
@@ -215,7 +454,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cccc(N)c1",
@@ -275,7 +517,79 @@
       }
     ],
     "explanation": "The OH replaces the NH₂ on its own carbon, so the 1,3 relationship to the methyl is preserved: 3-methylphenol.",
-    "tip": "Same carbon, same pattern: meta in, meta out."
+    "tip": "Same carbon, same pattern: meta in, meta out.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "gives": "Cc1cccc(N)c1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The diazonium salt is the intermediate; H₂O and heat complete the job.",
+        "gives": "Cc1cccc([N+]#N)c1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "rt"
+            }
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (NaNO₂ / H₂SO₄) does nothing here: Diazotisation must be done at 0–5 °C; warmer, the diazonium salt decomposes as soon as it forms. Use the ice bath.",
+        "gives": "Cc1cccc(N)c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(N)cc1",
+          "name": "4-methylaniline (p-toluidine)",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-methylaniline (p-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Nc1ccccc1",
+          "name": "aniline",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), aniline gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cc(Br)ccc1N",
+          "name": "4-bromo-2-methylaniline",
+          "gives": "Cc1cc(Br)ccc1O",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-bromo-2-methylaniline gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P1-aminobenzoic-001",
@@ -286,7 +600,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Nc1ccc(C(=O)O)cc1",
@@ -336,10 +653,92 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The COOH stays; only the NH₂ carbon changes."
+      },
+      {
+        "smiles": "Nc1ccc(C(=O)O)cc1",
+        "stereo": "none",
+        "tag": "wrong_temperature",
+        "why": "Step 1 (NaNO₂ / H₂SO₄) does nothing here: Diazotisation must be done at 0–5 °C; warmer, the diazonium salt decomposes as soon as it forms. Use the ice bath.",
+        "auto": true
       }
     ],
     "explanation": "NH₂ → N₂⁺ → OH on the same carbon; the carboxylic acid is untouched.",
-    "tip": "COOH survives both the cold acid and the hot water."
+    "tip": "COOH survives both the cold acid and the hot water.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          },
+          {
+            "reagent": "NaOH"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "N#[N+]c1ccc(C(=O)[O-])cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 2 (H₂O (0–5 °C)) does nothing here: Cold water leaves the diazonium salt alone; heat it (reflux) to replace N₂ with OH.",
+        "gives": "N#[N+]c1ccc(C(=O)O)cc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 1 (NaNO₂ / H₂SO₄) does nothing here: Diazotisation must be done at 0–5 °C; warmer, the diazonium salt decomposes as soon as it forms. Use the ice bath.",
+        "gives": "Nc1ccc(C(=O)O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Nc1ccccc1",
+          "name": "aniline",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), aniline gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(N)c1",
+          "name": "3-methylaniline (m-toluidine)",
+          "gives": "Cc1cccc(O)c1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 3-methylaniline (m-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(N)cc1",
+          "name": "4-methylaniline (p-toluidine)",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-methylaniline (p-toluidine) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P1-anisidine-001",
@@ -350,7 +749,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "COc1ccccc1N",
@@ -401,10 +803,86 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The methoxy group stays: hot dilute acid does not cleave an aryl methyl ether (that needs excess HBr or HI)."
+      },
+      {
+        "smiles": "COc1ccccc1N",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "auto": true
       }
     ],
     "explanation": "The amine is diazotised and hydrolysed; the ortho methoxy group is untouched: 2-methoxyphenol.",
-    "tip": "Ethers survive the diazonium route."
+    "tip": "Ethers survive the diazonium route.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "gives": "COc1ccccc1N"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          },
+          {
+            "reagent": "HNO3_H2SO4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "COc1ccc([N+](=O)[O-])cc1[N+]#N"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "Diazonium salt: still needs H₂O and heat.",
+        "gives": "COc1ccccc1[N+]#N"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Nc1ccccc1",
+          "name": "aniline",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), aniline gives a different product (shown)."
+        },
+        {
+          "smiles": "Nc1ccc(Cl)cc1",
+          "name": "4-chloroaniline",
+          "gives": "Oc1ccc(Cl)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-chloroaniline gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(N)cc1",
+          "name": "4-methylaniline (p-toluidine)",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-methylaniline (p-toluidine) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P1-bromomethylaniline-001",
@@ -415,7 +893,10 @@
     "difficulty": 3,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cc(Br)ccc1N",
@@ -462,9 +943,88 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "The bromine stays on the ring; only the NH₂ carbon changes."
+      },
+      {
+        "smiles": "Cc1cc(Br)ccc1N",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "auto": true
       }
     ],
     "explanation": "Only the NH₂ carbon changes: 4-bromo-2-methylphenol. Br and CH₃ keep their positions.",
-    "tip": "Two spectators, one swap."
+    "tip": "Two spectators, one swap.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaOH"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "reflux"
+            }
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaOH) does nothing here: NH₂ is not a leaving group; hydroxide cannot replace it. Convert it to N₂⁺ first (NaNO₂/H₂SO₄, cold).",
+        "gives": "Cc1cc(Br)ccc1N"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "Diazonium salt: add H₂O and heat.",
+        "gives": "Cc1cc(Br)ccc1[N+]#N"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaNO2_H2SO4",
+            "conditions": {
+              "temp": "ice"
+            }
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "ice"
+            }
+          }
+        ],
+        "tag": "wrong_temperature",
+        "why": "Step 2 (H₂O (0–5 °C)) does nothing here: Cold water leaves the diazonium salt alone; heat it (reflux) to replace N₂ with OH.",
+        "gives": "Cc1cc(Br)ccc1[N+]#N"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Nc1ccc(Cl)cc1",
+          "name": "4-chloroaniline",
+          "gives": "Oc1ccc(Cl)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-chloroaniline gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(N)c1",
+          "name": "3-methylaniline (m-toluidine)",
+          "gives": "Cc1cccc(O)c1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 3-methylaniline (m-toluidine) gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(N)cc1",
+          "name": "4-methylaniline (p-toluidine)",
+          "gives": "Cc1ccc(O)cc1",
+          "why": "With 1. NaNO₂ / H₂SO₄ (0–5 °C); 2. H₂O (heat), 4-methylaniline (p-toluidine) gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

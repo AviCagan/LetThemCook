@@ -7,6 +7,8 @@ import { Workbench } from './Workbench';
 import { StereoPicker } from './StereoPicker';
 import { MentorPanel, ResultPanel } from './Result';
 import { LabBook } from './LabBook';
+import { QuizPanel } from './QuizPanel';
+import { Shop } from './Shop';
 import { DayEnd } from './DayEnd';
 import { Notebook } from './Notebook';
 import { Settings } from './Settings';
@@ -28,6 +30,7 @@ export function App() {
       {sc === 'practice' && save.value && <Practice />}
       {sc === 'notebook' && save.value && <Notebook />}
       {sc === 'labbook' && save.value && <LabBook />}
+      {sc === 'shop' && save.value && <Shop />}
       {sc === 'settings' && save.value && <Settings />}
       {sc === 'lab' && save.value && <LabOverlay />}
       {toast.value && <div class="toast" role="status">{toast.value}</div>}
@@ -50,6 +53,7 @@ function LabOverlay() {
         {phase === 'arrive' && <div class="panel waiting">A customer is coming in…</div>}
         {phase === 'request' && order && <RequestCard order={order} />}
         {phase === 'bench' && order && <Workbench order={order} />}
+        {phase === 'quiz' && order?.quiz && <QuizPanel order={order} />}
         {phase === 'stereo' && order && <StereoPicker order={order} />}
         {phase === 'result' && order && <ResultPanel order={order} />}
         {phase === 'mentor' && order && <MentorPanel order={order} />}

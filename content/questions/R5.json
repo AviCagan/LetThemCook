@@ -8,7 +8,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCOC(=O)c1ccccc1",
@@ -65,11 +68,68 @@
         "stereo": "none",
         "tag": "stopped_halfway",
         "why": "Right idea to split the ester, but LiAlH₄ never stops at the aldehyde: benzaldehyde is more reactive than the ester and is reduced to benzyl alcohol straight away."
+      },
+      {
+        "smiles": "[O-]Cc1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "Two hydrides add to the acyl carbon: the first gives a tetrahedral intermediate that expels ethoxide (benzaldehyde + ethoxide), the second reduces the aldehyde. After the H₂O step you hold benzyl alcohol AND ethanol.",
     "tip": "An ester always falls apart under LiAlH₄: count two alcohols on your clipboard.",
-    "source": "Carey 12e §16.3 (toolkit R5); seeded weak spot"
+    "source": "Carey 12e §16.3 (toolkit R5); seeded weak spot",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "Step 1 (NaBH₄) does nothing here: NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water.",
+        "gives": "CCOC(=O)c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "name": "phenyl acetate",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, phenyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)OC(C)C",
+          "name": "propan-2-yl acetate (isopropyl acetate)",
+          "gives": "CC(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, propan-2-yl acetate (isopropyl acetate) gives a different product (shown)."
+        },
+        {
+          "smiles": "COC(=O)C1CCCCC1",
+          "name": "methyl cyclohexanecarboxylate",
+          "gives": "OCC1CCCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, methyl cyclohexanecarboxylate gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R5-methylpropanoate-001",
@@ -80,7 +140,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCC(=O)OC",
@@ -127,10 +190,67 @@
         "stereo": "none",
         "tag": "stopped_halfway",
         "why": "Right to split it, but propanal does not survive LiAlH₄: it is reduced to propan-1-ol."
+      },
+      {
+        "smiles": "CCC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "The acyl side (propanoyl) becomes propan-1-ol; the alkoxy side (methoxy) becomes methanol. Two alcohols.",
-    "tip": "Acyl half → CH₂OH; alkoxy half → its own alcohol."
+    "tip": "Acyl half → CH₂OH; alkoxy half → its own alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CCC[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "Step 1 (NaBH₄) does nothing here: NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water.",
+        "gives": "CCC(=O)OC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "name": "phenyl acetate",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, phenyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)OC(C)C",
+          "name": "propan-2-yl acetate (isopropyl acetate)",
+          "gives": "CC(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, propan-2-yl acetate (isopropyl acetate) gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1CCCO1",
+          "name": "oxolan-2-one (γ-butyrolactone)",
+          "gives": "OCCCCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, oxolan-2-one (γ-butyrolactone) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R5-isopropylacetate-001",
@@ -141,7 +261,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(=O)OC(C)C",
@@ -189,10 +312,67 @@
         "stereo": "none",
         "tag": "stopped_halfway",
         "why": "Acetaldehyde is reduced faster than the ester was, so it never survives."
+      },
+      {
+        "smiles": "CC(C)[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "The acetyl side gives ethanol; the isopropoxy side gives propan-2-ol.",
-    "tip": "The alkoxy half keeps its own carbon skeleton: isopropoxy → isopropanol."
+    "tip": "The alkoxy half keeps its own carbon skeleton: isopropoxy → isopropanol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "Step 1 (NaBH₄) does nothing here: NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water.",
+        "gives": "CC(=O)OC(C)C"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CC(C)[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCOC(=O)c1ccccc1",
+          "name": "ethyl benzoate",
+          "gives": "OCc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, ethyl benzoate gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1CCCO1",
+          "name": "oxolan-2-one (γ-butyrolactone)",
+          "gives": "OCCCCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, oxolan-2-one (γ-butyrolactone) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "name": "phenyl acetate",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, phenyl acetate gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R5-methylcyclohexanecarboxylate-001",
@@ -203,7 +383,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "COC(=O)C1CCCCC1",
@@ -247,10 +430,67 @@
         "stereo": "none",
         "tag": "ester_one_piece",
         "why": "Hemiacetal is not a product: the intermediate collapses to the aldehyde + methoxide."
+      },
+      {
+        "smiles": "[O-]CC1CCCCC1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "Cyclohexylmethanol from the acyl half, methanol from the methoxy half.",
-    "tip": "Methyl esters always hand you methanol as the second alcohol."
+    "tip": "Methyl esters always hand you methanol as the second alcohol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "Step 1 (NaBH₄) does nothing here: NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water.",
+        "gives": "COC(=O)C1CCCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]CC1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC(=O)OC",
+          "name": "methyl propanoate",
+          "gives": "CCCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, methyl propanoate gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)OCc1ccccc1",
+          "name": "benzyl acetate",
+          "gives": "OCc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, benzyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1CCCO1",
+          "name": "oxolan-2-one (γ-butyrolactone)",
+          "gives": "OCCCCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, oxolan-2-one (γ-butyrolactone) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R5-phenylacetate-001",
@@ -261,7 +501,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(=O)Oc1ccccc1",
@@ -305,10 +548,67 @@
         "stereo": "none",
         "tag": "ester_one_piece",
         "why": "Hemiacetal is not the product; the intermediate collapses and the aldehyde is reduced again."
+      },
+      {
+        "smiles": "[O-]c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "The acetyl side becomes ethanol; the phenoxy side becomes phenol (an aryl 'alcohol').",
-    "tip": "If the alkoxy half is an aryl group, the second product is a phenol."
+    "tip": "If the alkoxy half is an aryl group, the second product is a phenol.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "Step 1 (NaBH₄) does nothing here: NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water.",
+        "gives": "CC(=O)Oc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)OCc1ccccc1",
+          "name": "benzyl acetate",
+          "gives": "OCc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, benzyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "CCOC(=O)c1ccccc1",
+          "name": "ethyl benzoate",
+          "gives": "OCc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, ethyl benzoate gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(=O)OC",
+          "name": "methyl propanoate",
+          "gives": "CCCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, methyl propanoate gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R5-butyrolactone-001",
@@ -319,7 +619,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=C1CCCO1",
@@ -368,10 +671,67 @@
         "stereo": "none",
         "tag": "ester_one_piece",
         "why": "The cyclic hemiacetal is only an intermediate: it opens to the hydroxy aldehyde, which is reduced."
+      },
+      {
+        "smiles": "[O-]CCCC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "The lactone is an ester whose two halves are tied together, so the 'two alcohols' end up in one molecule: butane-1,4-diol.",
-    "tip": "Cyclic ester → one diol. The two OH groups are the two ester oxygens' fates."
+    "tip": "Cyclic ester → one diol. The two OH groups are the two ester oxygens' fates.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "Step 1 (NaBH₄) does nothing here: NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water.",
+        "gives": "O=C1CCCO1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]CCCC[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "COC(=O)C1CCCCC1",
+          "name": "methyl cyclohexanecarboxylate",
+          "gives": "OCC1CCCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, methyl cyclohexanecarboxylate gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "name": "phenyl acetate",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, phenyl acetate gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC(=O)OC",
+          "name": "methyl propanoate",
+          "gives": "CCCO",
+          "why": "With 1. LiAlH₄; 2. H₂O, methyl propanoate gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R5-benzylacetate-001",
@@ -382,7 +742,10 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(=O)OCc1ccccc1",
@@ -429,9 +792,66 @@
         "stereo": "none",
         "tag": "ester_one_piece",
         "why": "Hemiacetals are not the end product; the intermediate collapses to the aldehyde + benzyloxide."
+      },
+      {
+        "smiles": "[O-]Cc1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "Compare with ethyl benzoate: here the acetyl half gives ethanol and the benzyloxy half gives benzyl alcohol. Same two alcohols, opposite origins.",
-    "tip": "Ask which oxygen belongs to which half before you draw the products."
+    "tip": "Ask which oxygen belongs to which half before you draw the products.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          },
+          {
+            "reagent": "H2O",
+            "conditions": {
+              "temp": "rt"
+            }
+          }
+        ],
+        "tag": "over_reduction",
+        "why": "Step 1 (NaBH₄) does nothing here: NaBH₄ is too mild for an ester or a carboxylic acid: nothing happens. Use LiAlH₄, then water.",
+        "gives": "CC(=O)OCc1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]Cc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "COC(=O)C1CCCCC1",
+          "name": "methyl cyclohexanecarboxylate",
+          "gives": "OCC1CCCCC1",
+          "why": "With 1. LiAlH₄; 2. H₂O, methyl cyclohexanecarboxylate gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)OC(C)C",
+          "name": "propan-2-yl acetate (isopropyl acetate)",
+          "gives": "CC(C)O",
+          "why": "With 1. LiAlH₄; 2. H₂O, propan-2-yl acetate (isopropyl acetate) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)Oc1ccccc1",
+          "name": "phenyl acetate",
+          "gives": "Oc1ccccc1",
+          "why": "With 1. LiAlH₄; 2. H₂O, phenyl acetate gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

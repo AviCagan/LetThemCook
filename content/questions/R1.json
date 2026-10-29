@@ -8,7 +8,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "O=C1C=CCCC1",
@@ -51,10 +54,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Hydrogenation never removes the oxygen. The carbonyl becomes a C–OH; only Clemmensen or Wolff–Kishner turn C=O into CH₂."
+      },
+      {
+        "smiles": "[O-]C1C=CCCC1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "H₂ over Pt adds across both π bonds: the C=C becomes C–C and the ketone becomes a 2° alcohol. Cyclohexanol has no stereocenter.",
-    "tip": "Hydrogen and a metal reduce everything with a π bond except the benzene ring."
+    "tip": "Hydrogen and a metal reduce everything with a π bond except the benzene ring.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "You reduced the ketone and left the C=C. That is the NaBH₄ outcome; H₂ over Pt hydrogenates the alkene as well.",
+        "gives": "OC1C=CCCC1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "[O-]C1C=CCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCCC=O",
+          "name": "hex-5-enal",
+          "gives": "CCCCCCO",
+          "why": "With H₂, Pt (pressure), hex-5-enal gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "CCCCCCO",
+          "why": "With H₂, Pt (pressure), hex-5-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)/C=C/c1ccccc1",
+          "name": "(E)-4-phenylbut-3-en-2-one",
+          "gives": "CC(O)CCc1ccccc1",
+          "why": "With H₂, Pt (pressure), (E)-4-phenylbut-3-en-2-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R1-benzalacetone-001",
@@ -65,7 +119,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(=O)/C=C/c1ccccc1",
@@ -112,10 +168,61 @@
         "stereo": "racemic",
         "tag": "reagent_label_unknown",
         "why": "The benzene ring is not reduced under these conditions: aromatic rings need much harsher hydrogenation than isolated C=C bonds."
+      },
+      {
+        "smiles": "CC([O-])/C=C/c1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "Both the C=C and the ketone are reduced; the ring survives. The carbinol carbon is a new stereocenter formed from an achiral substrate, so the alcohol is racemic.",
-    "tip": "Two π bonds in, two gone. Count what H₂ can reach."
+    "tip": "Two π bonds in, two gone. Count what H₂ can reach.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "The alkene survived in your answer. H₂/Pt hydrogenates C=C bonds; only the hydrides (NaBH₄, LiAlH₄) leave them alone.",
+        "gives": "CC(O)/C=C/c1ccccc1"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CC([O-])/C=C/c1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂, Pt (pressure), cyclohex-2-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CC(C)=O",
+          "name": "4-methylpent-3-en-2-one",
+          "gives": "CC(C)CC(C)O",
+          "why": "With H₂, Pt (pressure), 4-methylpent-3-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC=O",
+          "name": "hex-5-enal",
+          "gives": "CCCCCCO",
+          "why": "With H₂, Pt (pressure), hex-5-enal gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R1-hexenal-001",
@@ -126,7 +233,10 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "C=CCCCC=O",
@@ -172,10 +282,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "H₂ is a reductant; it can never oxidise an aldehyde to an acid. That needs chromic acid."
+      },
+      {
+        "smiles": "C=CCCCC[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "Hydrogenation saturates the alkene and reduces the aldehyde to a 1° alcohol: hexan-1-ol.",
-    "tip": "Alkene plus aldehyde plus H₂/Pt: everything ends up saturated."
+    "tip": "Alkene plus aldehyde plus H₂/Pt: everything ends up saturated.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "The alkene is still there. H₂/Pt hydrogenates C=C; this is what NaBH₄ would give.",
+        "gives": "C=CCCCCO"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "C=CCCCC[O-]"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)/C=C/c1ccccc1",
+          "name": "(E)-4-phenylbut-3-en-2-one",
+          "gives": "CC(O)CCc1ccccc1",
+          "why": "With H₂, Pt (pressure), (E)-4-phenylbut-3-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂, Pt (pressure), cyclohex-2-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CC(=O)CCCCC",
+          "name": "oct-1-en-3-one",
+          "gives": "CCCCCC(O)CC",
+          "why": "With H₂, Pt (pressure), oct-1-en-3-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R1-mesityloxide-001",
@@ -186,7 +347,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(C)=CC(C)=O",
@@ -233,10 +396,61 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen does not disappear: C=O becomes C–OH, never CH₂."
+      },
+      {
+        "smiles": "CC(C)=CC(C)[O-]",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "Both π bonds are hydrogenated. C2 becomes a stereocenter from an achiral ketone, so the product is racemic 4-methylpentan-2-ol.",
-    "tip": "A substituted alkene still goes under H₂/Pt; it just goes a little slower."
+    "tip": "A substituted alkene still goes under H₂/Pt; it just goes a little slower.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CC(C)=CC(C)[O-]"
+      },
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "The trisubstituted alkene is still there. H₂/Pt hydrogenates it along with the ketone.",
+        "gives": "CC(C)=CC(C)O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCCCCO",
+          "name": "hex-5-en-1-ol",
+          "gives": "CCCCCCO",
+          "why": "With H₂, Pt (pressure), hex-5-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC=O",
+          "name": "hex-5-enal",
+          "gives": "CCCCCCO",
+          "why": "With H₂, Pt (pressure), hex-5-enal gives a different product (shown)."
+        },
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂, Pt (pressure), cyclohex-2-en-1-one gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R1-acetylbenzoate-001",
@@ -247,7 +461,9 @@
     "difficulty": 2,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "COC(=O)c1ccc(C(C)=O)cc1",
@@ -295,10 +511,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "There is a reaction: H₂/Pt reduces the ketone to the alcohol. Only the ester and the ring are untouched."
+      },
+      {
+        "smiles": "CC([O-])c1ccc(C[O-])cc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "H₂/Pt reduces the ketone to a racemic 2° alcohol and leaves the ester and the aromatic ring alone. (NaBH₄ would give the same product.)",
-    "tip": "Esters and benzene rings sit out catalytic hydrogenation."
+    "tip": "Esters and benzene rings sit out catalytic hydrogenation.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "CC([O-])c1ccc(C[O-])cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)/C=C/c1ccccc1",
+          "name": "(E)-4-phenylbut-3-en-2-one",
+          "gives": "CC(O)CCc1ccccc1",
+          "why": "With H₂, Pt (pressure), (E)-4-phenylbut-3-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CC(=O)CCCCC",
+          "name": "oct-1-en-3-one",
+          "gives": "CCCCCC(O)CC",
+          "why": "With H₂, Pt (pressure), oct-1-en-3-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(=O)c1ccccc1",
+          "name": "acetophenone (1-phenylethan-1-one)",
+          "gives": "CC(O)c1ccccc1",
+          "why": "With H₂, Pt (pressure), acetophenone (1-phenylethan-1-one) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R1-octenone-001",
@@ -309,7 +566,9 @@
     "difficulty": 1,
     "orderTypes": [
       "make_it",
-      "predict_product"
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=CC(=O)CCCCC",
@@ -357,9 +616,60 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The oxygen stays as an OH. Hydrogenation never strips a carbonyl oxygen off completely."
+      },
+      {
+        "smiles": "C=CC([O-])CCCCC",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "auto": true
       }
     ],
     "explanation": "Both the C=C and the C=O are reduced. C3 becomes a stereocenter from an achiral ketone: racemic octan-3-ol.",
-    "tip": "Vinyl ketone in, saturated racemic alcohol out."
+    "tip": "Vinyl ketone in, saturated racemic alcohol out.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaBH4"
+          }
+        ],
+        "tag": "stopped_halfway",
+        "why": "The terminal alkene is still there. H₂/Pt hydrogenates it; a hydride would not.",
+        "gives": "C=CC(O)CCCCC"
+      },
+      {
+        "route": [
+          {
+            "reagent": "LiAlH4"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the anion (alkoxide / phenoxide / thiolate / carboxylate): it never adds water or acid to protonate it.",
+        "gives": "C=CC([O-])CCCCC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "O=C1C=CCCC1",
+          "name": "cyclohex-2-en-1-one",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂, Pt (pressure), cyclohex-2-en-1-one gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CC(C)=O",
+          "name": "4-methylpent-3-en-2-one",
+          "gives": "CC(C)CC(C)O",
+          "why": "With H₂, Pt (pressure), 4-methylpent-3-en-2-one gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC=O",
+          "name": "hex-5-enal",
+          "gives": "CCCCCCO",
+          "why": "With H₂, Pt (pressure), hex-5-enal gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

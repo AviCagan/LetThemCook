@@ -7,7 +7,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -39,10 +43,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The OH directs ortho/para, never meta."
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, CHCl₃, cold does change phenol.",
+        "auto": true
       }
     ],
     "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
-    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+    "tip": "Para if open, else ortho. Never meta, never replacing a group.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_H2O"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold.",
+        "gives": "Oc1c(Br)cc(Br)cc1Br"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(C)(C)c1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "Oc1ccc(Br)cc1Cl",
+          "why": "With Br₂, CHCl₃, cold, 2-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "O=[N+]([O-])c1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-nitrophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P3-pcresol-001",
@@ -52,7 +97,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(O)cc1",
@@ -84,10 +133,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, CHCl₃, cold does change 4-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
-    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+    "tip": "Para if open, else ortho. Never meta, never replacing a group.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_H2O"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold.",
+        "gives": "Cc1cc(Br)c(O)c(Br)c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1ccc(Br)cc1",
+          "why": "With Br₂, CHCl₃, cold, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)ccc1O",
+          "why": "With Br₂, CHCl₃, cold, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "Oc1ccc(Br)cc1Cl",
+          "why": "With Br₂, CHCl₃, cold, 2-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P3-mcresol-001",
@@ -97,7 +187,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cccc(O)c1",
@@ -129,10 +223,51 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "The OH directs ortho/para, never meta."
+      },
+      {
+        "smiles": "Cc1cccc(O)c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, CHCl₃, cold does change 3-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
-    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+    "tip": "Para if open, else ortho. Never meta, never replacing a group.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_H2O"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold.",
+        "gives": "Cc1c(Br)cc(Br)c(O)c1Br"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1ccc(Br)cc1",
+          "why": "With Br₂, CHCl₃, cold, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "O=[N+]([O-])c1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-nitrophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)ccc1O",
+          "why": "With Br₂, CHCl₃, cold, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P3-ocresol-001",
@@ -142,7 +277,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccccc1O",
@@ -174,10 +313,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      },
+      {
+        "smiles": "Cc1ccccc1O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, CHCl₃, cold does change 2-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
-    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+    "tip": "Para if open, else ortho. Never meta, never replacing a group.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_H2O"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold.",
+        "gives": "Cc1cc(Br)cc(Br)c1O"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(C)(C)c1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1ccc(Br)cc1",
+          "why": "With Br₂, CHCl₃, cold, phenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P3-nitrophenol-001",
@@ -187,7 +367,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc([N+](=O)[O-])cc1",
@@ -219,10 +403,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, CHCl₃, cold does change 4-nitrophenol.",
+        "auto": true
       }
     ],
     "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
-    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+    "tip": "Para if open, else ortho. Never meta, never replacing a group.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_H2O"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold.",
+        "gives": "O=[N+]([O-])c1cc(Br)c(O)c(Br)c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(C)(C)c1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "Cc1cc(O)ccc1Br",
+          "why": "With Br₂, CHCl₃, cold, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P3-tbutylphenol-001",
@@ -232,7 +457,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)(C)c1ccc(O)cc1",
@@ -264,10 +493,51 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      },
+      {
+        "smiles": "CC(C)(C)c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, CHCl₃, cold does change 4-tert-butylphenol.",
+        "auto": true
       }
     ],
     "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
-    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+    "tip": "Para if open, else ortho. Never meta, never replacing a group.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_H2O"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold.",
+        "gives": "CC(C)(C)c1cc(Br)c(O)c(Br)c1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1ccc(Br)cc1",
+          "why": "With Br₂, CHCl₃, cold, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "Oc1ccc(Br)cc1Cl",
+          "why": "With Br₂, CHCl₃, cold, 2-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc(Br)ccc1O",
+          "why": "With Br₂, CHCl₃, cold, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P3-ochlorophenol-001",
@@ -277,7 +547,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1Cl",
@@ -309,9 +583,50 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Three-step EAS check: nothing on the ring leaves; OH directs ortho/para; take para if it is open, otherwise ortho."
+      },
+      {
+        "smiles": "Oc1ccccc1Cl",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: Br₂, CHCl₃, cold does change 2-chlorophenol.",
+        "auto": true
       }
     ],
     "explanation": "One bromine goes para to the OH when para is open; when para is blocked it goes ortho. Existing substituents stay.",
-    "tip": "Para if open, else ortho. Never meta, never replacing a group."
+    "tip": "Para if open, else ortho. Never meta, never replacing a group.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "Br2_H2O"
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "Bromine water keeps going until every ortho/para position carries a Br. For a single bromine use Br₂/CHCl₃, cold.",
+        "gives": "Oc1c(Cl)cc(Br)cc1Br"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)(C)c1ccc(O)cc1",
+          "name": "4-tert-butylphenol",
+          "gives": "CC(C)(C)c1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-tert-butylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "Oc1ccc(Br)cc1",
+          "why": "With Br₂, CHCl₃, cold, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c(Br)c1",
+          "why": "With Br₂, CHCl₃, cold, 4-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

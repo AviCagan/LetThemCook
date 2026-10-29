@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -35,10 +37,39 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "Dilute HNO₃ mononitrates; dinitration needs the stronger mixed acid and is not the question."
+      },
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: dil. HNO₃ does change phenol.",
+        "auto": true
       }
     ],
     "explanation": "Dilute nitric acid nitrates the activated phenol ring once, para to the OH (ortho when para is blocked). Existing substituents stay.",
-    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH."
+    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "Cc1cc(O)ccc1[N+](=O)[O-]",
+          "why": "With dil. HNO₃, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c([N+](=O)[O-])c1",
+          "why": "With dil. HNO₃, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Br)cc1",
+          "name": "4-bromophenol",
+          "gives": "O=[N+]([O-])c1cc(Br)ccc1O",
+          "why": "With dil. HNO₃, 4-bromophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P4-pcresol-001",
@@ -48,7 +79,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccc(O)cc1",
@@ -76,10 +109,39 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Nothing already on the ring leaves; NO₂ replaces a ring hydrogen ortho/para to the OH."
+      },
+      {
+        "smiles": "Cc1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: dil. HNO₃ does change 4-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Dilute nitric acid nitrates the activated phenol ring once, para to the OH (ortho when para is blocked). Existing substituents stay.",
-    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH."
+    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "Cc1cc(O)ccc1[N+](=O)[O-]",
+          "why": "With dil. HNO₃, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=[N+]([O-])c1ccc(O)cc1",
+          "why": "With dil. HNO₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc([N+](=O)[O-])ccc1O",
+          "why": "With dil. HNO₃, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P4-mcresol-001",
@@ -89,7 +151,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1cccc(O)c1",
@@ -112,7 +176,38 @@
       }
     ],
     "explanation": "Dilute nitric acid nitrates the activated phenol ring once, para to the OH (ortho when para is blocked). Existing substituents stay.",
-    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH."
+    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=[N+]([O-])c1ccc(O)cc1",
+          "why": "With dil. HNO₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "O=[N+]([O-])c1ccc(O)c(Cl)c1",
+          "why": "With dil. HNO₃, 2-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc([N+](=O)[O-])ccc1O",
+          "why": "With dil. HNO₃, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "Cc1cccc(O)c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: dil. HNO₃ does change 3-methylphenol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-P4-chlorophenol-001",
@@ -122,7 +217,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Cl)cc1",
@@ -150,10 +247,39 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Nothing already on the ring leaves; NO₂ replaces a ring hydrogen ortho/para to the OH."
+      },
+      {
+        "smiles": "Oc1ccc(Cl)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: dil. HNO₃ does change 4-chlorophenol.",
+        "auto": true
       }
     ],
     "explanation": "Dilute nitric acid nitrates the activated phenol ring once, para to the OH (ortho when para is blocked). Existing substituents stay.",
-    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH."
+    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1cccc(O)c1",
+          "name": "3-methylphenol",
+          "gives": "Cc1cc(O)ccc1[N+](=O)[O-]",
+          "why": "With dil. HNO₃, 3-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc([N+](=O)[O-])ccc1O",
+          "why": "With dil. HNO₃, 2-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=[N+]([O-])c1ccc(O)cc1",
+          "why": "With dil. HNO₃, phenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P4-ocresol-001",
@@ -163,7 +289,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Cc1ccccc1O",
@@ -191,10 +319,39 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Nothing already on the ring leaves; NO₂ replaces a ring hydrogen ortho/para to the OH."
+      },
+      {
+        "smiles": "Cc1ccccc1O",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: dil. HNO₃ does change 2-methylphenol.",
+        "auto": true
       }
     ],
     "explanation": "Dilute nitric acid nitrates the activated phenol ring once, para to the OH (ortho when para is blocked). Existing substituents stay.",
-    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH."
+    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=[N+]([O-])c1ccc(O)cc1",
+          "why": "With dil. HNO₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "O=[N+]([O-])c1ccc(O)c(Cl)c1",
+          "why": "With dil. HNO₃, 2-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccc(Cl)cc1",
+          "name": "4-chlorophenol",
+          "gives": "O=[N+]([O-])c1cc(Cl)ccc1O",
+          "why": "With dil. HNO₃, 4-chlorophenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P4-bromophenol-001",
@@ -204,7 +361,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc(Br)cc1",
@@ -232,10 +391,39 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Nothing already on the ring leaves; NO₂ replaces a ring hydrogen ortho/para to the OH."
+      },
+      {
+        "smiles": "Oc1ccc(Br)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: dil. HNO₃ does change 4-bromophenol.",
+        "auto": true
       }
     ],
     "explanation": "Dilute nitric acid nitrates the activated phenol ring once, para to the OH (ortho when para is blocked). Existing substituents stay.",
-    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH."
+    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1Cl",
+          "name": "2-chlorophenol",
+          "gives": "O=[N+]([O-])c1ccc(O)c(Cl)c1",
+          "why": "With dil. HNO₃, 2-chlorophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=[N+]([O-])c1ccc(O)cc1",
+          "why": "With dil. HNO₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc([N+](=O)[O-])ccc1O",
+          "why": "With dil. HNO₃, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P4-ochlorophenol-001",
@@ -245,7 +433,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1Cl",
@@ -273,9 +463,38 @@
         "stereo": "none",
         "tag": "substituent_replaced",
         "why": "Nothing already on the ring leaves; NO₂ replaces a ring hydrogen ortho/para to the OH."
+      },
+      {
+        "smiles": "Oc1ccccc1Cl",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: dil. HNO₃ does change 2-chlorophenol.",
+        "auto": true
       }
     ],
     "explanation": "Dilute nitric acid nitrates the activated phenol ring once, para to the OH (ortho when para is blocked). Existing substituents stay.",
-    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH."
+    "tip": "dil. HNO₃ on a phenol: one NO₂, o/p to OH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Cc1ccc(O)cc1",
+          "name": "4-methylphenol",
+          "gives": "Cc1ccc(O)c([N+](=O)[O-])c1",
+          "why": "With dil. HNO₃, 4-methylphenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "O=[N+]([O-])c1ccc(O)cc1",
+          "why": "With dil. HNO₃, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "Cc1ccccc1O",
+          "name": "2-methylphenol",
+          "gives": "Cc1cc([N+](=O)[O-])ccc1O",
+          "why": "With dil. HNO₃, 2-methylphenol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

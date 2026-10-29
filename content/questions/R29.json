@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)=C(C)C",
@@ -38,7 +40,38 @@
       ]
     ],
     "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. (Carey Table 16.1 example, 90%.)",
-    "tip": "Dilute acid + water = hydration; concentrated acid + heat = the reverse (dehydration)."
+    "tip": "Dilute acid + water = hydration; concentrated acid + heat = the reverse (dehydration).",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC1=CCCCC1",
+          "name": "1-methylcyclohexene",
+          "gives": "CC1(O)CCCCC1",
+          "why": "With H₂SO₄, H₂O, 1-methylcyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC(C)(C)O",
+          "why": "With H₂SO₄, H₂O, 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂SO₄, H₂O, cyclohexene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(C)=C(C)C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂SO₄, H₂O does change 2,3-dimethylbut-2-ene.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R29-methylcyclohexene-001",
@@ -48,7 +81,11 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC1=CCCCC1",
@@ -82,9 +119,57 @@
         "stereo": "none",
         "tag": "markovnikov_flip",
         "why": "That is the hydroboration product: OH on the less substituted carbon. Acid-catalysed hydration is Markovnikov: the OH ends up on the ring carbon that carries the methyl (3° carbocation)."
+      },
+      {
+        "smiles": "BC1CCCCC1C",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "auto": true
+      },
+      {
+        "smiles": "CC1=CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂SO₄, H₂O does change 1-methylcyclohexene.",
+        "auto": true
       }
     ],
-    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon."
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "BH3_THF"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "gives": "BC1CCCCC1C"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂SO₄, H₂O, cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC(C)(C)O",
+          "why": "With H₂SO₄, H₂O, 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C(C)C",
+          "name": "2,3-dimethylbut-2-ene",
+          "gives": "CC(C)C(C)(C)O",
+          "why": "With H₂SO₄, H₂O, 2,3-dimethylbut-2-ene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R29-isobutylene-001",
@@ -94,7 +179,11 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)=C",
@@ -131,9 +220,57 @@
         "stereo": "none",
         "tag": "markovnikov_flip",
         "why": "OH on the CH₂ is the anti-Markovnikov (hydroboration) outcome. With acid the 3° carbocation forms and water adds to it."
+      },
+      {
+        "smiles": "BCC(C)C",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "auto": true
+      },
+      {
+        "smiles": "C=C(C)C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂SO₄, H₂O does change 2-methylpropene.",
+        "auto": true
       }
     ],
-    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon."
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "BH3_THF"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "gives": "BCC(C)C"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂SO₄, H₂O, cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C(C)C",
+          "name": "2,3-dimethylbut-2-ene",
+          "gives": "CC(C)C(C)(C)O",
+          "why": "With H₂SO₄, H₂O, 2,3-dimethylbut-2-ene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "ethenylbenzene (styrene)",
+          "gives": "CC(O)c1ccccc1",
+          "why": "With H₂SO₄, H₂O, ethenylbenzene (styrene) gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R29-hexene-001",
@@ -143,7 +280,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=CCCCC",
@@ -178,9 +318,57 @@
         "stereo": "none",
         "tag": "markovnikov_flip",
         "why": "Hexan-1-ol is the hydroboration–oxidation product. Acid-catalysed hydration puts the OH on C2 (the 2° carbocation), and the new stereocentre forms as both enantiomers."
+      },
+      {
+        "smiles": "BCCCCCC",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "auto": true
+      },
+      {
+        "smiles": "C=CCCCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂SO₄, H₂O does change hex-1-ene.",
+        "auto": true
       }
     ],
-    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. The planar carbocation is attacked from either face, so the alcohol is racemic."
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. The planar carbocation is attacked from either face, so the alcohol is racemic.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "BH3_THF"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "gives": "BCCCCCC"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)=C",
+          "name": "2-methylpropene",
+          "gives": "CC(C)(C)O",
+          "why": "With H₂SO₄, H₂O, 2-methylpropene gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂SO₄, H₂O, cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1=CCCCC1",
+          "name": "1-methylcyclohexene",
+          "gives": "CC1(O)CCCCC1",
+          "why": "With H₂SO₄, H₂O, 1-methylcyclohexene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R29-cyclohexene-001",
@@ -190,7 +378,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "C1CCC=CC1",
@@ -227,7 +418,57 @@
         }
       ]
     ],
-    "explanation": "Symmetric alkene: either carbon gets the OH, so hydration and hydroboration give the same cyclohexanol."
+    "explanation": "Symmetric alkene: either carbon gets the OH, so hydration and hydroboration give the same cyclohexanol.",
+    "traps": [
+      {
+        "smiles": "BC1CCCCC1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "auto": true
+      },
+      {
+        "smiles": "C1=CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂SO₄, H₂O does change cyclohexene.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "BH3_THF"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "gives": "BC1CCCCC1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC=C(C)C",
+          "name": "2-methylbut-2-ene",
+          "gives": "CCC(C)(C)O",
+          "why": "With H₂SO₄, H₂O, 2-methylbut-2-ene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC",
+          "name": "hex-1-ene",
+          "gives": "CCCCC(C)O",
+          "why": "With H₂SO₄, H₂O, hex-1-ene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=C(C)C",
+          "name": "2,3-dimethylbut-2-ene",
+          "gives": "CC(C)C(C)(C)O",
+          "why": "With H₂SO₄, H₂O, 2,3-dimethylbut-2-ene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R29-styrene-001",
@@ -237,7 +478,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "C=Cc1ccccc1",
@@ -271,9 +515,57 @@
         "stereo": "none",
         "tag": "markovnikov_flip",
         "why": "2-Phenylethanol is the hydroboration product. In acid the benzylic carbocation forms, so the OH goes on the benzylic carbon (racemic)."
+      },
+      {
+        "smiles": "BCCc1ccccc1",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "auto": true
+      },
+      {
+        "smiles": "C=Cc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂SO₄, H₂O does change ethenylbenzene (styrene).",
+        "auto": true
       }
     ],
-    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. The benzylic cation is especially stable."
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon. The benzylic cation is especially stable.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "BH3_THF"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "gives": "BCCc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂SO₄, H₂O, cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1=CCCCC1",
+          "name": "1-methylcyclohexene",
+          "gives": "CC1(O)CCCCC1",
+          "why": "With H₂SO₄, H₂O, 1-methylcyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCCCC",
+          "name": "hex-1-ene",
+          "gives": "CCCCC(C)O",
+          "why": "With H₂SO₄, H₂O, hex-1-ene gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R29-methylbutene-001",
@@ -283,7 +575,11 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "predict_product",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CC=C(C)C",
@@ -319,8 +615,56 @@
         "stereo": "none",
         "tag": "markovnikov_flip",
         "why": "3-Methylbutan-2-ol is the anti-Markovnikov (hydroboration) alcohol. Acid gives the 3° carbocation, so the OH goes on C2."
+      },
+      {
+        "smiles": "BC(C)C(C)C",
+        "stereo": "none",
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "auto": true
+      },
+      {
+        "smiles": "CC=C(C)C",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: H₂SO₄, H₂O does change 2-methylbut-2-ene.",
+        "auto": true
       }
     ],
-    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon."
+    "explanation": "Markovnikov hydration: H⁺ adds to the less substituted carbon to make the more stable carbocation, water adds there and loses H⁺. Hydroboration–oxidation would put the OH on the other carbon.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "BH3_THF"
+          }
+        ],
+        "tag": "missing_workup",
+        "why": "The route stops at the alkylborane: it still needs H₂O₂/NaOH.",
+        "gives": "BC(C)C(C)C"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=Cc1ccccc1",
+          "name": "ethenylbenzene (styrene)",
+          "gives": "CC(O)c1ccccc1",
+          "why": "With H₂SO₄, H₂O, ethenylbenzene (styrene) gives a different product (shown)."
+        },
+        {
+          "smiles": "C1CCC=CC1",
+          "name": "cyclohexene",
+          "gives": "OC1CCCCC1",
+          "why": "With H₂SO₄, H₂O, cyclohexene gives a different product (shown)."
+        },
+        {
+          "smiles": "CC1=CCCCC1",
+          "name": "1-methylcyclohexene",
+          "gives": "CC1(O)CCCCC1",
+          "why": "With H₂SO₄, H₂O, 1-methylcyclohexene gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]

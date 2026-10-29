@@ -7,7 +7,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCBr",
@@ -31,7 +33,38 @@
       }
     ],
     "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
-    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CC(C)S",
+          "why": "With NaSH, 2-bromopropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCS",
+          "why": "With NaSH, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CS",
+          "why": "With NaSH, 1-bromo-2-methylpropane gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSH does change 1-bromobutane.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R25-bromoethane-001",
@@ -41,7 +74,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CCBr",
@@ -62,7 +97,38 @@
       }
     ],
     "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
-    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CS",
+          "why": "With NaSH, 1-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCBr",
+          "name": "1-bromo-3-methylbutane",
+          "gives": "CC(C)CCS",
+          "why": "With NaSH, 1-bromo-3-methylbutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CC(C)S",
+          "why": "With NaSH, 2-bromopropane gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSH does change bromoethane.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R25-benzylbromide-001",
@@ -72,7 +138,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "BrCc1ccccc1",
@@ -96,7 +164,38 @@
       }
     ],
     "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
-    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCBr",
+          "name": "1-bromobutane",
+          "gives": "CCCCS",
+          "why": "With NaSH, 1-bromobutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CS",
+          "why": "With NaSH, 1-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCBr",
+          "name": "1-bromo-3-methylbutane",
+          "gives": "CC(C)CCS",
+          "why": "With NaSH, 1-bromo-3-methylbutane gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "BrCc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSH does change (bromomethyl)benzene.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R25-isopropylbromide-001",
@@ -106,7 +205,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)Br",
@@ -130,7 +231,38 @@
       }
     ],
     "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
-    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(C)CCBr",
+          "name": "1-bromo-3-methylbutane",
+          "gives": "CC(C)CCS",
+          "why": "With NaSH, 1-bromo-3-methylbutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCS",
+          "why": "With NaSH, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "BrCc1ccccc1",
+          "name": "(bromomethyl)benzene",
+          "gives": "SCc1ccccc1",
+          "why": "With NaSH, (bromomethyl)benzene gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(C)Br",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSH does change 2-bromopropane.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R25-isoamylbromide-001",
@@ -140,7 +272,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "CC(C)CCBr",
@@ -164,7 +298,38 @@
       }
     ],
     "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
-    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCS",
+          "why": "With NaSH, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CS",
+          "why": "With NaSH, 1-bromo-2-methylpropane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)Br",
+          "name": "2-bromopropane",
+          "gives": "CC(C)S",
+          "why": "With NaSH, 2-bromopropane gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CC(C)CCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSH does change 1-bromo-3-methylbutane.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-R25-butanol-2step-001",
@@ -175,7 +340,10 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "CCCCO",
@@ -202,7 +370,60 @@
       }
     ],
     "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
-    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH.",
+    "traps": [
+      {
+        "smiles": "CCCCBr",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaSH) does nothing here: NaSH cannot displace OH; convert the alcohol to the bromide first (PBr₃), then NaSH.",
+        "auto": true
+      },
+      {
+        "smiles": "CCCCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: 1. PBr₃; 2. NaSH does change butan-1-ol.",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaSH"
+          },
+          {
+            "reagent": "PBr3"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaSH) does nothing here: NaSH cannot displace OH; convert the alcohol to the bromide first (PBr₃), then NaSH.",
+        "gives": "CCCCBr"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCS",
+          "why": "With 1. PBr₃; 2. NaSH, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCBr",
+          "name": "1-bromo-3-methylbutane",
+          "gives": "CC(C)CCS",
+          "why": "With 1. PBr₃; 2. NaSH, 1-bromo-3-methylbutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CO",
+          "name": "2-methylpropan-1-ol",
+          "gives": "CC(C)CS",
+          "why": "With 1. PBr₃; 2. NaSH, 2-methylpropan-1-ol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-R25-bromocyclohexane-001",
@@ -212,7 +433,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "BrC1CCCCC1",
@@ -233,6 +456,37 @@
       }
     ],
     "explanation": "HS⁻ is an excellent nucleophile: SN2 on the CH₃/1°/2° halide gives the thiol. An alcohol must be converted to the halide first.",
-    "tip": "NaSH + RX = thiol. Never NaSH + ROH."
+    "tip": "NaSH + RX = thiol. Never NaSH + ROH.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCBr",
+          "name": "bromoethane",
+          "gives": "CCS",
+          "why": "With NaSH, bromoethane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CCBr",
+          "name": "1-bromo-3-methylbutane",
+          "gives": "CC(C)CCS",
+          "why": "With NaSH, 1-bromo-3-methylbutane gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CS",
+          "why": "With NaSH, 1-bromo-2-methylpropane gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "BrC1CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaSH does change bromocyclohexane.",
+        "auto": true
+      }
+    ]
   }
 ]

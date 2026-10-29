@@ -7,7 +7,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CCC/C=C/CO",
@@ -39,7 +40,38 @@
       }
     ],
     "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. (Carey 17.9: trans-2-hexen-1-ol with diethyl (2R,3R)-tartrate → (2S,3S)-2,3-epoxy-1-hexanol, 78%, 98% ee.)",
-    "tip": "Allylic alcohol + Sharpless = one enantiomer. Any other alkene + Sharpless = nothing."
+    "tip": "Allylic alcohol + Sharpless = one enantiomer. Any other alkene + Sharpless = nothing.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=C(C)CO",
+          "name": "2-methylprop-2-en-1-ol",
+          "gives": "CC1(CO)CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, 2-methylprop-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CCC/C(C)=C/CO",
+          "name": "(2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol)",
+          "gives": "CC(C)=CCCC1(C)OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol) gives a different product (shown)."
+        },
+        {
+          "smiles": "C/C=C/CO",
+          "name": "(E)-but-2-en-1-ol (crotyl alcohol)",
+          "gives": "CC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-but-2-en-1-ol (crotyl alcohol) gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "CCC/C=C/CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: t-BuOOH, Ti(OiPr)₄, (+)-DET does change (E)-hex-2-en-1-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E14-propylallyl-001",
@@ -49,7 +81,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "CCCC(=C)CO",
@@ -78,7 +111,38 @@
         "reagent": "Sharpless"
       }
     ],
-    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. (Carey Table 17.2 example: 88%, 95% ee.)"
+    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. (Carey Table 17.2 example: 88%, 95% ee.)",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCO",
+          "name": "prop-2-en-1-ol (allyl alcohol)",
+          "gives": "OCC1CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, prop-2-en-1-ol (allyl alcohol) gives a different product (shown)."
+        },
+        {
+          "smiles": "C/C=C/CO",
+          "name": "(E)-but-2-en-1-ol (crotyl alcohol)",
+          "gives": "CC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-but-2-en-1-ol (crotyl alcohol) gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)=CCC/C(C)=C/CO",
+          "name": "(2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol)",
+          "gives": "CC(C)=CCCC1(C)OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol) gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C=C(CO)CCC",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: t-BuOOH, Ti(OiPr)₄, (+)-DET does change 2-propylprop-2-en-1-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E14-allylalcohol-001",
@@ -88,7 +152,8 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C=CCO",
@@ -120,7 +185,38 @@
         "reagent": "Sharpless"
       }
     ],
-    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. Carey notes that (R)-glycidol is made this way."
+    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. Carey notes that (R)-glycidol is made this way.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC/C=C/CO",
+          "name": "(E)-hex-2-en-1-ol",
+          "gives": "CCCC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-hex-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C/C=C/CO",
+          "name": "(E)-but-2-en-1-ol (crotyl alcohol)",
+          "gives": "CC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-but-2-en-1-ol (crotyl alcohol) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCC(=C)CO",
+          "name": "2-propylprop-2-en-1-ol",
+          "gives": "CCCC1(CO)CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, 2-propylprop-2-en-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C=CCO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: t-BuOOH, Ti(OiPr)₄, (+)-DET does change prop-2-en-1-ol (allyl alcohol).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E14-methallyl-001",
@@ -130,7 +226,8 @@
     "chapter": 17,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C=C(C)CO",
@@ -156,7 +253,38 @@
         "reagent": "Sharpless"
       }
     ],
-    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone."
+    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC/C=C/CO",
+          "name": "(E)-hex-2-en-1-ol",
+          "gives": "CCCC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-hex-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCO",
+          "name": "prop-2-en-1-ol (allyl alcohol)",
+          "gives": "OCC1CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, prop-2-en-1-ol (allyl alcohol) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCC(=C)CO",
+          "name": "2-propylprop-2-en-1-ol",
+          "gives": "CCCC1(CO)CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, 2-propylprop-2-en-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C=C(C)CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: t-BuOOH, Ti(OiPr)₄, (+)-DET does change 2-methylprop-2-en-1-ol.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E14-crotyl-001",
@@ -166,7 +294,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "C/C=C/CO",
@@ -198,7 +327,38 @@
         "reagent": "Sharpless"
       }
     ],
-    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. The E alkene gives the trans-disubstituted epoxide."
+    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. The E alkene gives the trans-disubstituted epoxide.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "C=CCO",
+          "name": "prop-2-en-1-ol (allyl alcohol)",
+          "gives": "OCC1CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, prop-2-en-1-ol (allyl alcohol) gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCC(=C)CO",
+          "name": "2-propylprop-2-en-1-ol",
+          "gives": "CCCC1(CO)CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, 2-propylprop-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCC/C=C/CO",
+          "name": "(E)-hex-2-en-1-ol",
+          "gives": "CCCC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-hex-2-en-1-ol gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "C/C=C/CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: t-BuOOH, Ti(OiPr)₄, (+)-DET does change (E)-but-2-en-1-ol (crotyl alcohol).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-E14-geraniol-001",
@@ -208,7 +368,9 @@
     "chapter": 17,
     "difficulty": 3,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw"
     ],
     "start": {
       "smiles": "CC(C)=CCC/C(C)=C/CO",
@@ -245,9 +407,53 @@
         "stereo": "none",
         "tag": "reagent_label_unknown",
         "why": "mCPBA epoxidised BOTH double bonds. The Sharpless reagent only touches the allylic one (C2=C3), and does it enantioselectively."
+      },
+      {
+        "smiles": "CC(C)=CCC/C(C)=C/CO",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: t-BuOOH, Ti(OiPr)₄, (+)-DET does change (2E)-3,7-dimethylocta-2,6-dien-1-ol (geraniol).",
+        "auto": true
       }
     ],
-    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. The OH directs the reagent to the nearby C=C; the remote C6=C7 survives."
+    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone. The OH directs the reagent to the nearby C=C; the remote C6=C7 survives.",
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "mCPBA",
+            "conditions": {
+              "equiv": 1
+            }
+          }
+        ],
+        "tag": "reagent_label_unknown",
+        "why": "mCPBA epoxidised BOTH double bonds. The Sharpless reagent only touches the allylic one (C2=C3), and does it enantioselectively.",
+        "gives": "CC1(C)OC1CCC1(C)OC1CO"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC/C=C/CO",
+          "name": "(E)-hex-2-en-1-ol",
+          "gives": "CCCC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-hex-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCC(=C)CO",
+          "name": "2-propylprop-2-en-1-ol",
+          "gives": "CCCC1(CO)CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, 2-propylprop-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "OCC1=CCCCC1",
+          "name": "(cyclohex-1-en-1-yl)methanol",
+          "gives": "OCC12CCCCC1O2",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (cyclohex-1-en-1-yl)methanol gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-E14-cyclohexenylmethanol-001",
@@ -257,7 +463,8 @@
     "chapter": 17,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start"
     ],
     "start": {
       "smiles": "OCC1=CCCCC1",
@@ -283,6 +490,37 @@
         "reagent": "Sharpless"
       }
     ],
-    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone."
+    "explanation": "Sharpless asymmetric epoxidation: t-BuOOH delivers oxygen to the C=C of an allylic alcohol through a titanium–tartrate complex. The chiral tartrate picks one face, so one enantiomer of the epoxy alcohol forms; isolated alkenes are left alone.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCC/C=C/CO",
+          "name": "(E)-hex-2-en-1-ol",
+          "gives": "CCCC1OC1CO",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, (E)-hex-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "CCCC(=C)CO",
+          "name": "2-propylprop-2-en-1-ol",
+          "gives": "CCCC1(CO)CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, 2-propylprop-2-en-1-ol gives a different product (shown)."
+        },
+        {
+          "smiles": "C=CCO",
+          "name": "prop-2-en-1-ol (allyl alcohol)",
+          "gives": "OCC1CO1",
+          "why": "With t-BuOOH, Ti(OiPr)₄, (+)-DET, prop-2-en-1-ol (allyl alcohol) gives a different product (shown)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "OCC1=CCCCC1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: t-BuOOH, Ti(OiPr)₄, (+)-DET does change (cyclohex-1-en-1-yl)methanol.",
+        "auto": true
+      }
+    ]
   }
 ]

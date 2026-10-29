@@ -7,7 +7,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccccc1",
@@ -44,7 +47,50 @@
       ]
     ],
     "explanation": "A phenol (pKa ≈ 10) is deprotonated by NaOH (and K₂CO₃), but not by NaHCO₃ (carbonic acid pKa ≈ 6.4 is a weaker acid than... its conjugate base is too weak).",
-    "tip": "NaOH yes, NaHCO₃ no, for a plain phenol."
+    "tip": "NaOH yes, NaHCO₃ no, for a plain phenol.",
+    "traps": [
+      {
+        "smiles": "Oc1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "Oc1ccccc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "name": "4-nitrophenol",
+          "gives": "O=[N+]([O-])c1ccc([O-])cc1",
+          "why": "With NaOH, 4-nitrophenol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(=O)c1ccccc1",
+          "name": "benzoic acid",
+          "gives": "O=C([O-])c1ccccc1",
+          "why": "With NaOH, benzoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "CC(C)CBr",
+          "name": "1-bromo-2-methylpropane",
+          "gives": "CC(C)CO",
+          "why": "With NaOH, 1-bromo-2-methylpropane gives a different product (shown)."
+        }
+      ]
+    }
   },
   {
     "id": "q-P5-benzoic-nahco3-001",
@@ -54,7 +100,9 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "OC(=O)c1ccccc1",
@@ -85,7 +133,38 @@
       ]
     ],
     "explanation": "A carboxylic acid (pKa ≈ 4–5) is acidic enough for bicarbonate: CO₂ bubbles off. This is how acids are separated from phenols.",
-    "tip": "NaHCO₃ picks out carboxylic acids; phenols stay neutral."
+    "tip": "NaHCO₃ picks out carboxylic acids; phenols stay neutral.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CCCCCC(=O)O",
+          "name": "hexanoic acid",
+          "gives": "CCCCCC(=O)[O-]",
+          "why": "With NaHCO₃, hexanoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "Nc1ccc(C(=O)O)cc1",
+          "name": "4-aminobenzoic acid",
+          "gives": "Nc1ccc(C(=O)[O-])cc1",
+          "why": "With NaHCO₃, 4-aminobenzoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "COc1ccccc1",
+          "name": "methoxybenzene (anisole)",
+          "gives": "COc1ccccc1",
+          "why": "NaHCO₃ does nothing to methoxybenzene (anisole)."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "O=C(O)c1ccccc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaHCO₃ does change benzoic acid.",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-P5-picric-nahco3-001",
@@ -95,7 +174,9 @@
     "chapter": 16,
     "difficulty": 2,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1c([N+](=O)[O-])cc([N+](=O)[O-])cc1[N+](=O)[O-]",
@@ -126,7 +207,38 @@
       ]
     ],
     "explanation": "Three ortho/para nitro groups delocalise the negative charge so well that picric acid (pKa ≈ 0.4) is as strong as a mineral acid: even NaHCO₃ deprotonates it.",
-    "tip": "o/p electron-withdrawing groups make a phenol much more acidic."
+    "tip": "o/p electron-withdrawing groups make a phenol much more acidic.",
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "CC(=O)c1ccc(C(=O)O)cc1",
+          "name": "4-acetylbenzoic acid",
+          "gives": "CC(=O)c1ccc(C(=O)[O-])cc1",
+          "why": "With NaHCO₃, 4-acetylbenzoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(c1ccccc1)C(O)c1ccccc1",
+          "name": "1,2-diphenylethane-1,2-diol",
+          "gives": "OC(c1ccccc1)C(O)c1ccccc1",
+          "why": "NaHCO₃ does nothing to 1,2-diphenylethane-1,2-diol."
+        },
+        {
+          "smiles": "COC(=O)c1ccc(C=O)cc1",
+          "name": "methyl 4-formylbenzoate",
+          "gives": "COC(=O)c1ccc(C=O)cc1",
+          "why": "NaHCO₃ does nothing to methyl 4-formylbenzoate."
+        }
+      ]
+    },
+    "traps": [
+      {
+        "smiles": "O=[N+]([O-])c1cc([N+](=O)[O-])c(O)c([N+](=O)[O-])c1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "There is a reaction: NaHCO₃ does change 2,4,6-trinitrophenol (picric acid).",
+        "auto": true
+      }
+    ]
   },
   {
     "id": "q-P5-nitrophenol-naoh-001",
@@ -136,7 +248,10 @@
     "chapter": 16,
     "difficulty": 1,
     "orderTypes": [
-      "make_it"
+      "make_it",
+      "what_start",
+      "spot_flaw",
+      "name_it"
     ],
     "start": {
       "smiles": "Oc1ccc([N+](=O)[O-])cc1",
@@ -167,6 +282,49 @@
       ]
     ],
     "explanation": "The para nitro group lowers the pKa to about 7, but one nitro group is still not enough for NaHCO₃; NaOH does it easily.",
-    "tip": "One EWG: more acidic, still NaOH territory."
+    "tip": "One EWG: more acidic, still NaOH territory.",
+    "traps": [
+      {
+        "smiles": "O=[N+]([O-])c1ccc(O)cc1",
+        "stereo": "none",
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "auto": true
+      }
+    ],
+    "flaws": [
+      {
+        "route": [
+          {
+            "reagent": "NaHCO3"
+          }
+        ],
+        "tag": "no_reaction",
+        "why": "Step 1 (NaHCO₃) does nothing here: A phenol (pKa ≈ 10) is not deprotonated by bicarbonate; NaOH does it. (Only picric-acid-like phenols with two o/p nitro groups react.)",
+        "gives": "O=[N+]([O-])c1ccc(O)cc1"
+      }
+    ],
+    "reverse": {
+      "distractors": [
+        {
+          "smiles": "Oc1ccccc1",
+          "name": "phenol",
+          "gives": "[O-]c1ccccc1",
+          "why": "With NaOH, phenol gives a different product (shown)."
+        },
+        {
+          "smiles": "OC(=O)c1ccccc1",
+          "name": "benzoic acid",
+          "gives": "O=C([O-])c1ccccc1",
+          "why": "With NaOH, benzoic acid gives a different product (shown)."
+        },
+        {
+          "smiles": "Sc1ccccc1",
+          "name": "benzenethiol",
+          "gives": "[S-]c1ccccc1",
+          "why": "With NaOH, benzenethiol gives a different product (shown)."
+        }
+      ]
+    }
   }
 ]
