@@ -8,6 +8,7 @@ import { sfx } from './audio/sfx';
 import { ITEMS } from './content/bank';
 import { flow } from './flow';
 import { applyTheme } from './theme';
+import { initNative, isNative } from './native';
 import '@fontsource/press-start-2p/400.css';
 import './styles.css';
 
@@ -36,8 +37,10 @@ async function boot(): Promise<void> {
 }
 
 boot();
+void initNative();
 
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
+// the installed Android app ships its files inside the APK, so no service worker there
+if ('serviceWorker' in navigator && import.meta.env.PROD && !isNative) {
   import('virtual:pwa-register').then(({ registerSW }) => {
     registerSW({ immediate: true });
   }).catch(() => undefined);

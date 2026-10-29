@@ -1,0 +1,65 @@
+name: Android APK
+
+# Builds a debug APK of the game (Capacitor) and publishes it to the "android-latest" release, so the
+# newest APK is at https://github.com/<owner>/<repo>/releases/download/android-latest/beaker-buddies.apk
+# Manual only for now (Actions -> "Android APK" -> Run workflow): the Android build is unfinished and
+# has not been run yet. Add `push:` under `on:` to build on every push.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    name: Build the APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - run: npm ci
+      - name: Build the web app and copy it into the Android project
+        run: npm run build:android
+      - name: Build the debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+      - name: Check the APK (package, version, label, SDK levels, signing key)
+        run: |
+          APK=android/app/build/outputs/apk/debug/app-debug.apk
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)
+          "$BT/aapt2" dump badging "$APK" | grep -E "^package:|^application-label:|^sdkVersion|^targetSdkVersion"
+          "$BT/apksigner" verify --print-certs "$APK" | grep -E "certificate DN|certificate SHA-256"
+          ls -lh "$APK"
+          cp "$APK" beaker-buddies.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beaker-buddies-apk
+          path: beaker-buddies.apk
+          retention-days: 30
+      - name: Publish to the android-latest release
+        if: github.event_name == 'workflow_dispatch' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          NOTES="Newest Android build of Beaker Buddies, from commit ${GITHUB_SHA::7} (build ${GITHUB_RUN_NUMBER}).
+
+          Install: open this page on the phone, download beaker-buddies.apk, open it and allow installs from your browser when Android asks. Later builds install over this one and keep your progress."
+          gh release delete android-latest --yes --cleanup-tag || true
+          gh release create android-latest beaker-buddies.apk \
+            --target "$GITHUB_SHA" \
+            --title "Beaker Buddies for Android (latest build)" \
+            --notes "$NOTES" \
+            --latest
