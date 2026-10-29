@@ -30,6 +30,14 @@ export function hudHeight(): number {
   return hud ? Math.round(hud.getBoundingClientRect().height) : HUD_H;
 }
 
+/** Share of the screen height the room gets in portrait (the panel below gets the rest; keep in sync with --panel-h). */
+export const PORTRAIT_SHARE = 0.46;
+/** The point of the room kept in the middle when the room is cropped: the counter, between player and customer. */
+const FOCUS_X = VW / 2;
+const FOCUS_Y = 84;
+/** When cropping, keep at least this much room height visible (back bench row down to the customer). */
+const MIN_VISIBLE_H = 96;
+
 export function stageRect(): StageRect {
   const W = window.innerWidth;
   const H = window.innerHeight;
@@ -37,10 +45,18 @@ export function stageRect(): StageRect {
   const x = 0;
   const y = hudHeight();
   const w = land ? Math.floor(W * 0.5) : W;
-  const h = (land ? H : Math.floor(H * 0.42)) - y;
-  const zoom = Math.max(1, Math.floor(Math.min(w / VW, h / VH)));
-  const ox = x + Math.floor((w - VW * zoom) / 2);
-  const oy = y + Math.floor((h - VH * zoom) / 2);
+  const h = (land ? H : Math.floor(H * PORTRAIT_SHARE)) - y;
+  const fit = Math.max(1, Math.floor(Math.min(w / VW, h / VH)));
+  // Small screens (phones): one integer step closer and crop the room's edges around the counter,
+  // instead of shrinking everyone to fit the whole room. Large screens show the whole room.
+  let zoom = fit;
+  if (fit <= 3) {
+    const z = fit + 1;
+    if (VW * z <= w * 1.35 && h / z >= MIN_VISIBLE_H) zoom = z;
+  }
+  const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+  const ox = VW * zoom <= w ? x + Math.floor((w - VW * zoom) / 2) : x + clamp(Math.round(w / 2 - FOCUS_X * zoom), w - VW * zoom, 0);
+  const oy = VH * zoom <= h ? y + Math.floor((h - VH * zoom) / 2) : y + clamp(Math.round(h / 2 - FOCUS_Y * zoom), h - VH * zoom, 0);
   return { x, y, w, h, zoom, ox, oy };
 }
 

@@ -1,10 +1,11 @@
 name: Android APK
 
-# Builds a debug APK of the game (Capacitor) and publishes it to the "android-latest" release, so the
-# newest APK is at https://github.com/<owner>/<repo>/releases/download/android-latest/beaker-buddies.apk
-# Manual only for now (Actions -> "Android APK" -> Run workflow): the Android build is unfinished and
-# has not been run yet. Add `push:` under `on:` to build on every push.
+# Builds a debug APK of the game (Capacitor) on every push and uploads it as an artifact. On the
+# default branch, or when started by hand ("Run workflow"), it is also published to the
+# "android-latest" release, so the newest APK is always at
+# https://github.com/<owner>/<repo>/releases/download/android-latest/beaker-buddies.apk
 on:
+  push:
   workflow_dispatch:
 
 permissions:

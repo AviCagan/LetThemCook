@@ -20,7 +20,7 @@
   --wood: #e6b985;
   --grey-light: #d9d7e4;
   --radius: 4px;
-  --panel-h: 58vh;
+  --panel-h: 54vh;
   --font-pixel: "Press Start 2P", "Courier New", monospace;
   /* surfaces that change with the theme */
   --well: #ffffff;              /* inputs, bars */
@@ -36,6 +36,9 @@
   color-scheme: light;
 }
 /* dark: follows the OS unless the save says otherwise */
+@supports (height: 1dvh) {
+  :root { --panel-h: 54dvh; }
+}
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --cream: #171330;

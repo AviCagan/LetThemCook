@@ -11,7 +11,10 @@ import { save } from '../state';
 export function RequestCard({ order }: { order: Order }) {
   const [show, setShow] = useState(false);
   const name = characterName(flow.customerKey.value);
-  const stereoNote = order.target.stereo !== 'none' ? ` (${stereoLabelText(order.target.stereo).toLowerCase()})` : '';
+  const stereoWord = stereoLabelText(order.target.stereo).toLowerCase();
+  // skip the note when the name already says it (meso-…, rac-…, (2R,3R)-…)
+  const saysIt = /^(meso|rac|cis|trans)-|^\(\d?[RSEZ]/i.test(order.target.name) || order.target.name.toLowerCase().includes(stereoWord);
+  const stereoNote = order.target.stereo !== 'none' && !saysIt ? ` (${stereoWord})` : '';
   return (
     <div class="panel request">
       <div class="speech">
