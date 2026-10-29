@@ -11,3 +11,6 @@ android/build/
 android/local.properties
 public/rdkit/
 scripts/.engine/
+dist-e2e/
+test-results/
+playwright-report/

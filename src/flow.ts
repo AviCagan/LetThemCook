@@ -3,7 +3,7 @@
 // each time, until the target is in the flask and handed over. Phaser and Preact observe the signals.
 import { signal, computed } from '@preact/signals';
 import type { Conditions, OrderType, QuestionItem, Reaction, StereoLabel } from './content/types';
-import { getReaction, getReagent, getTag, playableReactions } from './content/bank';
+import { getReaction, getReagent, getTag, ITEMS, playableReactions } from './content/bank';
 import { ReactionEngine, type Outcome } from './chem/engine';
 import { loadRDKit } from './chem/rdkit';
 import { scoreOrder, coinsFor } from './engine/scoring';
@@ -240,26 +240,40 @@ class GameFlow {
       this.endShift();
       return;
     }
-    const item = picked.item;
+    this.serve(picked.item, picked.reaction, picked.type, !!picked.retest, daily);
+  }
+
+  /** Test hook (?debug=1 only): serve a specific item as a given order type. */
+  debugServe(itemId: string, type: OrderType): void {
+    const item = ITEMS.find((q) => q.id === itemId);
+    if (!item) throw new Error(`no item ${itemId}`);
+    this.serve(item, getReaction(item.reactionIds[0]), type, false, false);
+    this.startedAt = Date.now();
+    this.phase.value = 'request';
+  }
+
+  private serve(item: QuestionItem, reaction: Reaction, pickedType: OrderType, retest: boolean, daily: boolean): void {
+    const s = save.value!;
+    const mode = this.mode.value;
     const target = item.target!;
-    let type: OrderType = picked.type;
+    let type: OrderType = pickedType;
     const quiz = isQuizType(type) ? buildQuiz(type, item, this.rng, topTags(s.history, 5).map((t) => t.tag)) : undefined;
     if (isQuizType(type) && !quiz) type = (item.orderTypes ?? ['make_it']).includes('synthesis') ? 'synthesis' : 'make_it';
     const PAR: Partial<Record<OrderType, number>> = { predict_product: 45, what_start: 45, spot_flaw: 60, name_it: 40 };
     const order: Order = {
       id: `o${Date.now().toString(36)}`,
       item,
-      reaction: picked.reaction,
+      reaction,
       start: { smiles: item.start!.smiles, name: item.start!.name },
       target: { smiles: target.smiles!, name: target.name, altNames: target.altNames, stereo: target.stereo, highlightAtoms: target.highlightAtoms },
       stereoChoices: target.stereo === 'none' ? undefined : uniq([target.stereo, ...(target.stereoChoices ?? ['racemic', 'single_enantiomer', 'meso']), 'none' as StereoLabel]),
       par: PAR[type] ?? 60 + 40 * (item.route?.length ?? 1),
-      retest: picked.retest,
+      retest,
       type,
       quiz,
       daily,
     };
-    noteServed(this.session, picked.reaction.id, item.id);
+    noteServed(this.session, reaction.id, item.id);
     const pool = customerPool(s, CHARACTER_KEYS);
     let idx = Math.floor(this.rng() * pool.length);
     if (idx === this.lastCustomer) idx = (idx + 1) % pool.length;

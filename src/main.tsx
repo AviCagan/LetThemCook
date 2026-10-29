@@ -15,7 +15,7 @@ import './styles.css';
 
 async function boot(): Promise<void> {
   // ?debug exposes the game state for smoke tests and console poking
-  if (new URLSearchParams(location.search).has('debug')) (window as unknown as { __bb: unknown }).__bb = { flow, save, screen };
+  if (new URLSearchParams(location.search).has('debug')) (window as unknown as { __bb: unknown }).__bb = { flow, save, screen, items: ITEMS };
   render(<App />, document.getElementById('ui')!);
   const data = await loadSave();
   save.value = data;
