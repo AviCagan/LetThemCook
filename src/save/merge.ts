@@ -1,7 +1,11 @@
-// Merge two saves record by record (later wins). Used by import and, later, by cloud sync.
+// Merge two saves record by record (later wins). Used by import and by cloud sync.
+// `a` is this device's save: the result keeps a's deviceId.
 import type { SaveData } from './types';
+import { ensureLedger, mergePurchases, recomputeCoins } from './economy';
 
 export function mergeSaves(a: SaveData, b: SaveData): SaveData {
+  ensureLedger(a);
+  ensureLedger(b);
   const [older, newer] = a.updatedAt <= b.updatedAt ? [a, b] : [b, a];
   const out: SaveData = JSON.parse(JSON.stringify(newer));
   out.createdAt = Math.min(a.createdAt, b.createdAt);
@@ -33,8 +37,12 @@ export function mergeSaves(a: SaveData, b: SaveData): SaveData {
     }
   }
   out.labBook.sort((x, y) => x.t - y.t);
-  out.economy.coins = Math.max(a.economy.coins, b.economy.coins);
-  out.economy.unlocked = uniq([...a.economy.unlocked, ...b.economy.unlocked]);
+  out.deviceId = a.deviceId;
+  out.economy.legacyCoins = Math.max(a.economy.legacyCoins ?? 0, b.economy.legacyCoins ?? 0);
+  out.economy.purchases = mergePurchases(a.economy.purchases, b.economy.purchases);
+  out.economy.unlocked = uniq([...a.economy.unlocked, ...b.economy.unlocked, ...out.economy.purchases.map((p) => p.id)]);
+  out.economy.equipped = { ...older.economy.equipped, ...newer.economy.equipped };
+  recomputeCoins(out);
   out.stats.shiftsPlayed = Math.max(a.stats.shiftsPlayed, b.stats.shiftsPlayed);
   out.stats.bestStreak = Math.max(a.stats.bestStreak, b.stats.bestStreak);
   out.updatedAt = Math.max(a.updatedAt, b.updatedAt);

@@ -32,8 +32,11 @@ describe('merge', () => {
     b.mastery.reactions.R2 = { state: 'missed', dueAt: 1, intervalDays: 0, seen: 1, correct: 0, firstTry: 0, lastSeenAt: 3000 };
     a.history.push({ t: 1, item: 'x', type: 'make_it', reaction: 'R2', ok: true, tags: [], stars: 3, hinted: false, mode: 'shift', seconds: 10 });
     b.history.push({ t: 2, item: 'y', type: 'make_it', reaction: 'R2', ok: false, tags: ['over_reduction'], stars: 0, hinted: false, mode: 'shift', seconds: 10 });
+    // saves from before the coin ledger: the stored balance becomes legacy coins
     a.economy.coins = 10;
     b.economy.coins = 7;
+    delete a.economy.legacyCoins;
+    delete b.economy.legacyCoins;
     const m = mergeSaves(a, b);
     expect(m.mastery.reactions.R2.state).toBe('solid');
     expect(m.history.map((h) => h.item)).toEqual(['x', 'y']);

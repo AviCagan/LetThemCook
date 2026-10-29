@@ -270,3 +270,8 @@ ul.plain li { margin: 0.25em 0; }
 .toast { position: fixed; left: 50%; top: 64px; transform: translateX(-50%); background: var(--navy); color: #fff; padding: 10px 16px; border: 2px solid var(--outline); border-radius: var(--radius); font-weight: 700; z-index: 10; max-width: 92vw; text-align: center; box-shadow: 0 3px 0 var(--outline); }
 
 .reduced-motion *, .reduced-motion *::before, .reduced-motion *::after { animation: none !important; transition: none !important; }
+
+/* cloud save */
+.cloud-panel { background: var(--paper); border: 2px solid var(--outline); border-radius: var(--radius); padding: 10px 12px; margin: 14px 0; }
+.sync-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; background: var(--well); border: 2px dashed var(--outline); border-radius: var(--radius); padding: 8px 10px; word-break: break-all; user-select: all; }
+.code-input { min-height: 44px; padding: 6px 10px; border: 2px solid var(--outline); border-radius: var(--radius); background: var(--well); color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }

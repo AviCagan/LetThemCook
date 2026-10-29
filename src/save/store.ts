@@ -3,23 +3,41 @@ import { get, set } from 'idb-keyval';
 import { emptySave, type SaveData } from './types';
 import { validateSave } from './codec';
 import { nextExam } from '../content/course';
+import { ensureLedger } from './economy';
 
 const KEY = 'beaker-buddies:save:v1';
+
+/** Validate, migrate to the current shape and fill defaults: for anything loaded, imported or pulled from the cloud. */
+export function normalizeSave(data: unknown): SaveData {
+  const s = withExamDefault(migrate(validateSave(data)));
+  ensureLedger(s);
+  return s;
+}
 
 export async function loadSave(): Promise<SaveData> {
   try {
     const data = await get<SaveData>(KEY);
-    if (data) return withExamDefault(migrate(validateSave(data)));
+    if (data) return normalizeSave(data);
   } catch {
     /* fall through to localStorage */
   }
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return withExamDefault(migrate(validateSave(JSON.parse(raw))));
+    if (raw) return normalizeSave(JSON.parse(raw));
   } catch {
     /* ignore */
   }
-  return withExamDefault(emptySave());
+  const fresh = withExamDefault(emptySave());
+  ensureLedger(fresh);
+  return fresh;
+}
+
+type PersistListener = (save: SaveData) => void;
+const listeners = new Set<PersistListener>();
+/** Called after every persist (cloud sync uses it to schedule an upload). */
+export function onPersist(fn: PersistListener): () => void {
+  listeners.add(fn);
+  return () => listeners.delete(fn);
 }
 
 /** First run: point the SRS cap at the next exam on the course schedule. */
@@ -51,6 +69,7 @@ export function persistSave(save: SaveData, immediate = false): void {
   };
   if (immediate) write();
   else pending = setTimeout(write, 300);
+  listeners.forEach((fn) => fn(save));
 }
 
 export async function flushSave(): Promise<void> {

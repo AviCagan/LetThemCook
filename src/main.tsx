@@ -9,6 +9,7 @@ import { ITEMS } from './content/bank';
 import { flow } from './flow';
 import { applyTheme } from './theme';
 import { initNative, isNative } from './native';
+import { initCloud } from './save/cloud';
 import '@fontsource/press-start-2p/400.css';
 import './styles.css';
 
@@ -34,6 +35,11 @@ async function boot(): Promise<void> {
     return;
   }
   screen.value = 'title';
+  void initCloud({
+    getSave: () => save.value,
+    setSave: (s) => (save.value = s),
+    canApply: () => !(screen.value === 'lab' && (flow.phase.value === 'bench' || flow.phase.value === 'stereo')),
+  });
 }
 
 boot();

@@ -12,6 +12,15 @@ export interface HistoryEntry {
   hinted: boolean;
   mode: string;
   seconds: number;
+  /** coins earned by this order (absent on saves from before the coin ledger) */
+  coins?: number;
+}
+
+export interface Purchase {
+  /** shop item id */
+  id: string;
+  cost: number;
+  t: number;
 }
 
 export interface LabBookStep {
@@ -70,9 +79,14 @@ export interface SaveData {
   /** every order played, with all its steps */
   labBook: LabBookEntry[];
   economy: {
+    /** cached balance; always legacyCoins + coins earned in history - purchases (see save/economy.ts) */
     coins: number;
     unlocked: string[];
+    /** slot -> shop item id (bench, hood, plant, pet, rug, poster, ...) */
     equipped: Record<string, string>;
+    purchases?: Purchase[];
+    /** coins earned before per-order coins were recorded, or by orders trimmed out of history */
+    legacyCoins?: number;
   };
   stats: {
     shiftsPlayed: number;
@@ -98,7 +112,7 @@ export function emptySave(now = Date.now()): SaveData {
     history: [],
     notes: {},
     labBook: [],
-    economy: { coins: 0, unlocked: [], equipped: {} },
+    economy: { coins: 0, unlocked: [], equipped: {}, purchases: [], legacyCoins: 0 },
     stats: { shiftsPlayed: 0, bestStreak: 0 },
   };
 }

@@ -1,11 +1,13 @@
 import { useState } from 'preact/hooks';
 import { save, screen, showToast } from '../state';
-import { persistSave } from '../save/store';
+import { normalizeSave, persistSave } from '../save/store';
 import { decodeSave, encodeSave } from '../save/codec';
 import { mergeSaves } from '../save/merge';
 import { emptySave } from '../save/types';
+import { ensureLedger } from '../save/economy';
 import { sfx } from '../audio/sfx';
 import { applyTheme, THEME_LABEL, type Theme } from '../theme';
+import { CloudPanel } from './CloudPanel';
 
 export function Settings() {
   const s = save.value!;
@@ -42,7 +44,7 @@ export function Settings() {
   };
   const importText = async (text: string) => {
     try {
-      const incoming = await decodeSave(text);
+      const incoming = normalizeSave(await decodeSave(text));
       const merged = mergeSaves(s, incoming);
       persistSave(merged, true);
       save.value = merged;
@@ -94,7 +96,9 @@ export function Settings() {
         <span>Reduce motion</span>
       </label>
 
-      <h3>Move progress between devices</h3>
+      <CloudPanel />
+
+      <h3>Move progress by hand</h3>
       <div class="row gap wrap">
         <button class="btn btn-primary" type="button" disabled={busy} onClick={exportCode}>Copy export code</button>
         <button class="btn" type="button" onClick={exportFile}>Download JSON</button>
@@ -106,7 +110,7 @@ export function Settings() {
       <textarea class="code-box" rows={4} placeholder="Paste an export code here to import" value={code} onInput={(e) => setCode((e.target as HTMLTextAreaElement).value)} />
       <div class="row gap">
         <button class="btn" type="button" disabled={!code.trim()} onClick={() => importText(code)}>Import from code</button>
-        <button class="btn btn-ghost" type="button" onClick={() => { if (confirm('Erase all progress on this device?')) { const fresh = emptySave(); persistSave(fresh, true); save.value = fresh; showToast('Progress reset'); } }}>Reset progress</button>
+        <button class="btn btn-ghost" type="button" onClick={() => { if (confirm('Erase all progress on this device? (With cloud save on, turn it off here first or the cloud copy will merge back in.)')) { const fresh = emptySave(); ensureLedger(fresh); persistSave(fresh, true); save.value = fresh; showToast('Progress reset'); } }}>Reset progress</button>
       </div>
       <p class="muted small">Device id {s.deviceId.slice(0, 8)} · saved {new Date(s.updatedAt).toLocaleString()}</p>
     </div>

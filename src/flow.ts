@@ -11,6 +11,7 @@ import { applyResult, newRecord, type MasteryRecord, seeded } from './mastery/sr
 import { newSession, noteResult, noteServed, pickNext, type SessionState } from './mastery/scheduler';
 import { SEEDS } from './mastery/seeds';
 import { persistSave } from './save/store';
+import { trimHistory } from './save/economy';
 import type { HistoryEntry, LabBookEntry, LabBookStep } from './save/types';
 import { save, screen, showToast } from './state';
 import { mulberry32, pick, randomSeed, type Rng } from './util/rng';
@@ -407,9 +408,9 @@ class GameFlow {
       rr.lastSeenAt = now;
       s.mastery.reagents[st.reagentId] = rr;
     }
-    const entry: HistoryEntry = { t: now, item: order.item.id, type: 'make_it', reaction: order.reaction.id, ok: correct, tags, stars: score.stars, hinted: this.hinted, mode: this.mode.value, seconds };
+    const entry: HistoryEntry = { t: now, item: order.item.id, type: 'make_it', reaction: order.reaction.id, ok: correct, tags, stars: score.stars, hinted: this.hinted, mode: this.mode.value, seconds, coins };
     s.history.push(entry);
-    if (s.history.length > 5000) s.history.splice(0, s.history.length - 5000);
+    trimHistory(s, 5000);
     const book: LabBookEntry = {
       t: now,
       item: order.item.id,
