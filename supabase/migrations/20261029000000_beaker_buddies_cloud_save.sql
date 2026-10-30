@@ -3,6 +3,12 @@
 -- Nothing in the table is readable or writable directly: the anon key can only call the two
 -- functions below, and they only touch the row whose code the caller knows.
 -- Everything is prefixed bb_ so it can live in a project shared with other apps.
+--
+-- LIVE in the Supabase project "Things" (ref rixslpsozkfytcdeprma), which belongs to
+-- HouseholdLauncher (github.com/AviCagan/HouseholdLauncher); applied there as two migrations,
+-- 20261030125953 beaker_buddies_cloud_save and 20261030130133 beaker_buddies_cloud_save_cap_and_notes.
+-- This file is their combined final state. Change it here AND apply the change there with a new
+-- migration whose name starts with beaker_buddies_; never touch the household tables.
 
 create table if not exists public.bb_saves (
   key_hash   text primary key check (key_hash ~ '^[0-9a-f]{64}$'),
@@ -80,6 +86,10 @@ begin
     if base_version <> 0 then
       return jsonb_build_object('ok', false, 'version', 0);
     end if;
+    -- one row per player; a hard cap keeps this table tiny inside a project shared with other apps
+    if (select count(*) from public.bb_saves) >= 20 then
+      raise exception 'cloud save is full' using errcode = '53400';
+    end if;
     insert into public.bb_saves (key_hash, save, version, device_id) values (h, save, 1, device_id);
     return jsonb_build_object('ok', true, 'version', 1);
   end if;
@@ -93,8 +103,19 @@ begin
 end;
 $$;
 
-revoke all on function public.bb_key_hash(text) from public;
-revoke all on function public.bb_get_save(text) from public;
-revoke all on function public.bb_put_save(text, jsonb, bigint, text) from public;
+-- Supabase grants EXECUTE on new functions to anon/authenticated by default: take it back from the
+-- helper and from PUBLIC, then grant only the two RPCs.
+revoke all on function public.bb_key_hash(text) from public, anon, authenticated;
+revoke all on function public.bb_get_save(text) from public, anon, authenticated;
+revoke all on function public.bb_put_save(text, jsonb, bigint, text) from public, anon, authenticated;
 grant execute on function public.bb_get_save(text) to anon, authenticated;
 grant execute on function public.bb_put_save(text, jsonb, bigint, text) to anon, authenticated;
+
+comment on table public.bb_saves is
+  'NOT part of HouseholdLauncher. Cloud saves for the Beaker Buddies study game (github.com/AviCagan/LetThemCook, supabase/migrations/*_beaker_buddies_cloud_save.sql), added here with Avi''s OK because the free plan allows only two projects. One row per player, keyed by sha256 of a secret sync code; RLS on with no policies on purpose (only the bb_get_save/bb_put_save RPCs touch it); capped at 20 rows of <= 2 MB. Do not drop, rename, add policies to, or revoke the RPC grants: that breaks the game''s sync. Household tables are unaffected.';
+comment on function public.bb_get_save(text) is
+  'Beaker Buddies cloud save (github.com/AviCagan/LetThemCook), not HouseholdLauncher. Intentionally executable by anon: SECURITY DEFINER, reads only the bb_saves row whose secret sync code the caller supplies. Touches no household table. Keep the anon grant.';
+comment on function public.bb_put_save(text, jsonb, bigint, text) is
+  'Beaker Buddies cloud save (github.com/AviCagan/LetThemCook), not HouseholdLauncher. Intentionally executable by anon: SECURITY DEFINER, compare-and-swap write of one bb_saves row keyed by the caller''s secret sync code; validates input, 2 MB per save, 20 saves max. Touches no household table. Keep the anon grant.';
+comment on function public.bb_key_hash(text) is
+  'Beaker Buddies cloud save helper (github.com/AviCagan/LetThemCook): validates a sync code and hashes it. Not callable by anon/authenticated on purpose.';

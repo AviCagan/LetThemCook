@@ -13,7 +13,7 @@ All four phases of the plan are built.
 - **Modes:** shifts that get harder as they go, Weakness clinic, Synthesis shift, Practice by reaction or by reagent, Rush hour (timed) and Exam (N questions, no hints, optional timer). Daily-special customer for your most overdue reaction.
 - **Mastery:** spaced repetition per reaction and per reagent with your seeded weak spots, mistake tags that steer distractors and the clinic, mastery notebook, lab book of every step, notes per problem.
 - **Extras:** coin shop (counter/rug/hood colours, plants, decor, posters, four lab pets, five new customers; cosmetic only), light/dark theme, chiptune SFX, reduced motion.
-- **Platforms:** PWA on GitHub Pages (offline), Android APK on every push, cloud save through Supabase (needs a project; see below), export/import by code or JSON.
+- **Platforms:** PWA on GitHub Pages (offline), Android APK on every push, cloud save through Supabase, export/import by code or JSON.
 
 See `docs/PLAN.md` for the architecture and `REVIEW.md` for open chemistry questions.
 
@@ -88,7 +88,7 @@ Local build: `npm run build:android` (web build + `cap sync android`), then `cd 
 
 Optional sync between phone, laptop and the Android app. The database side is one migration, `supabase/migrations/*_beaker_buddies_cloud_save.sql`: a `bb_saves` table nobody can read directly, and two functions (`bb_get_save`, `bb_put_save`) that work only for a caller who knows the save's secret sync code (stored as a SHA-256 hash, writes are compare-and-swap). Everything is prefixed `bb_`, so it can share a project with other apps.
 
-To switch it on: apply the migration to a Supabase project, then put the project URL and its publishable (anon) key in `src/save/cloud.config.ts` (or the `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` build variables). Both values are public by design. In the game: Settings → Cloud save → "Turn on" on one device, then "Link this device" with the code on the others. Sync runs after each order, when the app comes back to the front, and on "Sync now". Progress merges record by record and coins come from a ledger, so nothing is lost or double-counted.
+It is live in the Supabase project "Things", which belongs to HouseholdLauncher. Beaker Buddies only owns the `bb_` objects there, saves are capped at 20, and both repositories' CLAUDE.md files explain the arrangement to other agents. The project URL and publishable key are in `src/save/cloud.config.ts`; both are public by design. Builds can point elsewhere with `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`, which is what the browser tests do. In the game: Settings → Cloud save → "Turn on" on one device, then "Link this device" with the code on the others. Sync runs after each order, when the app comes back to the front, and on "Sync now". Progress merges record by record and coins come from a ledger, so nothing is lost or double-counted.
 
 ## Adding chemistry
 
