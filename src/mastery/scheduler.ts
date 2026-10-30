@@ -77,7 +77,7 @@ export function pickNext(
   if (retestIds.length) {
     const id = retestIds.sort((a, b) => session.retests[a].due - session.retests[b].due)[0];
     const reaction = pool.find((p) => p.id === id)!;
-    const item = itemsForReaction(id).find((q) => q.id === session.retests[id].itemId) ?? pickItem(reaction, session, opts, rec(id).state);
+    const item = itemsForReaction(id).find((q) => q.id === session.retests[id].itemId) ?? pickItem(reaction, session, opts, rec(id));
     if (item) {
       const type = pickType(item, opts);
       if (type) return { reaction, item, type, bucket: 'retest', retest: true };
@@ -96,7 +96,7 @@ export function pickNext(
     // among the top few of a bucket, pick randomly so shifts are not identical day to day
     const top = b.list.slice(0, b.name === 'new' ? b.list.length : 3);
     for (const reaction of shuffleStable(top, opts.rng)) {
-      const item = pickItem(reaction, session, opts, rec(reaction.id).state);
+      const item = pickItem(reaction, session, opts, rec(reaction.id));
       if (!item) continue;
       const type = pickType(item, opts);
       if (!type) continue;
@@ -121,7 +121,7 @@ export function pickNext(
   }
   // everything served this session: allow repeats of reactions (but not items) when the shift is long
   for (const reaction of shuffleStable(pool, opts.rng)) {
-    const item = pickItem(reaction, session, opts, rec(reaction.id).state);
+    const item = pickItem(reaction, session, opts, rec(reaction.id));
     if (!item) continue;
     const type = pickType(item, opts);
     if (type) return { reaction, item, type, bucket: 'solid', retest: false };
@@ -129,7 +129,7 @@ export function pickNext(
   return undefined;
 }
 
-function pickItem(reaction: Reaction, session: SessionState, opts: SchedulerOptions, state: MasteryRecord['state'] = 'new'): QuestionItem | undefined {
+function pickItem(reaction: Reaction, session: SessionState, opts: SchedulerOptions, record: MasteryRecord = newRecord()): QuestionItem | undefined {
   const candidates = itemsForReaction(reaction.id).filter(
     (q) => !session.servedItems.has(q.id) && (q.orderTypes ?? ['make_it']).some((t) => opts.allowedTypes.includes(t)) && (opts.itemFilter?.(q) ?? true),
   );
@@ -151,8 +151,9 @@ function pickItem(reaction: Reaction, session: SessionState, opts: SchedulerOpti
   const multis = candidates.filter(isSyn);
   if (!singles.length) return prefer(multis);
   if (!multis.length) return prefer(singles);
-  // multi-step orders once the reaction is past 'new' / 'missed' (singles first), then by chance
-  const wantMulti = (state === 'shaky' || state === 'solid') && opts.rng() < (opts.synthesisChance ?? 0);
+  // multi-step orders once the reaction is past 'new' / 'missed' (singles first), then by chance.
+  // A seeded weak spot starts 'shaky' without ever being played, so it also needs one real attempt.
+  const wantMulti = (record.state === 'shaky' || record.state === 'solid') && record.seen > 0 && opts.rng() < (opts.synthesisChance ?? 0);
   return prefer(wantMulti ? multis : singles);
 }
 

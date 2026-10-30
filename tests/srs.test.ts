@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { applyResult, capInterval, DAY, newRecord } from '../src/mastery/srs';
+import { applyResult, capInterval, DAY, newRecord, seeded } from '../src/mastery/srs';
 import { newSession, noteResult, noteServed, pickNext } from '../src/mastery/scheduler';
-import { REACTIONS } from '../src/content/bank';
+import { playableReactions, REACTIONS } from '../src/content/bank';
+import { SEEDS } from '../src/mastery/seeds';
 import { mulberry32 } from '../src/util/rng';
 
 describe('SRS state machine', () => {
@@ -101,5 +102,20 @@ describe('scheduler', () => {
       noteServed(session, p.reaction.id, p.item.id);
     }
     expect(seen.size).toBeGreaterThan(30);
+  });
+  it('serves a seeded weak spot as a single step until it has been played', () => {
+    const all = playableReactions();
+    const fresh = Object.fromEntries(SEEDS.map((sd) => [sd.reactionId, seeded(sd.state, now)]));
+    const played = Object.fromEntries(Object.entries(fresh).map(([id, r]) => [id, { ...r, seen: 2, correct: 1, lastSeenAt: now - DAY }]));
+    const types = (mastery: typeof fresh) => {
+      const out = new Set<string>();
+      for (let seed = 1; seed <= 200; seed++) {
+        const p = pickNext(all, mastery, newSession(), { allowedTypes: ['make_it', 'synthesis'], synthesisChance: 0.4, now, rng: mulberry32(seed) });
+        if (p) out.add(p.type);
+      }
+      return out;
+    };
+    expect([...types(fresh)]).toEqual(['make_it']);
+    expect(types(played).has('synthesis')).toBe(true);
   });
 });
